@@ -16,7 +16,7 @@ import AppKit
 public typealias PlatformColor = NSColor
 #endif
 
-public extension Color {
+public nonisolated extension Color {
     /// Build a `Color` from a 24-bit hex value, e.g. `0xFF7A45`.
     init(hex: UInt32, opacity: Double = 1.0) {
         let r = Double((hex >> 16) & 0xFF) / 255.0
@@ -43,7 +43,9 @@ public extension Color {
 }
 
 /// Semantic brand palette. Reference as `Color.dbPrimary`, etc.
-public extension Color {
+/// `nonisolated` so the pure-value tokens can be read from SwiftUI's Sendable
+/// label/builder closures (e.g. `PhotosPicker`) without main-actor warnings.
+public nonisolated extension Color {
     // Brand — warm "豆包" coral/orange with a friendly teal companion.
     static let dbPrimary       = Color(light: Color(hex: 0xFF7A45), dark: Color(hex: 0xFF9466))
     static let dbPrimaryDeep   = Color(light: Color(hex: 0xE85F2A), dark: Color(hex: 0xFF8552))

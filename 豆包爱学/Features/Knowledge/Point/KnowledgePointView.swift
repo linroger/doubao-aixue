@@ -97,6 +97,8 @@ struct KnowledgePointView: View {
     @Query private var allPoints: [KnowledgePointEntity]
     /// Mastery records — filtered in-memory by the target point id.
     @Query private var masteryRecords: [MasteryRecord]
+    /// All mistakes — surfaced as "典型错题" for the point so learning ties to errors.
+    @Query(sort: \MistakeItem.createdAt, order: .reverse) private var allMistakes: [MistakeItem]
 
     @State private var model = KnowledgePointModel()
     @State private var savedToMistakes = false
@@ -128,6 +130,12 @@ struct KnowledgePointView: View {
         guard let entity else { return [] }
         let ids = Set(entity.relatedIDs)
         return allPoints.filter { ids.contains($0.id) && $0.id != entity.id }
+    }
+
+    /// Mistakes the learner has logged that involve this knowledge point — closes
+    /// the loop from "understand the concept" to "fix the errors you actually made".
+    private var relatedMistakes: [MistakeItem] {
+        allMistakes.filter { $0.knowledgePointIDs.contains(knowledgePointID) }
     }
 
     var body: some View {
@@ -198,6 +206,10 @@ struct KnowledgePointView: View {
 
             if !relatedPoints.isEmpty {
                 relatedSection(tint: tint)
+            }
+
+            if !relatedMistakes.isEmpty {
+                relatedMistakesSection(tint: tint)
             }
 
             actionBar(explanation: explanation, entity: entity)
@@ -430,6 +442,47 @@ struct KnowledgePointView: View {
         }
     }
 
+    // MARK: 典型错题 (mistakes that involve this point)
+
+    @ViewBuilder
+    private func relatedMistakesSection(tint: Color) -> some View {
+        VStack(alignment: .leading, spacing: DBSpacing.sm) {
+            DBSectionHeader("典型错题", subtitle: "这些题你做错过，复习时重点看", systemImage: "exclamationmark.bubble.fill")
+            ForEach(relatedMistakes.prefix(3)) { mistake in
+                Button {
+                    HapticEngine.play(.selection)
+                    router.navigate(.mistakeDetail(mistake.id), regular: isRegular)
+                } label: {
+                    DBCard {
+                        HStack(spacing: DBSpacing.sm) {
+                            Image(systemName: "xmark.circle.fill")
+                                .font(.dbCallout)
+                                .foregroundStyle(Color.dbError)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(mistake.questionText)
+                                    .font(.dbCallout)
+                                    .foregroundStyle(Color.dbTextPrimary)
+                                    .lineLimit(2)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                if !mistake.errorReason.isEmpty {
+                                    Text(mistake.errorReason)
+                                        .font(.dbCaption)
+                                        .foregroundStyle(Color.dbTextSecondary)
+                                        .lineLimit(1)
+                                }
+                            }
+                            Image(systemName: "chevron.right")
+                                .font(.dbFootnote)
+                                .foregroundStyle(Color.dbTextTertiary)
+                        }
+                    }
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("查看错题：\(mistake.questionText)")
+            }
+        }
+    }
+
     // MARK: Actions
 
     @ViewBuilder
@@ -446,7 +499,7 @@ struct KnowledgePointView: View {
             HStack(spacing: DBSpacing.sm) {
                 Button {
                     HapticEngine.play(.selection)
-                    router.openTool(.drill, regular: isRegular)
+                    router.openDrill(knowledgePointID: entity.id, regular: isRegular)
                 } label: {
                     Label("去练习", systemImage: "square.and.pencil")
                         .frame(maxWidth: .infinity)

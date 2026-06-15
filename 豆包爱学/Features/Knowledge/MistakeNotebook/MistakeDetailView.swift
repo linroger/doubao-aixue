@@ -17,12 +17,19 @@ struct MistakeDetailView: View {
     @Environment(AppRouter.self) private var router
     @Environment(\.horizontalSizeClass) private var sizeClass
     @Query private var mistakes: [MistakeItem]
+    @Query private var knowledgePoints: [KnowledgePointEntity]
     @State private var justReviewed = false
 
     init(mistakeID: UUID) { self.mistakeID = mistakeID }
 
     private var item: MistakeItem? { mistakes.first { $0.id == mistakeID } }
     private var isRegular: Bool { sizeClass != .compact }
+
+    /// Resolve a knowledge-point id to its display name so chips read as concepts
+    /// ("二次函数的图象") rather than raw ids ("kp-quadratic-graph").
+    private func knowledgePointName(_ id: String) -> String {
+        knowledgePoints.first { $0.id == id }?.name ?? id
+    }
 
     var body: some View {
         Group {
@@ -91,7 +98,7 @@ struct MistakeDetailView: View {
                     DBFlowLayout(spacing: 8) {
                         ForEach(item.knowledgePointIDs, id: \.self) { kpID in
                             Button { router.navigate(.knowledgePoint(kpID), regular: isRegular) } label: {
-                                DBChip(kpID, systemImage: "lightbulb", tint: .dbSecondary)
+                                DBChip(knowledgePointName(kpID), systemImage: "lightbulb", tint: .dbSecondary)
                             }.buttonStyle(.plain)
                         }
                     }
@@ -105,7 +112,7 @@ struct MistakeDetailView: View {
                     Button { router.present(.tutor(problemText: item.questionText, subject: item.subject, grade: .g5)) } label: {
                         Label("重新讲解", systemImage: "person.wave.2.fill").frame(maxWidth: .infinity)
                     }.buttonStyle(.db(.secondary))
-                    Button { router.openTool(.drill, regular: isRegular) } label: {
+                    Button { router.openDrill(knowledgePointID: item.knowledgePointIDs.first, regular: isRegular) } label: {
                         Label("举一反三", systemImage: "square.grid.3x3.fill").frame(maxWidth: .infinity)
                     }.buttonStyle(.db(.ghost))
                 }

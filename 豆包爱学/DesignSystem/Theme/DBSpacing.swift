@@ -7,7 +7,7 @@
 
 import CoreGraphics
 
-public enum DBSpacing {
+public nonisolated enum DBSpacing {
     public static let xxs: CGFloat = 2
     public static let xs:  CGFloat = 4
     public static let sm:  CGFloat = 8

@@ -323,7 +323,7 @@ struct HomeView: View {
 
                 Button {
                     HapticEngine.play(.light)
-                    router.openTool(.drill, regular: isRegular)
+                    router.openDrill(knowledgePointID: weak.knowledgePointID, regular: isRegular)
                 } label: {
                     Label("开始举一反三练习", systemImage: "square.grid.3x3.fill")
                 }

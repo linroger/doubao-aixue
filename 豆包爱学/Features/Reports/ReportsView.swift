@@ -400,7 +400,7 @@ struct ReportsView: View {
                     .buttonStyle(.db(.ghost))
 
                     Button {
-                        router.openTool(.drill, regular: isRegular)
+                        router.openDrill(knowledgePointID: weak.knowledgePointID, regular: isRegular)
                     } label: {
                         Label("专项练习", systemImage: "square.grid.3x3.fill")
                             .font(.dbFootnote)

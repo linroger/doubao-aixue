@@ -30,6 +30,12 @@ struct DictationDetailView: View {
 
     private var list: DictationList? { lists.first }
 
+    /// The list's name, or a friendly fallback when it's missing/blank.
+    private var navigationTitleText: String {
+        guard let name = list?.name, !name.isEmpty else { return "听写" }
+        return name
+    }
+
     var body: some View {
         Group {
             if let list {
@@ -48,7 +54,7 @@ struct DictationDetailView: View {
             }
         }
         .background(Color.dbBackground)
-        .navigationTitle(list?.name.isEmpty == false ? list!.name : "听写")
+        .navigationTitle(navigationTitleText)
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif

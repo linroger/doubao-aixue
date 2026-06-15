@@ -54,6 +54,7 @@ enum AppDestinations {
         case .wordDeck(let id):         WordDeckReviewView(deckID: id)
         case .dictation(let id):        DictationDetailView(listID: id)
         case .document(let id):         DocumentDetailView(documentID: id)
+        case .drill(let kpID):          DrillView(targetKnowledgePointID: kpID)
         case .reports:                  ReportsView()
         }
     }

@@ -35,7 +35,13 @@ struct DrillView: View {
 
     @State private var model = DrillModel()
 
-    init() {}
+    /// When non-nil, the drill opens already focused on this knowledge point
+    /// (deep-linked from a weak point, a mistake, a report, or a KP screen).
+    private let targetKnowledgePointID: String?
+
+    init(targetKnowledgePointID: String? = nil) {
+        self.targetKnowledgePointID = targetKnowledgePointID
+    }
 
     private var profile: LearnerProfile? { profiles.first }
 
@@ -65,7 +71,8 @@ struct DrillView: View {
             masteries: masteries,
             knowledgePoints: knowledgePoints,
             profileGrade: profile?.grade ?? .g5,
-            profileSubjects: profile?.subjects ?? []
+            profileSubjects: profile?.subjects ?? [],
+            preselected: targetKnowledgePointID
         )
     }
 

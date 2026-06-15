@@ -165,8 +165,10 @@ struct DocumentDetailView: View {
     @Environment(\.intelligence) private var intelligence
     @Environment(\.modelContext) private var modelContext
     @Environment(TTSService.self) private var tts
+    @Environment(AppRouter.self) private var router
 
     @Query private var documents: [DocumentEntity]
+    @Query private var profiles: [LearnerProfile]
 
     @State private var model = DocumentDetailModel()
     @State private var question = ""
@@ -211,6 +213,7 @@ struct DocumentDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: DBSpacing.lg) {
                 summarySection(for: document)
+                studyActionsCard(for: document)
                 textSection(for: document)
                 qaSection(for: document)
             }
@@ -218,6 +221,41 @@ struct DocumentDetailView: View {
         }
         .safeAreaInset(edge: .bottom) {
             askBar(for: document)
+        }
+    }
+
+    // MARK: Study actions (escalate the document into a taught lesson)
+
+    /// Turn passive reading into active learning: hand the document's topic to the
+    /// 豆包老师 for a voice-first, blackboard explanation. Closes the loop so a
+    /// document isn't a dead-end — it flows into the same tutor every other feature uses.
+    private func studyActionsCard(for document: DocumentEntity) -> some View {
+        DBCard(fill: .dbSecondarySoft, elevation: .none) {
+            HStack(spacing: DBSpacing.md) {
+                DBMascot(mood: .curious, size: 44)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("让豆包老师精讲")
+                        .font(.dbBodyEmph)
+                        .foregroundStyle(Color.dbTextPrimary)
+                    Text("把这份资料的重点，用讲解的方式听一遍")
+                        .font(.dbCaption)
+                        .foregroundStyle(Color.dbTextSecondary)
+                        .lineLimit(2)
+                }
+                Spacer(minLength: 0)
+                Button {
+                    HapticEngine.play(.light)
+                    let grade = profiles.first?.grade ?? .g6
+                    router.present(.tutor(
+                        problemText: "请围绕《\(document.title)》这份资料，给我讲一讲它的重点内容和需要掌握的地方。",
+                        subject: .general,
+                        grade: grade
+                    ))
+                } label: {
+                    Label("精讲", systemImage: "person.wave.2.fill")
+                }
+                .buttonStyle(.db(.secondary))
+            }
         }
     }
 

@@ -302,19 +302,21 @@ struct EssayFeedbackView: View {
         guard !segments.isEmpty else {
             return Text(feedback.polishedText).foregroundColor(.dbTextPrimary)
         }
-        return segments.reduce(Text("")) { partial, segment in
-            let piece: Text
+        // Build one AttributedString so additions render coral/bold inline —
+        // the modern replacement for the deprecated `Text + Text` concatenation.
+        var attributed = AttributedString()
+        for segment in segments {
+            var piece = AttributedString(segment.text)
             switch segment.kind {
             case .same:
-                piece = Text(segment.text).foregroundColor(.dbTextPrimary)
+                piece.foregroundColor = .dbTextPrimary
             case .added:
-                piece = Text(segment.text)
-                    .foregroundColor(.dbPrimaryDeep)
-                    .fontWeight(.semibold)
+                piece.foregroundColor = .dbPrimaryDeep
+                piece.font = .dbBody.weight(.semibold)
             }
-            return partial + piece
+            attributed.append(piece)
         }
-        .font(.dbBody)
+        return Text(attributed).font(.dbBody)
     }
 
     private var lockedPolished: some View {

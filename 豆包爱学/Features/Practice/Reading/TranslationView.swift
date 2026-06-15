@@ -23,25 +23,78 @@ final class TranslationModel {
     var sourceText: String = ""
     var direction: TranslationDirection = .zhToEn
     var state: ViewState<[AlignedSentence]> = .idle
+    /// Set when the loaded result came from the configured cloud model (vs the
+    /// on-device deterministic engine) so the result header can badge it honestly.
+    private(set) var resultRoute: IntelligenceRoute = .onDevice
 
-    /// Produce the sentence-aligned bilingual result for the current input.
-    func translate() {
+    /// Produce the sentence-aligned bilingual result. Uses the learner's configured
+    /// cloud model when one is set (richer, context-aware), and otherwise the
+    /// deterministic on-device engine — so the feature works offline yet improves
+    /// the moment an AI provider is connected.
+    func translate(using intelligence: any IntelligenceService) async {
         let trimmed = sourceText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else {
             state = .empty(message: "先输入或识别一段课文，我来帮你逐句翻译。")
             return
         }
         state = .loading
+        let sentences = ReadingTranslator.splitSentences(trimmed)
+
+        if intelligence.capabilities.route == .cloud, !sentences.isEmpty,
+           let aiPairs = await aiTranslate(sentences: sentences, using: intelligence) {
+            resultRoute = .cloud
+            state = .loaded(aiPairs)
+            return
+        }
+
+        resultRoute = .onDevice
         let result = ReadingTranslator.translate(trimmed, direction: direction)
         state = result.isEmpty
             ? .empty(message: "没有识别到可翻译的句子，换一段试试吧。")
             : .loaded(result)
     }
 
+    /// Ask the configured model to translate sentence-by-sentence and parse the
+    /// reply back into aligned pairs. Returns `nil` (→ deterministic fallback) on
+    /// any error or when the alignment can't be trusted, so output is never wrong.
+    private func aiTranslate(sentences: [String],
+                             using intelligence: any IntelligenceService) async -> [AlignedSentence]? {
+        let targetLang = direction == .zhToEn ? "英文" : "现代汉语（简体中文）"
+        let prompt = """
+        请把下面的文段逐句翻译成\(targetLang)。要求：
+        - 每个句子的译文单独占一行，顺序与原文完全一致；
+        - 只输出译文本身，不要输出原文、不要加序号、引号或解释。
+
+        原文（共 \(sentences.count) 句，每句一行）：
+        \(sentences.joined(separator: "\n"))
+        """
+        let request = ChatRequest(
+            turns: [ChatTurn(role: .user, text: prompt)],
+            context: LearnerContext(grade: .g7, subjects: [.english, .chinese]),
+            kind: .knowledge
+        )
+        var reply = ""
+        do {
+            for try await chunk in intelligence.chat(request) {
+                reply += chunk.delta
+            }
+        } catch {
+            return nil
+        }
+        let lines = reply
+            .split(separator: "\n", omittingEmptySubsequences: true)
+            .map { $0.trimmingCharacters(in: .whitespaces) }
+            .filter { !$0.isEmpty }
+        // Only trust the AI path when it returns a clean per-sentence alignment;
+        // otherwise fall back so tap-to-read stays correctly paired.
+        guard lines.count == sentences.count else { return nil }
+        return zip(sentences, lines).map { AlignedSentence(original: $0, translated: $1) }
+    }
+
     /// Load the bundled sample for the current direction and translate it.
-    func loadSample() {
+    func loadSample(using intelligence: any IntelligenceService) async {
         sourceText = direction == .zhToEn ? ReadingSamples.chinesePassage : ReadingSamples.englishPassage
-        translate()
+        await translate(using: intelligence)
     }
 
     func clear() {
@@ -54,6 +107,7 @@ final class TranslationModel {
 
 struct TranslationView: View {
     @Environment(\.ocr) private var ocr
+    @Environment(\.intelligence) private var intelligence
     @Environment(TTSService.self) private var tts
 
     @State private var model = TranslationModel()
@@ -116,7 +170,9 @@ struct TranslationView: View {
                 }
                 .pickerStyle(.segmented)
                 .onChange(of: model.direction) { _, _ in
-                    if case .loaded = model.state { model.translate() }
+                    if case .loaded = model.state {
+                        Task { await model.translate(using: intelligence) }
+                    }
                 }
             }
         }
@@ -154,7 +210,7 @@ struct TranslationView: View {
                     #endif
 
                     captureButton(title: "用示例", systemImage: "sparkles") {
-                        model.loadSample()
+                        Task { await model.loadSample(using: intelligence) }
                         HapticEngine.play(.selection)
                     }
 
@@ -230,7 +286,7 @@ struct TranslationView: View {
 
                 Button {
                     HapticEngine.play(.light)
-                    model.translate()
+                    Task { await model.translate(using: intelligence) }
                 } label: {
                     Label("开始翻译", systemImage: "character.book.closed.fill")
                 }
@@ -254,7 +310,8 @@ struct TranslationView: View {
             DBStateView(kind: .empty, title: "暂无译文", message: message)
                 .frame(maxWidth: .infinity).frame(height: 180)
         case .error(let message):
-            DBStateView(kind: .error, title: "出错了", message: message, retry: { model.translate() })
+            DBStateView(kind: .error, title: "出错了", message: message,
+                        retry: { Task { await model.translate(using: intelligence) } })
                 .frame(maxWidth: .infinity).frame(height: 180)
         case .offline(let message):
             DBStateView(kind: .offline, title: "离线", message: message)
@@ -268,7 +325,7 @@ struct TranslationView: View {
         VStack(alignment: .leading, spacing: DBSpacing.md) {
             DBSectionHeader("对照译文", subtitle: "逐句对齐，点词查义，可朗读",
                             systemImage: "text.book.closed.fill") {
-                DBRouteBadge(.onDevice)
+                DBRouteBadge(model.resultRoute)
             }
 
             ForEach(sentences) { pair in
@@ -396,10 +453,10 @@ struct TranslationView: View {
         if text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             // No real text recognised (e.g. simulator) — fall back to a sample so
             // the flow stays demoable rather than dead-ending.
-            model.loadSample()
+            await model.loadSample(using: intelligence)
         } else {
             model.sourceText = text
-            model.translate()
+            await model.translate(using: intelligence)
         }
     }
 
@@ -408,7 +465,7 @@ struct TranslationView: View {
         guard case .success(let url) = result else { return }
         if let text = String.readingText(from: url) {
             model.sourceText = text
-            model.translate()
+            Task { await model.translate(using: intelligence) }
         } else if let data = Data.readingImage(from: url) {
             Task { await recognize(data) }
         }

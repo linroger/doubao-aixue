@@ -75,6 +75,10 @@ public enum Route: Hashable, Sendable {
     case wordDeck(UUID)
     case dictation(UUID)
     case document(UUID)
+    /// 举一反三 / 靶向练习, optionally pre-targeted at one knowledge point so a weak
+    /// point (Home), a mistake, a report card, or a knowledge-point screen can launch
+    /// practice already focused on the right thing. `nil` opens the generic picker.
+    case drill(knowledgePointID: String?)
     case reports
 }
 
@@ -140,6 +144,13 @@ public final class AppRouter {
         default:
             navigate(.tool(tool), regular: regular)
         }
+    }
+
+    /// Open 举一反三 already focused on a specific knowledge point (or `nil` for the
+    /// generic picker). Used by Home's 今日靶向练习, a mistake's 举一反三, a report's
+    /// 专项练习, and a knowledge point's 去练习 — so practice always lands on target.
+    public func openDrill(knowledgePointID: String?, regular: Bool) {
+        navigate(.drill(knowledgePointID: knowledgePointID), regular: regular)
     }
 
     /// Deep-link from an App Intent / Siri / Spotlight signal, consumed once when

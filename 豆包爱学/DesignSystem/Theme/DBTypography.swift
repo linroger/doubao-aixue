@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public extension Font {
+public nonisolated extension Font {
     static let dbLargeTitle = Font.system(.largeTitle, design: .rounded, weight: .bold)
     static let dbTitle      = Font.system(.title, design: .rounded, weight: .bold)
     static let dbTitle2     = Font.system(.title2, design: .rounded, weight: .semibold)

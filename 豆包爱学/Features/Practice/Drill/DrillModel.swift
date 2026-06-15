@@ -179,7 +179,8 @@ final class DrillModel {
     func configure(masteries: [MasteryRecord],
                    knowledgePoints: [KnowledgePointEntity],
                    profileGrade: GradeLevel,
-                   profileSubjects: [Subject]) {
+                   profileSubjects: [Subject],
+                   preselected: String? = nil) {
         grade = profileGrade
 
         // Name lookup: prefer the DB knowledge graph, fall back to the seed catalog.
@@ -214,9 +215,28 @@ final class DrillModel {
                                score: 0, grade: $0.grade) }
         built.append(contentsOf: catalogFill)
 
+        // A deep-link target (Home weak point, a mistake, a report, a KP screen) that
+        // isn't already covered — synthesize it from the name lookup so the drill can
+        // focus on it even if it's outside the learner's usual subjects.
+        if let preselected, !preselected.isEmpty,
+           !built.contains(where: { $0.id == preselected }),
+           let meta = nameByID[preselected] {
+            let existingScore = masteries.first { $0.knowledgePointID == preselected }?.score ?? 0
+            built.insert(
+                DrillTarget(id: preselected, name: meta.name, subject: meta.subject,
+                            score: existingScore, grade: meta.grade),
+                at: 0
+            )
+        }
+
         targets = built
-        // Auto-select the weakest if nothing chosen yet (or the prior choice vanished).
-        if selectedTarget == nil || !built.contains(where: { $0.id == selectedTarget?.id }) {
+        // Honor an explicit deep-link target the first time we see it; otherwise
+        // auto-select the weakest when nothing is chosen (or the prior choice vanished).
+        let currentIsValid = selectedTarget.map { sel in built.contains { $0.id == sel.id } } ?? false
+        if let preselected, !preselected.isEmpty, !currentIsValid,
+           let target = built.first(where: { $0.id == preselected }) {
+            selectedTarget = target
+        } else if !currentIsValid {
             selectedTarget = built.first
         }
     }

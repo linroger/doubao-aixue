@@ -93,7 +93,9 @@ struct DictationHandwritingSheet: View {
         let drawing = canvasView.drawing
         guard !drawing.bounds.isEmpty else { dismiss(); return }
         let bounds = drawing.bounds.insetBy(dx: -16, dy: -16)
-        let image = drawing.image(from: bounds, scale: UIScreen.main.scale)
+        // Render at the canvas's own display scale (iOS 26 deprecates UIScreen.main).
+        let displayScale = canvasView.traitCollection.displayScale
+        let image = drawing.image(from: bounds, scale: displayScale > 0 ? displayScale : 2)
         // Composite on white so OCR sees dark-on-light strokes.
         let renderer = UIGraphicsImageRenderer(size: image.size)
         let composited = renderer.image { ctx in

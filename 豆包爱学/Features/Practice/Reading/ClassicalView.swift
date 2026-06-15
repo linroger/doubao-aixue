@@ -110,9 +110,19 @@ struct ClassicalStudyView: View {
 
     @Environment(AppRouter.self) private var router
     @Environment(TTSService.self) private var tts
+    @Environment(\.intelligence) private var intelligence
 
     @State private var showSegmentation = false
     @State private var spokenLine: String?
+    @State private var aiAppreciation: String = ""
+    @State private var aiAppreciationLoading = false
+    @State private var aiAppreciationTask: Task<Void, Never>?
+
+    /// The configured cloud model can offer a fresh, personalized 赏析 on top of the
+    /// curated one — only surfaced when such a provider is actually connected.
+    private var aiAppreciationAvailable: Bool {
+        intelligence.capabilities.route == .cloud
+    }
 
     var body: some View {
         ScrollView {
@@ -127,6 +137,7 @@ struct ClassicalStudyView: View {
         }
         .background(Color.dbBackground)
         .navigationTitle(poem.title)
+        .onDisappear { aiAppreciationTask?.cancel() }
     }
 
     // MARK: Author
@@ -266,7 +277,84 @@ struct ClassicalStudyView: View {
                     .font(.dbBody)
                     .foregroundStyle(Color.dbTextPrimary)
                     .lineSpacing(4)
+
+                if aiAppreciationAvailable {
+                    Divider().overlay(Color.dbSeparator)
+                    aiAppreciationBlock
+                }
             }
+        }
+    }
+
+    @ViewBuilder
+    private var aiAppreciationBlock: some View {
+        if !aiAppreciation.isEmpty {
+            HStack(spacing: DBSpacing.xs) {
+                Image(systemName: "sparkles")
+                    .font(.dbCaption)
+                    .foregroundStyle(Color.dbSecondary)
+                Text("豆包的赏析")
+                    .font(.dbCaption.weight(.semibold))
+                    .foregroundStyle(Color.dbSecondary)
+                Spacer(minLength: 0)
+                DBRouteBadge(.cloud)
+            }
+            Text(aiAppreciation)
+                .font(.dbBody)
+                .foregroundStyle(Color.dbTextSecondary)
+                .lineSpacing(4)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+
+        Button {
+            loadAIAppreciation()
+        } label: {
+            if aiAppreciationLoading {
+                HStack(spacing: DBSpacing.xs) {
+                    ProgressView().controlSize(.small)
+                    Text("豆包正在赏析…")
+                }
+            } else {
+                Label(aiAppreciation.isEmpty ? "换个角度赏析" : "再换个角度",
+                      systemImage: "wand.and.stars")
+            }
+        }
+        .buttonStyle(.db(.ghost, fullWidth: true))
+        .disabled(aiAppreciationLoading)
+    }
+
+    /// Stream a fresh appreciation from the configured model, on top of the curated
+    /// one. Cancellable — tied to the view's lifetime so leaving stops the stream.
+    private func loadAIAppreciation() {
+        aiAppreciationTask?.cancel()
+        aiAppreciationLoading = true
+        aiAppreciation = ""
+        HapticEngine.play(.light)
+        let prompt = """
+        请用亲切、适合中小学生的语言，赏析\(poem.dynasty)·\(poem.author)的《\(poem.title)》。
+        原文：\(poem.original)
+        从意象、情感、写法三个角度，简明地讲一讲，150 字以内，不要重复原文。
+        """
+        let request = ChatRequest(
+            turns: [ChatTurn(role: .user, text: prompt)],
+            context: LearnerContext(grade: poem.grade, subjects: [.chinese]),
+            kind: .knowledge
+        )
+        aiAppreciationTask = Task {
+            var reply = ""
+            do {
+                for try await chunk in intelligence.chat(request) {
+                    if Task.isCancelled { return }
+                    reply += chunk.delta
+                    aiAppreciation = reply
+                }
+            } catch {
+                if aiAppreciation.isEmpty {
+                    aiAppreciation = "这次没接上，稍后再试一次吧。"
+                }
+            }
+            if Task.isCancelled { return }
+            aiAppreciationLoading = false
         }
     }
 
@@ -313,8 +401,14 @@ struct ClassicalStudyView: View {
 }
 
 #Preview("古诗文学习") {
-    NavigationStack {
-        ClassicalStudyView(poem: ContentCatalog.poems[0])
+    Group {
+        if let poem = ContentCatalog.poems.first {
+            NavigationStack {
+                ClassicalStudyView(poem: poem)
+            }
+        } else {
+            Text("无古诗文样例")
+        }
     }
     .modelContainer(PreviewSampleData.container)
     .environment(AppRouter())

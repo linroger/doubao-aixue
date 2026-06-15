@@ -114,6 +114,7 @@ final class TutorSessionModel {
     // MARK: Private
     private var streamTask: Task<Void, Never>?
     private var revealTask: Task<Void, Never>?
+    private var followUpTask: Task<Void, Never>?
     private let intelligence: any IntelligenceService
     private let tts: TTSService
 
@@ -150,6 +151,7 @@ final class TutorSessionModel {
     private func cancelEverything() {
         streamTask?.cancel(); streamTask = nil
         revealTask?.cancel(); revealTask = nil
+        followUpTask?.cancel(); followUpTask = nil
     }
 
     private func beginStreaming() {
@@ -340,7 +342,9 @@ final class TutorSessionModel {
             kind: .tutor
         )
 
-        Task { [weak self] in
+        // Tracked so `tearDown()`/`retry()` cancel an in-flight answer — otherwise the
+        // stream keeps mutating model state (and re-starting TTS) after the view is gone.
+        followUpTask = Task { [weak self] in
             guard let self else { return }
             var accumulated = ""
             do {
@@ -354,6 +358,7 @@ final class TutorSessionModel {
                 accumulated = accumulated.isEmpty ? "我没太听清，换个说法再问我一次好吗？" : accumulated
                 self.updateFollowUp(id: assistantID, text: accumulated)
             }
+            if Task.isCancelled { return }
             self.isAnsweringFollowUp = false
             self.narrate(accumulated)
             // Resume the prior phase (teaching or checkpoint) after answering.
@@ -364,6 +369,7 @@ final class TutorSessionModel {
                 self.phase = .teaching
                 self.markFinishedIfDone()
             }
+            self.followUpTask = nil
         }
     }
 

@@ -117,3 +117,38 @@ KEY FILES
   - Tests run: xcodebuild macOS + iOS Simulator (iPhone 17 Pro) → BUILD SUCCEEDED both;
     macOS app launch smoke test → renders Home + sidebar, no crash (new AI startup path runs).
   - Fixed during integration: json() helper calls needed `try await` (was `try`).
+
+[2026-06-16] Session 3 — Integration pass: interlinking, bug fixes, AI everywhere (branch: main)
+  Goal: make the app feel like one integrated whole, kill all issues, ensure AI is wired throughout.
+  Method: 3 parallel Explore agents audited (A) AI wiring, (B) cross-feature links, (C) bugs; then a
+  single-writer implementation pass with a green build after every increment.
+
+  1) Warnings → ZERO. Made the design-system value tokens `nonisolated` (Color/Font/DBSpacing) so
+     they read cleanly from SwiftUI's Sendable PhotosPicker label closures — cleared 17 main-actor
+     warnings at the root. Replaced deprecated `Text + Text` in EssayFeedbackView with an
+     AttributedString build. Replaced deprecated `UIScreen.main.scale` in DictationHandwritingSheet
+     with the canvas's `traitCollection.displayScale`.
+
+  2) KEYSTONE interlink — targeted practice. New `Route.drill(knowledgePointID:)` + `router.openDrill`;
+     DrillView(targetKnowledgePointID:) → DrillModel.configure(preselected:) synthesizes/selects the
+     target. Wired so 今日靶向练习 (Home), a mistake's 举一反三 (MistakeDetail), a report's 专项练习
+     (Reports), and a knowledge point's 去练习 (KnowledgePoint) all launch practice ALREADY focused on
+     the right knowledge point (previously they opened the generic picker — a dead feeling).
+
+  3) Discovery links. KnowledgePointView gained a 典型错题 section (queries MistakeItems for the point →
+     links to .mistakeDetail). DocumentDetailView gained a 让豆包老师精讲 card → tutor, closing the
+     document dead-end. MistakeDetail KP chips now show the point NAME (was raw id).
+
+  4) AI wired throughout (closed the only 2 gaps the audit found). TranslationView (课文翻译) and
+     ClassicalStudyView (古诗文赏析) now consult the configured cloud model via intelligence.chat()
+     when `capabilities.route == .cloud`, falling back to the deterministic offline engine otherwise
+     (Translation parses per-sentence alignment defensively; route badge reflects cloud vs on-device).
+     Every AI-capable feature now flows through the IntelligenceService seam.
+
+  5) Bug fix. TutorSessionModel.askFollowUp's streamed follow-up Task was untracked → not cancelled on
+     tearDown()/retry() (leak + TTS restart after the view is gone). Stored as `followUpTask`, cancelled
+     in cancelEverything(), and guarded with Task.isCancelled. Also cleaned a convoluted force-unwrap
+     (DictationDetailView title) and an unsafe `poems[0]` preview index (ClassicalView).
+
+  Tests run: xcodebuild macOS + iOS Simulator (iPhone 17 Pro) → BUILD SUCCEEDED both, ZERO warnings;
+  macOS app launch smoke test → process runs, renders real UI. All changes committed + pushed.
