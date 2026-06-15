@@ -1,0 +1,27 @@
+# Xcode / Swift
+DerivedData/
+build/
+*.xcuserstate
+*.xcuserdatad/
+xcuserdata/
+.build/
+*.swiftpm/.build/
+
+# macOS
+.DS_Store
+
+# Logs / agent harness scratch
+logs/
+.hooklogs/
+豆包爱学/logs/
+豆包爱学/**/logs/
+*.log
+
+# Claude Code / agent local config & session data (machine-specific)
+.claude/
+.remember/
+agent-progress.txt.bak
+
+# Secrets
+*.xcconfig.local
+Secrets.plist

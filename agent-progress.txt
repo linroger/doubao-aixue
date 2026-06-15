@@ -1,0 +1,89 @@
+==================================================================
+ 豆包爱学 (Doubao Ai Xue) — Native iOS + macOS Reimagining
+ Agent Progress Log
+==================================================================
+
+PROJECT OVERVIEW
+----------------
+Goal: A native SwiftUI app for iOS 26 + macOS 26 that reimagines ByteDance's
+豆包爱学 K12 AI-learning app — same surface area but better integrated, more
+intuitive, optimized, and enhanced with Apple-platform intelligence.
+
+Toolchain: Xcode 26.3, Swift 6.2 (language mode 6.0), MainActor-default isolation.
+Project: 豆包爱学.xcodeproj — single multiplatform target, PBXFileSystemSynchronized
+root group (drop .swift files into 豆包爱学/ and they compile automatically).
+Module name: DoubaoAiXue. Platforms: iphoneos, iphonesimulator, macosx.
+
+KEY FILES
+---------
+  handoff.md          — authoritative continuity record (read this first)
+  ARCHITECTURE.md     — architecture & layout blueprint (after research)
+  PLAN.md             — atomic build plan (after research)
+  RESEARCH.md         — research dossier (from research workflow)
+  feature_list.json   — feature checklist with passes flags
+  init.sh             — build/smoke harness (./init.sh, mac, ios, run-mac)
+
+==================================================================
+ SESSION LOG
+==================================================================
+
+[2026-06-15] Session 1 — bootstrap & research (branch: main)
+  - Recon: confirmed Xcode 26.3 / Swift 6.2 / iOS+macOS 26 SDKs, synchronized
+    file groups in the existing project.
+  - Project tuning: Swift 6.0, dropped visionOS, bundle id linroger022.DoubaoAiXue,
+    module name DoubaoAiXue, camera/mic/photo/speech usage strings.
+  - Removed broken template files (unrendered placeholders); added App/ baseline.
+  - GREEN BUILD verified: macOS + iOS Simulator both BUILD SUCCEEDED.
+  - Launched research workflow (wf_3fbb8a3f-db8): 7 domain researchers + synthesis.
+  - Wrote RESEARCH.md (874 lines, 67 features), ARCHITECTURE.md, PLAN.md,
+    feature_list.json, docs/FOUNDATION_API.md.
+  - Wave 0 Foundation (single-writer): design system, 22 SwiftData models,
+    Intelligence layer (Mock + FoundationModels + RoutePolicy), Vision/Speech,
+    ContentCatalog, persistence + seeding, planner/system, adaptive shell.
+    GREEN both platforms; app launches.
+  - Wave 1 (wf_e6efd277-1ff, 10 agents): Onboarding, Home, Solve, Tutor, 错题本,
+    作文批改, 口算批改, Companion chat, 知识点讲解, Profile. Integrated + fixed
+    (logs-exclusion, CompanionTheme isolation, PhotosPicker label inline).
+    39 features passing; GREEN iOS + macOS; macOS app screenshot verified.
+  - Launched Wave 2 (wf_a116d824-55e, 12 agents): KnowledgeGraph, Classroom,
+    DocumentQA, Dictation, Vocabulary, Oral, Reading(翻译+古诗文), Drill, Reports,
+    Search, Parent, App Intents.
+  - Next: integrate Wave 2 → wire AppDestinations → green build → validate.
+
+[2026-06-16] Session 2 — Wave 2 recovery, integration & completion (branch: main)
+  - Found the Wave 2 background workflow had finished writing ~25 new feature files
+    but left the build BROKEN. Recovered to GREEN (macOS+iOS) by fixing 7 distinct
+    breakages, each verified by rebuild:
+      1. Deleted a duplicate OralScenario.swift (conflicting value types); integrator
+         had replaced it with a non-conflicting @MainActor extension.
+      2. Marked Oral static data (turns/avatars/corrections) `nonisolated`.
+      3. PendingIntentStore: store appGroup String? (Sendable), resolve UserDefaults inline.
+      4. StudyAppIntents: dropped type-level `nonisolated` (conflicts with @Parameter);
+         intents are MainActor (implicitly Sendable), provider still constructs them.
+      5. Added `import SwiftData` to 4 preview files (.modelContainer).
+      6. DrillHandwritingInput: `#if canImport(PencilKit)` → `#if os(iOS)`/`canImport(UIKit)`
+         (PKCanvasView/UIViewRepresentable are UIKit-only; module imports on macOS too).
+      7. DocumentSupport: Result<_,String> → DocumentParseError (ExpressibleByStringLiteral);
+         removed a duplicate SeededGenerator in TutorBlackboard (shares Vocabulary's).
+  - Wired the AppDestinations seam fully: every section/route/tool(16, exhaustive)/sheet
+    now resolves to a real view (DocumentQA, KnowledgeGraph, Reports, Dictation, Vocabulary,
+    Oral, Translation, Classical, Drill, CourseDetail, WordDeck, DictationDetail,
+    DocumentDetail, ParentMode, Search).
+  - Wired App-Intent/Siri/Spotlight deep-link consumption: AppShell consumes
+    PendingIntentStore on .task + scenePhase→.active → AppRouter.handle(_:regular:). (F55b)
+  - Built the last 2 missing views with 2 PARALLEL subagents (isolated DerivedData):
+      • F25 RecognizeAnythingView (识万物 — Vision VNClassifyImage/RecognizeAnimals + OCR
+        + kid-friendly explanation, camera/photo/file, both platforms).
+      • F53 AccountView (账号登录 — Sign in with Apple + 游客模式, @AppStorage db.account.*).
+    Both returned green; integrated green.
+  - Wired AccountView + a 每日提醒 notifications toggle (NotificationService) into
+    ProfileSettingsCard (completes F13b).
+  - Verified pre-existing F14/F45 (DrillView 今日靶向练习), F43 (CustomLessonSheet),
+    F49 (Onboarding 教材版本 → LearnerProfile.editions) functional.
+  - Integrated build GREEN on macOS + iOS (zero errors). Launched the macOS app: it runs
+    without crash and renders the real Home + adaptive sidebar (screenshots saved to /tmp).
+  - feature_list.json: all 50 features passes:true.
+  - Tests run: xcodebuild macOS + iOS Simulator (iPhone 17 Pro) → BUILD SUCCEEDED both;
+    macOS app launch smoke test → renders real UI, no crash.
+  - Known follow-ups: optional UI polish pass; run macOS code-review; git commit (work is
+    currently uncommitted on main — branch first per repo convention).

@@ -1,0 +1,401 @@
+{
+  "project": "豆包爱学 — Doubao Ai Xue (native iOS + macOS)",
+  "source": "RESEARCH.md feature backlog (67 features) → ARCHITECTURE.md → PLAN.md",
+  "legend": {
+    "passes": "true only when the feature is reachable in-app, mock-backed, all states handled, and the app builds green on iOS + macOS"
+  },
+  "foundation": [
+    {
+      "id": "F0_design_system",
+      "description": "Design system: tokens (colors/typography/spacing/radius/shadow) + components + ViewState/DBStateView + Liquid Glass + MathText",
+      "passes": true
+    },
+    {
+      "id": "F0_data_models",
+      "description": "SwiftData CloudKit-compatible models + enums + Codable payloads; ModelContainer builds",
+      "passes": true
+    },
+    {
+      "id": "F0_intelligence",
+      "description": "IntelligenceService protocol + DTOs + MockIntelligenceService + FoundationModelsService(canImport) + RoutePolicy + environment injection",
+      "passes": true
+    },
+    {
+      "id": "F0_vision_speech",
+      "description": "OCRService/CaptureService/ImageCalibration + SpeechService/TTSService/PronunciationScorer with mock fallbacks",
+      "passes": true
+    },
+    {
+      "id": "F0_catalog_persistence",
+      "description": "ContentCatalog (courses/poems/word lists/textbook tree/tools/sample problems) + ModelContainerFactory + SampleData seeding",
+      "passes": true
+    },
+    {
+      "id": "F0_planner_system",
+      "description": "SRSScheduler + StudyPlanner + NotificationService + HapticEngine",
+      "passes": true
+    },
+    {
+      "id": "F0_app_shell",
+      "description": "AppRouter + AppEnvironment + adaptive AppShell (TabView/NavigationSplitView) + RootView + app wiring; app launches green",
+      "passes": true
+    },
+    {
+      "id": "F0_foundation_api_doc",
+      "description": "docs/FOUNDATION_API.md published for build agents",
+      "passes": true
+    }
+  ],
+  "features": [
+    {
+      "id": "F1_camera_capture",
+      "p": "P0",
+      "domain": "Solve",
+      "description": "拍照搜题: capture/import → calibrate → recognized question",
+      "passes": true
+    },
+    {
+      "id": "F3_crop_region",
+      "p": "P0",
+      "domain": "Solve",
+      "description": "框选单题: single-problem crop/region selection",
+      "passes": true
+    },
+    {
+      "id": "F4_multi_grade_page",
+      "p": "P0",
+      "domain": "Solve",
+      "description": "整页批改: multi-problem detection + per-item ✓/✗",
+      "passes": true
+    },
+    {
+      "id": "F5_ocr",
+      "p": "P0",
+      "domain": "Solve",
+      "description": "题目识别: multimodal OCR (printed/handwriting/formulas), editable",
+      "passes": true
+    },
+    {
+      "id": "F6_structured_solution",
+      "p": "P0",
+      "domain": "Solve",
+      "description": "思路·步骤·答案·知识点 structured solution + action row",
+      "passes": true
+    },
+    {
+      "id": "F7_math_render",
+      "p": "P0",
+      "domain": "Solve",
+      "description": "公式渲染/图示: LaTeX-ish + diagrams, accessible",
+      "passes": true
+    },
+    {
+      "id": "F8_similar_problems",
+      "p": "P0",
+      "domain": "Practice",
+      "description": "举一反三: generate similar practice problems",
+      "passes": true
+    },
+    {
+      "id": "F10_subject_routing",
+      "p": "P0",
+      "domain": "Solve",
+      "description": "学科识别: subject auto-detect + routing",
+      "passes": true
+    },
+    {
+      "id": "F11_solve_history",
+      "p": "P1",
+      "domain": "Solve",
+      "description": "搜题历史: per-problem resumable threads",
+      "passes": true
+    },
+    {
+      "id": "F12_mistake_notebook",
+      "p": "P0",
+      "domain": "Knowledge",
+      "description": "错题本: collect/classify/review wrong questions + 组卷/export",
+      "passes": true
+    },
+    {
+      "id": "F13_error_cause_graph",
+      "p": "P1",
+      "domain": "Knowledge",
+      "description": "错因分析 + knowledge-graph weak-point mapping",
+      "passes": true
+    },
+    {
+      "id": "F14_targeted_practice",
+      "p": "P1",
+      "domain": "Practice",
+      "description": "靶向练习/每日必练 daily targeted set",
+      "passes": true
+    },
+    {
+      "id": "F18_tutor_blackboard",
+      "p": "P0",
+      "domain": "Tutor",
+      "description": "豆包老师: voice-first dynamic blackboard tutor (streamed)",
+      "passes": true
+    },
+    {
+      "id": "F19_voice_loop",
+      "p": "P0",
+      "domain": "Tutor",
+      "description": "语音实时互动 + 是否听懂了 hold-to-talk comprehension loop",
+      "passes": true
+    },
+    {
+      "id": "F20_followup",
+      "p": "P0",
+      "domain": "Tutor",
+      "description": "追问: interruptible follow-up Q&A (voice+typed)",
+      "passes": true
+    },
+    {
+      "id": "F21_tiered_explain",
+      "p": "P0",
+      "domain": "Tutor",
+      "description": "分层引导: grade-level tiered explanation adaptation",
+      "passes": true
+    },
+    {
+      "id": "F23_knowledge_qa",
+      "p": "P0",
+      "domain": "Companion",
+      "description": "知识问答/知识专家 open-domain interactive Q&A",
+      "passes": true
+    },
+    {
+      "id": "F24_growth_friend",
+      "p": "P1",
+      "domain": "Companion",
+      "description": "成长挚友 emotional companion (safety-gated)",
+      "passes": true
+    },
+    {
+      "id": "F25_recognize_anything",
+      "p": "P1",
+      "domain": "Companion",
+      "description": "识万物 recognize-anything multimodal lens",
+      "passes": true
+    },
+    {
+      "id": "F26_multimodal_input",
+      "p": "P0",
+      "domain": "Tutor",
+      "description": "多模态输入: photo/text/voice/handwriting unified composer",
+      "passes": true
+    },
+    {
+      "id": "F27_ai_orchestration",
+      "p": "P0",
+      "domain": "Companion",
+      "description": "AI串联: intent dispatch to specialized skills",
+      "passes": true
+    },
+    {
+      "id": "F28_session_history",
+      "p": "P0",
+      "domain": "Companion",
+      "description": "接续学习: conversation session + resumable history",
+      "passes": true
+    },
+    {
+      "id": "F31_essay_grading",
+      "p": "P0",
+      "domain": "Practice",
+      "description": "作文批改: 综合/分句/score/升格/read-aloud, coach-not-write",
+      "passes": true
+    },
+    {
+      "id": "F32_arithmetic_grading",
+      "p": "P0",
+      "domain": "Practice",
+      "description": "口算批改: batch arithmetic grading ✓/✗ + 错因",
+      "passes": true
+    },
+    {
+      "id": "F33_math_drill",
+      "p": "P0",
+      "domain": "Practice",
+      "description": "口算练习/数学练习 grade-adaptive drill",
+      "passes": true
+    },
+    {
+      "id": "F34_dictation",
+      "p": "P1",
+      "domain": "Practice",
+      "description": "听写: TTS read + write + OCR auto-check",
+      "passes": true
+    },
+    {
+      "id": "F35_vocabulary_srs",
+      "p": "P1",
+      "domain": "Practice",
+      "description": "背单词: SwiftData SRS decks + cards + quiz",
+      "passes": true
+    },
+    {
+      "id": "F36_oral_coaching",
+      "p": "P0",
+      "domain": "Practice",
+      "description": "英语口语: scenario role-play + correction + pronunciation score",
+      "passes": true
+    },
+    {
+      "id": "F37_passage_translation",
+      "p": "P1",
+      "domain": "Practice",
+      "description": "课文翻译: passage OCR → bilingual + read-aloud + gloss",
+      "passes": true
+    },
+    {
+      "id": "F41_classical_chinese",
+      "p": "P1",
+      "domain": "Courses",
+      "description": "古诗文/文言文: study page + recite check + talk-to-poet",
+      "passes": true
+    },
+    {
+      "id": "F42_classroom",
+      "p": "P0",
+      "domain": "Courses",
+      "description": "豆包课堂: interactive AI video lessons + timestamp quizzes + trust badge",
+      "passes": true
+    },
+    {
+      "id": "F43_custom_courses",
+      "p": "P1",
+      "domain": "Courses",
+      "description": "我的课程/定制课程 on-demand lesson generation",
+      "passes": true
+    },
+    {
+      "id": "F44_knowledge_point",
+      "p": "P0",
+      "domain": "Knowledge",
+      "description": "知识点讲解 2.0 (背景→内容→价值) + personal knowledge graph",
+      "passes": true
+    },
+    {
+      "id": "F45_daily_targeted",
+      "p": "P1",
+      "domain": "Practice",
+      "description": "靶向练习 graph-driven daily weak-point training",
+      "passes": true
+    },
+    {
+      "id": "F47_document_qa",
+      "p": "P1",
+      "domain": "Courses",
+      "description": "文档/PDF问答: import → summary/outline + chat Q&A",
+      "passes": true
+    },
+    {
+      "id": "F48_reports",
+      "p": "P1",
+      "domain": "Reports",
+      "description": "学习报告/学情周报: time/mastery/trend charts + 薄弱点预警",
+      "passes": true
+    },
+    {
+      "id": "F49_textbook_sync",
+      "p": "P1",
+      "domain": "Content",
+      "description": "教材同步: grade/edition/chapter aligned content + question bank",
+      "passes": true
+    },
+    {
+      "id": "F51_tab_nav",
+      "p": "P0",
+      "domain": "Shell",
+      "description": "4-tab bottom nav (首页/学习/工具/我的) adaptive to split view",
+      "passes": true
+    },
+    {
+      "id": "F52_onboarding",
+      "p": "P0",
+      "domain": "Shell",
+      "description": "首次启动引导 + 年级选择 wizard → LearnerProfile",
+      "passes": true
+    },
+    {
+      "id": "F53_account",
+      "p": "P0",
+      "domain": "Shell",
+      "description": "账号登录 (Sign in with Apple + guest)",
+      "passes": true
+    },
+    {
+      "id": "F54_profile",
+      "p": "P0",
+      "domain": "Shell",
+      "description": "我的 personal center: header/stats/settings/history",
+      "passes": true
+    },
+    {
+      "id": "F58_tools_hub",
+      "p": "P0",
+      "domain": "Shell",
+      "description": "工具 hub grid of all utilities + search",
+      "passes": true
+    },
+    {
+      "id": "F59_app_states",
+      "p": "P0",
+      "domain": "Shell",
+      "description": "空/加载/错误/离线 cross-cutting state system",
+      "passes": true
+    },
+    {
+      "id": "F60_visual_design",
+      "p": "P0",
+      "domain": "Shell",
+      "description": "视觉设计/品牌: mascot, warm rounded, Liquid Glass, Dark Mode",
+      "passes": true
+    },
+    {
+      "id": "F56_parent_mode",
+      "p": "P1",
+      "domain": "Parent",
+      "description": "家长验证/家长模式: gate, answer-hiding, controls, report",
+      "passes": true
+    },
+    {
+      "id": "F31b_learn_mode",
+      "p": "P0",
+      "domain": "Trust",
+      "description": "Anti-cheat Learn Mode (attempt-first, graduated hints, paste-detect)",
+      "passes": true
+    },
+    {
+      "id": "F32b_route_policy",
+      "p": "P0",
+      "domain": "AI",
+      "description": "On-device vs enhanced route policy + badge",
+      "passes": true
+    },
+    {
+      "id": "F55_search",
+      "p": "P1",
+      "domain": "Platform",
+      "description": "Unified in-app search across tools/history/错题本/decks/courses/docs",
+      "passes": true
+    },
+    {
+      "id": "F55b_app_intents",
+      "p": "P1",
+      "domain": "Platform",
+      "description": "App Intents/Siri/Spotlight (solve/dictation/review/tutor)",
+      "passes": true
+    },
+    {
+      "id": "F13b_settings",
+      "p": "P1",
+      "domain": "Shell",
+      "description": "Settings: appearance/voice/route/notifications/Learn Mode/account",
+      "passes": true
+    }
+  ]
+}
