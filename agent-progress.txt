@@ -87,3 +87,33 @@ KEY FILES
     macOS app launch smoke test → renders real UI, no crash.
   - Known follow-ups: optional UI polish pass; run macOS code-review; git commit (work is
     currently uncommitted on main — branch first per repo convention).
+  - Committed the full app (50 features) and pushed: created PUBLIC GitHub repo
+    github.com/linroger/doubao-aixue (account linroger via gh keyring), fast-forwarded
+    main, pushed origin/main. .gitignore now also excludes .claude/ + .remember/.
+
+[2026-06-16] Session 2 (cont.) — Multi-provider AI integration (branch: main)
+  - User asked to incorporate multiple AI providers (Qwen/Doubao/MiniMax/Claude/Gemini/
+    OpenAI/GLM/Kimi/DeepSeek) and wire models throughout the app.
+  - New Services/Intelligence/Cloud/ layer:
+      • AIProvider.swift — 9-provider catalog, 3 dialects (openAI-compat/anthropic/gemini).
+      • KeychainStore.swift — encrypted API-key storage (sandbox-safe).
+      • AICredentialStore.swift — @Observable source of truth (db.ai.* + Keychain) +
+        ResolvedAIConfig + IntelligenceFactory.
+      • CloudChatClient.swift — URLSession client for all 3 dialects + test().
+      • CloudIntelligenceService.swift — implements the full IntelligenceService against
+        the chosen model (real cloud for solve/tutor/chat/essay/explain/summarize/docQA/
+        similar/lesson; deterministic graders local; every method falls back to offline on
+        any error).
+  - Wiring: DoubaoAiXueApp holds @State AICredentialStore, injects it, seeds
+    \.intelligence via IntelligenceFactory.make(aiStore.resolved) → reading .resolved in the
+    scene body re-binds the WHOLE app to the chosen provider on change. Every feature already
+    uses @Environment(\.intelligence), so models are wired throughout automatically.
+  - Added ENABLE_OUTGOING_NETWORK_CONNECTIONS=YES to both build configs (app was sandboxed
+    with no network entitlement → cloud calls would fail on macOS at runtime).
+  - Settings UI: Features/Profile/AISettings/AISettingsView.swift (provider grid + model
+    picker + Keychain key field + 测试连接), built by a parallel subagent; wired into
+    ProfileSettingsCard via a new 智能 → "AI 模型" NavigationLink row (live statusSummary).
+  - Consulted the claude-api skill for correct Anthropic model IDs + Messages API shape.
+  - Tests run: xcodebuild macOS + iOS Simulator (iPhone 17 Pro) → BUILD SUCCEEDED both;
+    macOS app launch smoke test → renders Home + sidebar, no crash (new AI startup path runs).
+  - Fixed during integration: json() helper calls needed `try await` (was `try`).

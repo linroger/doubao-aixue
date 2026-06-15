@@ -43,6 +43,7 @@ struct ProfileSettingsCard: View {
     let onRestoreSampleData: () -> Void
 
     @Environment(TTSService.self) private var tts
+    @Environment(AICredentialStore.self) private var ai
     @AppStorage("db.appearance") private var appearanceRaw: String = ProfileAppearance.system.rawValue
     // Account state (shared with AccountView via the db.account.* keys).
     @AppStorage(AccountStorageKey.type) private var accountTypeRaw: String = AccountType.none.rawValue
@@ -64,6 +65,9 @@ struct ProfileSettingsCard: View {
         VStack(alignment: .leading, spacing: DBSpacing.md) {
             DBSectionHeader("账号", systemImage: "person.crop.circle.fill")
             accountRow
+
+            DBSectionHeader("智能", systemImage: "sparkles")
+            aiModelRow
 
             DBSectionHeader("设置", systemImage: "gearshape.fill")
 
@@ -255,6 +259,51 @@ struct ProfileSettingsCard: View {
         .buttonStyle(.plain)
     }
 
+    // MARK: AI model (multi-provider)
+
+    /// Pushes the cloud-AI provider/model picker. Subtitle reflects the live
+    /// selection (`AICredentialStore.statusSummary`).
+    private var aiModelRow: some View {
+        NavigationLink {
+            AISettingsView()
+        } label: {
+            DBCard(padding: DBSpacing.md, fill: .dbSurface, elevation: .low) {
+                HStack(spacing: DBSpacing.md) {
+                    Image(systemName: ai.cloudEnabled ? "sparkles" : "cpu")
+                        .font(.dbBody)
+                        .foregroundStyle(ai.cloudEnabled ? Color.dbPrimary : Color.dbTextSecondary)
+                        .frame(width: 34, height: 34)
+                        .background((ai.cloudEnabled ? Color.dbPrimary : Color.dbTextSecondary).opacity(0.14),
+                                   in: RoundedRectangle(cornerRadius: DBRadius.sm, style: .continuous))
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text("AI 模型")
+                            .font(.dbBody)
+                            .foregroundStyle(Color.dbTextPrimary)
+                        Text(ai.statusSummary)
+                            .font(.dbCaption)
+                            .foregroundStyle(Color.dbTextSecondary)
+                            .lineLimit(1)
+                    }
+                    Spacer(minLength: 0)
+                    if ai.cloudEnabled {
+                        Text("增强")
+                            .font(.dbCaption2.weight(.semibold))
+                            .foregroundStyle(Color.dbPrimary)
+                            .padding(.horizontal, DBSpacing.sm)
+                            .padding(.vertical, 2)
+                            .background(Color.dbPrimarySoft, in: Capsule())
+                    }
+                    Image(systemName: "chevron.right")
+                        .font(.dbFootnote.weight(.semibold))
+                        .foregroundStyle(Color.dbTextTertiary)
+                }
+                .contentShape(Rectangle())
+                .padding(.vertical, DBSpacing.xs)
+            }
+        }
+        .buttonStyle(.plain)
+    }
+
     // MARK: Notifications (F13b)
 
     private var notificationSetting: some View {
@@ -345,4 +394,5 @@ struct ProfileFooter: View {
     }
     .background(Color.dbBackground)
     .environment(TTSService())
+    .environment(AICredentialStore())
 }

@@ -14,13 +14,18 @@ struct DoubaoAiXueApp: App {
     private let container = ModelContainerFactory.make()
     @State private var router = AppRouter()
     @State private var tts = TTSService()
+    // Cloud-AI configuration (provider/model/key). Reading `aiStore.resolved`
+    // below makes the scene re-inject the right IntelligenceService whenever the
+    // user changes the provider, model, or key in 设置 → AI 模型.
+    @State private var aiStore = AICredentialStore()
 
     var body: some Scene {
         WindowGroup {
             RootView()
                 .environment(router)
                 .environment(tts)
-                .environment(\.intelligence, RoutePolicy.defaultService())
+                .environment(aiStore)
+                .environment(\.intelligence, IntelligenceFactory.make(aiStore.resolved))
                 .environment(\.ocr, OCRService())
                 .tint(Color.dbPrimary)
                 .task { SampleData.seedIfNeeded(container.mainContext) }

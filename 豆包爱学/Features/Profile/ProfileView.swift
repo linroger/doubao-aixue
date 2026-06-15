@@ -169,4 +169,5 @@ struct ProfileView: View {
     .modelContainer(ProfilePreviewData.container)
     .environment(AppRouter())
     .environment(TTSService())
+    .environment(AICredentialStore())
 }
