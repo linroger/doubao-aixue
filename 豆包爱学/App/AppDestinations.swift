@@ -56,6 +56,7 @@ enum AppDestinations {
         case .document(let id):         DocumentDetailView(documentID: id)
         case .drill(let kpID):          DrillView(targetKnowledgePointID: kpID)
         case .reports:                  ReportsView()
+        case .achievements:             AchievementsView()
         }
     }
 
@@ -80,6 +81,11 @@ enum AppDestinations {
         case .knowledgeGraph:    KnowledgeGraphView()
         case .drill:             DrillView()
         case .reports:           ReportsView()
+        case .today:             TodayView()
+        case .calculator:        CalculatorView()
+        case .focus:             FocusTimerView()
+        case .liveScan:          SolveLiveScanView()
+        case .achievements:      AchievementsView()
         }
     }
 

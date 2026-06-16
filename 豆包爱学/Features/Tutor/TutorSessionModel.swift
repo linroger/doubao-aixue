@@ -75,6 +75,14 @@ final class TutorSessionModel {
     var paceMultiplier: Double = 1.0 {
         didSet { paceMultiplier = min(1.5, max(0.75, paceMultiplier)) }
     }
+    /// The narration accent / dialect (普通话 / 粤语 / English …). Drives the BCP-47
+    /// language tag handed to `TTSService.speak(_:language:)`. Defaults to the
+    /// subject-appropriate accent; the view restores the persisted choice on appear.
+    var voiceAccent: TutorVoiceAccent = .mandarin
+    /// When true (system Reduce Motion), the board reveals all elements at once and
+    /// skips per-element spring/scale entrances. Set by the view from the
+    /// `\.accessibilityReduceMotion` environment value.
+    var reduceMotion = false
 
     // MARK: Convenience accessors
     var currentSegment: TutorSegment? {
@@ -122,6 +130,7 @@ final class TutorSessionModel {
         self.request = request
         self.intelligence = intelligence
         self.tts = tts
+        self.voiceAccent = TutorVoiceAccent.default(for: request.subject)
     }
 
     // MARK: - Lifecycle
@@ -211,19 +220,32 @@ final class TutorSessionModel {
         }
     }
 
-    /// Animate the blackboard elements appearing one at a time.
+    /// Animate the blackboard elements appearing one at a time — the "draws as it
+    /// talks" reveal. When Reduce Motion is on, all elements appear together with a
+    /// single gentle fade and no per-element delay, so motion-sensitive learners get
+    /// the same content without the staggered chalk-writing animation.
     private func revealBoardElements(count: Int, completion: @escaping () -> Void) {
         revealTask?.cancel()
         guard count > 0 else { completion(); return }
+
+        if reduceMotion {
+            withAnimation(.easeInOut(duration: 0.2)) { revealedElementCount = count }
+            HapticEngine.play(.light)
+            completion()
+            return
+        }
+
         revealTask = Task { [weak self] in
             guard let self else { return }
+            // Slightly faster reveal at higher pace so the board keeps up with speech.
+            let perStep = UInt64(360_000_000 / max(0.75, min(1.5, self.paceMultiplier)))
             for step in 1...count {
                 if Task.isCancelled { return }
                 withAnimation(.spring(duration: 0.45)) {
                     self.revealedElementCount = step
                 }
                 HapticEngine.play(.light)
-                try? await Task.sleep(nanoseconds: 360_000_000)
+                try? await Task.sleep(nanoseconds: perStep)
             }
             if Task.isCancelled { return }
             completion()
@@ -392,16 +414,31 @@ final class TutorSessionModel {
     private func narrate(_ text: String) {
         guard ttsEnabled else { return }
         tts.stop()
-        // AVSpeech default rate is 0.5; scale by pace, clamped to a natural range.
-        let rate = Float(min(0.62, max(0.36, 0.5 * paceMultiplier)))
-        let language = request.subject == .english ? "en-US" : "zh-CN"
-        tts.speak(text, language: language, rate: rate)
+        tts.speak(text, language: voiceAccent.languageTag, rate: narrationRate)
+    }
+
+    /// AVSpeech default rate is 0.5; scale by pace, clamped to a natural range so it
+    /// never becomes unintelligibly fast or sluggishly slow.
+    private var narrationRate: Float {
+        Float(min(0.62, max(0.36, 0.5 * paceMultiplier)))
     }
 
     func toggleTTS() {
         ttsEnabled.toggle()
         if !ttsEnabled { tts.stop() }
         else { repeatNarration() }
+    }
+
+    /// Speak a short sample in the *current* accent + pace so the child can audition
+    /// a voice/语速 change from the settings sheet. Re-enables TTS if it was muted so
+    /// the preview is always audible, matching the user's just-made selection.
+    func previewVoice() {
+        ttsEnabled = true
+        tts.stop()
+        let sample = voiceAccent.isChinese
+            ? "你好，我是豆包老师，我们一起来学习吧！"
+            : "Hi, I'm your tutor. Let's learn together!"
+        tts.speak(sample, language: voiceAccent.languageTag, rate: narrationRate)
     }
 
     // MARK: - Intent mapping helper

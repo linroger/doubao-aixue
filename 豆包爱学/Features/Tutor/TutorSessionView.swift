@@ -45,6 +45,7 @@ struct TutorSessionView: View {
     @State private var followUpDraft = ""
     @State private var didPersist = false
     @State private var showFollowUpSheet = false
+    @State private var showVoiceSettings = false
 
     private var isRegular: Bool { sizeClass != .compact }
 
@@ -65,6 +66,15 @@ struct TutorSessionView: View {
         .background(Color.dbBackground)
         .task { setUpModelIfNeeded() }
         .onDisappear { model?.tearDown() }
+        .sheet(isPresented: $showVoiceSettings) {
+            if let model {
+                TutorVoiceSettingsView(
+                    subject: model.request.subject,
+                    accent: Binding(get: { model.voiceAccent }, set: { model.voiceAccent = $0 }),
+                    rate: Binding(get: { model.paceMultiplier }, set: { model.paceMultiplier = $0 }),
+                    onPreview: { model.previewVoice() })
+            }
+        }
     }
 
     // MARK: - Setup
@@ -363,6 +373,15 @@ struct TutorSessionView: View {
                 model?.tearDown()
                 dismiss()
             }
+        }
+        ToolbarItem(placement: .primaryAction) {
+            Button {
+                HapticEngine.play(.selection)
+                showVoiceSettings = true
+            } label: {
+                Label("声音与语速", systemImage: "waveform.circle")
+            }
+            .disabled(model == nil)
         }
     }
 }

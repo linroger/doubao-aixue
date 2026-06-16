@@ -106,6 +106,8 @@ struct ProfileView: View {
 
                 WeeklyActivityCard(logs: activity)
 
+                achievementsEntry
+
                 ProfileNavigationGroup(
                     historyCount: solvedCount,
                     favoriteCount: savedCount,
@@ -130,6 +132,38 @@ struct ProfileView: View {
             .frame(maxWidth: 640)
             .frame(maxWidth: .infinity)
         }
+    }
+
+    /// Entry into the 成就 wall (XP, level, streak heat-strip, badge gallery).
+    private var achievementsEntry: some View {
+        Button {
+            HapticEngine.play(.selection)
+            router.navigate(.achievements, regular: isRegular)
+        } label: {
+            DBCard(fill: .dbPrimarySoft, elevation: .none) {
+                HStack(spacing: DBSpacing.md) {
+                    Image(systemName: "trophy.fill")
+                        .font(.dbTitle3)
+                        .foregroundStyle(Color.dbPrimaryDeep)
+                        .frame(width: 40, height: 40)
+                        .background(Color.dbAccentSoft, in: RoundedRectangle(cornerRadius: DBRadius.sm, style: .continuous))
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("我的成就")
+                            .font(.dbBodyEmph)
+                            .foregroundStyle(Color.dbTextPrimary)
+                        Text("XP 等级 · 连续打卡 · 徽章墙")
+                            .font(.dbCaption)
+                            .foregroundStyle(Color.dbTextSecondary)
+                    }
+                    Spacer(minLength: 0)
+                    Image(systemName: "chevron.right")
+                        .font(.dbFootnote)
+                        .foregroundStyle(Color.dbTextTertiary)
+                }
+            }
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("我的成就：查看经验等级、连续打卡与徽章")
     }
 
     // MARK: Actions

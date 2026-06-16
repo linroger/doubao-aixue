@@ -33,6 +33,7 @@ struct DoubaoAiXueApp: App {
         .modelContainer(container)
         #if os(macOS)
         .defaultSize(width: 1180, height: 800)
+        .commands { StudyCommands(router: router) }
         #endif
     }
 }

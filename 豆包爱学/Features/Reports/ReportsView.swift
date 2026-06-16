@@ -29,6 +29,10 @@ struct ReportsView: View {
     @Query private var profiles: [LearnerProfile]
 
     @State private var period: ReportPeriod = .week
+    @State private var sharePreview = false
+
+    @Environment(\.displayScale) private var displayScale
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     init() {}
 
@@ -54,6 +58,16 @@ struct ReportsView: View {
             mistakes: mistakes,
             learnerName: learnerName,
             gradeLabel: gradeLabel)
+    }
+
+    /// The richer, additive insights (rolling average, 错题攻克 trend, 掌握分布).
+    /// Rebuilt alongside `report` whenever the period or @Query data changes.
+    private func insights(for report: LearningReport) -> ReportInsights {
+        ReportInsightsBuilder.make(
+            period: period,
+            report: report,
+            masteries: masteries,
+            mistakes: mistakes)
     }
 
     var body: some View {

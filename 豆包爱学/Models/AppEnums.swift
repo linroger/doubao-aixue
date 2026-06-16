@@ -253,6 +253,11 @@ public nonisolated enum ToolKind: String, CaseIterable, Codable, Sendable, Ident
     case knowledgeGraph     // 知识图谱
     case drill              // 举一反三/练习
     case reports            // 学习报告
+    case today              // 今日计划
+    case calculator         // 科学计算器 + 公式库
+    case focus              // 专注 · 番茄钟
+    case liveScan           // 实时扫题
+    case achievements       // 成就墙
 
     public var id: String { rawValue }
 
@@ -274,6 +279,11 @@ public nonisolated enum ToolKind: String, CaseIterable, Codable, Sendable, Ident
         case .knowledgeGraph: "知识图谱"
         case .drill: "举一反三"
         case .reports: "学习报告"
+        case .today: "今日"
+        case .calculator: "计算器"
+        case .focus: "专注"
+        case .liveScan: "实时扫题"
+        case .achievements: "成就"
         }
     }
 
@@ -295,6 +305,11 @@ public nonisolated enum ToolKind: String, CaseIterable, Codable, Sendable, Ident
         case .knowledgeGraph: "point.3.connected.trianglepath.dotted"
         case .drill: "square.grid.3x3.fill"
         case .reports: "chart.bar.xaxis"
+        case .today: "sun.max.fill"
+        case .calculator: "x.squareroot"
+        case .focus: "timer"
+        case .liveScan: "text.viewfinder"
+        case .achievements: "trophy.fill"
         }
     }
 
@@ -306,6 +321,9 @@ public nonisolated enum ToolKind: String, CaseIterable, Codable, Sendable, Ident
         case .mistakeNotebook, .vocabulary, .dictation, .knowledgeGraph: .memory
         case .oral, .translation: .expression
         case .classical, .documentQA, .classroom, .reports: .extend
+        case .liveScan: .qa
+        case .today, .focus, .achievements: .memory
+        case .calculator: .extend
         }
     }
 

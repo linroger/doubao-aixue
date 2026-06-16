@@ -4,8 +4,8 @@
 //
 //  Praising-first feedback presenter for 作文批改 (F31). Renders, in product order:
 //    1. 综合点评 — overall comment + 闪光点 chips (always praises first).
-//    2. 评分 — DBProgressRing gauge + Swift Charts bar of RubricDimensions, with a
-//       per-维度 breakdown.
+//    2. 评分 — DBProgressRing gauge + per-维度 雷达图 (default) / 条形图 toggle over
+//       RubricDimensions, with a per-维度 breakdown.
 //    3. 分句点评 — scrollable list of SentenceAnnotation, colour-coded by severity
 //       (.praise 绿 / .suggestion 琥珀 / .error 红) with optional 修改建议.
 //    4. 升格作文 — 原文/升格 toggle with newly-added content highlighted (EssayDiff);
@@ -38,6 +38,8 @@ struct EssayFeedbackView: View {
 
     /// 升格作文 side-by-side (regular width) vs toggle (compact).
     @State private var showingPolished = true
+    /// 评分可视化: 雷达图 (default, when ≥3 维度) 或 条形图.
+    @State private var rubricChartStyle: RubricChartStyle = .radar
 
     private var speechLanguage: String { subject == .english ? "en-US" : "zh-CN" }
 
@@ -138,14 +140,38 @@ struct EssayFeedbackView: View {
                 }
 
                 if !feedback.rubric.isEmpty {
-                    rubricChart
+                    rubricChartSection
                     rubricBreakdown
                 }
             }
         }
     }
 
-    private var rubricChart: some View {
+    /// Radar (default) vs bar visualisation of the rubric, with a small segmented
+    /// switch when both make sense. Radar needs ≥3 维度 to read as a polygon, so
+    /// for 1–2 维度 we always fall back to the bar chart.
+    @ViewBuilder private var rubricChartSection: some View {
+        let canRadar = EssayRadarChart.canRender(feedback.rubric)
+        VStack(alignment: .leading, spacing: DBSpacing.sm) {
+            if canRadar {
+                Picker("评分图表样式", selection: $rubricChartStyle) {
+                    Label("雷达图", systemImage: "chart.dots.scatter").tag(RubricChartStyle.radar)
+                    Label("条形图", systemImage: "chart.bar.fill").tag(RubricChartStyle.bar)
+                }
+                .pickerStyle(.segmented)
+                .accessibilityLabel("评分图表样式")
+            }
+
+            if canRadar && rubricChartStyle == .radar {
+                EssayRadarChart(dimensions: feedback.rubric, tint: scoreTint)
+                    .frame(maxWidth: .infinity)
+            } else {
+                rubricBarChart
+            }
+        }
+    }
+
+    private var rubricBarChart: some View {
         Chart(feedback.rubric) { dim in
             BarMark(
                 x: .value("得分", dim.score),
@@ -436,6 +462,14 @@ struct EssayFeedbackView: View {
         default: return .dbWarning
         }
     }
+}
+
+// MARK: - Rubric chart style
+
+/// Which visualisation the 评分 card shows for the rubric dimensions.
+private enum RubricChartStyle: Hashable {
+    case radar
+    case bar
 }
 
 // MARK: - Sentence annotation row

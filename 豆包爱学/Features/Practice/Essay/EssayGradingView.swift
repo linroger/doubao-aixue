@@ -311,8 +311,27 @@ struct EssayGradingView: View {
                     .background(Color.dbBackgroundAlt, in: RoundedRectangle(cornerRadius: DBRadius.sm, style: .continuous))
 
                 essayEditor
+
+                writingToolsHint
             }
         }
+    }
+
+    /// Surfaces the system Writing Tools affordance on the essay editor and frames
+    /// it for K12 use: 系统写作工具帮你校对、润色，但豆包只当教练，不替你写作文。
+    private var writingToolsHint: some View {
+        Label {
+            Text("长按或选中文字可调用系统「写作工具」校对、润色 — 它帮你检查，但请用自己的话写作，豆包只当教练。")
+                .font(.dbCaption)
+                .foregroundStyle(Color.dbTextSecondary)
+                .fixedSize(horizontal: false, vertical: true)
+        } icon: {
+            Image(systemName: "pencil.and.scribble")
+                .font(.dbCaption)
+                .foregroundStyle(Color.dbPrimary)
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityHint("选中正文后可使用系统写作工具进行校对与润色")
     }
 
     @ViewBuilder private var essayEditor: some View {
@@ -332,6 +351,12 @@ struct EssayGradingView: View {
                 .scrollContentBackground(.hidden)
                 .frame(minHeight: 200)
                 .padding(DBSpacing.xs)
+                // First-class TextEditor → gets system Writing Tools (校对/润色/改写)
+                // automatically on iOS 26 / macOS 26. `.complete` opts into the full
+                // inline + panel experience for proofreading & rewriting an essay.
+                .writingToolsBehavior(.complete)
+                .accessibilityLabel("作文正文输入框")
+                .accessibilityHint("可粘贴或输入作文，选中文字后可使用系统写作工具")
         }
         .background(Color.dbBackgroundAlt, in: RoundedRectangle(cornerRadius: DBRadius.md, style: .continuous))
     }

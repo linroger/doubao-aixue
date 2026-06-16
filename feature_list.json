@@ -403,6 +403,69 @@
       "domain": "Intelligence",
       "description": "多模型支持: pick cloud AI provider/model (通义千问/豆包/MiniMax/Claude/Gemini/OpenAI/GLM/Kimi/DeepSeek), Keychain key, wired through every AI feature via \\.intelligence; offline fallback",
       "passes": true
+    },
+    {
+      "id": "F58_targeted_practice_links",
+      "p": "P1",
+      "domain": "Shell",
+      "description": "深度互联: Route.drill(knowledgePointID:) + router.openDrill — Home 今日靶向练习 / 错题 举一反三 / 报告 专项练习 / 知识点 去练习 all launch practice pre-targeted at the right KP; KnowledgePoint 典型错题 section; Document 让豆包老师精讲 → tutor",
+      "passes": true
+    },
+    {
+      "id": "F59_achievements",
+      "p": "P2",
+      "domain": "Profile",
+      "description": "成就墙: XP/等级 ring + 连续打卡 heat-strip + tiered (铜/银/金/铂) badge wall with locked-progress + persisted unlock dates + celebration; derived live from history; ToolKind.achievements + Route.achievements + Profile entry",
+      "passes": true
+    },
+    {
+      "id": "F60_macos_commands",
+      "p": "P2",
+      "domain": "Shell",
+      "description": "macOS 菜单与快捷键: 学习 menu (拍照解题 ⌘N, 批改 ⇧⌘G, 今日练习 ⌘T, 问豆包 ⌘L, 搜索 ⌘F) + 前往 menu (sections ⌘1–⌘9, 成就) wired to AppRouter",
+      "passes": true
+    },
+    {
+      "id": "F61_today_planner",
+      "p": "P2",
+      "domain": "Today",
+      "description": "今日: single-glance daily planner — goal ring + 打卡 streak, 今日靶向练习, due 错题复习, due 背单词, 继续学习 course, 7-day 时长 chart; all derived + deep-linked via AppRouter; ToolKind.today",
+      "passes": true
+    },
+    {
+      "id": "F62_calculator",
+      "p": "P3",
+      "domain": "Tools",
+      "description": "科学计算器 + 公式库: keypad evaluated via ArithmeticEvaluator with @AppStorage history; subject-categorized formula reference (MathText), tap to compute or 问豆包; ToolKind.calculator",
+      "passes": true
+    },
+    {
+      "id": "F63_focus_timer",
+      "p": "P3",
+      "domain": "Tools",
+      "description": "专注 · 番茄钟: configurable 专注/休息 cycles with circular countdown; each completed block logs ActivityLog(kindRaw:focus) into 学习报告/今日; ToolKind.focus",
+      "passes": true
+    },
+    {
+      "id": "F64_live_scan",
+      "p": "P3",
+      "domain": "Solve",
+      "description": "实时扫题: iOS VisionKit DataScanner live text capture → editable review → SolveResultView pipeline; graceful macOS/unsupported fallback to 拍照解题; ToolKind.liveScan",
+      "passes": true
+    },
+    {
+      "id": "F65_tutor_voice",
+      "p": "P3",
+      "domain": "Tutor",
+      "description": "豆包老师 声音与语速: dialect/accent picker (普通话/粤语/台湾国语/English, installed-voice-aware) + 语速 slider + 试听; narration uses voiceAccent.languageTag; sheet wired into TutorSessionView toolbar",
+      "passes": true
+    },
+    {
+      "id": "F66_essay_radar",
+      "p": "P3",
+      "domain": "Practice",
+      "description": "作文评分雷达图: EssayFeedbackView rubric shown as a radar chart (≥3 维度) with bar-chart fallback + segmented toggle",
+      "passes": true
     }
   ]
 }

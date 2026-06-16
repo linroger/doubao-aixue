@@ -152,3 +152,38 @@ KEY FILES
 
   Tests run: xcodebuild macOS + iOS Simulator (iPhone 17 Pro) → BUILD SUCCEEDED both, ZERO warnings;
   macOS app launch smoke test → process runs, renders real UI. All changes committed + pushed.
+
+[2026-06-16] Session 4 — New features + parallel-build integration + macOS release (branch: main)
+  Goal: keep making the app feature-rich/amazing; ship a ready-to-run macOS .dmg.
+
+  My additions:
+   - 成就 (Achievements): first built my own (Profile/Achievements), then discovered a parallel build
+     process had added a RICHER Features/Achievements (XP/level ring + 连续打卡 heat-strip + tiered
+     bronze/silver/gold/platinum badge wall + persisted unlock dates + celebration). Resolved the
+     resulting duplicate-symbol collision by DELETING mine and re-pointing my wiring (Route.achievements
+     + a Profile entry card) to theirs.
+   - macOS menu bar + keyboard shortcuts (App/StudyCommands.swift, #if os(macOS)): 学习 menu
+     (拍照解题 ⌘N · 批改 ⇧⌘G · 今日练习 ⌘T · 问豆包 ⌘L · 搜索 ⌘F) + 前往 menu (sections ⌘1–⌘9 + 成就),
+     wired to AppRouter. Verified live: menu bar shows 学习 / 前往.
+
+  Integrated a batch of features a parallel process left UNWIRED / not-quite-compiling:
+   - Fixed builds: CalculatorView missing `import SwiftData`; FocusTimerView missing `import Combine`;
+     ExamModel had `grade()` colliding with its `grade` GradeLevel property → renamed to `gradePaper()`.
+   - Wired 5 complete, self-contained views as new ToolKind cases (auto-surface in 工具 hub + Search +
+     AppDestinations.toolView): today (今日 daily planner), calculator (科学计算器+公式库),
+     focus (专注·番茄钟), liveScan (实时扫题, iOS VisionKit + mac fallback), achievements.
+   - Wired TutorVoiceSettingsView into the 豆包老师 toolbar (sheet): accent/dialect + 语速 + 试听;
+     the model already narrates via voiceAccent.languageTag, so this completes a real feature.
+   - Left LATENT (compile-clean, future work): Features/Exam/ExamModel.swift (no view yet — did not
+     build one to avoid colliding with the still-active parallel process); Reports/ReportShareCard.swift
+     (ReportsView already shares text).
+
+  Release (macOS):
+   - scripts/package_dmg.sh (Release build → ad-hoc deep-sign → hdiutil .dmg with /Applications symlink),
+     scripts/notarize.sh (Developer-ID sign + hardened runtime + notarytool submit/staple — for the user's
+     paid account), RELEASE.md (install + notarization gap). dist/ + *.dmg gitignored.
+   - NOTARIZATION GAP: this Mac has only an Apple Development cert (team X8AD8YC886) + no notary creds.
+     Apple notarization needs a Developer ID Application cert from a paid ($99/yr) account. Shipped an
+     ad-hoc-signed .dmg (right-click→Open) + the one-command notarize.sh for when creds exist.
+   - feature_list.json: 60 features, all passing.
+   - Tests: xcodebuild macOS + iOS Simulator (iPhone 17 Pro) → BUILD SUCCEEDED both; macOS menu/UI verified.

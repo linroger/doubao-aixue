@@ -7,6 +7,10 @@ xcuserdata/
 .build/
 *.swiftpm/.build/
 
+# Release artifacts (shipped as GitHub release assets, not committed)
+dist/
+*.dmg
+
 # macOS
 .DS_Store
 

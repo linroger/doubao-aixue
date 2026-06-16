@@ -80,6 +80,7 @@ public enum Route: Hashable, Sendable {
     /// practice already focused on the right thing. `nil` opens the generic picker.
     case drill(knowledgePointID: String?)
     case reports
+    case achievements
 }
 
 // MARK: - Modal sheets
