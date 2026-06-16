@@ -542,12 +542,12 @@ struct ParentModeView: View {
     private func ensureControlsExist() {
         guard controlsRows.isEmpty else { return }
         modelContext.insert(ParentControls())
-        try? modelContext.save()
+        modelContext.saveLogging()
     }
 
     private func persist() {
         controls.updatedAt = Date()
-        try? modelContext.save()
+        modelContext.saveLogging()
     }
 
     private var hideSolutionStepsBinding: Binding<Bool> {

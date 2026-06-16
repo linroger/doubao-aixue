@@ -302,6 +302,10 @@ struct ArithmeticGradingView: View {
         if let data = try? await photoSelection.loadTransferable(type: Data.self) {
             await model.recognize(imageData: data, using: ocr)
             HapticEngine.play(.selection)
+        } else {
+            // Couldn't read the picked photo (corrupt / permission) — give feedback
+            // instead of silently doing nothing.
+            HapticEngine.play(.warning)
         }
     }
 

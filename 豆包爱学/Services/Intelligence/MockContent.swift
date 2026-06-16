@@ -112,6 +112,150 @@ public nonisolated enum MockContent {
         }
     }
 
+    // MARK: Workbook grading (作业批改)
+
+    /// Grade a workbook from its OCR pre-pass. Real arithmetic is genuinely
+    /// checked; everything else falls back to a rich, deterministic sample so the
+    /// feature is fully demoable offline and on every platform.
+    static func gradeWorkbook(recognizedText: String, subjectHint: Subject?, grade: GradeLevel) -> GradedWorkbook {
+        let lines = recognizedText
+            .components(separatedBy: .newlines)
+            .map { $0.trimmingCharacters(in: .whitespaces) }
+            .filter { !$0.isEmpty }
+
+        let arithmetic = OCRService.parseArithmeticLines(lines)
+        if !arithmetic.isEmpty {
+            let questions = arithmetic.enumerated().map { idx, item in
+                gradeArithmeticQuestion(index: idx + 1, item: item)
+            }
+            let correct = questions.filter { $0.verdict == .correct }.count
+            let comment = correct == questions.count
+                ? "全部做对了，计算又快又准，真棒！继续保持这种细心。"
+                : "一共 \(questions.count) 题，做对 \(correct) 题。错的几道大多是计算或进位的小失误，订正一遍就能掌握。"
+            return GradedWorkbook(
+                title: "口算作业 · \(grade.displayName)",
+                grade: grade,
+                detectedSubjects: [.math],
+                questions: questions,
+                overallComment: comment,
+                encouragement: correct == questions.count ? "满分啦，给你点个大大的赞！" : "错题不可怕，订正完就是你的了～",
+                route: .mock)
+        }
+        // Nothing recognized → let the caller surface the empty state ("没识别到题目")
+        // rather than a misleading demo.
+        guard !lines.isEmpty else {
+            return GradedWorkbook(title: "作业批改", grade: grade, detectedSubjects: [],
+                                  questions: [], overallComment: "", encouragement: "", route: .mock)
+        }
+        // OCR found text but the offline engine can only auto-grade 口算. Surface the
+        // recognized questions as 待确认 with an honest, actionable nudge to enable
+        // cloud AI — never fake a grade.
+        let subj = subjectHint ?? inferSubject(from: lines.joined(separator: "\n"))
+        let questions = lines.prefix(12).enumerated().map { idx, line in
+            GradedQuestion(
+                number: "\(idx + 1)", type: .other, subject: subj,
+                questionText: line, verdict: .ungradable,
+                explanation: "离线模式只能自动批改口算题。在「设置 → AI 模型」开启云端模型后，我就能逐题批改这道题啦。")
+        }
+        return GradedWorkbook(
+            title: "作业识别（离线）", grade: grade, detectedSubjects: [subj],
+            questions: Array(questions),
+            overallComment: "已识别到 \(questions.count) 道题目。离线模式暂时只能批改口算；开启 AI 模型后可获得逐题批改与讲解。",
+            encouragement: "开启 AI 模型，我能帮你把每道题都批改好～", route: .mock)
+    }
+
+    private static func gradeArithmeticQuestion(index: Int, item: ArithmeticItem) -> GradedQuestion {
+        let kp = [KnowledgeRef(name: "四则运算", subject: .math)]
+        let exprClean = item.expression.replacingOccurrences(of: "=", with: "")
+        let questionText = item.expression.contains("=") ? item.expression : item.expression + " ="
+        guard let value = ArithmeticEvaluator.evaluate(exprClean) else {
+            return GradedQuestion(
+                number: "\(index)", type: .calculation, subject: .math,
+                questionText: questionText, studentAnswer: item.studentAnswer,
+                correctAnswer: "—", verdict: .ungradable,
+                explanation: "这道算式没有看清楚，建议把作业拍清楚、拍正一点再批改。",
+                knowledgePoints: kp)
+        }
+        let correct = ArithmeticEvaluator.format(value)
+        let studentTrimmed = item.studentAnswer.trimmingCharacters(in: .whitespaces)
+        if studentTrimmed.isEmpty {
+            return GradedQuestion(
+                number: "\(index)", type: .calculation, subject: .math,
+                questionText: questionText, studentAnswer: "", correctAnswer: correct,
+                verdict: .unattempted,
+                explanation: "这道题还没有作答哦。正确答案是 \(correct)，试着自己算一遍吧。",
+                errorType: .careless, knowledgePoints: kp,
+                steps: [SolutionStep(index: 1, title: "按运算顺序计算", detail: "先乘除后加减，有括号先算括号。", math: "\(exprClean) = \(correct)")])
+        }
+        let studentVal = ArithmeticEvaluator.evaluate(studentTrimmed)
+        let isCorrect = studentVal.map { abs($0 - value) < 0.0001 } ?? (studentTrimmed == correct)
+        return GradedQuestion(
+            number: "\(index)", type: .calculation, subject: .math,
+            questionText: questionText, studentAnswer: item.studentAnswer, correctAnswer: correct,
+            verdict: isCorrect ? .correct : .incorrect,
+            explanation: isCorrect
+                ? "计算正确，很细心！"
+                : "正确答案是 \(correct)。再检查一下运算顺序和进位/借位，慢一点会更稳。",
+            errorType: isCorrect ? nil : .calculation,
+            knowledgePoints: kp,
+            steps: isCorrect ? [] : [SolutionStep(index: 1, title: "正确算法", detail: "按运算顺序一步步算。", math: "\(exprClean) = \(correct)")])
+    }
+
+    /// A rich, multi-subject demo result that exercises every part of the schema —
+    /// used when there's nothing to OCR (sample / unsupported capture).
+    static func sampleGradedWorkbook(subjectHint: Subject?, grade: GradeLevel) -> GradedWorkbook {
+        let questions: [GradedQuestion] = [
+            GradedQuestion(
+                number: "1", type: .calculation, subject: .math,
+                questionText: "25 \\times 4 =", studentAnswer: "100", correctAnswer: "100",
+                verdict: .correct, explanation: "计算正确，乘法口诀用得很熟练！",
+                knowledgePoints: [KnowledgeRef(name: "两位数乘法", subject: .math)]),
+            GradedQuestion(
+                number: "2", type: .calculation, subject: .math,
+                questionText: "36 + 48 =", studentAnswer: "74", correctAnswer: "84",
+                verdict: .incorrect,
+                explanation: "个位 6+8=14，要向十位进 1。正确答案是 84，注意进位别漏掉。",
+                errorType: .calculation,
+                knowledgePoints: [KnowledgeRef(name: "进位加法", subject: .math)],
+                steps: [SolutionStep(index: 1, title: "对齐数位", detail: "个位加个位，十位加十位。"),
+                        SolutionStep(index: 2, title: "处理进位", detail: "6+8=14，写4进1。", math: "36 + 48 = 84")]),
+            GradedQuestion(
+                number: "3", type: .fillInBlank, subject: .chinese,
+                questionText: "《静夜思》：举头望明月，低头思______。",
+                studentAnswer: "故乡", correctAnswer: "故乡",
+                verdict: .correct, explanation: "默写正确，古诗记得很牢！",
+                knowledgePoints: [KnowledgeRef(name: "古诗默写", subject: .chinese)]),
+            GradedQuestion(
+                number: "4", type: .multipleChoice, subject: .english,
+                questionText: "She ___ to school every day.  A. go  B. goes  C. going",
+                studentAnswer: "A", correctAnswer: "B",
+                verdict: .incorrect,
+                explanation: "主语 She 是第三人称单数，动词要加 -s，所以选 B. goes。",
+                errorType: .concept,
+                knowledgePoints: [KnowledgeRef(name: "一般现在时第三人称单数", subject: .english)]),
+            GradedQuestion(
+                number: "5", type: .shortAnswer, subject: .chinese,
+                questionText: "用「先……再……最后……」写一句话，描述你的早晨。",
+                studentAnswer: "我先刷牙，再吃饭，去上学。", correctAnswer: "（开放题，言之有序即可）",
+                verdict: .partial,
+                explanation: "句子顺序清楚，很好！只差最后一个关联词，可以改成「……最后去上学」让结构更完整。",
+                errorType: .method,
+                knowledgePoints: [KnowledgeRef(name: "关联词造句", subject: .chinese)],
+                rubric: [RubricDimension(name: "条理", score: 4, maxScore: 5, comment: "顺序清楚"),
+                         RubricDimension(name: "完整", score: 3, maxScore: 5, comment: "缺少「最后」"),
+                         RubricDimension(name: "用词", score: 4, maxScore: 5, comment: "用词准确")],
+                teacherComment: "再补上「最后」就满分啦，加油！"),
+        ]
+        return GradedWorkbook(
+            title: "作业批改示例 · \(grade.displayName)",
+            grade: grade,
+            detectedSubjects: [.math, .chinese, .english],
+            questions: questions,
+            overallComment: "这页作业一共 5 题，做对 2 题、部分正确 1 题、错 2 题。错题集中在「进位加法」和「动词第三人称单数」，把这两个知识点复习一下就更稳了。",
+            encouragement: "做得不错，订正完错题，你会更厉害！",
+            route: .mock)
+    }
+
     // MARK: Text utilities
 
     static func sentences(in text: String) -> [String] {

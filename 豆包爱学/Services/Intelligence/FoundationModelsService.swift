@@ -50,6 +50,9 @@ public nonisolated struct FoundationModelsService: IntelligenceService {
     public func solve(_ request: SolveRequest) async throws -> SolvedProblem {
         var r = try await fallback.solve(request); r.route = activeRoute; return r
     }
+    public func gradeWorkbook(_ request: WorkbookGradeRequest) async throws -> GradedWorkbook {
+        var r = try await fallback.gradeWorkbook(request); r.route = activeRoute; return r
+    }
     public func gradeEssay(_ request: EssayGradeRequest) async throws -> EssayFeedback {
         var r = try await fallback.gradeEssay(request); r.route = activeRoute; return r
     }
@@ -78,11 +81,31 @@ public nonisolated struct FoundationModelsService: IntelligenceService {
         var r = try await fallback.scorePronunciation(request); r.route = activeRoute; return r
     }
     public func tutorSession(_ request: TutorRequest) -> AsyncThrowingStream<TutorEvent, Error> {
+        // TutorEvent carries no route; the badge reads `capabilities.route`.
         fallback.tutorSession(request)
     }
     public func chat(_ request: ChatRequest) -> AsyncThrowingStream<ChatChunk, Error> {
         // Real FoundationModels chat would stream here via LanguageModelSession.
-        // Delegated for now; route badge still reflects on-device availability.
-        fallback.chat(request)
+        // Delegated for now, but re-stamp each chunk's route so the badge matches
+        // `capabilities.route` (the non-streaming methods already do this).
+        let route = activeRoute
+        let base = fallback.chat(request)
+        return AsyncThrowingStream { continuation in
+            let task = Task {
+                do {
+                    for try await chunk in base {
+                        var stamped = chunk
+                        stamped.route = route
+                        continuation.yield(stamped)
+                    }
+                    continuation.finish()
+                } catch is CancellationError {
+                    continuation.finish()
+                } catch {
+                    continuation.finish(throwing: error)
+                }
+            }
+            continuation.onTermination = { _ in task.cancel() }
+        }
     }
 }

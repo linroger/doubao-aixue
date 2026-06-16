@@ -175,7 +175,7 @@ final class EssayGradingModel {
         record.highScoreExpressions = feedback.highScoreExpressions
         record.createdAt = Date()
 
-        try? context.save()
+        context.saveLogging()
     }
 
     private func derivedTitle(from text: String) -> String {

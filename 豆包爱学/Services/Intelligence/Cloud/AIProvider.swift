@@ -50,6 +50,9 @@ nonisolated struct AIProvider: Identifiable, Codable, Sendable, Hashable {
     var symbolName: String         // SF Symbol for the provider tile
     var keyHelpURL: String         // where the user gets an API key
     var keyHint: String            // placeholder/format hint for the key field
+    /// Whether the listed default models accept image input (作业批改 sends the page
+    /// photo to vision-capable models; others grade from the OCR pre-pass instead).
+    var supportsVision: Bool = false
 
     var defaultModelID: String { models.first?.id ?? "" }
 
@@ -163,7 +166,8 @@ extension AIProvider {
             ],
             symbolName: "a.circle.fill",
             keyHelpURL: "https://console.anthropic.com",
-            keyHint: "Anthropic API Key（sk-ant- 开头）"),
+            keyHint: "Anthropic API Key（sk-ant- 开头）",
+            supportsVision: true),
 
         AIProvider(
             id: "openai", name: "OpenAI (ChatGPT)", shortName: "OpenAI",
@@ -177,7 +181,8 @@ extension AIProvider {
             ],
             symbolName: "circle.grid.cross.fill",
             keyHelpURL: "https://platform.openai.com",
-            keyHint: "OpenAI API Key（sk- 开头）"),
+            keyHint: "OpenAI API Key（sk- 开头）",
+            supportsVision: true),
 
         AIProvider(
             id: "gemini", name: "Gemini (Google)", shortName: "Gemini",
@@ -191,6 +196,7 @@ extension AIProvider {
             ],
             symbolName: "diamond.circle.fill",
             keyHelpURL: "https://aistudio.google.com",
-            keyHint: "Google AI Studio API Key"),
+            keyHint: "Google AI Studio API Key",
+            supportsVision: true),
     ]
 }

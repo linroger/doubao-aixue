@@ -175,7 +175,7 @@ final class ArithmeticGradingModel {
             ]
             context.insert(mistake)
         }
-        try? context.save()
+        context.saveLogging()
 
         savedToNotebook = true
         lastSavedCount = wrong.count

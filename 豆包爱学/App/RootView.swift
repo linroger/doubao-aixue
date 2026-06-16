@@ -54,6 +54,6 @@ private struct Wave0Welcome: View {
             context.insert(profile)
         }
         profile.onboardingComplete = true
-        try? context.save()
+        context.saveLogging()
     }
 }

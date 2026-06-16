@@ -215,7 +215,7 @@ struct ProfileEditSheet: View {
         profile.editions = editions.filter { selectedSubjects.contains($0.key) }
         profile.onboardingComplete = true
         profile.lastActiveAt = Date()
-        try? modelContext.save()
+        modelContext.saveLogging()
         HapticEngine.play(.success)
         dismiss()
     }

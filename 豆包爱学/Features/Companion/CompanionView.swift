@@ -212,14 +212,14 @@ struct CompanionView: View {
         convo.createdAt = .now
         convo.updatedAt = .now
         modelContext.insert(convo)
-        try? modelContext.save()
+        modelContext.saveLogging()
         HapticEngine.play(.light)
         router.navigate(.conversation(convo.id), regular: isRegular)
     }
 
     private func delete(_ convo: Conversation) {
         modelContext.delete(convo)
-        try? modelContext.save()
+        modelContext.saveLogging()
         HapticEngine.play(.light)
     }
 }

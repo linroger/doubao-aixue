@@ -442,6 +442,8 @@ struct TranslationView: View {
         guard let photoSelection else { return }
         if let data = try? await photoSelection.loadTransferable(type: Data.self) {
             await recognize(data)
+        } else {
+            HapticEngine.play(.warning)
         }
         self.photoSelection = nil
     }

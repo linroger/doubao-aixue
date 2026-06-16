@@ -190,7 +190,7 @@ struct ProfileView: View {
     private func createProfileAndEdit() {
         let newProfile = LearnerProfile()
         modelContext.insert(newProfile)
-        try? modelContext.save()
+        modelContext.saveLogging()
         HapticEngine.play(.light)
         editingProfile = true
     }

@@ -69,6 +69,15 @@ public nonisolated struct MockIntelligenceService: IntelligenceService {
             route: .mock)
     }
 
+    // MARK: Workbook grading (作业批改)
+
+    public func gradeWorkbook(_ request: WorkbookGradeRequest) async throws -> GradedWorkbook {
+        await tick(560)
+        return MockContent.gradeWorkbook(recognizedText: request.recognizedText,
+                                         subjectHint: request.subjectHint,
+                                         grade: request.grade)
+    }
+
     // MARK: Essay grading
 
     public func gradeEssay(_ request: EssayGradeRequest) async throws -> EssayFeedback {

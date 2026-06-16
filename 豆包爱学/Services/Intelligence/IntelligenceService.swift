@@ -14,6 +14,8 @@ public nonisolated protocol IntelligenceService: Sendable {
     var capabilities: IntelligenceCapabilities { get }
 
     func solve(_ request: SolveRequest) async throws -> SolvedProblem
+    /// Grade a photographed workbook page → structured, render-ready result.
+    func gradeWorkbook(_ request: WorkbookGradeRequest) async throws -> GradedWorkbook
     func gradeEssay(_ request: EssayGradeRequest) async throws -> EssayFeedback
     func gradeArithmetic(_ request: ArithmeticGradeRequest) async throws -> GradedArithmetic
     func similarProblems(_ request: SimilarRequest) async throws -> [GeneratedProblem]

@@ -169,7 +169,7 @@ struct MistakeDetailView: View {
         case .easy:  item.mastery = .mastered; days = 7
         }
         item.nextReviewAt = Calendar.current.date(byAdding: .day, value: days, to: Date()) ?? Date()
-        try? modelContext.save()
+        modelContext.saveLogging()
         HapticEngine.play(.success)
         withAnimation { justReviewed = true }
     }

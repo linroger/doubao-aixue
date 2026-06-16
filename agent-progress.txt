@@ -187,3 +187,53 @@ KEY FILES
      ad-hoc-signed .dmg (right-click→Open) + the one-command notarize.sh for when creds exist.
    - feature_list.json: 60 features, all passing.
    - Tests: xcodebuild macOS + iOS Simulator (iPhone 17 Pro) → BUILD SUCCEEDED both; macOS menu/UI verified.
+
+================================================================================
+SESSION (2026-06-17) — 作业批改 (workbook grading) + 题库 (question bank) + AI vision + audit fixes
+================================================================================
+Feature work (all reachable, mock-backed, all states handled, iOS+macOS BUILD SUCCEEDED, 0 warnings):
+
+- F67 作业批改 (workbook grading): photograph / pick / upload a workbook page → AI grades every
+  question into a structured, subject-agnostic GradedWorkbook (Models/WorkbookGradingTypes.swift:
+  GradeVerdict, WorkbookQuestionType, GradedQuestion, GradedWorkbook). Rendered by
+  Features/Workbook/WorkbookResultView.swift (score ring + tally + per-question ✓/✗/◐ cards with
+  student-vs-correct answer, explanation, 错因, 知识点 chips, steps, rubric, teacher note; save
+  wrong→错题本/题库, 讲一讲→tutor). Capture surface WorkbookGradingView (camera iOS / Photos / file
+  importer both platforms) + WorkbookGradingModel (OCR pre-pass → gradeWorkbook → persist).
+- F68 批改历史: WorkbookGradeRecord persists photo + GradedWorkbook JSON + metadata;
+  WorkbookHistoryView lists + re-renders any past grading offline; delete via context menu.
+- F69 题库 + F70 智能出题: BankedQuestion model; QuestionBankView (filter/star/reveal/delete) +
+  QuestionBankModel (select → similarProblems grouped by subject → GeneratedPracticeSheet with
+  attempt/reveal + 加入题库). Save-to-bank wired from WorkbookResult + SolveResult.
+- F71 多模态视觉: CloudChatClient.completeVision for all 3 dialects (openAI image_url / anthropic
+  base64 image / gemini inline_data) + AIProvider.supportsVision (openai/anthropic/gemini=true).
+  CloudIntelligenceService.gradeWorkbook uses vision when supported else OCR-text; solve() now sends
+  the captured image too. EVERY path falls back to the deterministic offline engine (never throws to UI).
+- gradeWorkbook added to IntelligenceService protocol + all 3 impls (Mock real arithmetic + rich
+  multi-subject sample; FoundationModels delegates+restamps; Cloud parses JSON→GradedWorkbook).
+- Wiring: ToolKind.gradeWorkbook + .questionBank (4 switches in AppEnums + AppDestinations.toolView),
+  Home quick-tools, macOS 学习 menu (作业批改 ⇧⌘G, 口算批改, 题库 ⇧⌘B). Real camera capture added to
+  CaptureSolveView (was a photo-picker stub). SampleData seeds 4 题库 questions.
+
+Audit fixes (from a 34-agent parallel audit; confirmed-real items only):
+- CloudIntelligenceService.extractJSON: balanced brace/bracket scan with string+escape tracking
+  (was fragile first-{/last-}). FoundationModelsService.chat re-stamps route to match the badge.
+- DrillAnswerChecker + ExamAnswerChecker: token/whole-part matching (fixed "10" wrongly matching
+  "x=5,y=10"). SolveResultView: savedToMistakes set only after a successful save; +收藏到题库.
+- EssayGradingView: 升格范文 unlock now GATED on ParentControls.verified (+onChange) — closed the
+  learn-mode bypass that revealed it unconditionally. DocumentQAView.ingest: aborts (deletes entity,
+  error haptic) if the initial save fails instead of summarizing a never-persisted doc.
+- ConversationView: streaming Task stored + cancelled .onDisappear + Task.isCancelled guards (no
+  post-dismiss SwiftData mutation). ModelContainerFactory: graceful in-memory fallback with logging +
+  clear fatalError instead of try!. App-wide: try? context.save() → context.saveLogging() (logs via
+  OSLog) at ~26 feature-layer sites (Services/Persistence/PersistenceLog.swift). Photo-pick failures
+  now give a warning haptic (Arithmetic/Essay/Translation/Workbook) instead of silent no-op.
+
+Build infra side-quest: the working tree referenced LessonContentCatalog (a half-finished parallel
+feature) that was never generated → clean build broke. Made scripts/generate_lesson_catalog.py tolerant
+of an absent subject file + fixed its swift_string (was emitting invalid single-line """ literals);
+regenerated Services/Catalog/LessonContentCatalog.swift = 69 valid scripted lessons. social.json still
+absent (SampleData falls back to MockContent for those buckets).
+
+Tests: xcodebuild macOS + iOS Simulator (iPhone 17 Pro) Debug → BUILD SUCCEEDED both, 0 warnings.
+feature_list.json: 71 features, all passing.

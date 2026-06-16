@@ -84,9 +84,16 @@ nonisolated enum ExamAnswerChecker {
         if let na = Double(a), let nb = Double(b) {
             return abs(na - nb) < 0.0001
         }
-        // The expected answer often embeds the value in a sentence (e.g. "x = 3" or
-        // "40 平方厘米"). Accept a typed bare value that the expected answer contains.
-        return b.contains(a) && a.count >= max(1, b.count / 3)
+        // Multi-part answers (e.g. "x=5,y=10"): require a whole-part match, never a
+        // bare fragment ("10") that merely appears inside one.
+        let parts = b.split(whereSeparator: { ",;，；、".contains($0) }).map(String.init)
+        if parts.count > 1 {
+            return parts.contains(a)
+        }
+        // Single-part answer embedding the value in a sentence (e.g. "x=3"): accept the
+        // bare value only when it equals a standalone token, not any substring.
+        let tokens = b.split(whereSeparator: { "=≈<>+-*/():：".contains($0) }).map(String.init)
+        return tokens.contains(a)
     }
 
     static func normalize(_ s: String) -> String {
@@ -453,7 +460,7 @@ final class ExamModel {
             record.lastUpdated = .now
         }
 
-        try? context.save()
+        context.saveLogging()
         saved = true
     }
 
@@ -473,7 +480,7 @@ final class ExamModel {
         item.createdAt = .now
         item.nextReviewAt = .now
         context.insert(item)
-        try? context.save()
+        context.saveLogging()
         savedMistakeIDs.insert(outcome.questionID)
         HapticEngine.play(.success)
     }

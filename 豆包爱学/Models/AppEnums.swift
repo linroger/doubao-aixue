@@ -238,8 +238,10 @@ public nonisolated enum CaptureMode: String, Codable, Sendable, CaseIterable, Id
 /// Every utility surfaced in the 工具 hub and deep-linked from Home.
 public nonisolated enum ToolKind: String, CaseIterable, Codable, Sendable, Identifiable {
     case solve              // 拍题答疑
+    case gradeWorkbook      // 作业批改（整页/多题，图片→结构化批改）
     case gradeArithmetic    // 口算批改
     case gradeEssay         // 作文批改
+    case questionBank       // 题库（收藏复习 + AI 出题）
     case mistakeNotebook    // 错题本
     case dictation          // 听写
     case vocabulary         // 背单词
@@ -264,8 +266,10 @@ public nonisolated enum ToolKind: String, CaseIterable, Codable, Sendable, Ident
     public var displayName: String {
         switch self {
         case .solve: "拍题答疑"
+        case .gradeWorkbook: "作业批改"
         case .gradeArithmetic: "口算批改"
         case .gradeEssay: "作文批改"
+        case .questionBank: "题库"
         case .mistakeNotebook: "错题本"
         case .dictation: "听写"
         case .vocabulary: "背单词"
@@ -290,8 +294,10 @@ public nonisolated enum ToolKind: String, CaseIterable, Codable, Sendable, Ident
     public var symbolName: String {
         switch self {
         case .solve: "camera.viewfinder"
+        case .gradeWorkbook: "doc.viewfinder.fill"
         case .gradeArithmetic: "checkmark.rectangle.stack.fill"
         case .gradeEssay: "text.badge.checkmark"
+        case .questionBank: "tray.full.fill"
         case .mistakeNotebook: "book.closed.fill"
         case .dictation: "ear.fill"
         case .vocabulary: "rectangle.on.rectangle.angled.fill"
@@ -317,8 +323,8 @@ public nonisolated enum ToolKind: String, CaseIterable, Codable, Sendable, Ident
     public var category: ToolCategory {
         switch self {
         case .solve, .knowledgeQA, .recognizeAnything: .qa
-        case .gradeArithmetic, .gradeEssay, .drill: .grade
-        case .mistakeNotebook, .vocabulary, .dictation, .knowledgeGraph: .memory
+        case .gradeWorkbook, .gradeArithmetic, .gradeEssay, .drill: .grade
+        case .mistakeNotebook, .questionBank, .vocabulary, .dictation, .knowledgeGraph: .memory
         case .oral, .translation: .expression
         case .classical, .documentQA, .classroom, .reports: .extend
         case .liveScan: .qa

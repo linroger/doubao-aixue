@@ -88,7 +88,7 @@ final class DocumentDetailModel {
                 entity.summary = summary.summary
                 entity.keyPoints = summary.keyPoints
                 entity.outline = summary.outline
-                try? context.save()
+                context.saveLogging()
             }
             summaryState = .loaded(summary)
         } catch let error as IntelligenceError {
@@ -629,7 +629,7 @@ private struct DocumentDetailPreview: View {
             entity.pageCount = sample.pageCount
             entity.parsedText = sample.text
             context.insert(entity)
-            try? context.save()
+            context.saveLogging()
             seededID = entity.id
         }
     }

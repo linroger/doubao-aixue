@@ -256,7 +256,13 @@ struct DocumentQAView: View {
         entity.pageCount = parsed.pageCount
         entity.parsedText = parsed.text
         modelContext.insert(entity)
-        try? modelContext.save()
+        // Only proceed once the document is actually persisted — otherwise summarization
+        // would target an entity the @Query can't see, silently losing the import.
+        guard modelContext.saveLogging() else {
+            modelContext.delete(entity)
+            HapticEngine.play(.error)
+            return
+        }
         HapticEngine.play(.success)
 
         let targetID = entity.id
@@ -276,7 +282,7 @@ struct DocumentQAView: View {
             entity.summary = summary.summary
             entity.keyPoints = summary.keyPoints
             entity.outline = summary.outline
-            try? modelContext.save()
+            modelContext.saveLogging()
         } catch {
             // Summarization is best-effort; the detail screen can re-run it. Keep
             // the imported document so the learner never loses their file.
@@ -285,7 +291,7 @@ struct DocumentQAView: View {
 
     private func delete(_ doc: DocumentEntity) {
         modelContext.delete(doc)
-        try? modelContext.save()
+        modelContext.saveLogging()
         HapticEngine.play(.light)
     }
 }

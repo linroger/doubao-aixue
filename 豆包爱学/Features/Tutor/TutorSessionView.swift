@@ -361,7 +361,7 @@ struct TutorSessionView: View {
             }
         }
 
-        try? modelContext.save()
+        modelContext.saveLogging()
     }
 
     // MARK: - Toolbar

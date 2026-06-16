@@ -34,7 +34,7 @@ enum ProfilePreviewData {
         profile.streakDays = 7
         profile.problemsSolved = 128
         context.insert(profile)
-        try? context.save()
+        context.saveLogging()
         return profile
     }
 
@@ -52,6 +52,6 @@ enum ProfilePreviewData {
             log.kindRaw = "solve"
             context.insert(log)
         }
-        try? context.save()
+        context.saveLogging()
     }
 }

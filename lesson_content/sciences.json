@@ -1,0 +1,2781 @@
+[
+  {
+    "subject": "science",
+    "grade": 1,
+    "topic": "观察植物",
+    "objectives": [
+      "能说出植物的六大器官名称",
+      "会用看、闻、摸的方法观察植物"
+    ],
+    "segments": [
+      {
+        "narration": "小朋友们好！春天到了，公园里的花都开了。让我们一起去观察一棵小树，看看它由哪几部分组成。请同学们拿出小本子记一记。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "观察植物"
+          },
+          {
+            "kind": "text",
+            "content": "公园里的小树"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们把一棵完整的植物分成六个部分。根长在土里，负责吸收水分。茎支撑着整棵植物，把水送到叶子上。叶能进行光合作用，制造养分。花、果实、种子都和繁殖有关。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "六大器官：根、茎、叶、花、果实、种子"
+          },
+          {
+            "kind": "bullet",
+            "content": "根：吸收水分和养料"
+          },
+          {
+            "kind": "bullet",
+            "content": "叶：进行光合作用"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "现在我们用看、闻、摸的方法观察一朵桃花。看看花瓣是粉红色的，闻一闻有淡淡的香味，再摸一摸叶片，表面光滑有细细的纹理。同学们能说出你看到了什么吗？",
+        "board": [
+          {
+            "kind": "text",
+            "content": "观察桃花"
+          },
+          {
+            "kind": "bullet",
+            "content": "看：花瓣颜色和形状"
+          },
+          {
+            "kind": "bullet",
+            "content": "闻：淡淡的香味"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "植物的哪个部分长在土里，负责吸收水分？",
+          "options": [
+            "A. 茎",
+            "B. 叶",
+            "C. 根",
+            "D. 花"
+          ],
+          "answerIndex": 2,
+          "explanation": "根长在土壤下面，专门负责吸收水分和无机盐，所以选 C。茎是把水送上去的，叶是制造养分的，花和繁殖有关。"
+        }
+      },
+      {
+        "narration": "易错点提醒：有的同学以为所有绿色的都是叶子，其实果实和茎常常也是绿色的。我们看植物要按六大部分来数，不能只看颜色。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：果实和茎也可能是绿色的"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：苔藓没有真正的根"
+          },
+          {
+            "kind": "bullet",
+            "content": "方法：从上到下顺序观察"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立观察校园里的蒲公英。它长着什么颜色的花？叶子是什么形状？果实成熟后会变成什么？请大家选一选正确的描述。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "观察蒲公英"
+          },
+          {
+            "kind": "bullet",
+            "content": "叶：锯齿形贴地生长"
+          },
+          {
+            "kind": "bullet",
+            "content": "果：白色绒球会飞"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "蒲公英成熟后的果实有什么特点？",
+          "options": [
+            "A. 重得掉到地上",
+            "B. 长成红色浆果",
+            "C. 变成白色绒球随风飘",
+            "D. 沉到水里"
+          ],
+          "answerIndex": 2,
+          "explanation": "蒲公英果实成熟后变成白色绒球，能借助风力飘到远处繁殖，所以选 C。其它选项都不符合蒲公英的实际特征。"
+        }
+      },
+      {
+        "narration": "今天我们学会了观察植物：先看六大器官，再用看闻摸的方法记录。下一节课我们要去观察一种小动物，看看它和植物有什么不同。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "六器官：根茎叶花果实种子"
+          },
+          {
+            "kind": "bullet",
+            "content": "观察方法：看、闻、摸、听"
+          },
+          {
+            "kind": "answer",
+            "content": "爱观察的孩子最聪明"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "science",
+    "grade": 2,
+    "topic": "水的三态",
+    "objectives": [
+      "认识水的固态、液态、气态",
+      "能用生活例子解释三态变化"
+    ],
+    "segments": [
+      {
+        "narration": "小朋友们好！今天我们一起玩水的游戏。冰箱里的冰块，桌上的水杯，锅里冒出的白气——它们都是水变的！这就叫水的三态。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "水的三态"
+          },
+          {
+            "kind": "text",
+            "content": "冰、水、水蒸气"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "水有三种样子。固态是冰，硬硬的，形状固定。液态是水，会流动，没有固定形状。气态是水蒸气，看不见摸不着，飘在空气中。温度一变，状态就变。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "三态：固态、液态、气态"
+          },
+          {
+            "kind": "bullet",
+            "content": "固态：冰，温度 0℃以下"
+          },
+          {
+            "kind": "bullet",
+            "content": "气态：水蒸气，100℃以上"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "让我们看一个例子。冰块放在杯子里，一会儿就化成水。继续加热，水会咕嘟咕嘟冒泡，变成水蒸气飞走。同学们想一想：太阳晒在衣服上为什么会干？",
+        "board": [
+          {
+            "kind": "text",
+            "content": "冰 → 水 → 水蒸气"
+          },
+          {
+            "kind": "formula",
+            "content": "受热：固态 → 液态 → 气态"
+          },
+          {
+            "kind": "bullet",
+            "content": "受热由固到液叫熔化"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "湿衣服在太阳下变干，这是水的什么变化？",
+          "options": [
+            "A. 凝固",
+            "B. 熔化",
+            "C. 汽化（蒸发）",
+            "D. 液化"
+          ],
+          "answerIndex": 2,
+          "explanation": "湿衣服上的水受热变成水蒸气跑掉，水由液态变成了气态，叫做汽化或蒸发，所以选 C。凝固是液变固，熔化是固变液，液化是气变液，都不符合。"
+        }
+      },
+      {
+        "narration": "易错点提醒：水蒸气是看不见的。我们看到的白气其实是水蒸气遇冷后变成的小水珠。冬天哈出的白气，也是这个原因。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：白气不是水蒸气，是小水滴"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：水沸腾时跑掉的是气态"
+          },
+          {
+            "kind": "bullet",
+            "content": "口诀：吸热变气，放热变液"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立想一想。早晨草地上出现的小水珠是从哪里来的？它和昨晚的露水是不是同一回事？请大家选一选。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "草地上的露珠"
+          },
+          {
+            "kind": "bullet",
+            "content": "夜晚：空气遇冷"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "露珠是水的什么状态？它是怎么形成的？",
+          "options": [
+            "A. 固态，凝固形成",
+            "B. 液态，液化形成",
+            "C. 气态，蒸发形成",
+            "D. 固态，凝华形成"
+          ],
+          "answerIndex": 1,
+          "explanation": "露珠是液态的小水珠。空气中的水蒸气遇到冷的草叶，遇冷放热变成液态水，这种变化叫液化，所以选 B。冬天窗花才是凝华，是气直接变固。"
+        }
+      },
+      {
+        "narration": "今天我们认识了水的三态：水遇冷会结冰，遇热会变成水蒸气。三态变化在大自然里很常见，下一节课我们去研究雨是怎么形成的。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "三态名称要记牢"
+          },
+          {
+            "kind": "bullet",
+            "content": "温度变化是三态变化的关键"
+          },
+          {
+            "kind": "answer",
+            "content": "水的三态真奇妙"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "science",
+    "grade": 3,
+    "topic": "磁铁与磁力",
+    "objectives": [
+      "知道磁铁能吸引铁制品",
+      "了解磁铁有两极，同极相斥异极相吸"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！老师手里有一块磁铁，它能吸起一枚回形针，却吸不起木块和塑料尺。今天我们就来研究磁铁的小秘密。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "磁铁与磁力"
+          },
+          {
+            "kind": "text",
+            "content": "磁铁吸引什么？"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "磁铁能吸引含铁的物品，比如铁钉、铁片、回形针。不含铁的物品，比如木块、塑料、纸片，磁铁就吸不起来。我们把这种性质叫做磁性。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "磁性：能吸引含铁物品"
+          },
+          {
+            "kind": "bullet",
+            "content": "能吸：铁钉、钢尺、回形针"
+          },
+          {
+            "kind": "bullet",
+            "content": "不能吸：木块、塑料、布"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "磁铁有两极。红色的一端叫北极，蓝色的一端叫南极。把两块磁铁的北极对北极，会互相推开；把北极对南极，就会吸在一起。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "磁极：N 极和 S 极"
+          },
+          {
+            "kind": "formula",
+            "content": "同名磁极相互排斥"
+          },
+          {
+            "kind": "formula",
+            "content": "异名磁极相互吸引"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "把两块磁铁的 S 极对 S 极，会发生什么？",
+          "options": [
+            "A. 相互吸引",
+            "B. 相互排斥",
+            "C. 没有变化",
+            "D. 磁铁消失"
+          ],
+          "answerIndex": 1,
+          "explanation": "同名磁极相互排斥，所以 S 极对 S 极会相互推开，选 B。异名磁极才会相互吸引。磁铁不会因为同名相对而失去磁性，所以 A、C、D 都错。"
+        }
+      },
+      {
+        "narration": "易错点提醒：磁铁隔着薄木板、纸片也能吸铁，但隔着厚铁板就不行。另外磁铁用久了磁性会减弱，要避免高温和敲打。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：隔物隔多远都能吸铁"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：磁铁不会因吸铁而失磁"
+          },
+          {
+            "kind": "bullet",
+            "content": "保护：不要高温、不要敲打"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立想一个生活中的小问题：为什么指南针能指方向？因为地球本身就是一块大磁铁，它的北极吸引磁铁的 S 极，磁铁就稳定指向南北。请选一选。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "地球是一块大磁铁"
+          },
+          {
+            "kind": "bullet",
+            "content": "指南针：小磁针 + 罗盘"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "指南针静止时，红色一端（北极）指向什么方向？",
+          "options": [
+            "A. 正东",
+            "B. 正西",
+            "C. 北方",
+            "D. 南方"
+          ],
+          "answerIndex": 2,
+          "explanation": "指南针的小磁针红色一端是 N 极，受地球磁场作用指向北方，所以选 C。异名磁极相互吸引，地球北极其实是地磁 S 极，把小磁针的 N 极拉过去。"
+        }
+      },
+      {
+        "narration": "今天我们学习了磁铁的磁性、磁极和同名异名磁极的相互作用。下一节课我们要研究另一种看不见的力——摩擦力。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "磁铁能吸引含铁物品"
+          },
+          {
+            "kind": "bullet",
+            "content": "同名排斥，异名吸引"
+          },
+          {
+            "kind": "answer",
+            "content": "磁铁虽小，本领很大"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "science",
+    "grade": 4,
+    "topic": "简单电路",
+    "objectives": [
+      "认识电池、灯泡、导线和开关",
+      "能连接一个完整的简单电路"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！小手电一按就亮，按一下就灭。这背后有什么秘密？原来里面是一个完整的电路。今天我们就来动手做一做。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "简单电路"
+          },
+          {
+            "kind": "text",
+            "content": "电池、灯泡、导线、开关"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "一个简单电路需要电源、用电器、导线和开关。电池是电源，提供电能。灯泡是用电器，把电能变成光。导线像一条路，让电流通过。开关控制电路的通断。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "四要素：电源、用电器、导线、开关"
+          },
+          {
+            "kind": "bullet",
+            "content": "电源：电池提供电能"
+          },
+          {
+            "kind": "bullet",
+            "content": "用电器：灯泡发光发热"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们用一节干电池、一根导线和一个小灯泡，连接一个串联电路。从电池正极出发，经过开关、灯泡，再回到电池负极，灯就亮了。任何一处断开，灯都会灭。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "串联电路"
+          },
+          {
+            "kind": "formula",
+            "content": "正极 → 开关 → 灯泡 → 负极"
+          },
+          {
+            "kind": "bullet",
+            "content": "断开任何一处，整个电路不工作"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "在串联电路中，如果断开开关，灯泡会怎样？",
+          "options": [
+            "A. 仍然很亮",
+            "B. 变暗一些",
+            "C. 熄灭",
+            "D. 闪几下再亮"
+          ],
+          "answerIndex": 2,
+          "explanation": "在串联电路中，电流只有一条路径。开关断开后电路不完整，没有电流通过灯泡，灯泡会熄灭，所以选 C。"
+        }
+      },
+      {
+        "narration": "易错点提醒：电池不能短路。把导线直接接在电池两端会发热，电池很快没电，还可能烧坏电池。实验中千万不要用导线直接连正负极。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：导线直接连电池正负极会短路"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：电池+电池 串联正负极要接对"
+          },
+          {
+            "kind": "bullet",
+            "content": "安全：先接好再放电池"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "现在请大家想一想：教室里的两盏灯之间用的是串联还是并联？如果是串联，第一盏坏了，第二盏会怎样？请你选一选。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "教室里的两盏日光灯"
+          },
+          {
+            "kind": "bullet",
+            "content": "一盏坏了，另一盏仍能亮"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "教室里的多盏灯之间一般采用什么连接方式？",
+          "options": [
+            "A. 串联",
+            "B. 并联",
+            "C. 短路",
+            "D. 都不接"
+          ],
+          "answerIndex": 1,
+          "explanation": "教室里的多盏灯都接在电源正负极之间，互不影响，灯坏了别的灯还亮，这种方式叫并联，所以选 B。如果是串联，第一盏坏掉所有灯都会灭。"
+        }
+      },
+      {
+        "narration": "今天我们认识了简单电路，学会了用电池、导线、开关和灯泡连成闭合回路。下一节课我们将研究电路中的另一个重要角色——电阻。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "四要素：电源、用电器、导线、开关"
+          },
+          {
+            "kind": "bullet",
+            "content": "串联：共用一条电流路径"
+          },
+          {
+            "kind": "answer",
+            "content": "会连电路，你就是小电工"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "science",
+    "grade": 5,
+    "topic": "太阳系与地球",
+    "objectives": [
+      "说出太阳系八大行星的名称和顺序",
+      "了解地球在太阳系中的位置"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！抬头看看天上的太阳，我们生活的地球正绕着它转。地球不是宇宙的中心，它只是太阳系里的一颗行星。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "太阳系与地球"
+          },
+          {
+            "kind": "text",
+            "content": "地球的大家族"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "太阳是太阳系的中心，是一颗恒星。围绕它转的有八大行星，按离太阳由近到远依次是水星、金星、地球、火星、木星、土星、天王星和海王星。冥王星现在归为矮行星。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "八大行星顺序"
+          },
+          {
+            "kind": "formula",
+            "content": "水金地火 木土天海"
+          },
+          {
+            "kind": "bullet",
+            "content": "地球：第三颗行星"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们用一个顺口溜记一记：水金地火木土，天王星和海王。每颗行星都有自己的特点，比如木星是行星中的巨人，土星有美丽的光环，地球有生命存在。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "行星的特点"
+          },
+          {
+            "kind": "bullet",
+            "content": "木星：最大"
+          },
+          {
+            "kind": "bullet",
+            "content": "土星：光环"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "太阳系中离太阳第三近的行星是哪一颗？",
+          "options": [
+            "A. 金星",
+            "B. 火星",
+            "C. 地球",
+            "D. 木星"
+          ],
+          "answerIndex": 2,
+          "explanation": "按离太阳由近到远，八大行星的顺序是水星、金星、地球、火星等，地球是第三颗，所以选 C。"
+        }
+      },
+      {
+        "narration": "易错点提醒：太阳本身是恒星，不是行星。行星自己不发光，是反射太阳光才被我们看到。月球是地球的卫星，绕地球转。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：太阳是恒星不是行星"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：月球是卫星不是行星"
+          },
+          {
+            "kind": "bullet",
+            "content": "恒星自己发光，行星反射光"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立思考：地球上有生命存在，最重要的条件是什么？是合适的温度、液态水和大气层。请大家选一选最关键的那一项。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "地球有生命的条件"
+          },
+          {
+            "kind": "bullet",
+            "content": "合适温度"
+          },
+          {
+            "kind": "bullet",
+            "content": "液态水源"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "地球上有生命存在的最关键因素是？",
+          "options": [
+            "A. 体积很大",
+            "B. 液态水和合适温度",
+            "C. 有公转轨道",
+            "D. 有光环"
+          ],
+          "answerIndex": 1,
+          "explanation": "科学家认为液态水和适宜的温度是生命存在的关键条件，水是生命之源，合适温度让水保持液态，所以选 B。"
+        }
+      },
+      {
+        "narration": "今天我们认识了太阳系八大行星，了解了地球在其中的位置。下一节课我们再深入学习地球的自转和公转，以及它们带来的昼夜和四季变化。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "八大行星：水金地火木土天海"
+          },
+          {
+            "kind": "bullet",
+            "content": "太阳是恒星，行星反射光"
+          },
+          {
+            "kind": "answer",
+            "content": "保护地球，就是保护家园"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "science",
+    "grade": 6,
+    "topic": "能量转换",
+    "objectives": [
+      "理解能量可以从一种形式变成另一种形式",
+      "举例说明生活中常见的能量转换"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！电灯一开就亮，电动车一骑就跑，热水一烧就热。这些现象背后都藏着一个共同规律——能量转换。今天我们就来揭开它的秘密。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "能量转换"
+          },
+          {
+            "kind": "text",
+            "content": "看不见的能量在变脸"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "能量有很多种形式，比如光能、热能、电能、机械能、化学能等。能量既不会凭空产生，也不会凭空消失，只会从一种形式转换成另一种形式，这就是能量守恒定律。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "能量形式：光、热、电、机械、化学"
+          },
+          {
+            "kind": "formula",
+            "content": "能量守恒定律"
+          },
+          {
+            "kind": "bullet",
+            "content": "能量既不能凭空产生也不能凭空消失"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们看几个例子。电灯把电能变成光能和热能；电动车把电能变成机械能；煤气炉把化学能变成热能；植物把光能变成化学能。同学们能再说一些吗？",
+        "board": [
+          {
+            "kind": "text",
+            "content": "常见能量转换"
+          },
+          {
+            "kind": "formula",
+            "content": "电灯：电 → 光 + 热"
+          },
+          {
+            "kind": "formula",
+            "content": "电动车：电 → 机械"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "电灯工作时的能量转换主要是？",
+          "options": [
+            "A. 化学能→光能",
+            "B. 电能→光能+热能",
+            "C. 机械能→电能",
+            "D. 光能→电能"
+          ],
+          "answerIndex": 1,
+          "explanation": "电灯通电后，电能主要转化为光能让我们看见东西，同时也伴随一部分热能散发出来，所以选 B。光电转换是太阳能电池板的事。"
+        }
+      },
+      {
+        "narration": "易错点提醒：能量转换中常有损耗。比如电灯会发热，机械传动会摩擦生热。看似能量消失，其实变成了热能散到空气里，并不是真消失。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：能量看似消失其实变成热散掉"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：能量转换不是 100% 有效"
+          },
+          {
+            "kind": "bullet",
+            "content": "提高效率：减少不必要的能量损失"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立想一个例子。水力发电站是怎么把水的能量变成电的？请你从水在上游、流动、推动水轮机、带动发电机几个步骤分析。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "水力发电过程"
+          },
+          {
+            "kind": "bullet",
+            "content": "上游水：储存势能"
+          },
+          {
+            "kind": "bullet",
+            "content": "水流：推动水轮机"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "水力发电过程中，水的能量转换顺序是？",
+          "options": [
+            "A. 势能→动能→电能",
+            "B. 电能→动能→热能",
+            "C. 化学能→光能→电能",
+            "D. 势能→电能→热能"
+          ],
+          "answerIndex": 0,
+          "explanation": "上游水具有势能，水流下来变成动能，推动水轮机和发电机，最终变成电能，所以正确顺序是势能→动能→电能，选 A。"
+        }
+      },
+      {
+        "narration": "今天我们学习了能量转换和能量守恒定律，了解了生活中多种能量互相转化的例子。下一节课我们专门研究化学能——电池和燃料。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "能量可以相互转换"
+          },
+          {
+            "kind": "bullet",
+            "content": "能量守恒：不会凭空产生或消失"
+          },
+          {
+            "kind": "answer",
+            "content": "认识能量，利用能量"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "biology",
+    "grade": 7,
+    "topic": "细胞结构",
+    "objectives": [
+      "说出动植物细胞的基本结构",
+      "区分动植物细胞的异同"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！地球上的生物多种多样，但它们的身体都是由一个共同的小单位组成的——细胞。今天我们就用显微镜去观察这个奇妙的小世界。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "细胞结构"
+          },
+          {
+            "kind": "text",
+            "content": "生命的基本单位"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "动植物细胞都有细胞膜、细胞质和细胞核。细胞膜像围墙，控制物质进出。细胞质是胶状物质，许多生命活动在这里进行。细胞核里藏着遗传物质，是细胞的指挥中心。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "共有的结构：细胞膜、细胞质、细胞核"
+          },
+          {
+            "kind": "bullet",
+            "content": "细胞膜：控制物质进出"
+          },
+          {
+            "kind": "bullet",
+            "content": "细胞核：内有遗传物质"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "植物细胞比动物细胞多三样东西：细胞壁、叶绿体和液泡。细胞壁让植物细胞有固定形状。叶绿体进行光合作用。液泡储存水分和营养物质。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "植物细胞特有结构"
+          },
+          {
+            "kind": "bullet",
+            "content": "细胞壁：支持保护"
+          },
+          {
+            "kind": "bullet",
+            "content": "叶绿体：光合作用场所"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "下列哪种结构是动物细胞没有、植物细胞特有的？",
+          "options": [
+            "A. 细胞膜",
+            "B. 细胞质",
+            "C. 细胞核",
+            "D. 叶绿体"
+          ],
+          "answerIndex": 3,
+          "explanation": "叶绿体是植物细胞特有的，能进行光合作用制造有机物，动物细胞没有叶绿体，所以选 D。细胞膜、细胞质、细胞核动植细胞都有。"
+        }
+      },
+      {
+        "narration": "易错点提醒：并不是所有植物细胞都含叶绿体。比如根细胞埋在土里不见光，就没有叶绿体。植物体上呈现绿色的部分通常有叶绿体。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：不是所有植物细胞都有叶绿体"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：细胞壁不是细胞膜"
+          },
+          {
+            "kind": "bullet",
+            "content": "口诀：青绿根茎叶有叶绿体"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立分析：切开西瓜流出的甜甜汁液主要来自哪个结构？想一想西瓜细胞里储藏大量水分的结构是什么。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "西瓜汁液来自哪里？"
+          },
+          {
+            "kind": "bullet",
+            "content": "成熟的果肉细胞"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "切开西瓜流出的汁液主要来自细胞的哪个结构？",
+          "options": [
+            "A. 细胞核",
+            "B. 叶绿体",
+            "C. 液泡",
+            "D. 细胞壁"
+          ],
+          "answerIndex": 2,
+          "explanation": "液泡是植物细胞里储存水分、糖分等物质的场所，细胞被切破后液泡里的细胞液就流出来，所以选 C。"
+        }
+      },
+      {
+        "narration": "今天我们认识了动植物细胞的基本结构。细胞虽小，却是生命的基石。下一节课我们要研究细胞怎样通过分裂增加数量。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "共性：膜、质、核"
+          },
+          {
+            "kind": "bullet",
+            "content": "植物特有：壁、绿、液泡"
+          },
+          {
+            "kind": "answer",
+            "content": "小小细胞，大大世界"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "biology",
+    "grade": 8,
+    "topic": "光合作用",
+    "objectives": [
+      "掌握光合作用的原料、条件和产物",
+      "写出光合作用的反应式"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！绿色植物静静地站在阳光下，却默默地制造着氧气和养料。这项本领就是光合作用。今天我们就去揭开它的秘密。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "光合作用"
+          },
+          {
+            "kind": "text",
+            "content": "绿叶的化学工厂"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "光合作用发生在叶绿体中。叶绿体利用光能，把二氧化碳和水合成有机物，同时释放出氧气。这个过程是地球上氧气的主要来源。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "光合作用的概念"
+          },
+          {
+            "kind": "formula",
+            "content": "二氧化碳 + 水 ─光,叶绿体→ 有机物 + 氧气"
+          },
+          {
+            "kind": "bullet",
+            "content": "原料：CO₂ 和 H₂O"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们用实验来验证。普利斯特利的实验把小鼠和植物一起放在密闭玻璃罩内，小鼠不会窒息，说明植物能更新空气。这正是光合作用释放氧气的功劳。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "普利斯特利实验"
+          },
+          {
+            "kind": "formula",
+            "content": "植物 + 蜡烛 + 密闭玻璃罩"
+          },
+          {
+            "kind": "bullet",
+            "content": "结论：植物能释放氧气"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "光合作用的产物是？",
+          "options": [
+            "A. 二氧化碳和水",
+            "B. 有机物和氧气",
+            "C. 水和氧气",
+            "D. 二氧化碳和有机物"
+          ],
+          "answerIndex": 1,
+          "explanation": "光合作用把二氧化碳和水变成有机物和氧气，所以产物是有机物和氧气，选 B。原料是二氧化碳和水，不能颠倒。"
+        }
+      },
+      {
+        "narration": "易错点提醒：光合作用必须有光照。但并不是所有光照强度都能让光合作用达到最强。光照过强或温度过高，光合作用反而会减弱，要适度。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：光越强光合作用越强"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：晚上植物也进行光合作用"
+          },
+          {
+            "kind": "bullet",
+            "content": "三大条件：光、叶绿体、水和 CO₂"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立思考：大棚种菜为什么要补光和增施二氧化碳？光和二氧化碳分别是光合作用的什么条件或原料？",
+        "board": [
+          {
+            "kind": "text",
+            "content": "大棚种植"
+          },
+          {
+            "kind": "bullet",
+            "content": "补光：提供光能"
+          },
+          {
+            "kind": "bullet",
+            "content": "增施 CO₂：提供原料"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "光合作用的进行必须具备的条件中，下列哪一项不是？",
+          "options": [
+            "A. 光照",
+            "B. 叶绿体",
+            "C. 氧气",
+            "D. 二氧化碳和水"
+          ],
+          "answerIndex": 2,
+          "explanation": "光合作用的条件是光、含叶绿体的细胞、原料 CO₂ 和水。氧气是产物，不是条件，所以选 C。"
+        }
+      },
+      {
+        "narration": "今天我们学习了光合作用的反应式和重要意义。光合作用是地球碳氧循环的核心环节。下一节课我们要去研究呼吸作用。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "光合作用 = 绿叶的化学工厂"
+          },
+          {
+            "kind": "bullet",
+            "content": "实质：合成有机物，储存能量"
+          },
+          {
+            "kind": "answer",
+            "content": "绿叶是地球之肺"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "biology",
+    "grade": 9,
+    "topic": "遗传与基因入门",
+    "objectives": [
+      "理解基因、DNA 和染色体的关系",
+      "识别显性基因和隐性基因"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！为什么父母双眼皮，孩子也常常是双眼皮？为什么有的同学长得像爸爸，有的像妈妈？这背后是遗传的奥秘。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "遗传与基因入门"
+          },
+          {
+            "kind": "text",
+            "content": "我是怎么长得像父母的"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "遗传信息藏在细胞核里，细胞核中有染色体。染色体由 DNA 和蛋白质组成。DNA 分子上具有遗传效应的片段叫做基因。基因控制生物的性状。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "关系：细胞核 → 染色体 → DNA → 基因"
+          },
+          {
+            "kind": "bullet",
+            "content": "基因是有遗传效应的 DNA 片段"
+          },
+          {
+            "kind": "bullet",
+            "content": "基因控制生物的性状"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "基因有显性和隐性之分。用大写字母表示显性基因，用小写字母表示隐性基因。双眼皮由显性基因 A 控制，单眼皮由隐性基因 a 控制。AA 和 Aa 都表现为双眼皮。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "显性基因 vs 隐性基因"
+          },
+          {
+            "kind": "formula",
+            "content": "AA → 双眼皮（显性）"
+          },
+          {
+            "kind": "formula",
+            "content": "aa → 单眼皮（隐性）"
+          },
+          {
+            "kind": "bullet",
+            "content": "Aa：显性基因控制，显双眼皮"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "双眼皮由显性基因 A 控制。一个人的基因组成是 Aa，他的性状是？",
+          "options": [
+            "A. 单眼皮",
+            "B. 双眼皮",
+            "C. 一单一双",
+            "D. 不可判断"
+          ],
+          "answerIndex": 1,
+          "explanation": "Aa 含有显性基因 A，隐性基因 a 不表达，所以表现为双眼皮，选 B。单眼皮需要两个隐性基因 aa 才会出现。"
+        }
+      },
+      {
+        "narration": "易错点提醒：父母都是双眼皮，孩子也可能是单眼皮。如果父母都是 Aa，那孩子有四分之一是 aa 的单眼皮。看似不可能，其实有规律。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：双眼皮父母也可能有单眼皮孩子"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：显性基因一定比隐性基因多"
+          },
+          {
+            "kind": "bullet",
+            "content": "规律：亲代 Aa × Aa → 1/4 aa"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立判断：人类禁止近亲结婚的主要原因是什么？近亲之间携带相同隐性致病基因的概率高，后代容易出现遗传病。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "为什么禁止近亲结婚？"
+          },
+          {
+            "kind": "bullet",
+            "content": "近亲：共同祖先"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "我国婚姻法规定禁止近亲结婚，主要科学依据是？",
+          "options": [
+            "A. 近亲结婚后代一定患病",
+            "B. 近亲双方基因完全相同",
+            "C. 双方隐性致病基因相遇概率大",
+            "D. 近亲结婚违背伦理"
+          ],
+          "answerIndex": 2,
+          "explanation": "近亲之间有较多共同的祖先，携带相同隐性致病基因的可能性更高，后代出现 aa 致病基因组合的概率大大增加，所以选 C。'一定患病'太绝对，伦理不是科学依据。"
+        }
+      },
+      {
+        "narration": "今天我们认识了基因、DNA 和染色体的关系，理解了显性隐性基因。下一节课我们要研究基因在亲子之间是怎么传递的。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "染色体由 DNA 和蛋白质组成"
+          },
+          {
+            "kind": "bullet",
+            "content": "基因控制生物的性状"
+          },
+          {
+            "kind": "answer",
+            "content": "认识基因，认识自己"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "biology",
+    "grade": 10,
+    "topic": "有丝分裂与减数分裂",
+    "objectives": [
+      "区分有丝分裂和减数分裂的过程与结果",
+      "理解减数分裂对遗传多样性的意义"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！一个受精卵怎么变成有 50 万亿个细胞的人体？精子卵子又是怎么产生的？今天我们走进细胞的分裂工厂。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "有丝分裂与减数分裂"
+          },
+          {
+            "kind": "text",
+            "content": "细胞怎么变多"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "有丝分裂是体细胞分裂的方式。一个母细胞分裂一次产生两个子细胞，子细胞的染色体数目和母细胞一样。它的主要功能是增加体细胞的数量。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "有丝分裂"
+          },
+          {
+            "kind": "formula",
+            "content": "1 个母细胞 → 2 个子细胞"
+          },
+          {
+            "kind": "bullet",
+            "content": "染色体数不变：2n → 2n"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "减数分裂专门产生生殖细胞。一个母细胞要经过两次连续分裂，最终形成四个子细胞，每个子细胞的染色体数目减半。精子卵子的产生都靠它。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "减数分裂"
+          },
+          {
+            "kind": "formula",
+            "content": "1 个母细胞 → 4 个子细胞"
+          },
+          {
+            "kind": "formula",
+            "content": "染色体数减半：2n → n"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "减数分裂过程中，染色体数目变化的正确顺序是？",
+          "options": [
+            "A. 2n → 2n → 2n",
+            "B. 2n → n → n",
+            "C. 2n → 2n → n",
+            "D. n → 2n → n"
+          ],
+          "answerIndex": 2,
+          "explanation": "减数分裂中，DNA 复制后染色体数暂时加倍，分裂一次后减半，再分裂一次继续减半，最终形成染色体减半的生殖细胞，所以选 C。"
+        }
+      },
+      {
+        "narration": "易错点提醒：减数分裂不是连续两次有丝分裂。它在分裂过程中会发生同源染色体联会、交叉互换和自由组合，这些是遗传多样性的细胞学基础。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：减数分裂不是两次有丝分裂"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：精原细胞进行有丝分裂"
+          },
+          {
+            "kind": "bullet",
+            "content": "同源染色体联会：减数分裂特有"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你判断下面哪种细胞分裂是有丝分裂？看染色体数目变化和有无同源染色体配对：有同源染色体配对（联会）是减数分裂，没有的是有丝分裂。有丝分裂过程中染色体数目不变，减数分裂染色体数目减半，这是最关键的判断依据。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "精子的染色体数"
+          },
+          {
+            "kind": "bullet",
+            "content": "体细胞 40 条 → 生殖细胞 20 条"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "人体细胞有 46 条染色体，那么一个精子的染色体数是？",
+          "options": [
+            "A. 23 条",
+            "B. 46 条",
+            "C. 92 条",
+            "D. 11 条"
+          ],
+          "answerIndex": 0,
+          "explanation": "生殖细胞由减数分裂产生，染色体数是体细胞的一半。人体细胞 46 条，所以精子有 23 条，选 A。"
+        }
+      },
+      {
+        "narration": "今天我们比较了有丝分裂和减数分裂。两种分裂方式共同保证了生物的繁衍和遗传多样。下一节课我们去研究基因工程的奥秘。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "有丝分裂：体细胞，数量加倍"
+          },
+          {
+            "kind": "bullet",
+            "content": "减数分裂：生殖细胞，染色体减半"
+          },
+          {
+            "kind": "answer",
+            "content": "分裂是生命的延续"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "biology",
+    "grade": 11,
+    "topic": "生态系统与能量流动",
+    "objectives": [
+      "理解生态系统的组成",
+      "掌握能量流动的特点和方向"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！一片森林里，有大树、青草、野兔、狐狸，还有看不见的细菌真菌。它们相互依存，构成一个生态系统。今天我们就去解构它的能量流动。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "生态系统与能量流动"
+          },
+          {
+            "kind": "text",
+            "content": "森林里的能量之旅"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "生态系统由非生物部分和生物部分组成。生物部分按营养方式分为生产者、消费者和分解者。生产者主要是绿色植物，消费者是各种动物，分解者是细菌和真菌。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "生态系统组成"
+          },
+          {
+            "kind": "bullet",
+            "content": "生产者：绿色植物"
+          },
+          {
+            "kind": "bullet",
+            "content": "分解者：细菌、真菌"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "能量在生态系统中单向流动，沿着食物链由低营养级流向高营养级。每经过一个营养级，大部分能量以呼吸作用散失，只约 10% 到 20% 传给下一营养级。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "能量流动"
+          },
+          {
+            "kind": "formula",
+            "content": "单向流动，逐级递减"
+          },
+          {
+            "kind": "formula",
+            "content": "传递效率：10%–20%"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "生态系统中能量流动的特点是？",
+          "options": [
+            "A. 循环流动、逐级递增",
+            "B. 单向流动、逐级递减",
+            "C. 双向流动、不变",
+            "D. 随机流动、逐级递减"
+          ],
+          "answerIndex": 1,
+          "explanation": "能量在生态系统中只能沿食物链单向流动，从生产者到各级消费者，每级都有呼吸消耗，所以是单向流动、逐级递减，选 B。"
+        }
+      },
+      {
+        "narration": "易错点提醒：能量流动是单向的，不能循环。物质循环才是可以循环的。能量传递效率不是固定的 10%，而是 10% 到 20% 之间，题目中常给具体数值。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：能量也能循环流动"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：能量传递效率一定是 10%"
+          },
+          {
+            "kind": "bullet",
+            "content": "规律：能量单向，物质循环"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立思考：为什么食物链一般不超过四到五个营养级？因为每经过一级都有大量能量散失，越往后能量越少，不足以维持更多生物。请选一选理由。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "食物链长度有限"
+          },
+          {
+            "kind": "bullet",
+            "content": "能量逐级递减"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "一个生态系统的能量金字塔中，最高层营养级的能量为什么最少？",
+          "options": [
+            "A. 最高营养级个体数量最少",
+            "B. 流动中大部分能量以热的形式散失",
+            "C. 最高营养级不摄食",
+            "D. 分解者抢走了能量"
+          ],
+          "answerIndex": 1,
+          "explanation": "能量在每一营养级流动时，大部分通过呼吸作用以热能散失掉，只有 10%–20% 传递给下一营养级，所以越高级获得的能量越少，选 B。"
+        }
+      },
+      {
+        "narration": "今天我们认识了生态系统的组成和能量流动规律。能量单向流动，物质循环往复，构成了生态系统的动态平衡。下一节课我们研究生态系统的稳定性。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "组成：非生物 + 生产、消费、分解"
+          },
+          {
+            "kind": "bullet",
+            "content": "能量单向流动，逐级递减"
+          },
+          {
+            "kind": "answer",
+            "content": "保护生态就是保护未来"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "biology",
+    "grade": 12,
+    "topic": "现代生物技术",
+    "objectives": [
+      "了解基因工程的基本原理",
+      "举例说明转基因技术和克隆技术的应用"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！人类能不能像拼积木一样拼接基因？能不能复制一只和原来一模一样的羊？这些不再是幻想，而是现代生物技术已经实现的事情。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "现代生物技术"
+          },
+          {
+            "kind": "text",
+            "content": "改造生命的工程师"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "基因工程的核心是按照人们的意愿，把一种生物的基因转移到另一种生物体内。这种技术叫转基因技术。得到新性状的生物叫转基因生物。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "基因工程：定向改造生物"
+          },
+          {
+            "kind": "bullet",
+            "content": "工具酶：限制酶、DNA 连接酶"
+          },
+          {
+            "kind": "bullet",
+            "content": "运载体：质粒、病毒"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "克隆技术能复制出基因组成完全相同的新个体。多利羊是世界上第一只克隆哺乳动物，它由一只乳腺细胞的细胞核移植到去核卵细胞中发育而来。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "克隆技术"
+          },
+          {
+            "kind": "formula",
+            "content": "体细胞核 → 去核卵细胞 → 重组细胞 → 新个体"
+          },
+          {
+            "kind": "bullet",
+            "content": "遗传物质与供核细胞一致"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "克隆羊多利的遗传物质主要来自哪只羊？",
+          "options": [
+            "A. 提供去核卵细胞的母羊",
+            "B. 提供体细胞核的母羊",
+            "C. 代孕母羊",
+            "D. 三只羊各贡献 1/3"
+          ],
+          "answerIndex": 1,
+          "explanation": "克隆羊的细胞核来自提供体细胞核的母羊，遗传物质主要存在于细胞核中，所以多利与这只母羊遗传物质基本一致，选 B。"
+        }
+      },
+      {
+        "narration": "易错点提醒：转基因和杂交育种不同。杂交是同种或近缘种间基因的天然重组，转基因可以跨物种转移基因。另外，并非所有转基因食品都不安全，需要具体分析。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：转基因等于杂交"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：所有转基因食品都不安全"
+          },
+          {
+            "kind": "bullet",
+            "content": "原则：科学评估，依法监管"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立思考：科学家把抗虫基因转入棉花，棉铃虫吃了这种棉花会怎样？这种棉花的推广对环境有什么意义？",
+        "board": [
+          {
+            "kind": "text",
+            "content": "转基因抗虫棉"
+          },
+          {
+            "kind": "bullet",
+            "content": "抗虫基因：来自苏云金芽孢杆菌"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "推广转基因抗虫棉最主要的生态意义是？",
+          "options": [
+            "A. 提高棉花颜色",
+            "B. 减少农药使用，保护环境",
+            "C. 让棉花更甜",
+            "D. 增加棉铃虫数量"
+          ],
+          "answerIndex": 1,
+          "explanation": "转基因抗虫棉自身能合成抗虫蛋白，棉铃虫吃了会死亡，可大幅减少农药喷洒，从而减轻环境污染，选 B。抗虫棉并不会让棉花变甜，也不会增加害虫数量。"
+        }
+      },
+      {
+        "narration": "今天我们学习了基因工程和克隆技术。生物技术正在改变我们的生活，但也要遵守伦理和安全的底线。下一节课我们去了解生物技术的最新进展。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "基因工程：定向改造遗传性状"
+          },
+          {
+            "kind": "bullet",
+            "content": "克隆：无性繁殖复制个体"
+          },
+          {
+            "kind": "answer",
+            "content": "科技让生活更美好"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "physics",
+    "grade": 8,
+    "topic": "力与运动",
+    "objectives": [
+      "理解牛顿第一定律",
+      "能区分惯性和力对运动的影响"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！汽车紧急刹车时，我们身体会向前倾；奔跑时脚被石头绊住，身体会摔倒。这些现象背后，是物体保持原有运动状态的本能——惯性。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "力与运动"
+          },
+          {
+            "kind": "text",
+            "content": "牛顿第一定律"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "牛顿第一定律：一切物体在没有受到外力作用时，总保持静止状态或匀速直线运动状态。这一定律也叫做惯性定律。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "牛顿第一定律"
+          },
+          {
+            "kind": "formula",
+            "content": "F合 = 0 时，物体保持静止或匀速直线运动"
+          },
+          {
+            "kind": "bullet",
+            "content": "物体保持原有运动状态的性质叫惯性"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们来做一个思想实验。如果表面绝对光滑，没有任何摩擦力，一个小球以一定速度滑出去会怎样？伽利略认为它将永远做匀速直线运动，这就是牛顿第一定律的雏形。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "理想实验"
+          },
+          {
+            "kind": "formula",
+            "content": "光滑面 → 匀速直线运动 → 永远"
+          },
+          {
+            "kind": "bullet",
+            "content": "力是改变运动状态的原因"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "牛顿第一定律的内容是？",
+          "options": [
+            "A. 物体受力越大速度越大",
+            "B. 物体不受力时保持静止或匀速直线运动",
+            "C. 力是维持运动的原因",
+            "D. 速度越快惯性越大"
+          ],
+          "answerIndex": 1,
+          "explanation": "牛顿第一定律指出物体不受外力时保持静止或匀速直线运动状态，所以选 B。力是改变运动状态的原因，不是维持运动的原因。惯性大小与质量有关，与速度无关。"
+        }
+      },
+      {
+        "narration": "易错点提醒：惯性是物体的固有属性，一切物体都有惯性。惯性和力是两个完全不同的概念，不能说'受到惯性'或'受到惯性力'。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：物体才有惯性，力没有惯性"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：'克服惯性'是错误说法"
+          },
+          {
+            "kind": "bullet",
+            "content": "惯性与质量有关，与速度无关"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立思考：锤头松了，把锤柄在地面上磕几下，锤头就紧套在锤柄上了。这是为什么？这是利用了锤头的惯性。请选一选正确答案。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "锤柄磕地的现象"
+          },
+          {
+            "kind": "bullet",
+            "content": "锤柄受阻停下，锤头继续向下运动"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "锤头松了时，锤柄在地面上磕几下，锤头就紧套在锤柄上。这是利用了？",
+          "options": [
+            "A. 锤头的重力",
+            "B. 锤头的惯性",
+            "C. 锤柄的弹力",
+            "D. 空气的阻力"
+          ],
+          "answerIndex": 1,
+          "explanation": "锤柄被地面突然阻止，锤头由于具有惯性，要保持原来向下的运动状态，所以继续向下运动紧套在锤柄上。选 B。"
+        }
+      },
+      {
+        "narration": "今天我们学习了牛顿第一定律，理解了惯性的含义。下一节课我们将研究力怎样改变物体的运动——牛顿第二定律。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "牛顿第一定律也叫惯性定律"
+          },
+          {
+            "kind": "bullet",
+            "content": "惯性是物体固有属性"
+          },
+          {
+            "kind": "answer",
+            "content": "理解惯性，安全出行"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "physics",
+    "grade": 9,
+    "topic": "压强与浮力",
+    "objectives": [
+      "理解压强的概念和计算",
+      "掌握阿基米德原理"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！书包带为什么做得又宽又软？锋利的刀刃为什么要磨得很薄？这些看似不相干的问题，背后都有同一个概念——压强。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "压强与浮力"
+          },
+          {
+            "kind": "text",
+            "content": "看不见的力"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "压强是单位面积上受到的压力。它等于压力除以受力面积。压强公式是 p = F / S，p 单位是帕斯卡，简称帕。在压力一定时，增大受力面积可以减小压强。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "压强公式"
+          },
+          {
+            "kind": "formula",
+            "content": "p = F / S"
+          },
+          {
+            "kind": "bullet",
+            "content": "F：压力，单位 N；S：面积，单位 m²"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "浮力是液体对浸在其中的物体产生的向上的托力。阿基米德原理告诉我们：浸在液体中的物体受到的浮力等于它排开液体的重力。用公式表示是 F浮 = ρ液 g V排。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "阿基米德原理"
+          },
+          {
+            "kind": "formula",
+            "content": "F浮 = ρ液 × g × V排"
+          },
+          {
+            "kind": "bullet",
+            "content": "浮力大小只与液体密度和排开体积有关"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "浸在液体中的物体受到的浮力大小等于？",
+          "options": [
+            "A. 物体的重力",
+            "B. 物体排开液体的重力",
+            "C. 物体的体积",
+            "D. 液体的质量"
+          ],
+          "answerIndex": 1,
+          "explanation": "阿基米德原理指出浮力等于物体排开液体所受的重力，即 F浮 = G排液，所以选 B。物体自身的重力、排开液体的体积都不能直接等于浮力。"
+        }
+      },
+      {
+        "narration": "易错点提醒：浮力大小与物体浸没的深度无关。同一个物体全部浸没后，无论深浅，排开液体的体积都一样，浮力相同。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：浮力大小与浸没深度有关"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：重的物体一定下沉"
+          },
+          {
+            "kind": "bullet",
+            "content": "决定因素：ρ液和 V排"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立思考：把同一个铁球先后放入水和盐水中，铁球都沉底，哪种液体中铁球受到的浮力更大？为什么？",
+        "board": [
+          {
+            "kind": "text",
+            "content": "铁球在水中和盐水中"
+          },
+          {
+            "kind": "bullet",
+            "content": "盐水密度大于水"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "把同一个铁块先后浸没在水中和盐水中静止时所受浮力比较？",
+          "options": [
+            "A. 在水中浮力更大",
+            "B. 在盐水中浮力更大",
+            "C. 两次浮力相等",
+            "D. 取决于铁块密度"
+          ],
+          "answerIndex": 1,
+          "explanation": "铁块都浸没，V排相同；盐水密度大于水的密度，由 F浮 = ρ液 g V排 知浮力在盐水中更大，选 B。"
+        }
+      },
+      {
+        "narration": "今天我们学习了压强和浮力。压强 p = F / S 告诉我们压力相同时受力面积越小压强越大；浮力 F = ρgV 告诉我们物体在液体中受到的浮力等于它排开液体的重力。阿基米德原理告诉我们物体在流体中所受浮力等于其排开流体的重量，这是浮力的核心。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "p = F / S"
+          },
+          {
+            "kind": "bullet",
+            "content": "F浮 = ρ液 g V排"
+          },
+          {
+            "kind": "answer",
+            "content": "浮力让船舶航行"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "physics",
+    "grade": 10,
+    "topic": "功和能 / 动能定理",
+    "objectives": [
+      "理解功、功率和能的概念",
+      "掌握动能定理的应用"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！人提着一桶水站立不动，他累不累？算不算做功？今天我们就来弄清物理中'做功'的含义，并一起走进动能的世界。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "功和能 / 动能定理"
+          },
+          {
+            "kind": "text",
+            "content": "力学世界的宝藏"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "功等于力乘以力的方向上移动的距离。公式是 W = Fs cosθ，当力和位移方向相同时 cosθ = 1。功的单位是焦耳。功率表示做功的快慢，P = W / t。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "功与功率"
+          },
+          {
+            "kind": "formula",
+            "content": "W = F s cosθ"
+          },
+          {
+            "kind": "formula",
+            "content": "P = W / t"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "物体由于运动而具有的能量叫动能。质量越大、速度越大，动能越大。动能定理指出：合外力对物体做的功等于物体动能的变化。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "动能概念"
+          },
+          {
+            "kind": "formula",
+            "content": "Ek = ½ m v²"
+          },
+          {
+            "kind": "formula",
+            "content": "W合 = ΔEk = ½ m v₂² − ½ m v₁²"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "关于动能，下列说法正确的是？",
+          "options": [
+            "A. 速度为零的物体一定没有动能",
+            "B. 质量大的物体动能一定大",
+            "C. 动能与质量和速度都有关",
+            "D. 动能是矢量"
+          ],
+          "answerIndex": 2,
+          "explanation": "动能公式 Ek = ½ m v²，质量越大、速度越大动能越大，所以动能与两者都有关，选 C。速度为零时动能为零，但前提是质量也确定。动能是标量不是矢量。"
+        }
+      },
+      {
+        "narration": "易错点提醒：人提桶不动，力的方向有位移吗？位移为零，所以 W = 0，不做功。还有一种情况：力与位移垂直时也不做功，例如人提桶水平走路。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：有力有距离一定做功"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：力垂直于位移也做功"
+          },
+          {
+            "kind": "bullet",
+            "content": "做功条件：有力、有位移、力与位移不垂直"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立思考：质量相同的两辆汽车，一辆以 10 m/s 行驶，另一辆以 20 m/s 行驶。当它们同时紧急刹车时，哪辆更难停下来？为什么？",
+        "board": [
+          {
+            "kind": "text",
+            "content": "动能与速度的关系"
+          },
+          {
+            "kind": "bullet",
+            "content": "速度翻倍，动能变为 4 倍"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "两辆相同质量的小车，速度分别为 10 m/s 和 20 m/s，急刹车时哪个更困难？",
+          "options": [
+            "A. 10 m/s 的车更难停",
+            "B. 20 m/s 的车更难停",
+            "C. 一样困难",
+            "D. 取决于刹车颜色"
+          ],
+          "answerIndex": 1,
+          "explanation": "由 Ek = ½ m v²，速度翻倍动能变为原来的 4 倍，需要做的功更多，所以 20 m/s 的车更难停下来，选 B。"
+        }
+      },
+      {
+        "narration": "今天我们学习了功、功率和动能定理。功能关系是力学的核心。下一节课我们去研究动量守恒定律。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "W = F s cosθ"
+          },
+          {
+            "kind": "bullet",
+            "content": "动能定理：W合 = ΔEk"
+          },
+          {
+            "kind": "answer",
+            "content": "功能关系是力学灵魂"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "physics",
+    "grade": 11,
+    "topic": "电磁感应",
+    "objectives": [
+      "理解电磁感应现象",
+      "掌握法拉第电磁感应定律"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！我们用电池让灯泡发光，是电流产生磁场。那么反过来，磁场能不能产生电流？法拉第给了我们答案——这就是电磁感应。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "电磁感应"
+          },
+          {
+            "kind": "text",
+            "content": "磁生电的奇迹"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "电磁感应：穿过闭合导体回路的磁通量发生变化时，回路中就会产生感应电流。这种现象叫电磁感应，产生的电流叫感应电流。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "电磁感应现象"
+          },
+          {
+            "kind": "bullet",
+            "content": "条件：闭合回路 + 磁通量变化"
+          },
+          {
+            "kind": "bullet",
+            "content": "结果：回路中产生感应电流"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "法拉第电磁感应定律指出：闭合回路中感应电动势的大小，跟穿过这一回路的磁通量的变化率成正比。公式 E = n ΔΦ/Δt。发电机就是利用这一原理制造的。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "法拉第定律"
+          },
+          {
+            "kind": "formula",
+            "content": "E = n × ΔΦ / Δt"
+          },
+          {
+            "kind": "bullet",
+            "content": "感应电流方向由楞次定律判断"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "下列哪种情况能产生感应电流？",
+          "options": [
+            "A. 导体在匀强磁场中静止",
+            "B. 磁通量不变化的闭合回路",
+            "C. 闭合回路中磁通量发生变化",
+            "D. 断开回路"
+          ],
+          "answerIndex": 2,
+          "explanation": "产生感应电流的条件是闭合回路中磁通量发生变化，所以选 C。导体在匀强磁场中静止没有相对运动，磁通量不变，无感应电流。断开回路也不能产生持续感应电流。"
+        }
+      },
+      {
+        "narration": "易错点提醒：感应电流的方向由楞次定律判断——感应电流的磁场总要阻碍引起它的磁通量的变化。同学们要区分'变化'和'有没有'，感应电流是变化引起的。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：只要有磁通量就有感应电流"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：感应电流方向由右手定则决定"
+          },
+          {
+            "kind": "bullet",
+            "content": "判断：楞次定律看变化趋势"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立思考：为什么把磁铁快速插入线圈比慢慢插入产生的感应电流更大？提示：从磁通量变化率的角度分析。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "磁铁插入线圈实验"
+          },
+          {
+            "kind": "bullet",
+            "content": "快插：变化率大"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "把条形磁铁以相同方向快速和缓慢插入同一线圈，比较感应电动势？",
+          "options": [
+            "A. 缓慢插入更大",
+            "B. 快速插入更大",
+            "C. 两者一样",
+            "D. 取决于磁铁颜色"
+          ],
+          "answerIndex": 1,
+          "explanation": "感应电动势 E = n ΔΦ/Δt，快速插入时磁通量变化率更大，所以感应电动势和感应电流都更大，选 B。"
+        }
+      },
+      {
+        "narration": "今天我们学习了电磁感应和法拉第定律。电磁感应让我们用机械能获得了电能，发电机的出现彻底改变了世界。下一节课我们去学习交流电。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "条件：闭合 + 磁通量变化"
+          },
+          {
+            "kind": "bullet",
+            "content": "E = n ΔΦ/Δt"
+          },
+          {
+            "kind": "answer",
+            "content": "电磁感应让世界亮起来"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "physics",
+    "grade": 12,
+    "topic": "原子物理入门",
+    "objectives": [
+      "了解原子结构模型的演变",
+      "理解能级和原子光谱的概念"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！原子是化学中的最小单位，但物理学家说原子还可以再分。今天我们一起走进原子的内部，看看电子、原子核和能级的奥秘。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "原子物理入门"
+          },
+          {
+            "kind": "text",
+            "content": "看不见的微观世界"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "汤姆孙发现电子后，人们知道了原子有复杂结构。卢瑟福的α粒子散射实验证明原子中心有一个体积很小、质量很大的核，叫原子核。后来玻尔引入能级概念，建立了玻尔原子模型。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "原子模型的演变"
+          },
+          {
+            "kind": "bullet",
+            "content": "汤姆孙：枣糕模型"
+          },
+          {
+            "kind": "bullet",
+            "content": "卢瑟福：核式结构模型"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "玻尔提出：电子只能在某些特定的轨道上运动，这些轨道对应的能量值叫能级。电子从高能级跃迁到低能级时，会以光子形式放出能量。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "能级和跃迁"
+          },
+          {
+            "kind": "formula",
+            "content": "E光子 = E初 − E末"
+          },
+          {
+            "kind": "bullet",
+            "content": "吸收能量：电子从低能级跃迁到高能级"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "玻尔原子模型中，电子从一个能级跃迁到另一个能级时，下列说法正确的是？",
+          "options": [
+            "A. 一定放出光子",
+            "B. 一定吸收光子",
+            "C. 高能级到低能级放出光子",
+            "D. 与能级无关"
+          ],
+          "answerIndex": 2,
+          "explanation": "电子从高能级跃迁到低能级时，多余能量以光子形式放出；从低能级跃迁到高能级时需要吸收光子。所以选 C，表述最准确。"
+        }
+      },
+      {
+        "narration": "易错点提醒：玻尔模型虽然成功解释了氢原子光谱，但与经典电磁理论有矛盾。同学们要认识到它是一个过渡性的模型，后来被量子力学取代。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：玻尔模型是终极真理"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：原子可以连续吸收能量"
+          },
+          {
+            "kind": "bullet",
+            "content": "能级是量子化的，不连续"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你判断：氢原子电子从 n=3 跃迁到 n=2 时发出的光是？根据玻尔模型，电子从高能级跃迁到低能级时发出光子，光子能量等于两能级能量差。n=3 → n=2 属于巴尔末系，可见光，频率较高，是红光。这个规律在光谱分析中很重要。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "氢原子能级跃迁"
+          },
+          {
+            "kind": "bullet",
+            "content": "n=3 → n=2：可见光巴尔末系"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "氢原子中电子从 n=3 能级跃迁到 n=2 能级时辐射的光子属于？",
+          "options": [
+            "A. 红外线",
+            "B. 可见光（红光）",
+            "C. 紫外线",
+            "D. X 射线"
+          ],
+          "answerIndex": 1,
+          "explanation": "氢原子从 n=3 → n=2 跃迁对应的谱线属于巴尔末系，能量差较小，辐射的是可见光（红光），选 B。莱曼系才是紫外线。"
+        }
+      },
+      {
+        "narration": "今天我们学习了原子物理的入门知识。人类对微观世界的认识，正在一步步走向更深的层次。下一节课我们继续探讨原子核的衰变。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "原子核式结构"
+          },
+          {
+            "kind": "bullet",
+            "content": "能级跃迁决定光谱"
+          },
+          {
+            "kind": "answer",
+            "content": "探索微观，永无止境"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "chemistry",
+    "grade": 9,
+    "topic": "物质的分类与化学反应",
+    "objectives": [
+      "区分纯净物和混合物、单质和化合物",
+      "识别化合反应、分解反应等基本反应类型"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！一杯糖水是几种物质？水蒸气能被分解吗？今天我们学习化学的基本语言——物质的分类和化学反应类型。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "物质的分类与化学反应"
+          },
+          {
+            "kind": "text",
+            "content": "化学的语言"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "物质分为混合物和纯净物。混合物由多种物质组成，例如空气、糖水。纯净物只含一种物质，又分单质和化合物。只由一种元素组成的纯净物是单质。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "物质的分类"
+          },
+          {
+            "kind": "bullet",
+            "content": "单质：同种元素组成，如 O₂、Fe"
+          },
+          {
+            "kind": "bullet",
+            "content": "化合物：不同元素组成，如 H₂O"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "化学反应有四种基本类型。化合反应多变少：多变一；分解反应一变多；置换反应是单质加化合物生成新单质和化合物；复分解反应是两种化合物互相交换成分。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "四种基本反应类型"
+          },
+          {
+            "kind": "formula",
+            "content": "化合：多变一"
+          },
+          {
+            "kind": "formula",
+            "content": "分解：一变多"
+          },
+          {
+            "kind": "formula",
+            "content": "置换：单+化 → 新单+新化"
+          },
+          {
+            "kind": "formula",
+            "content": "复分解：化+化 → 化+化"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "下列反应中属于分解反应的是？",
+          "options": [
+            "A. 2H₂ + O₂ → 2H₂O",
+            "B. CaCO₃ → CaO + CO₂↑",
+            "C. Fe + CuSO₄ → FeSO₄ + Cu",
+            "D. NaOH + HCl → NaCl + H₂O"
+          ],
+          "answerIndex": 1,
+          "explanation": "分解反应的特点是'一变多'。CaCO₃ 在高温下分解为 CaO 和 CO₂，正好是一种反应物生成两种产物，所以选 B。"
+        }
+      },
+      {
+        "narration": "易错点提醒：判断单质要看是不是纯净物。氧气是单质，但空气含氧气和其他气体就是混合物。糖水和铁粉混在一起，铁粉还是铁，但糖水本身是混合物。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：含某元素的物质不一定是单质"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：反应类型只看产物不看形式"
+          },
+          {
+            "kind": "bullet",
+            "content": "口诀：先分纯净混合，再分单质化合物"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立判断：二氧化碳由碳和氧两种元素组成，它是单质还是化合物？氯酸钾分解生成氯化钾和氧气，它属于什么反应类型？",
+        "board": [
+          {
+            "kind": "text",
+            "content": "分析物质和反应"
+          },
+          {
+            "kind": "bullet",
+            "content": "CO₂：含 C 和 O 两种元素"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "下列说法正确的是？",
+          "options": [
+            "A. 含氧元素的物质都是氧化物",
+            "B. 化合物一定含有两种或两种以上元素",
+            "C. 空气是纯净物",
+            "D. 冰水混合物是混合物"
+          ],
+          "answerIndex": 1,
+          "explanation": "化合物由不同种元素组成，所以至少两种元素，选 B。含氧元素的物质不一定是氧化物，如 O₂、KMnO₄ 等。空气是混合物，冰和水是同一种物质 H₂O，是纯净物。"
+        }
+      },
+      {
+        "narration": "今天我们学习了物质的分类和四种基本反应类型。下一节课我们将深入研究一类重要的反应——氧化还原反应。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "纯净物分单质和化合物"
+          },
+          {
+            "kind": "bullet",
+            "content": "四种基本反应类型"
+          },
+          {
+            "kind": "answer",
+            "content": "分类让化学更清晰"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "chemistry",
+    "grade": 10,
+    "topic": "氧化还原反应",
+    "objectives": [
+      "理解氧化反应和还原反应同时发生",
+      "判断氧化剂、还原剂和元素化合价变化"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！铁为什么会生锈？木炭为什么能在氧气中燃烧？这些现象都涉及一类重要反应——氧化还原反应。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "氧化还原反应"
+          },
+          {
+            "kind": "text",
+            "content": "化学中的电子之舞"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "氧化还原反应的本质是电子的转移。物质失去电子叫被氧化，是还原剂；得到电子叫被还原，是氧化剂。元素化合价升高被氧化，化合价降低被还原。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "氧化还原反应概念"
+          },
+          {
+            "kind": "bullet",
+            "content": "氧化：失电子，化合价升高"
+          },
+          {
+            "kind": "bullet",
+            "content": "还原：得电子，化合价降低"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们看一个经典反应：2Cu + O₂ → 2CuO。铜失去电子变成 +2 价，化合价升高，被氧化。氧气得到电子，化合价从 0 降到 -2，被还原。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "2Cu + O₂ → 2CuO"
+          },
+          {
+            "kind": "formula",
+            "content": "Cu：0 → +2（升高，被氧化）"
+          },
+          {
+            "kind": "formula",
+            "content": "O：0 → -2（降低，被还原）"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "在反应 2H₂ + O₂ → 2H₂O 中，氧气的作用是？",
+          "options": [
+            "A. 还原剂",
+            "B. 氧化剂",
+            "C. 催化剂",
+            "D. 既不氧化也不还原"
+          ],
+          "answerIndex": 1,
+          "explanation": "氧化还原反应的本质是电子转移。化合价升高的一侧失电子被氧化，化合价降低的一侧得电子被还原。反应中一定有元素化合价变化，否则不是氧化还原反应。氧化与还原同时发生，缺一不可。"
+        }
+      },
+      {
+        "narration": "易错点提醒：氧化和还原一定同时发生。一个反应中有元素化合价升高，就必然有元素化合价降低。'被氧化'和'是还原剂'说的是同一物质的两面。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：氧化还原反应只涉及一种物质"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：氧化剂被氧化"
+          },
+          {
+            "kind": "bullet",
+            "content": "口诀：升失氧，降得还"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你判断：Fe + CuSO₄ → FeSO₄ + Cu 这个反应中铁发生了什么变化？铁从 0 价升到 +2 价，失去 2 个电子，被氧化；铜从 +2 价降到 0 价，得到 2 个电子，被还原。判断关键是看反应前后元素化合价的变化。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "Zn + 2HCl → ZnCl₂ + H₂↑"
+          },
+          {
+            "kind": "bullet",
+            "content": "Zn：化合价升高"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "在反应 Zn + 2HCl → ZnCl₂ + H₂↑ 中，下列判断正确的是？",
+          "options": [
+            "A. Zn 是氧化剂",
+            "B. HCl 是还原剂",
+            "C. Zn 是还原剂",
+            "D. H₂ 是还原剂"
+          ],
+          "answerIndex": 2,
+          "explanation": "Fe 单质从 0 价升到 +2 价，失去电子被氧化，是还原剂。A 把氧化还原剂角色记反；C 错把铜当作还原剂；D 误以为化合价不变。"
+        }
+      },
+      {
+        "narration": "今天我们学习了氧化还原反应的本质和判断方法。氧化还原是化学中最普遍的反应之一。下一节课我们继续研究有机化学。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "本质：电子转移"
+          },
+          {
+            "kind": "bullet",
+            "content": "判断：化合价变化"
+          },
+          {
+            "kind": "answer",
+            "content": "氧化还原，世界更新"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "chemistry",
+    "grade": 11,
+    "topic": "有机化学基础",
+    "objectives": [
+      "认识甲烷、乙烯等代表性烃",
+      "理解烃和烃的衍生物的概念"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！天然气里有什么？塑料袋是用什么做的？这些都与有机化学有关。今天我们走进有机物的世界，从最简单的烃开始。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "有机化学基础"
+          },
+          {
+            "kind": "text",
+            "content": "碳的化合物世界"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "有机化合物都含碳元素，绝大多数还含氢。含碳氢的化合物叫烃。最简单的烃是甲烷 CH₄。甲烷是无色无味的气体，燃烧时放出大量热，是天然气的主要成分。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "烃的概念"
+          },
+          {
+            "kind": "formula",
+            "content": "CH₄：甲烷，天然气主成分"
+          },
+          {
+            "kind": "bullet",
+            "content": "烃只含 C 和 H 两种元素"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "乙烯 C₂H₄ 是另一种重要烃。它的分子中含碳碳双键，化学性质比甲烷活泼，能使酸性高锰酸钾溶液褪色。乙烯是重要的化工原料，植物激素里也有它。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "乙烯 C₂H₄"
+          },
+          {
+            "kind": "bullet",
+            "content": "含碳碳双键，化学性质活泼"
+          },
+          {
+            "kind": "bullet",
+            "content": "用途：果实催熟、化工原料"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "下列关于乙烯 C₂H₄ 性质的描述正确的是？",
+          "options": [
+            "A. 不能使高锰酸钾褪色",
+            "B. 含碳碳双键，化学性质较活泼",
+            "C. 是烷烃的代表",
+            "D. 常温下是固体"
+          ],
+          "answerIndex": 1,
+          "explanation": "乙烯分子中含碳碳双键，化学性质较活泼，能使酸性高锰酸钾溶液褪色，常温下是气体。甲烷才是烷烃代表。选 B。"
+        }
+      },
+      {
+        "narration": "易错点提醒：含碳化合物不一定都是有机物。例如 CO、CO₂、Na₂CO₃ 含碳但属于无机物。判断有机物的关键不是有没有碳，而是看它的结构和性质。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：含碳就是有机物"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：有机物都易燃烧"
+          },
+          {
+            "kind": "bullet",
+            "content": "特例：CO、CO₂、碳酸盐属无机物"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你判断：CH₃CH₂OH 属于哪类有机物？它含有羟基 (−OH)，所以是醇类。烃的衍生物中含羟基的统称为醇，苯环上直接连羟基的是酚。注意区分醇和酚，它们的化学性质有显著差别。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "乙醇 C₂H₅OH"
+          },
+          {
+            "kind": "bullet",
+            "content": "含氧，不是烃"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "下列关于乙醇的说法正确的是？",
+          "options": [
+            "A. 乙醇是烃",
+            "B. 乙醇分子中含氧原子",
+            "C. 乙醇不能燃烧",
+            "D. 乙醇常温下是固体"
+          ],
+          "answerIndex": 1,
+          "explanation": "乙醇分子式 C₂H₅OH 含氧原子，不属于烃；它易燃烧，常温下是无色液体，能用作燃料和消毒剂。选 B。"
+        }
+      },
+      {
+        "narration": "今天我们学习了有机化学的基础知识，认识了几种典型烃。下一节课我们继续研究烃的衍生物，比如醇、醛、羧酸。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "烃只含 C 和 H"
+          },
+          {
+            "kind": "bullet",
+            "content": "代表：甲烷、乙烯"
+          },
+          {
+            "kind": "answer",
+            "content": "有机世界，无限可能"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "chemistry",
+    "grade": 12,
+    "topic": "化学平衡与反应速率",
+    "objectives": [
+      "理解化学平衡是动态平衡",
+      "掌握影响化学反应速率的因素"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！为什么糖放在水中会慢慢溶解？为什么有些反应进行到一定程度就'停'了？这些都涉及化学平衡和反应速率的奥秘。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "化学平衡与反应速率"
+          },
+          {
+            "kind": "text",
+            "content": "化学反应的节奏与限度"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "化学反应速率表示反应进行的快慢。单位时间里反应物浓度的减少或生成物浓度的增加，就是反应速率。影响速率的因素有浓度、温度、催化剂和接触面积。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "化学反应速率"
+          },
+          {
+            "kind": "bullet",
+            "content": "v = Δc / Δt"
+          },
+          {
+            "kind": "bullet",
+            "content": "影响因素：浓度、温度、催化剂、接触面积"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "在一定条件下，可逆反应的正反应和逆反应速率相等时，反应物和生成物的浓度不再变化，这种状态叫化学平衡。化学平衡是一种动态平衡。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "化学平衡"
+          },
+          {
+            "kind": "formula",
+            "content": "v正 = v逆 ≠ 0"
+          },
+          {
+            "kind": "bullet",
+            "content": "动态平衡：表面静止，实质仍在反应"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "下列关于化学平衡的描述正确的是？",
+          "options": [
+            "A. 化学平衡时反应完全停止",
+            "B. 化学平衡是动态平衡",
+            "C. 化学平衡时各物质浓度相等",
+            "D. 化学平衡只能从正向达到"
+          ],
+          "answerIndex": 1,
+          "explanation": "化学平衡时正逆反应速率相等但不为零，是动态平衡，各物质浓度保持不变但不一定相等，且可从正逆任一方向建立。选 B。"
+        }
+      },
+      {
+        "narration": "易错点提醒：化学平衡时反应没有停止，只是正逆反应速率相等，看上去浓度不变。改变温度、压强、浓度等条件，平衡会发生移动，勒夏特列原理就是描述这种移动规律的。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：平衡时反应停止"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：催化剂能改变化学平衡"
+          },
+          {
+            "kind": "bullet",
+            "content": "勒夏特列原理：平衡向减弱变化方向移动"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立思考：合成氨反应中，升温会提高反应速率，但同时平衡向逆反应方向移动。在工业生产中我们怎么平衡这种矛盾？",
+        "board": [
+          {
+            "kind": "text",
+            "content": "合成氨反应"
+          },
+          {
+            "kind": "bullet",
+            "content": "N₂ + 3H₂ ⇌ 2NH₃"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "对于放热可逆反应，升高温度时，下列说法正确的是？",
+          "options": [
+            "A. 平衡正向移动，速率一定变快",
+            "B. 平衡逆向移动，但速率一定变慢",
+            "C. 平衡逆向移动，速率变快",
+            "D. 平衡不移动，速率变快"
+          ],
+          "answerIndex": 2,
+          "explanation": "升高温度，正逆反应速率都加快；放热反应升温时平衡逆向移动。所以选 C，速率变快但平衡逆移。"
+        }
+      },
+      {
+        "narration": "今天我们学习了化学反应速率和化学平衡。这些是化学反应原理的核心。下一节课我们将研究电解质溶液中的离子平衡。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "速率 v = Δc/Δt"
+          },
+          {
+            "kind": "bullet",
+            "content": "化学平衡是动态平衡"
+          },
+          {
+            "kind": "answer",
+            "content": "把握速率，调控平衡"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  }
+]

@@ -20,8 +20,11 @@ struct StudyCommands: Commands {
         CommandMenu("学习") {
             Button("拍照解题") { router.present(.capture(.solve)) }
                 .keyboardShortcut("n", modifiers: .command)
-            Button("作业批改") { router.present(.capture(.grade)) }
+            Button("作业批改") { router.openTool(.gradeWorkbook, regular: true) }
                 .keyboardShortcut("g", modifiers: [.command, .shift])
+            Button("口算批改") { router.present(.capture(.grade)) }
+            Button("题库") { router.openTool(.questionBank, regular: true) }
+                .keyboardShortcut("b", modifiers: [.command, .shift])
 
             Divider()
 

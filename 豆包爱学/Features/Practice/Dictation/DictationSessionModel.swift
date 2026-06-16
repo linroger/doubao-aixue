@@ -335,7 +335,7 @@ final class DictationSessionModel {
             item.mastery = .new
             modelContext.insert(item)
         }
-        try? modelContext.save()
+        modelContext.saveLogging()
     }
 
     private func dictationPrompt(for word: String) -> String {

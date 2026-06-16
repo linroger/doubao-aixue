@@ -66,8 +66,8 @@ struct HomeView: View {
 
     /// Quick-entry tools surfaced on Home (deep-link into 工具 flows).
     private let quickTools: [ToolKind] = [
-        .solve, .gradeEssay, .mistakeNotebook, .dictation,
-        .vocabulary, .classroom, .knowledgeQA, .classical,
+        .solve, .gradeWorkbook, .mistakeNotebook, .questionBank,
+        .gradeEssay, .dictation, .vocabulary, .classroom,
     ]
 
     private var toolColumns: [GridItem] {

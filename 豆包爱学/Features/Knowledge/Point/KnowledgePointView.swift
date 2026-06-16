@@ -572,7 +572,7 @@ struct KnowledgePointView: View {
                          detail: section.body, math: section.math)
         }
         modelContext.insert(item)
-        try? modelContext.save()
+        modelContext.saveLogging()
         savedToMistakes = true
         HapticEngine.play(.success)
     }
@@ -592,7 +592,7 @@ struct KnowledgePointView: View {
         }
         record.consecutiveExplains += 1
         record.lastUpdated = Date()
-        try? modelContext.save()
+        modelContext.saveLogging()
     }
 }
 
@@ -652,7 +652,7 @@ enum KnowledgePreviewData {
         mastery.correctCount = 3
         context.insert(mastery)
 
-        try? context.save()
+        context.saveLogging()
         return container
     }()
 }

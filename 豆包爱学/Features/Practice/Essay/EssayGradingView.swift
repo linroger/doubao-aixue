@@ -31,11 +31,15 @@ struct EssayGradingView: View {
     @Environment(\.horizontalSizeClass) private var sizeClass
 
     @Query private var profiles: [LearnerProfile]
+    @Query private var parentControlsRows: [ParentControls]
 
     @State private var model = EssayGradingModel()
     @State private var photoSelection: PhotosPickerItem?
     @State private var isRecognizing = false
     @State private var didApplyDefaults = false
+    /// Set when the learner asks to reveal the model essay behind the parent gate;
+    /// the reveal then happens once a guardian actually verifies (see .onChange).
+    @State private var pendingModelEssayUnlock = false
 
     #if canImport(UIKit)
     @State private var showCamera = false
@@ -100,6 +104,14 @@ struct EssayGradingView: View {
         }
         .background(Color.dbBackground)
         .navigationTitle("作文批改")
+        .onChange(of: parentVerified) { _, verified in
+            // A guardian verified after the gate was requested → reveal now.
+            if verified, pendingModelEssayUnlock {
+                model.modelEssayUnlocked = true
+                pendingModelEssayUnlock = false
+                HapticEngine.play(.success)
+            }
+        }
         .onAppear(perform: applyDefaultsOnce)
         .task(id: photoSelection) { await loadSelectedPhoto() }
         #if canImport(UIKit)
@@ -406,6 +418,8 @@ struct EssayGradingView: View {
         if let data = try? await photoSelection.loadTransferable(type: Data.self) {
             let found = await model.ingest(imageData: data, using: ocr)
             HapticEngine.play(found ? .selection : .warning)
+        } else {
+            HapticEngine.play(.warning)
         }
     }
 
@@ -414,15 +428,23 @@ struct EssayGradingView: View {
         tts.speak(text, language: language)
     }
 
-    /// 范文/升格作文 reveal. With 学习模式 ON it's gated behind parent verification
-    /// so the app "coaches, doesn't write". Optimistically unlock on iOS where the
-    /// gate sheet confirms; on macOS the sheet is informational and we still unlock
-    /// after presenting so the flow is never dead-ended.
+    private var learnModeEnabled: Bool { profiles.first?.learnModeEnabled ?? true }
+    private var parentVerified: Bool { parentControlsRows.first?.verified ?? false }
+
+    /// 范文/升格作文 reveal. With 学习模式 ON this is gated behind real parent
+    /// verification so the app "coaches, doesn't write" — the reveal only happens
+    /// once `ParentControls.verified` is true (immediately if already verified or if
+    /// Learn Mode is off, otherwise after the guardian completes the gate). Presenting
+    /// the gate no longer unlocks on its own, closing the bypass.
     private func requestModelEssayUnlock() {
         guard !model.modelEssayUnlocked else { return }
         HapticEngine.play(.light)
+        if !learnModeEnabled || parentVerified {
+            model.modelEssayUnlocked = true
+            return
+        }
+        pendingModelEssayUnlock = true
         router.present(.parentGate(reason: "查看升格范文需要家长确认，避免直接照抄。"))
-        model.modelEssayUnlocked = true
     }
 
     /// 同类练手题: hand the prompt/topic to the tutor for a same-type writing drill.

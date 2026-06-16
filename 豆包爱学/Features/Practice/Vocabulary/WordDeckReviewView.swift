@@ -409,7 +409,7 @@ private struct FlashcardReviewSurface: View {
         card.repetitions = next.repetitions
         card.dueDate = next.dueDate
         card.mastery = SRSScheduler.mastery(forInterval: next.intervalDays)
-        try? modelContext.save()
+        modelContext.saveLogging()
 
         reviewedCount += 1
         HapticEngine.play(grade == .again ? .warning : .success)

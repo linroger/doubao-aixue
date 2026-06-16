@@ -65,9 +65,17 @@ nonisolated enum DrillAnswerChecker {
         if let na = Double(a), let nb = Double(b) {
             return abs(na - nb) < 0.0001
         }
-        // The expected answer often embeds the value in a sentence (e.g. "x = 3").
-        // Accept a typed bare value that appears as a standalone token.
-        return b.contains(a) && a.count >= max(1, b.count / 3)
+        // Multi-part answers (e.g. "x=5,y=10"): the typed answer must equal a WHOLE
+        // part, never a bare fragment ("10") that merely appears inside one.
+        let parts = b.split(whereSeparator: { ",;，；、".contains($0) }).map(String.init)
+        if parts.count > 1 {
+            return parts.contains(a)
+        }
+        // Single-part answer that embeds the value in a sentence (e.g. "x=3"): accept
+        // the bare value only when it equals a standalone token (split on relations /
+        // operators), so "3" matches "x=3" but "10" never matches "y10" by substring.
+        let tokens = b.split(whereSeparator: { "=≈<>+-*/():：".contains($0) }).map(String.init)
+        return tokens.contains(a)
     }
 
     static func normalize(_ s: String) -> String {
@@ -385,7 +393,7 @@ final class DrillModel {
             context.insert(attempt)
         }
 
-        try? context.save()
+        context.saveLogging()
         saved = true
     }
 

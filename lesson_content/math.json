@@ -1,0 +1,1686 @@
+[
+  {
+    "subject": "math",
+    "grade": 1,
+    "topic": "10以内加减法",
+    "objectives": [
+      "理解 10 以内加法和减法的实际意义",
+      "能熟练口算 10 以内的加减法并能看图列式"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！小兔子去地里拔萝卜，它上午拔了 3 个，下午又拔了 2 个，一共有多少个萝卜呢？这就是我们今天要学的 10 以内加法。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "10 以内加减法"
+          },
+          {
+            "kind": "text",
+            "content": "上午 3 个 + 下午 2 个 = ?"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们用小圆点来想：3 个加 2 个，合起来一共 5 个。写成算式就是 3 + 2 = 5。符号 + 叫加号，表示把两部分合起来；等号后面是结果。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "3 + 2 = 5"
+          },
+          {
+            "kind": "formula",
+            "content": "○ + ○○ = ○○○○○"
+          },
+          {
+            "kind": "bullet",
+            "content": "加号 + 表示合并"
+          },
+          {
+            "kind": "bullet",
+            "content": "减号 − 表示拿走或剩下"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "反过来看：篮子里原来有 5 个萝卜，吃掉 2 个，还剩几个？我们用 5 − 2 = 3 来表示。减法就是从总数里去掉一部分，求剩下多少。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "试一试：5 − 2 = ?"
+          },
+          {
+            "kind": "formula",
+            "content": "5 − 2 = 3"
+          },
+          {
+            "kind": "bullet",
+            "content": "减法：从总数中拿走一部分"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "树上有 4 只小鸟，又飞来 1 只，现在树上一共有几只小鸟？",
+          "options": [
+            "A. 3",
+            "B. 4",
+            "C. 5",
+            "D. 6"
+          ],
+          "answerIndex": 2,
+          "explanation": "原来有 4 只，又飞来 1 只是合起来，用加法 4 + 1 = 5 只，所以选 C。A 是把加法错算成减法，B 是没加上新来的，D 是多算了一只。"
+        }
+      },
+      {
+        "narration": "易错提醒：很多同学看到题目里的数字就直接相加，没有看清是合起来还是去掉。读题时一定要圈出关键词：又、共、一共 用加法；还剩、飞走、吃掉 用减法。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "看清关键词：一共、又 → 加法"
+          },
+          {
+            "kind": "highlight",
+            "content": "看清关键词：还剩、飞走 → 减法"
+          },
+          {
+            "kind": "bullet",
+            "content": "算完后用手指头或小棒再摆一遍检查"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请同学们独立完成：妈妈买了 6 个苹果，吃掉 2 个，还剩几个？想一想该用加法还是减法，再选出正确答案。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "6 个苹果，吃掉 2 个"
+          },
+          {
+            "kind": "formula",
+            "content": "提示：吃掉 = 减少"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "还剩几个苹果？",
+          "options": [
+            "A. 8",
+            "B. 4",
+            "C. 6",
+            "D. 3"
+          ],
+          "answerIndex": 1,
+          "explanation": "吃掉 2 个就是减少 2 个，6 − 2 = 4，所以选 B。A 是把减法错算成 6 + 2 = 8，C 把减法当成了 6 × 2 = 12，D 是把 6 看成 3 的口误。"
+        }
+      },
+      {
+        "narration": "今天我们学习了 10 以内加减法：加法是把两部分合起来，减法是从总数中去掉一部分。做题前先圈关键词，做完后用小棒摆一摆。下一节课我们要学 10 以内的连加连减，记得复习哦！",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "加法：合并 + 变多"
+          },
+          {
+            "kind": "bullet",
+            "content": "减法：去掉 − 变少"
+          },
+          {
+            "kind": "answer",
+            "content": "圈关键词 + 用学具摆 = 算对"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "math",
+    "grade": 2,
+    "topic": "乘法口诀与九九表",
+    "objectives": [
+      "理解乘法的意义：求几个相同加数的和",
+      "能熟背 1~9 的乘法口诀并灵活口算"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！小明帮妈妈摆碗，每张桌子摆 3 个碗，家里有 4 张桌子，一共要摆多少个碗？一个个加 3+3+3+3 太麻烦了，今天我们就来学一种更简便的方法——乘法。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "乘法口诀与九九表"
+          },
+          {
+            "kind": "text",
+            "content": "每桌 3 个，4 张桌 = ?"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "求 4 个 3 相加是多少，可以用乘法写成 3 × 4 = 12，读作 3 乘 4 等于 12。3 和 4 都叫因数，12 叫积。乘法其实是相同加数叠加的简便写法。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "3 + 3 + 3 + 3 = 12"
+          },
+          {
+            "kind": "formula",
+            "content": "3 × 4 = 12"
+          },
+          {
+            "kind": "bullet",
+            "content": "因数 × 因数 = 积"
+          },
+          {
+            "kind": "bullet",
+            "content": "二四得八，二五一十"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们再背一遍口诀，从一一得一开始，一直背到九九八十一。二二得四、二三得六、二四得八、二五一十、二六十二、二七十四、二八十六、二九十八。注意每句口诀都表示两个相同数相乘，比如三七二十一就是 3 × 7 = 21。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "口诀：三六十八"
+          },
+          {
+            "kind": "formula",
+            "content": "3 × 6 = 18，6 × 3 = 18"
+          },
+          {
+            "kind": "bullet",
+            "content": "口诀记熟，倒着背也要流利"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "每个盘子里装 5 个苹果，6 个盘子一共装多少个苹果？",
+          "options": [
+            "A. 11",
+            "B. 25",
+            "C. 30",
+            "D. 56"
+          ],
+          "answerIndex": 2,
+          "explanation": "6 个 5 相加用乘法 5×6，口诀五六三十，所以选 C。A 是把乘错当成加，B 是 5×5 的结果，D 是把 5 和 6 拼接成 56 的常见错误。"
+        }
+      },
+      {
+        "narration": "易错提醒：同学们常把口诀记反，例如把四五二十记成五四十二。也有人见到 7×8 就发怵，其实只要多背几次就能脱口而出。背口诀时要按顺序，从一一到九九，先横后竖。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：四五二十 vs 五四二十"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：七八五十六 要多背几遍"
+          },
+          {
+            "kind": "bullet",
+            "content": "交换因数位置，积不变"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立算一算：每行种 7 棵树苗，种 8 行，一共多少棵？先想口诀七八五十六，所以答案是 56 棵。算完后用 8 × 7 = 56 验证一遍，乘法交换律告诉我们结果一样。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "每行 7 棵，种 8 行"
+          },
+          {
+            "kind": "formula",
+            "content": "提示：七八五十六"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "一共有多少棵树？",
+          "options": [
+            "A. 15",
+            "B. 49",
+            "C. 56",
+            "D. 64"
+          ],
+          "answerIndex": 2,
+          "explanation": "8 个 7 相加用乘法 7×8，口诀七八五十六，答案是 56 棵，所以选 C。A 是 7+8 错算成加法，B 是 7×7，C 是七八五十六，D 是 8×8。"
+        }
+      },
+      {
+        "narration": "今天我们认识了乘法：求几个相同加数的和可以用乘法计算，积 = 因数 × 因数。口诀要横竖都能背熟，做题时先想口诀再写算式。下一节课我们要学用乘法解决生活中的问题，记得复习九九表哦！",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "乘法：相同加数叠加的简便方法"
+          },
+          {
+            "kind": "bullet",
+            "content": "口诀：从一一到九九要滚瓜烂熟"
+          },
+          {
+            "kind": "answer",
+            "content": "熟背口诀 + 看准因数 = 算得对"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "math",
+    "grade": 3,
+    "topic": "万以内的加减法",
+    "objectives": [
+      "掌握万以内加减法的笔算方法，理解相同数位对齐的道理",
+      "能正确处理进位与退位，并能用估算检验结果"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！学校组织春游，三年级一班有 234 人，二班有 318 人，两个班一共多少人？人数这么多，已经超过百了，今天我们就来学万以内的加减法。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "万以内的加减法"
+          },
+          {
+            "kind": "text",
+            "content": "234 + 318 = ?"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "笔算时一定要把相同数位对齐：个位对个位，十位对十位，百位对百位。从个位加起：4+8=12，向十位进 1，本位写 2；3+1+1=5；2+3=5，结果是 552。这就是进位加法。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "相同数位对齐，从个位加起"
+          },
+          {
+            "kind": "formula",
+            "content": "234 + 318 = 552"
+          },
+          {
+            "kind": "bullet",
+            "content": "个位满十向十位进 1"
+          },
+          {
+            "kind": "bullet",
+            "content": "退位减：个位不够减从十位借 1 当 10"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们再算一道减法：水果店原有 500 千克苹果，卖出 238 千克，还剩多少千克？列竖式 500 − 238，个位 0 − 8 不够减，从十位借 1，十位又是 0 就再向百位借，最终得到 262 千克。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "试一试：500 − 238"
+          },
+          {
+            "kind": "formula",
+            "content": "500 − 238 = 262（千克）"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "某图书馆原有图书 815 本，借出 467 本，还剩多少本？",
+          "options": [
+            "A. 348",
+            "B. 358",
+            "C. 452",
+            "D. 1282"
+          ],
+          "answerIndex": 0,
+          "explanation": "本题考查万以内的进位加法。从个位算起，7 + 8 = 15 写 5 进 1；十位 5 + 9 + 1 = 15 写 5 进 1；百位 6 + 7 + 1 = 14。所以答案是 1457，选 B。A 漏算了进位，C 把加法错算成减法，D 个位没进位。"
+        }
+      },
+      {
+        "narration": "易错提醒：很多同学在 500 − 238 这样的题目里，忘了连续借位，写成 5−2=3 直接得到 300 多。也有人做加法时忘记写进位的 1，结果少算一个十。做完一定要回头检查每一位。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：连续借位时漏掉中间位"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：加法进位的 1 忘写"
+          },
+          {
+            "kind": "bullet",
+            "content": "验算：加法用减法，减法用加法"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立算一算：果园上午摘了 645 千克苹果，下午比上午多摘了 178 千克，下午摘了多少千克？列竖式计算，再选出正确答案。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "上午 645 千克，下午多 178 千克"
+          },
+          {
+            "kind": "formula",
+            "content": "下午：645 + 178 = ?"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "下午摘了多少千克苹果？",
+          "options": [
+            "A. 467",
+            "B. 813",
+            "C. 823",
+            "D. 933"
+          ],
+          "answerIndex": 2,
+          "explanation": "被减数 8000 减 3654，从个位算起：0 − 4 不够减从十位借，十位再从百位借，最后结果是 4346。A 漏了一次借位变成 5364，C 把减法错算成加法得到 11654，D 把位数对齐错了。"
+        }
+      },
+      {
+        "narration": "今天我们学习了万以内加减法：相同数位对齐，从个位算起，加法注意进位，减法注意退位，连续借位要小心。做完用相反的运算验算。下一节课我们要学万以内的加减法验算和估算，记得复习竖式哦！",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "对齐数位，从个位起逐位计算"
+          },
+          {
+            "kind": "bullet",
+            "content": "进位 1 和退位 1 不能漏"
+          },
+          {
+            "kind": "answer",
+            "content": "对齐 + 进位 + 验算 = 万以内加减全掌握"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "math",
+    "grade": 4,
+    "topic": "鸡兔同笼",
+    "objectives": [
+      "会用列表法、假设法和方程法三种方法解决鸡兔同笼问题",
+      "培养有序思考与多角度分析问题的能力"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！古代数学书《孙子算经》里有一道名题：笼子里有鸡和兔一共 8 只，脚一共有 22 只，问鸡和兔各有几只？这就是有名的鸡兔同笼问题，今天我们用三种方法来解它。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "鸡兔同笼"
+          },
+          {
+            "kind": "text",
+            "content": "共 8 只，脚 22 只"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们用假设法试一试。如果笼子里全是鸡，10 只一共 20 只脚。但实际有 34 只脚，多出 14 只。每把一只鸡换成兔就多 2 只脚，所以 14 ÷ 2 = 7，意味着 7 只鸡换成 7 只兔。这样鸡有 3 只，兔有 7 只。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "列表法：依次假设"
+          },
+          {
+            "kind": "formula",
+            "content": "鸡 5 兔 3：5×2 + 3×4 = 22"
+          },
+          {
+            "kind": "bullet",
+            "content": "鸡每只 2 脚，兔每只 4 脚"
+          },
+          {
+            "kind": "bullet",
+            "content": "假设法：全部假设成兔，多算的脚 ÷2"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "方法二是假设法：假设笼子里全是兔，8 只兔应有 32 只脚，比 22 多出 10 只。每把一只鸡换成兔，脚会少 2 只，所以多的 10 只脚对应 5 只鸡，兔就是 3 只。算式：鸡 = (8×4 − 22) ÷ (4−2) = 5。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "假设法公式"
+          },
+          {
+            "kind": "formula",
+            "content": "鸡 = (头×兔脚 − 总脚) ÷ (兔脚 − 鸡脚) = 5"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "笼中有鸡兔共 10 只，脚 34 只，鸡兔各几只？",
+          "options": [
+            "A. 鸡 3 兔 7",
+            "B. 鸡 5 兔 5",
+            "C. 鸡 7 兔 3",
+            "D. 鸡 2 兔 8"
+          ],
+          "answerIndex": 0,
+          "explanation": "本题用假设法。假设全是鸡则 12 × 2 = 24 只脚，实际 32 只，多 8 只。每只兔比鸡多 2 只脚，所以兔 = 8 ÷ 2 = 4 只，鸡 = 12 − 4 = 8 只。验证：8 × 2 + 4 × 4 = 32 ✓。"
+        }
+      },
+      {
+        "narration": "方法三是方程法：设鸡有 x 只，兔就是 8−x 只。根据脚总数 2x + 4(8−x) = 22，解得 2x + 32 − 4x = 22，−2x = −10，x = 5，鸡 5 只兔 3 只。方程法思路清晰，适合数大的题目。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "方程法：设鸡 x 只"
+          },
+          {
+            "kind": "formula",
+            "content": "2x + 4(8−x) = 22"
+          },
+          {
+            "kind": "formula",
+            "content": "x = 5，兔 = 3"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：忘记把鸡兔的总只数代入"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立解决：笼中有鸡兔共 12 只，脚 40 只，问鸡兔各几只？可以用列表法、假设法或方程法任选一种，再选出正确答案。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "共 12 只，脚 40 只"
+          },
+          {
+            "kind": "formula",
+            "content": "提示：(12×4 − 40) ÷ 2"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "鸡和兔各有多少只？",
+          "options": [
+            "A. 鸡 4 兔 8",
+            "B. 鸡 6 兔 6",
+            "C. 鸡 8 兔 4",
+            "D. 鸡 2 兔 10"
+          ],
+          "answerIndex": 0,
+          "explanation": "用方程法更快：设鸡 x 只，兔 12 − x 只，则 2x + 4(12 − x) = 32。解得 2x + 48 − 4x = 32，−2x = −16，x = 8，所以鸡 8 只、兔 4 只。"
+        }
+      },
+      {
+        "narration": "今天我们用三种方法解决了鸡兔同笼：列表法稳妥但慢，假设法巧妙适合心算，方程法清晰适合数大。无论哪种方法，最后都要把结果代回题目验证。下一节课我们学习更复杂的盈亏问题，记得复习三种方法哦！",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "列表法：有序假设逐一检验"
+          },
+          {
+            "kind": "bullet",
+            "content": "假设法：先全假设成兔再调整"
+          },
+          {
+            "kind": "bullet",
+            "content": "方程法：设未知数列方程求解"
+          },
+          {
+            "kind": "answer",
+            "content": "多方法 + 验算 = 鸡兔同笼全通"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "math",
+    "grade": 5,
+    "topic": "多边形面积公式",
+    "objectives": [
+      "理解并掌握平行四边形、三角形和梯形面积公式的推导过程",
+      "能灵活运用面积公式解决实际问题"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！小明家有一块平行四边形菜地，底是 8 米，高是 5 米，他想知道这块地有多大。求面积用公式，今天我们就来推导多边形的面积公式。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "多边形面积公式"
+          },
+          {
+            "kind": "text",
+            "content": "平行四边形：底 8 米，高 5 米"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "把平行四边形沿高剪开，可以拼成一个长方形。拼成的长方形长就是平行四边形的底，宽就是高。所以平行四边形面积 = 底 × 高。同样道理，三角形面积 = 底 × 高 ÷ 2，梯形面积 = (上底 + 下底) × 高 ÷ 2。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "剪拼法推导"
+          },
+          {
+            "kind": "formula",
+            "content": "平行四边形：S = a × h"
+          },
+          {
+            "kind": "formula",
+            "content": "三角形：S = a × h ÷ 2"
+          },
+          {
+            "kind": "formula",
+            "content": "梯形：S = (a + b) × h ÷ 2"
+          },
+          {
+            "kind": "bullet",
+            "content": "两个完全一样的三角形可拼成平行四边形"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们算一算：梯形田地上底 12 米，下底 18 米，高 10 米。套公式 S = (12 + 18) × 10 ÷ 2 = 30 × 10 ÷ 2 = 150 平方米。同学们注意一定要先加上下底再乘高，最后别忘了除以 2。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "试一试：梯形上底 12，下底 18，高 10"
+          },
+          {
+            "kind": "formula",
+            "content": "S = (12 + 18) × 10 ÷ 2 = 150（平方米）"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "一个三角形的底是 9 米，高是 4 米，它的面积是多少平方米？",
+          "options": [
+            "A. 13",
+            "B. 18",
+            "C. 36",
+            "D. 72"
+          ],
+          "answerIndex": 1,
+          "explanation": "圆面积公式 S = πr² = 3.14 × 3² = 3.14 × 9 = 28.26。B 忘了平方只算 3 × πr；C 用了周长公式 2πr；D 把 r 和 d 弄混用了 6。"
+        }
+      },
+      {
+        "narration": "易错提醒：很多同学把三角形的高找错，必须是底边对应的高，不一定是斜边。梯形公式里 (上底+下底) 是两条平行边的和，不是随便两条边。还有同学忘了除以 2，写成 (上底+下底)×高，结果大了一倍。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：三角形高找错，对应底要认准"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：梯形忘了除以 2"
+          },
+          {
+            "kind": "bullet",
+            "content": "检查单位：边长是米，面积就是平方米"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立算一算：一块平行四边形玻璃，底是 6 分米，高是 4 分米，面积是多少平方分米？如果把它平均分成两个完全一样的三角形，每个三角形面积是多少？",
+        "board": [
+          {
+            "kind": "text",
+            "content": "平行四边形：底 6 分米，高 4 分米"
+          },
+          {
+            "kind": "formula",
+            "content": "提示：三角形面积 = 平行四边形 ÷ 2"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "三角形的面积是多少平方分米？",
+          "options": [
+            "A. 12",
+            "B. 24",
+            "C. 10",
+            "D. 48"
+          ],
+          "answerIndex": 0,
+          "explanation": "圆环面积 = 大圆面积 − 小圆面积 = π(R² − r²) = π(5² − 3²) = π × 16 = 50.24。A 直接用 R² − r² 忘了乘 π；B 把 R 和 r 弄反；C 用 R² + r² 是常见错误。"
+        }
+      },
+      {
+        "narration": "今天我们推导了平行四边形、三角形和梯形的面积公式：剪拼法把新图形转化成已学过的长方形。要记牢每条公式对应的高是哪一条，做完要检查单位。下一节课我们学习组合图形的面积，记得复习三个公式哦！",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "S平行四边形 = 底 × 高"
+          },
+          {
+            "kind": "bullet",
+            "content": "S三角形 = 底 × 高 ÷ 2"
+          },
+          {
+            "kind": "bullet",
+            "content": "S梯形 = (上底+下底) × 高 ÷ 2"
+          },
+          {
+            "kind": "answer",
+            "content": "剪拼转化 + 公式记牢 + 单位检查"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "math",
+    "grade": 6,
+    "topic": "圆面积",
+    "objectives": [
+      "理解圆面积公式 πr² 的推导过程，掌握圆的周长与面积公式",
+      "能运用公式解决生活中与圆相关的实际问题"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！公园里有一个圆形花坛，半径是 4 米，工人叔叔想知道花坛占地多少平方米，求圆形面积就要用到 π。今天我们一起推导圆面积的公式。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "圆的面积公式"
+          },
+          {
+            "kind": "text",
+            "content": "圆形花坛半径 r = 4 米"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "把圆等分成许多小扇形，再交错拼起来，可以近似拼成一个长方形。长方形的长近似是圆周长的一半 πr，宽是半径 r，所以圆面积 S = πr × r = πr²。π 约等于 3.14。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "圆 → 拼成近似长方形"
+          },
+          {
+            "kind": "formula",
+            "content": "S = πr²，π ≈ 3.14"
+          },
+          {
+            "kind": "formula",
+            "content": "C = 2πr（周长）"
+          },
+          {
+            "kind": "bullet",
+            "content": "半径 r 是从圆心到圆周的距离"
+          },
+          {
+            "kind": "bullet",
+            "content": "直径 d = 2r"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们算一算：半径 4 米的花坛面积 S = 3.14 × 4 × 4 = 3.14 × 16 = 50.24 平方米。同学们注意算面积用半径的平方，不是直径；如果给的是直径，要先除以 2。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "试一试：r = 4 米"
+          },
+          {
+            "kind": "formula",
+            "content": "S = 3.14 × 4² = 3.14 × 16 = 50.24（平方米）"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "一个圆形钟面半径是 10 厘米，它的面积是多少平方厘米？",
+          "options": [
+            "A. 31.4",
+            "B. 62.8",
+            "C. 314",
+            "D. 628"
+          ],
+          "answerIndex": 2,
+          "explanation": "先去括号：5x − 10 = 3x + 12；移项：5x − 3x = 12 + 10；合并：2x = 22；系数化为 1：x = 11。A 漏了移项变号，C 把 −10 移到右边忘了变号，D 算错了 12 + 10 的结果。"
+        }
+      },
+      {
+        "narration": "易错提醒：同学们常把直径当成半径直接代入，得出 4 倍大的结果。也有人忘记平方，写成 3.14 × 4 = 12.56，那其实是半周长。做题时一定要看清是求周长还是面积，是给直径还是半径。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：把直径当半径，答案是 4 倍"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：面积忘平方，写成 πr"
+          },
+          {
+            "kind": "bullet",
+            "content": "看清单位：半径是厘米，面积就是平方厘米"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立解方程：5(x − 2) = 3(x + 4)。先去括号得 5x − 10 = 3x + 12，再移项合并同类项得 2x = 22，最后系数化为 1 得 x = 11。解完后把答案代入原方程验证一遍。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "直径 6 米"
+          },
+          {
+            "kind": "formula",
+            "content": "提示：r = d ÷ 2"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "圆形水池的面积是多少平方米？",
+          "options": [
+            "A. 18.84",
+            "B. 28.26",
+            "C. 37.68",
+            "D. 113.04"
+          ],
+          "answerIndex": 1,
+          "explanation": "解法：5x − 10 = 3x + 12 → 5x − 3x = 12 + 10 → 2x = 22 → x = 11。A 漏了去括号，C 移项时符号没变，D 把 22 ÷ 2 算成了 10。"
+        }
+      },
+      {
+        "narration": "今天我们学习了圆的面积公式 S = πr²，方法是把圆剪拼成长方形。做题时一定要分清是直径还是半径，分清是周长还是面积。下一节课我们要学扇形和组合图形的面积，记得复习 πr² 哦！",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "面积公式：S = πr²"
+          },
+          {
+            "kind": "bullet",
+            "content": "周长公式：C = 2πr"
+          },
+          {
+            "kind": "bullet",
+            "content": "直径 d = 2r"
+          },
+          {
+            "kind": "answer",
+            "content": "分清半径直径 + 区分周长面积"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "math",
+    "grade": 7,
+    "topic": "一元一次方程",
+    "objectives": [
+      "理解一元一次方程的概念，掌握等式的基本性质",
+      "能熟练解一元一次方程并用方程解决实际问题"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！小明今年 8 岁，爸爸的年龄是他的 4 倍少 2 岁，爸爸今年多少岁？设未知数列方程是解这类题的好办法，今天我们就来学一元一次方程。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "一元一次方程"
+          },
+          {
+            "kind": "text",
+            "content": "设爸爸 x 岁，x = 4×8 − 2"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "只含有一个未知数，并且未知数的次数是 1，这样的方程叫一元一次方程。解方程就是求未知数的值。等式性质一：等式两边同加同减同一个数，等式仍成立；性质二：等式两边同乘同除同一个不为 0 的数，等式仍成立。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "方程 4x − 2 = 30"
+          },
+          {
+            "kind": "formula",
+            "content": "4x − 2 = 30 → 4x = 32 → x = 8"
+          },
+          {
+            "kind": "bullet",
+            "content": "等式两边可同加同减同乘同除"
+          },
+          {
+            "kind": "bullet",
+            "content": "移项要变号：+ 变 −，− 变 +"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们解一道：3x − 7 = 2x + 5。先移项，把含 x 的项移到左边，常数项移到右边：3x − 2x = 5 + 7，得 x = 12。检验：左边 3×12−7=29，右边 2×12+5=29，左右相等，x = 12 是原方程的解。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "试一试：3x − 7 = 2x + 5"
+          },
+          {
+            "kind": "formula",
+            "content": "x − 7 = 5 → x = 12"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "解方程 2x + 3 = x + 7，x 等于多少？",
+          "options": [
+            "A. 3",
+            "B. 4",
+            "C. 5",
+            "D. 10"
+          ],
+          "answerIndex": 1,
+          "explanation": "移项：2x − x = 7 − 3，得 x = 4，检验左边 2×4+3=11，右边 4+7=11 正确，所以选 B。A 是把右边 7 漏算，C 是 7−2 错算，D 是没合并 2x−x。"
+        }
+      },
+      {
+        "narration": "易错提醒：移项时忘记变号是最大错误，比如 3x = 5 + x 写成 3x − x = 5，结果正确；但写成 3x + x = 5 就错了。还要注意去括号时不要漏乘，特别是 −(2x−1) = −2x+1 这类符号容易出错。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：移项不变号"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：去括号漏乘或漏变号"
+          },
+          {
+            "kind": "bullet",
+            "content": "解完一定要代入原方程检验"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你判断下面三组三角形是否全等：第一组两边一角相等，第二组两角一边相等，第三组三边相等。记住 SSS、SAS、ASA、AAS、HL 五个判定定理，缺一不可；SSA 和 ASS 不是判定定理。遇到复杂图形要先分解成基本三角形再判定。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "5(x − 2) = 3(x + 4)"
+          },
+          {
+            "kind": "formula",
+            "content": "先去括号，再移项"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "x 等于多少？",
+          "options": [
+            "A. 1",
+            "B. 5",
+            "C. 11",
+            "D. 13"
+          ],
+          "answerIndex": 2,
+          "explanation": "去括号：5x − 10 = 3x + 12，移项 5x − 3x = 12 + 10，2x = 22，x = 11，检验 5×9=45，3×15=45 正确，所以选 C。"
+        }
+      },
+      {
+        "narration": "今天我们学习了一元一次方程：只含一个未知数且次数为 1。解方程的步骤是去括号、移项、合并同类项、系数化为 1。做完一定要代入原方程检验。下一节课我们要学用一元一次方程解决行程问题和工程问题，记得复习解方程步骤哦！",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "步骤：去括号 → 移项 → 合并 → 系数化 1"
+          },
+          {
+            "kind": "bullet",
+            "content": "移项必变号，去括号注意符号"
+          },
+          {
+            "kind": "answer",
+            "content": "会设未知数 + 会解方程 + 会检验 = 真掌握"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "math",
+    "grade": 8,
+    "topic": "三角形全等判定",
+    "objectives": [
+      "理解全等三角形的概念，掌握 SSS、SAS、ASA 三种判定方法",
+      "能灵活运用全等条件证明线段或角相等"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！老师把一张三角形纸片剪成两块，要拼出和原来一模一样的三角形，需要知道哪些条件就够？今天我们就来学三角形全等的判定。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "三角形全等判定"
+          },
+          {
+            "kind": "text",
+            "content": "怎样的两个三角形能完全重合？"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "能够完全重合的两个三角形叫全等三角形。判定方法有三种：边边边 SSS（三边对应相等）、边角边 SAS（两边及其夹角对应相等）、角边角 ASA（两角及其夹边对应相等）。满足任一条件即可判定全等。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "三种判定方法"
+          },
+          {
+            "kind": "formula",
+            "content": "SSS：三边对应相等"
+          },
+          {
+            "kind": "formula",
+            "content": "SAS：两边及夹角相等"
+          },
+          {
+            "kind": "formula",
+            "content": "ASA：两角及夹边相等"
+          },
+          {
+            "kind": "bullet",
+            "content": "注意 SSA 不能判定全等"
+          },
+          {
+            "kind": "bullet",
+            "content": "全等三角形对应边、对应角相等"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们看判别式 Δ = b² − 4ac。当 Δ > 0 时方程有两个不等实根；Δ = 0 时有两个相等实根；Δ < 0 时无实根。比如 x² − 4x + 3 = 0，Δ = 16 − 12 = 4 > 0，所以有两个不等实根。根的公式是 x = (−b ± √Δ) / 2a。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "AB = DE，∠A = ∠D，AC = DF"
+          },
+          {
+            "kind": "formula",
+            "content": "由 SAS 判定：△ABC ≌ △DEF"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "在△ABC 和△A'B'C' 中，∠B = ∠B'，∠C = ∠C'，BC = B'C'，下列判定正确的是？",
+          "options": [
+            "A. AAS",
+            "B. ASA",
+            "C. SSS",
+            "D. SAS"
+          ],
+          "answerIndex": 1,
+          "explanation": "分解因式法：x² − 2x − 8 = (x − 4)(x + 2)，令每个因式等于零，得 x = 4 或 x = −2。A 把常数项符号看错，C 漏掉一个根，D 用错求根公式导致符号错。"
+        }
+      },
+      {
+        "narration": "易错提醒：SSA 不能判定全等，例如两边和其中一边的对角相等时，可能画出两个不同的三角形。还有同学混淆夹角和临角：SAS 要求的是夹角，不是任意一边的对角。做题时一定要标清对应顶点。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：SSA 不能判定全等"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：混淆夹角和临角"
+          },
+          {
+            "kind": "bullet",
+            "content": "写全等式时顶点要按对应顺序写"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你求方程 2x² − 5x + 2 = 0 的根。先用求根公式，a = 2、b = −5、c = 2，Δ = 25 − 16 = 9，所以 x = (5 ± 3) / 4，得到 x = 2 或 x = 1/2。解完后用因式分解 (2x − 1)(x − 2) = 0 验证，结果一致。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "三边对应相等"
+          },
+          {
+            "kind": "formula",
+            "content": "AB = DE，BC = EF，AC = DF"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "下列判定方法正确的是？",
+          "options": [
+            "A. AAS",
+            "B. SAS",
+            "C. ASA",
+            "D. SSS"
+          ],
+          "answerIndex": 3,
+          "explanation": "用求根公式：Δ = (−5)² − 4 × 2 × 2 = 9，x = (5 ± 3) / 4，所以 x₁ = 2，x₂ = 1/2。A 把 a 和 c 弄反了，C 计算 Δ 时漏了减号，D 求根时符号搞反。"
+        }
+      },
+      {
+        "narration": "今天我们学习了三角形全等的三种判定方法：SSS、SAS、ASA。要特别注意 SAS 中的角是两边夹角，ASA 中的边是两角夹边。证明线段或角相等，常常通过证明三角形全等来实现。下一节课我们要学直角三角形全等的 HL 判定，记得复习今天的三种方法哦！",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "SSS：三边对应相等"
+          },
+          {
+            "kind": "bullet",
+            "content": "SAS：两边及夹角对应相等"
+          },
+          {
+            "kind": "bullet",
+            "content": "ASA：两角及夹边对应相等"
+          },
+          {
+            "kind": "answer",
+            "content": "看对应边角 + 选对判定 = 全等证明稳"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "math",
+    "grade": 9,
+    "topic": "一元二次方程",
+    "objectives": [
+      "理解一元二次方程的概念，掌握配方法、公式法和因式分解法",
+      "能根据方程特点灵活选择合适方法求解"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！一个正方形的边长增加 3 厘米后，面积变成了 81 平方厘米，原来的边长是多少？如果设原边长为 x，可得方程 (x+3)² = 81，这就是一元二次方程，今天我们就来学它。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "一元二次方程"
+          },
+          {
+            "kind": "text",
+            "content": "(x + 3)² = 81"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "诱导公式口诀：奇变偶不变，符号看象限。意思是 k × 90° ± α 中，k 为奇数时函数名要变（sin 变 cos），k 为偶数时函数名不变。符号由 α 所在象限决定，比如 sin(180° − α) = sin α，因为 α 在第一象限 sin 为正。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "一般形式：ax² + bx + c = 0"
+          },
+          {
+            "kind": "formula",
+            "content": "求根公式：x = (−b ± √Δ) / 2a"
+          },
+          {
+            "kind": "formula",
+            "content": "Δ = b² − 4ac（判别式）"
+          },
+          {
+            "kind": "bullet",
+            "content": "Δ > 0：两个不等实根"
+          },
+          {
+            "kind": "bullet",
+            "content": "Δ = 0：两个相等实根"
+          },
+          {
+            "kind": "bullet",
+            "content": "Δ < 0：无实数根"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们以 sin 210° 为例。先把它写成 sin(180° + 30°)，k = 1 是奇数，所以 sin 变 sin 不变（sin 和 cos 互换，但其实 sin(180°+α) 直接是 −sin α）。210° 在第三象限，sin 为负，所以 sin 210° = −sin 30° = −1/2。记住：sin(180° + α) = −sin α；cos(180° + α) = −cos α；sin(180° − α) = sin α。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "试一试：x² − 5x + 6 = 0"
+          },
+          {
+            "kind": "formula",
+            "content": "(x − 2)(x − 3) = 0"
+          },
+          {
+            "kind": "formula",
+            "content": "x₁ = 2，x₂ = 3"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "解方程 x² − 4x + 3 = 0，x 等于多少？",
+          "options": [
+            "A. 1 和 3",
+            "B. −1 和 −3",
+            "C. 2 和 2",
+            "D. 0 和 4"
+          ],
+          "answerIndex": 0,
+          "explanation": "sin 210° = sin(180° + 30°) = −sin 30° = −1/2，所以选 B。A 忘了 210° 在第三象限符号为负，C 把 sin 错记成 cos 值，D 算错 sin 30° 的值。"
+        }
+      },
+      {
+        "narration": "易错提醒：很多同学在公式法里把 b 的符号搞错，比如 −5x 写成 +5x，导致 b 错。还有人忘记验 Δ 是否 ≥ 0，盲目套公式得虚数根。配方法的关键是等式两边同时加 (b/2)²，凑出完全平方式。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：b 的符号搞反，结果全错"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：Δ < 0 时还硬求根"
+          },
+          {
+            "kind": "bullet",
+            "content": "解出的根要代回原方程检验"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你求 tan 315°。把它写成 tan(360° − 45°)，k = 4 是偶数所以函数名不变，tan(360° − α) = −tan α，所以 tan 315° = −tan 45° = −1。算完后用诱导公式和单位圆都验证一遍，确保符号和数值都对。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "x² − 2x − 8 = 0"
+          },
+          {
+            "kind": "formula",
+            "content": "提示：找两数和为 −2，积为 −8"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "方程的解是？",
+          "options": [
+            "A. x = 2 或 x = −4",
+            "B. x = −2 或 x = 4",
+            "C. x = 1 或 x = −8",
+            "D. x = 4 或 x = 2"
+          ],
+          "answerIndex": 1,
+          "explanation": "tan 315° = tan(360° − 45°) = −tan 45° = −1，所以选 D。A 把 315° 当成第一象限的角，B 忘了负号，C 把 tan 错记成 cot 值。"
+        }
+      },
+      {
+        "narration": "今天我们学习了一元二次方程 ax² + bx + c = 0 的解法：能分解的用因式分解法最简便，复杂的用公式法。要特别小心 b 的符号，并先判断 Δ 的正负。下一节课我们要学根与系数的关系（韦达定理），记得复习公式法哦！",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "因式分解：能分解时最简便"
+          },
+          {
+            "kind": "bullet",
+            "content": "公式法：万能但要小心符号"
+          },
+          {
+            "kind": "bullet",
+            "content": "判别式 Δ 决定根的个数"
+          },
+          {
+            "kind": "answer",
+            "content": "看方程特点 + 选对方法 + 验根 = 真会解"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "math",
+    "grade": 10,
+    "topic": "三角函数诱导公式",
+    "objectives": [
+      "理解三角函数诱导公式的推导，掌握 π/2 ± α、π ± α 等基本诱导公式",
+      "能熟练运用诱导公式化简任意角的三角函数"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！已知 sin 60° = √3/2，那么 sin 120° 等于多少？120° 和 60° 之间相差 60°，并不是简单的相等关系。今天我们就来学三角函数的诱导公式，化任意角为锐角。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "三角函数诱导公式"
+          },
+          {
+            "kind": "text",
+            "content": "sin 120° = ?"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "诱导公式口诀：奇变偶不变，符号看象限。公式一：sin(π − α) = sin α，cos(π − α) = −cos α。sin 120° = sin(180° − 60°) = sin 60° = √3/2。负角公式：sin(−α) = −sin α，cos(−α) = cos α。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "口诀：奇变偶不变，符号看象限"
+          },
+          {
+            "kind": "formula",
+            "content": "sin(π − α) = sin α"
+          },
+          {
+            "kind": "formula",
+            "content": "cos(π − α) = −cos α"
+          },
+          {
+            "kind": "formula",
+            "content": "sin(π/2 − α) = cos α"
+          },
+          {
+            "kind": "bullet",
+            "content": "π/2 ± α 三角函数名要变"
+          },
+          {
+            "kind": "bullet",
+            "content": "π ± α 三角函数名不变"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们求曲线 y = x³ 在点 (1, 1) 处的切线方程。先求导：y′ = 3x²，把 x = 1 代入得 y′(1) = 3，所以切线斜率 k = 3。再用点斜式：y − 1 = 3(x − 1)，整理得 y = 3x − 2。求导是高考重点，必须熟练。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "试一试：cos 150°"
+          },
+          {
+            "kind": "formula",
+            "content": "cos 150° = −cos 30° = −√3/2"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "求 sin 210° 的值。",
+          "options": [
+            "A. 1/2",
+            "B. −1/2",
+            "C. √3/2",
+            "D. −√3/2"
+          ],
+          "answerIndex": 1,
+          "explanation": "y = x³ 在 (1,1) 处的切线：y′ = 3x² = 3，由点斜式 y − 1 = 3(x − 1) 得 y = 3x − 2。A 把 y′ 算成 3x 而忘了代入 x = 1；C 把点斜式写错；D 把常数项 1 漏掉。"
+        }
+      },
+      {
+        "narration": "易错提醒：用诱导公式最容易错的是符号判断。例如 sin(π + α) = −sin α，因为 π+α 在第三象限，正弦为负。还有同学把 sin(π/2 − α) 的函数名变错，写成 sin(π/2 − α) = −cos α，少了变化那一半。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：符号判断错，结果反号"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：π/2 ± α 函数名要变"
+          },
+          {
+            "kind": "bullet",
+            "content": "判断象限：π+α 在第三象限"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你求曲线 y = x² 在点 (2, 4) 处的切线方程。先求导 y′ = 2x，代入 x = 2 得斜率 4。点斜式：y − 4 = 4(x − 2)，整理得 y = 4x − 4。验算：把 x = 2 代入 y = 4 × 2 − 4 = 4 ✓。求完切线后要记得把原方程代入验证。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "cos 240° = ?"
+          },
+          {
+            "kind": "formula",
+            "content": "240° = 180° + 60°，第三象限"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "cos 240° 的值是？",
+          "options": [
+            "A. 1/2",
+            "B. −1/2",
+            "C. √3/2",
+            "D. −√3/2"
+          ],
+          "answerIndex": 1,
+          "explanation": "y = x² 在 (2,4) 处：y′ = 2x = 4，点斜式 y − 4 = 4(x − 2) → y = 4x − 4。A 把 y′ 算成 2 忘了代入；B 求导漏了 x；C 把切线当成法线。"
+        }
+      },
+      {
+        "narration": "今天我们学习了三角函数诱导公式：奇变偶不变，符号看象限。π/2 ± α 函数名要变，π ± α 函数名不变。再复杂的角，都能化到锐角范围。下一节课我们要学两角和与差的三角函数公式，记得复习诱导公式哦！",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "口诀：奇变偶不变，符号看象限"
+          },
+          {
+            "kind": "bullet",
+            "content": "π ± α：函数名不变，符号看象限"
+          },
+          {
+            "kind": "bullet",
+            "content": "π/2 ± α：函数名要变"
+          },
+          {
+            "kind": "answer",
+            "content": "化任意角为锐角 + 判断符号 + 选对函数名"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "math",
+    "grade": 11,
+    "topic": "导数与切线方程",
+    "objectives": [
+      "理解导数的几何意义，掌握曲线在某点处切线方程的求法",
+      "能运用导数求切线斜率并写出切线方程"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！曲线 y = x² 在点 (1, 1) 处的切线怎么求？切线的斜率等于函数在该点的导数值。今天我们就用导数求切线方程。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "导数与切线方程"
+          },
+          {
+            "kind": "text",
+            "content": "曲线 y = x² 在 (1, 1) 处的切线"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "导数的几何意义：函数 y = f(x) 在 x = x₀ 处的导数 f'(x₀) 等于曲线在该点处切线的斜率。求切线方程的步骤：① 求导 y' = f'(x)；② 代入 x₀ 得斜率 k = f'(x₀)；③ 用点斜式 y − y₀ = k(x − x₀)。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "切线方程三步法"
+          },
+          {
+            "kind": "formula",
+            "content": "① 求导 f'(x)"
+          },
+          {
+            "kind": "formula",
+            "content": "② 算斜率 k = f'(x₀)"
+          },
+          {
+            "kind": "formula",
+            "content": "③ 点斜式 y − y₀ = k(x − x₀)"
+          },
+          {
+            "kind": "bullet",
+            "content": "常见导数：(x^n)' = n·x^(n−1)"
+          },
+          {
+            "kind": "bullet",
+            "content": "切线 ≠ 割线，切线是局部最近直线"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们求 y = x² 在 (1, 1) 处的切线。y' = 2x，代入 x = 1 得斜率 k = 2。点斜式 y − 1 = 2(x − 1)，化简 y = 2x − 1。这就是抛物线在该点的切线。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "求 y = x² 在 (1, 1) 处切线"
+          },
+          {
+            "kind": "formula",
+            "content": "y' = 2x → k = 2"
+          },
+          {
+            "kind": "formula",
+            "content": "y − 1 = 2(x − 1) → y = 2x − 1"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "曲线 y = x³ 在点 (1, 1) 处的切线方程是？",
+          "options": [
+            "A. y = 3x − 2",
+            "B. y = 2x − 1",
+            "C. y = x",
+            "D. y = 3x + 2"
+          ],
+          "answerIndex": 0,
+          "explanation": "球表面积 S = 4πr² = 4 × 3.14 × 9 = 113.04。A 把公式错记成 2πr²；B 用错 r 值（用了直径 6）；C 把表面积算成体积。"
+        }
+      },
+      {
+        "narration": "易错提醒：常见错误是求导公式记错，例如 (x³)' = 3x² 而不是 x²；也有人在点斜式里把 y₀ 算错。曲线在 (1, 1) 处切线，要先把点代回原方程确认 y₀ = 1，不要凭直觉。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：导数公式记错，幂次不对"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：切点坐标没验算"
+          },
+          {
+            "kind": "bullet",
+            "content": "点斜式：y − y₀ = k(x − x₀)"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你求半径为 5 cm 的球表面积。代入 S = 4πr² = 4 × 3.14 × 25 = 314 cm²。注意单位是平方厘米不是厘米。做完面积题要养成标注单位的习惯，避免考试丢分。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "y = x² + 1，点 (1, 2)"
+          },
+          {
+            "kind": "formula",
+            "content": "y' = 2x → 斜率 k = 2"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "切线方程是？",
+          "options": [
+            "A. y = 2x",
+            "B. y = 2x + 1",
+            "C. y = 2x − 1",
+            "D. y = x + 1"
+          ],
+          "answerIndex": 0,
+          "explanation": "S = 4πr² = 4 × 3.14 × 25 = 314 cm²，所以选 D。A 公式错记成 2πr²；B 把 r 看成直径 10；C 单位错写成 cm 而非 cm²。"
+        }
+      },
+      {
+        "narration": "今天我们用导数求切线方程：求导代入得点斜率，再用点斜式写出切线。要记牢常见导数公式 (xⁿ)' = n·xⁿ⁻¹，并验证切点在曲线上。下一节课我们要学用导数研究函数的单调性和极值，记得复习求导公式哦！",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "几何意义：f'(x₀) = 切线斜率"
+          },
+          {
+            "kind": "bullet",
+            "content": "三步：求导 → 算斜率 → 点斜式"
+          },
+          {
+            "kind": "bullet",
+            "content": "公式：(xⁿ)' = n·xⁿ⁻¹"
+          },
+          {
+            "kind": "answer",
+            "content": "求导 + 算斜率 + 写点斜式 = 切线方程到手"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "math",
+    "grade": 12,
+    "topic": "立体几何：三视图与表面积",
+    "objectives": [
+      "理解三视图（正视图、侧视图、俯视图）的概念，能识别简单几何体的三视图",
+      "掌握柱、锥、球等基本几何体的表面积公式"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！工程师设计零件时，要画出从正面、侧面、上面看过去的三张图，这就是三视图。今天我们学习三视图的识别和常见几何体的表面积。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "三视图与表面积"
+          },
+          {
+            "kind": "text",
+            "content": "正视图 / 侧视图 / 俯视图"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "正视图是物体从前向后投影得到的平面图形，侧视图是从左向右投影，俯视图是从上向下投影。长方体的三视图都是矩形；圆柱的正视图和侧视图是矩形，俯视图是圆；圆锥的正视图和侧视图是三角形，俯视图是带圆心的圆。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "常见几何体三视图"
+          },
+          {
+            "kind": "formula",
+            "content": "S长方体 = 2(ab + bc + ac)"
+          },
+          {
+            "kind": "formula",
+            "content": "S圆柱侧 = 2πrh"
+          },
+          {
+            "kind": "formula",
+            "content": "S圆锥侧 = πrl"
+          },
+          {
+            "kind": "formula",
+            "content": "S球 = 4πr²"
+          },
+          {
+            "kind": "bullet",
+            "content": "正视图反映长和高"
+          },
+          {
+            "kind": "bullet",
+            "content": "侧视图反映宽和高"
+          },
+          {
+            "kind": "bullet",
+            "content": "俯视图反映长和宽"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们算一算：圆柱底面半径 2，高 5。侧面积 = 2π × 2 × 5 = 20π，两个底面积 = 2 × π × 2² = 8π，总表面积 = 28π ≈ 87.92。做题时注意圆柱有两个底面，圆锥只有一个底面。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "圆柱 r = 2，h = 5"
+          },
+          {
+            "kind": "formula",
+            "content": "S = 2πrh + 2πr² = 20π + 8π = 28π"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "圆锥底面半径 3，母线长 5，求它的侧面积。",
+          "options": [
+            "A. 8π",
+            "B. 15π",
+            "C. 24π",
+            "D. 30π"
+          ],
+          "answerIndex": 1,
+          "explanation": "圆锥侧面积 S = πrl = π × 3 × 5 = 15π，所以选 B。A 是 r+l 错算，C 是把母线当成高算的 2πrh，D 是 r²l 错算的结果。"
+        }
+      },
+      {
+        "narration": "易错提醒：很多同学在求圆柱表面积时漏掉两个底面，或者把母线和高搞混。圆锥的母线 l = √(r² + h²)，比高要长。还有同学在三视图题里把俯视图误画成侧视图，结果宽和高对调。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：圆柱漏底面"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：圆锥母线 l ≠ 高 h"
+          },
+          {
+            "kind": "bullet",
+            "content": "三视图遵循长对正、高平齐、宽相等"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立算一算：球半径为 3，求球的表面积。注意球的表面积公式是 4πr²，π 取 3.14。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "球 r = 3"
+          },
+          {
+            "kind": "formula",
+            "content": "S球 = 4πr²"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "球的表面积是？",
+          "options": [
+            "A. 12π",
+            "B. 24π",
+            "C. 36π",
+            "D. 48π"
+          ],
+          "answerIndex": 2,
+          "explanation": "S = 4πr² = 4π × 9 = 36π，所以选 C。A 是 4πr 错算成侧面积，B 是 4π × 2² 的小半径结果，D 是把 4r² 错记成 4r³ 的结果。"
+        }
+      },
+      {
+        "narration": "今天我们学习了三视图与常见几何体的表面积：三视图要长对正、高平齐、宽相等；表面积公式要记牢，圆柱两个底，圆锥一个底，球没有底只有球面。下一节课我们要学组合体和切割体的表面积，记得复习公式哦！",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "三视图：长对正、高平齐、宽相等"
+          },
+          {
+            "kind": "bullet",
+            "content": "圆柱：S = 2πrh + 2πr²"
+          },
+          {
+            "kind": "bullet",
+            "content": "圆锥：S侧 = πrl"
+          },
+          {
+            "kind": "bullet",
+            "content": "球：S = 4πr²"
+          },
+          {
+            "kind": "answer",
+            "content": "认对视图 + 记牢公式 = 表面积一算就对"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  }
+]

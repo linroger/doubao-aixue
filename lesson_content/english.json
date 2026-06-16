@@ -1,0 +1,1698 @@
+[
+  {
+    "subject": "english",
+    "grade": 1,
+    "topic": "字母与基础问候 (A-Z, Hello, Goodbye)",
+    "objectives": [
+      "能正确认读 26 个英文字母的大小写",
+      "会用 Hello / Goodbye 进行日常问候与道别"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！欢迎来到英语世界。英语里一共有 26 个字母，它们就像我们汉语拼音里的声母和韵母，是学习英语的第一步。今天我们先认识 A 到 Z，再学说两句话。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "英文字母 A-Z"
+          },
+          {
+            "kind": "text",
+            "content": "26 letters: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "字母要分大小写两种形状。大写 A 像一座尖尖的小山，小写 a 像一个圆苹果。请跟老师读：A B C D E F G H I J K L M N O P Q R S T U V W X Y Z。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "大写 Uppercase: A B C D E F"
+          },
+          {
+            "kind": "text",
+            "content": "小写 lowercase: a b c d e f"
+          },
+          {
+            "kind": "bullet",
+            "content": "每个字母都有自己的名字和读音"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "早上见到老师同学，我们要说 Hello! 你好！Hello 读作 /həˈloʊ/。放学回家时说 Goodbye! 再见！读作 /ɡʊdˈbaɪ/。跟着老师一起说一遍吧。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "Hello! /həˈloʊ/ 你好"
+          },
+          {
+            "kind": "text",
+            "content": "Goodbye! /ɡʊdˈbaɪ/ 再见"
+          },
+          {
+            "kind": "highlight",
+            "content": "见面问好说 Hello，分别时说 Goodbye"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "早上在校园里见到同学，你应该说：",
+          "options": [
+            "A. Goodbye!",
+            "B. Hello!",
+            "C. Thank you.",
+            "D. Sorry."
+          ],
+          "answerIndex": 1,
+          "explanation": "Hello 用于见面打招呼，意思是'你好'，所以早上见到同学要说 Hello。Goodbye 是分别时说的再见，Thank you 是谢谢，Sorry 是对不起，因此正确答案选 B。"
+        }
+      },
+      {
+        "narration": "易错点提醒：很多同学把字母 G 念成'寄'，把 J 念成'鸡'。英语字母有自己的固定读音，要跟着老师模仿口型。还有同学忘记 Goodbye 是一个单词，不是 Good bye 两个词。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：字母 G 读 /dʒiː/，不是'寄'"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：Goodbye 是一个单词，不要分开写"
+          },
+          {
+            "kind": "bullet",
+            "content": "注意每个字母的元音发音要饱满"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "现在请你独立判断：下午放学，你和老师说再见，应该用哪一句？请在四个选项里选出正确答案。注意语境和礼貌哦。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "场景：放学离校时对老师说"
+          },
+          {
+            "kind": "bullet",
+            "content": "Hello 见面问好；Goodbye 分别说再见"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "放学时和老师说再见，应该说：",
+          "options": [
+            "A. Hello!",
+            "B. Good morning!",
+            "C. Goodbye!",
+            "D. I'm sorry."
+          ],
+          "answerIndex": 2,
+          "explanation": "放学属于分别场景，要用 Goodbye 表示再见，所以选 C。Hello 是见面用语，Good morning 只用于早上问好，I'm sorry 是道歉，都不合适。"
+        }
+      },
+      {
+        "narration": "今天我们学习了字母 A 到 Z，还有 Hello、Goodbye 等问候语。字母是英语的基石，就像我们的拼音一样重要。下节课我们会学更多基础词汇，把今天学的内容组合成完整的句子，比如 Hello, my name is Tom。记得课后大声朗读字母表，把 A 到 Z 全部背熟。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "26 个字母 A-Z，每个都有大小写"
+          },
+          {
+            "kind": "bullet",
+            "content": "Hello = 你好；Goodbye = 再见"
+          },
+          {
+            "kind": "answer",
+            "content": "学字母 + 练问候 = 英语入门第一步"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "english",
+    "grade": 2,
+    "topic": "颜色/动物/数字词汇, 简单句型 (I see a cat)",
+    "objectives": [
+      "掌握颜色、动物、数字三类基础词汇",
+      "能用 I see a… 描述看到的事物"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！今天我们去动物园玩。一路上我们会看到各种颜色、各种动物，还能一边走一边数数。请准备好你的眼睛和嘴巴，跟着老师一起说英语。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "颜色 动物 数字 — 走进动物园"
+          },
+          {
+            "kind": "text",
+            "content": "Colors / Animals / Numbers 1-10"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "先学颜色：red 红色，yellow 黄色，blue 蓝色，green 绿色，black 黑色，white 白色。再学数字：one 一，two 二，three 三，four 四，five 五。动物有 cat 猫，dog 狗，bird 鸟，fish 鱼，panda 熊猫。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "Colors: red, yellow, blue, green, black, white"
+          },
+          {
+            "kind": "text",
+            "content": "Animals: cat, dog, bird, fish, panda"
+          },
+          {
+            "kind": "text",
+            "content": "Numbers: one, two, three, four, five"
+          },
+          {
+            "kind": "bullet",
+            "content": "单词要连读成整体，注意元音饱满"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "在动物园里，每看到一种动物就可以说一句：I see a cat. 我看见一只猫。I see a panda. 我看见一只熊猫。I 是我，see 是看见，a 表示'一只'。句号不能忘记哦。",
+        "board": [
+          {
+            "kind": "formula",
+            "content": "I see a + 动物 (我看见一只动物)"
+          },
+          {
+            "kind": "text",
+            "content": "例句：I see a bird. 我看见一只鸟。"
+          },
+          {
+            "kind": "text",
+            "content": "例句：I see a fish. 我看见一条鱼。"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "你想告诉同学你看见了一只红色的熊猫，应该说：",
+          "options": [
+            "A. I see a red panda.",
+            "B. I see a red dog.",
+            "C. I am a panda.",
+            "D. I see red."
+          ],
+          "answerIndex": 0,
+          "explanation": "句型 I see a + 动物 表示看见一只什么动物，把颜色 red 放在 a 和动物之间作定语，所以完整的句子是 I see a red panda，选 A。其他选项要么动物错，要么句型错。"
+        }
+      },
+      {
+        "narration": "易错点：a 和 an 不能乱用。a 用在辅音开头的单词前，例如 a cat；但 an 用在元音开头的单词前，比如 an apple 一个苹果。还有同学会把 see 写成 sea 海，这是两个完全不同的单词。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：a cat / an apple（元音前用 an）"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：see 看见 ≠ sea 大海"
+          },
+          {
+            "kind": "bullet",
+            "content": "颜色作定语要放在名词前面"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "现在请你自己说一说。看图选词，说出 I see a cat、I see a dog、I see a bird。注意 cat / dog / bird 是单数，加 a 表示一个。如果想说两只猫，要说 I see two cats，cats 是复数加 s。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "场景：看见一只蓝色的鱼"
+          },
+          {
+            "kind": "bullet",
+            "content": "提示：颜色 blue + 动物 fish"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "看见一只蓝色的鱼，正确的句子是：",
+          "options": [
+            "A. I see a blue fish.",
+            "B. I see blue fish a.",
+            "C. I sees a blue fish.",
+            "D. I see a blue cat."
+          ],
+          "answerIndex": 0,
+          "explanation": "正确语序是 I see a blue fish，主语 I + 谓语 see + 冠词 a + 颜色 blue + 名词 fish，所以选 A。B 语序乱了，C 主语和动词不搭配，D 动物错。"
+        }
+      },
+      {
+        "narration": "今天我们学习了颜色、动物和数字词汇，还学会用 I see a 句型描述看到的事物。下节课我们要学更多生活词汇，比如家庭成员和食物，把英语用到一日三餐和家人交流中。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "Colors / Animals / Numbers 是描述世界的好工具"
+          },
+          {
+            "kind": "bullet",
+            "content": "句型 I see a + 颜色 + 动物"
+          },
+          {
+            "kind": "answer",
+            "content": "会说 I see a cat = 用英语描述眼前的事物"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "english",
+    "grade": 3,
+    "topic": "现在进行时 (be + V-ing), 家庭成员词汇",
+    "objectives": [
+      "掌握现在进行时 be + V-ing 的结构",
+      "能介绍家庭成员并描述他们正在做的事情"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！今天我们去 Lily 一家做客。客厅里，妈妈在做饭，爸爸在看书，哥哥在打篮球，奶奶在浇花。我们用英语把这一幕描述出来，就要用到'现在进行时'。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "现在进行时 be + V-ing"
+          },
+          {
+            "kind": "text",
+            "content": "描述此刻正在发生的动作"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "现在进行时的结构是 be + 动词-ing。主语不同，be 也要变：我用 am，你用 he/she/it 用 is，我们/你们/他们用 are。例如：I am reading. He is running. They are playing. 同时记住家庭成员：爸爸 father，妈妈 mother，哥哥 brother，姐姐 sister，奶奶 grandmother，爷爷 grandfather。",
+        "board": [
+          {
+            "kind": "formula",
+            "content": "be (am/is/are) + V-ing"
+          },
+          {
+            "kind": "text",
+            "content": "Family: father, mother, brother, sister, grandfather, grandmother"
+          },
+          {
+            "kind": "bullet",
+            "content": "现在分词：play→playing, run→running, read→reading"
+          },
+          {
+            "kind": "bullet",
+            "content": "去 e 加 ing：以 e 结尾的动词要先去掉 e"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们一起看例句：My mother is cooking in the kitchen. 我妈妈正在厨房做饭。My father is reading a book. 我爸爸正在看书。My brother is playing basketball. 我哥哥正在打篮球。请同学们跟读，注意 is 后面的 -ing。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "My mother is cooking. 我妈妈正在做饭。"
+          },
+          {
+            "kind": "text",
+            "content": "My father is reading. 我爸爸正在看书。"
+          },
+          {
+            "kind": "text",
+            "content": "My brother is playing basketball. 我哥哥正在打篮球。"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "你想说'我的妹妹正在唱歌'，正确的句子是：",
+          "options": [
+            "A. My sister sing.",
+            "B. My sister is sing.",
+            "C. My sister is singing.",
+            "D. My sister singing."
+          ],
+          "answerIndex": 2,
+          "explanation": "现在进行时结构是 is/are + V-ing，妹妹是单数第三人称，用 is，所以 My sister is singing 正确，选 C。A 缺少 be 和 ing，B 只有 ing 没有 be，D 没有 be 动词。"
+        }
+      },
+      {
+        "narration": "易错点：很多同学把 is 和 are 用混——主语是 he/she/it 单数用 is，复数用 are。还有同学忘加 -ing，写成 My father is cook。再来一个小坑：like 喜欢虽然是动词，但表示习惯要用一般现在时 I like apples，不能说 I am liking apples。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：He is cooking. (单数 is)"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：They are playing. (复数 are)"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：进行时不用于 like / want / know 等状态动词"
+          },
+          {
+            "kind": "bullet",
+            "content": "三单现在进行时：He / She is V-ing"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "现在请你独立完成一道题。下图描述的是一家人在客厅里看电视。请根据场景选出正确描述'我爷爷正在看电视'的句子，注意主谓一致。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "场景：一家人正在客厅看电视"
+          },
+          {
+            "kind": "bullet",
+            "content": "提示：grandfather + is + watching TV"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "'我爷爷正在看电视'的正确表达是：",
+          "options": [
+            "A. My grandfather watch TV.",
+            "B. My grandfather is watching TV.",
+            "C. My grandfather are watching TV.",
+            "D. My grandfather watching TV."
+          ],
+          "answerIndex": 1,
+          "explanation": "主语 grandfather 是单数第三人称，be 用 is，watch 变为 watching，所以 My grandfather is watching TV 正确，选 B。A 用了一般现在时；C be 用了复数 are 不匹配；D 缺 be 动词。"
+        }
+      },
+      {
+        "narration": "今天我们认识了家庭成员词汇，也掌握了现在进行时 be + V-ing。下节课我们要学习更复杂的家庭关系，例如 uncle 叔叔、aunt 阿姨，并把他们正在做的事情写成一段小作文。回家请用英语描述家人正在做什么。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "现在进行时：be + V-ing 表示此刻发生"
+          },
+          {
+            "kind": "bullet",
+            "content": "家庭成员：father / mother / brother / sister / grandfather / grandmother"
+          },
+          {
+            "kind": "answer",
+            "content": "会说进行时 + 认识家人 = 描述家更生动"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "english",
+    "grade": 4,
+    "topic": "一般现在时 (第三人称单数), 时间/星期",
+    "objectives": [
+      "掌握一般现在时第三人称单数的变化规则",
+      "能用英语表达时间和星期，并描述日常作息"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！每个人都有自己的一天：起床、上学、吃饭、睡觉。把这些日常习惯用英语说出来，就要用到'一般现在时'。当主语是 he / she / it 时，动词还要做一点小变化，我们今天就来学习它。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "一般现在时 — 第三人称单数"
+          },
+          {
+            "kind": "text",
+            "content": "表达习惯性、经常性的动作"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "一般现在时结构：主语 + 动词原形。但当主语是第三人称单数 he / she / it 时，动词要加 s 或 es。比如：He plays football. She watches TV. My father works hard. 变化规则：一般加 s，以 s/x/ch/o/sh 结尾加 es，以辅音字母 + y 结尾变 y 为 i 加 es。",
+        "board": [
+          {
+            "kind": "formula",
+            "content": "He/She/It + V-s/es (第三人称单数)"
+          },
+          {
+            "kind": "text",
+            "content": "Days: Monday Tuesday Wednesday Thursday Friday Saturday Sunday"
+          },
+          {
+            "kind": "text",
+            "content": "Time: o'clock / half past / quarter"
+          },
+          {
+            "kind": "bullet",
+            "content": "play→plays, watch→watches, study→studies"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "看几个例句：I get up at seven in the morning. 我早上七点起床。My sister goes to school at half past seven. 我妹妹七点半上学。Tom plays football on Saturdays. 汤姆每个星期六踢足球。注意 goes 是 go 的第三人称单数形式。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "I get up at 7:00. 我七点起床。"
+          },
+          {
+            "kind": "text",
+            "content": "She goes to school at 7:30. 她七点半上学。"
+          },
+          {
+            "kind": "text",
+            "content": "He plays football on Saturdays. 他星期六踢足球。"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "你想说'我妈妈每天早上六点起床'，正确的句子是：",
+          "options": [
+            "A. My mother get up at 6:00 every morning.",
+            "B. My mother gets up at 6:00 every morning.",
+            "C. My mother getting up at 6:00 every morning.",
+            "D. My mother is get up at 6:00 every morning."
+          ],
+          "answerIndex": 1,
+          "explanation": "主语 My mother 是第三人称单数，动词 get 要加 s 变为 gets，时间状语 every morning 表示经常性，所以 My mother gets up at 6:00 every morning 正确，选 B。A 缺少 s，C 用了进行时，D 多了 is。"
+        }
+      },
+      {
+        "narration": "易错点：第三人称单数最容易丢 s。He like apples 是错的，应该是 He likes apples。还要注意特殊变化：have → has，go → goes，do → does。还有同学把 on Mondays 和 in the morning 用错——星期前用 on，早上用 in the morning。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：He likes (不是 like)"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：have → has, go → goes, do → does"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：on Monday / in the morning"
+          },
+          {
+            "kind": "bullet",
+            "content": "频率副词 often / usually / always 放在 be 后或实义动词前"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立思考。Tom 是你的好朋友，他每天下午四点半放学回家打篮球。请选出能正确描述他放学后活动的句子。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "场景：Tom 下午四点半放学"
+          },
+          {
+            "kind": "bullet",
+            "content": "提示：play + s, go + es, 时间用 at 4:30"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "Tom 每天下午四点半回家后打篮球，应该说：",
+          "options": [
+            "A. Tom go home at 4:30 and play basketball.",
+            "B. Tom goes home at 4:30 and plays basketball.",
+            "C. Tom going home at 4:30 and plays basketball.",
+            "D. Tom is go home at 4:30 and play basketball."
+          ],
+          "answerIndex": 1,
+          "explanation": "Tom 是第三人称单数，go 改为 goes，play 改为 plays，由 and 连接两个并列谓语，所以 Tom goes home at 4:30 and plays basketball 正确，选 B。A 动词没有第三人称变化，C 用了 going 形式，D 用了 is go 错误结构。"
+        }
+      },
+      {
+        "narration": "今天我们学习了一般现在时第三人称单数的动词变化、星期和时间表达。下节课我们要学习一般现在时的特殊句型：疑问句和否定句，还要加入频率副词 always / usually / often。回家请用英语说说你家人一天的作息。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "第三人称单数动词：play→plays, watch→watches, go→goes"
+          },
+          {
+            "kind": "bullet",
+            "content": "星期 + on Monday；时间 + at 7 o'clock"
+          },
+          {
+            "kind": "answer",
+            "content": "主谓一致 + 时间表达 = 日常英语入门"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "english",
+    "grade": 5,
+    "topic": "一般过去时 (规则/不规则动词), 天气/季节",
+    "objectives": [
+      "掌握一般过去时规则与不规则动词的变化",
+      "能用英语描述过去发生的事和不同季节的天气"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！上周末你和家人去了哪里？做了什么？天气怎么样？把这些已经发生过的事情用英语说出来，就要用到'一般过去时'。今天我们一起来回忆过去的经历。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "一般过去时 — 规则与不规则动词"
+          },
+          {
+            "kind": "text",
+            "content": "描述过去发生的事情"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "一般过去时结构：主语 + 动词过去式。规则动词直接加 ed，例如 play→played, watch→watched, study→studied。以 e 结尾加 d；以辅音字母 + y 结尾变 y 为 i 加 ed。不规则动词要单独记：go→went, have→had, eat→ate, see→saw, do→did, is/am→was, are→were。",
+        "board": [
+          {
+            "kind": "formula",
+            "content": "主语 + V-ed (规则) / 不规则变化"
+          },
+          {
+            "kind": "text",
+            "content": "Seasons: spring 春 / summer 夏 / autumn 秋 / winter 冬"
+          },
+          {
+            "kind": "text",
+            "content": "Weather: sunny / rainy / windy / snowy / cloudy"
+          },
+          {
+            "kind": "bullet",
+            "content": "不规则动词：go→went, have→had, eat→ate, see→saw, do→did"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们一起看几个例句：Yesterday I went to the park with my family. 昨天我和家人去了公园。It was sunny and warm. 那天阳光明媚又温暖。We had a picnic under the tree. 我们在树下野餐。注意 was 是 is/am 的过去式，went 是 go 的过去式，had 是 have 的过去式。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "Yesterday I went to the park. 昨天我去了公园。"
+          },
+          {
+            "kind": "text",
+            "content": "It was sunny yesterday. 昨天是晴天。"
+          },
+          {
+            "kind": "text",
+            "content": "We had a picnic. 我们野餐了。"
+          },
+          {
+            "kind": "bullet",
+            "content": "时间状语 yesterday / last week / ago 提示过去"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "你想说'昨天我和朋友们踢了足球'，正确的句子是：",
+          "options": [
+            "A. Yesterday I play football with my friends.",
+            "B. Yesterday I played football with my friends.",
+            "C. Yesterday I playing football with my friends.",
+            "D. Yesterday I am playing football with my friends."
+          ],
+          "answerIndex": 1,
+          "explanation": "yesterday 是过去时间标志，动词 play 要用过去式 played，所以 Yesterday I played football with my friends 正确，选 B。A 用了原形 play，C 用现在分词，D 用现在进行时都不符合过去时间。"
+        }
+      },
+      {
+        "narration": "易错点：不规则动词忘变化是常见错误，比如把 go 的过去式写成 goed，把 eat 的过去式写成 eated。还有同学把 was / were 用混——I / he / she / it 用 was，you / we / they 用 are 的过去式 were。还要注意 yesterday 后面不要再加 ago。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：go→went (不是 goed)，eat→ate"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：I/he/she was；you/we/they were"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：yesterday 不能和 ago 连用"
+          },
+          {
+            "kind": "bullet",
+            "content": "过去式疑问句：Did you go? Yes, I did. / No, I didn't."
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立判断。上周六，你和家人去爬山，山上下雪了，你们玩得很开心。下面四个英文句子，哪一句最准确地描述这件事？请选出正确答案。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "场景：上周六爬山，山上下雪"
+          },
+          {
+            "kind": "bullet",
+            "content": "提示：go→went, snow 是规则动词加 ed"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "上周六我们去爬山，山上下雪了，玩得很开心。最准确的表达是：",
+          "options": [
+            "A. Last Saturday we go to the mountains and it snowed.",
+            "B. Last Saturday we went to the mountains and it snowed.",
+            "C. Last Saturday we went to the mountains and it is snow.",
+            "D. Last Saturday we are going to the mountains and it snowed."
+          ],
+          "answerIndex": 1,
+          "explanation": "snow 是规则动词，过去式直接加 ed 变 snowed，表示过去某个时间下了雪。注意 snow 也可作名词（雪），但作动词时按规则变化。A 选项是常见错误——把规则动词误记为不规则。B 选项 go 的过去式是 went，C 选项 eat 的过去式是 ate，D 选项 take 的过去式是 took，都属不规则动词变化。"
+        }
+      },
+      {
+        "narration": "今天我们学习了一般过去时规则与不规则动词的变化，还学会了天气和季节词汇。下节课我们要学习过去进行时 was / were + V-ing，描述过去某时刻正在发生的动作。回家请用英语写一段你上周做过的事情。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "一般过去时：规则 V-ed / 不规则需记忆"
+          },
+          {
+            "kind": "bullet",
+            "content": "四季 + 天气 = 描述自然的好搭档"
+          },
+          {
+            "kind": "answer",
+            "content": "会说过去的事 = 用英语回忆生活"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "english",
+    "grade": 6,
+    "topic": "一般将来时 (will / be going to), 旅行词汇",
+    "objectives": [
+      "掌握一般将来时 will 和 be going to 的用法区别",
+      "能谈论未来计划和旅行安排"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！暑假快到了，你有什么计划？打算去哪里旅行？想要做什么？今天我们学习怎么用英语谈论未来计划，引出'一般将来时'。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "一般将来时 will / be going to"
+          },
+          {
+            "kind": "text",
+            "content": "谈论未来打算和预测"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "一般将来时常用两种结构。will + 动词原形，表示临时决定或预测，例如 I will travel to Beijing. be going to + 动词原形，表示已经计划好的事，例如 I am going to visit the Great Wall. 旅行词汇：travel 旅行，trip 旅程，flight 航班，hotel 酒店，suitcase 行李箱，passport 护照，ticket 票。",
+        "board": [
+          {
+            "kind": "formula",
+            "content": "will + V (临时决定 / 预测)"
+          },
+          {
+            "kind": "formula",
+            "content": "be going to + V (已有计划)"
+          },
+          {
+            "kind": "text",
+            "content": "Travel words: travel, trip, flight, hotel, ticket, passport, suitcase"
+          },
+          {
+            "kind": "bullet",
+            "content": "时间标志 tomorrow / next week / next summer / in 2027"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们对比 will 和 be going to 的用法。两者都表示将来，但有细微差别：will 用于临时决定、承诺或预测，例如 I will help you；be going to 用于已有计划或打算，例如 I am going to visit Beijing next week。记住 will 后跟动词原形，be going to 后跟动词-ing。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "I am going to Shanghai next week. 我下周要去上海。"
+          },
+          {
+            "kind": "text",
+            "content": "We are going to visit the Bund. 我们打算去外滩。"
+          },
+          {
+            "kind": "text",
+            "content": "It will be sunny tomorrow. 明天会晴。"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "你已经计划好下个月和家人去北京旅行，应该说：",
+          "options": [
+            "A. I will travel to Beijing next month.",
+            "B. I am going to travel to Beijing next month.",
+            "C. I travelling to Beijing next month.",
+            "D. I am travel to Beijing next month."
+          ],
+          "answerIndex": 1,
+          "explanation": "已经计划好的事用 be going to 结构，主语 I 对应 am，所以 I am going to travel to Beijing next month 正确，选 B。A 用 will 更适合临时决定或预测，C 缺少 be 动词，D am 后应接 V-ing 不是原形。"
+        }
+      },
+      {
+        "narration": "易错点：will 和 be going to 经常被混用。临时起意用 will，例如手机响了说 I will answer it。事先有准备用 be going to。还有同学把 be going to 中的 be 写错：she going to / she is go to 都不对。还有人混淆将来时间和现在进行时表示将来：I am leaving tomorrow 强调已安排。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：临时决定用 will，已有计划用 be going to"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：She is going to (不是 going to / is go to)"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：will 后必须接动词原形"
+          },
+          {
+            "kind": "bullet",
+            "content": "现在进行时表将来：I'm leaving. (强调已安排)"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "现在请你独立思考。你的朋友 Lily 临时决定下周末去杭州看西湖，她之前没有任何计划，应该选用 will 还是 be going to 呢？请你从四个选项里选出最准确的表达。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "场景：Lily 临时决定下周末去杭州"
+          },
+          {
+            "kind": "bullet",
+            "content": "提示：临时决定用 will，已有计划用 be going to"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "Lily 临时决定下周末去杭州看西湖，应该说：",
+          "options": [
+            "A. Lily is going to visit the West Lake next weekend.",
+            "B. Lily will visit the West Lake next weekend.",
+            "C. Lily visits the West Lake next weekend.",
+            "D. Lily is visiting the West Lake next weekend."
+          ],
+          "answerIndex": 1,
+          "explanation": "Lily 是临时决定，没有任何计划，使用 will 表示临时意愿，所以 Lily will visit the West Lake next weekend 正确，选 B。A 用 be going to 表示已有计划不符合，C 用一般现在时表将来错误，D 现在进行时表将来通常强调已安排。"
+        }
+      },
+      {
+        "narration": "今天我们学习了一般将来时 will 和 be going to 的用法区别，还掌握了旅行词汇。下节课我们要学习将来进行时 will be doing 描述将来某一时刻正在进行的动作。回家请用英语写出你暑假的旅行计划。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "will + V：临时决定 / 预测"
+          },
+          {
+            "kind": "bullet",
+            "content": "be going to + V：已有计划"
+          },
+          {
+            "kind": "answer",
+            "content": "分清 will 与 be going to = 准确表达未来"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "english",
+    "grade": 7,
+    "topic": "现在完成时 (have/has + p.p.), 介词综合",
+    "objectives": [
+      "掌握现在完成时 have/has + 过去分词的结构",
+      "能综合使用常见介词描述位置、时间和方向"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！你看过《西游记》吗？你去过长城吗？这些已经发生的事情和过去的经历对现在有影响，用'现在完成时'表达最准确。今天我们一起进入初中英语的关键语法点。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "现在完成时 have/has + 过去分词"
+          },
+          {
+            "kind": "text",
+            "content": "过去发生并与现在有联系的动作"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "现在完成时结构：have / has + 过去分词 (p.p.)。主语 I / you / we / they 用 have，he / she / it 用 has。规则动词的过去分词和过去式一样加 ed；不规则动词要单独记：go→went→gone，see→saw→seen，eat→ate→eaten，do→did→done，have→had→had。介词方面：in 在里面，on 在上面，at 在某点，under 在下面，between 在两者之间，among 在三者以上之间。",
+        "board": [
+          {
+            "kind": "formula",
+            "content": "have/has + 过去分词 (p.p.)"
+          },
+          {
+            "kind": "text",
+            "content": "不规则: go→gone, see→seen, eat→eaten, do→done, have→had"
+          },
+          {
+            "kind": "text",
+            "content": "Prepositions: in / on / at / under / between / among / above / below"
+          },
+          {
+            "kind": "bullet",
+            "content": "时间标志 already / yet / just / ever / never / since / for"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "看几个例句：I have already finished my homework. 我已经完成作业了。She has been to Beijing twice. 她去过北京两次。We have lived here for five years. 我们在这里住了五年。注意 been to 表示去过，gone to 表示去了(还没回来)。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "I have already finished my homework. 我已经完成作业。"
+          },
+          {
+            "kind": "text",
+            "content": "She has been to Beijing twice. 她去过北京两次。"
+          },
+          {
+            "kind": "text",
+            "content": "We have lived here for 5 years. 我们住了 5 年。"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "你想说'我哥哥已经看过这部电影了'，正确的句子是：",
+          "options": [
+            "A. My brother already saw this movie.",
+            "B. My brother has already seen this movie.",
+            "C. My brother have already seen this movie.",
+            "D. My brother is already seen this movie."
+          ],
+          "answerIndex": 1,
+          "explanation": "现在完成时结构 have/has + p.p.，主语 My brother 是第三人称单数用 has，see 的过去分词是 seen，所以 My brother has already seen this movie 正确，选 B。A 用了过去式，C 主谓不一致，D 用了 is seen 被动。"
+        }
+      },
+      {
+        "narration": "易错点：现在完成时和一般过去时容易混。已经发生且与现在有关用现在完成时；过去某时间发生的具体事情用一般过去时。I have been to Shanghai 去过上海(经历)，I went to Shanghai last year 去年去了上海(具体过去)。还要区分 for + 时间段 与 since + 时间点：for 3 years / since 2023。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：完成时强调经历/影响，过去时强调具体时间"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：for + 一段时间 / since + 时间点"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：been to (去过) ≠ gone to (去了没回)"
+          },
+          {
+            "kind": "bullet",
+            "content": "yet 用于否定句和疑问句句末；already 用于肯定句"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立判断。小明从 2020 年起就在这所学校读书，到现在已经五年了。请选出能正确表达'他在这所学校读书已经五年了'的句子，注意现在完成时和介词的搭配。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "场景：小明 2020 年开始在这所学校读书"
+          },
+          {
+            "kind": "bullet",
+            "content": "提示：has + p.p. + for + 时间段 / since + 时间点"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "小明从 2020 年起就在这所学校读书，至今已 5 年，正确的表达是：",
+          "options": [
+            "A. Xiao Ming has studied at this school since 5 years.",
+            "B. Xiao Ming has studied at this school for 5 years.",
+            "C. Xiao Ming studied at this school for 5 years.",
+            "D. Xiao Ming is studying at this school for 5 years."
+          ],
+          "answerIndex": 1,
+          "explanation": "for 后接一段时间（5 years），since 后接时间点（2020）。动作从过去持续到现在用现在完成时 has + studied，所以 Xiao Ming has studied at this school for 5 years 正确，选 B。A since 后不能接时间段，C 用了过去式不能表示持续到现在，D 现在进行时不能与 for 连用表示持续。"
+        }
+      },
+      {
+        "narration": "今天我们学习了现在完成时 have/has + p.p. 的结构，还综合复习了常用介词。下节课我们要学习现在完成进行时 have been doing，表示从过去某时一直持续到现在的动作。回家请用 have/has 写三个你做过的事情。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "现在完成时：have/has + p.p."
+          },
+          {
+            "kind": "bullet",
+            "content": "介词综合：in / on / at / under / between / for / since"
+          },
+          {
+            "kind": "answer",
+            "content": "会用完成时 = 用英语谈经历与影响"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "english",
+    "grade": 8,
+    "topic": "时态全景图 (一般/进行/完成/完成进行), 阅读理解策略",
+    "objectives": [
+      "系统掌握英语四大基本时态的用法区别",
+      "能在阅读理解中运用略读、扫读、推断等策略"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！到了八年级，我们要对英语时态来一次'全景扫描'：一般现在时、现在进行时、现在完成时、现在完成进行时，它们像四件不同的工具，各有各的用途。再配上科学的阅读策略，攻克长篇阅读就不难了。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "时态全景 + 阅读策略"
+          },
+          {
+            "kind": "text",
+            "content": "四种时态对比与略读扫读技巧"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "一般现在时：表习惯、事实、真理，例如 He plays football every Sunday. 现在进行时：表此刻正在发生，例如 He is playing football now. 现在完成时：表过去发生对现在有影响，例如 He has played football for two hours. 现在完成进行时：表从过去持续到现在一直在做，例如 He has been playing football since 3 pm. 四者层层递进。",
+        "board": [
+          {
+            "kind": "formula",
+            "content": "一般: V / V-s"
+          },
+          {
+            "kind": "formula",
+            "content": "进行: be + V-ing"
+          },
+          {
+            "kind": "formula",
+            "content": "完成: have/has + p.p."
+          },
+          {
+            "kind": "formula",
+            "content": "完成进行: have/has been + V-ing"
+          },
+          {
+            "kind": "bullet",
+            "content": "时间状语决定时态：every day / now / for / since"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "阅读理解三大策略：(1) 略读 skimming — 快速读首尾段和每段首句，抓住文章主旨；(2) 扫读 scanning — 带着问题回文中找关键词；(3) 推断 inference — 根据上下文线索猜测词义或作者态度。今天我们用一篇关于'人工智能改变学习方式'的短文来练习。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "Skimming: 抓主旨，看标题、首段、尾段"
+          },
+          {
+            "kind": "text",
+            "content": "Scanning: 找细节，定位关键词所在句"
+          },
+          {
+            "kind": "text",
+            "content": "Inference: 推断，根据线索判断作者意图"
+          },
+          {
+            "kind": "bullet",
+            "content": "主旨题常问 main idea / best title"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "句子 'He has been studying English since he was ten.' 体现的时态是：",
+          "options": [
+            "A. 一般现在时",
+            "B. 现在进行时",
+            "C. 现在完成时",
+            "D. 现在完成进行时"
+          ],
+          "answerIndex": 3,
+          "explanation": "句子中有 have been studying 结构和 since 引导的时间点，表示动作从过去某一时刻持续到现在并仍在进行，是典型的现在完成进行时，所以选 D。"
+        }
+      },
+      {
+        "narration": "易错点：四个时态的时间状语混用是常见错误。every day / often 用一般现在；now / Look! 用现在进行；already / for / since 用现在完成；all morning / lately 偏向完成进行。还有同学分不清 has been to (去过)和 has gone to (去了没回)。阅读时忽略关键词会跑题。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：时间状语和时态必须匹配"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：been to ≠ gone to"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：阅读只抠单词不看主旨"
+          },
+          {
+            "kind": "bullet",
+            "content": "主旨题答案通常在首段或末段"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "今天我们把八种时态连成一张图。一般现在表习惯、现在进行表动作正在进行、现在完成表过去发生对现在有影响、过去完成表过去的过去。四种完成时和四种进行时交叉组合，构成英语的时态体系。多读例句培养语感，是掌握时态的关键。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "AI tutors help students learn English with patience and clear feedback"
+          },
+          {
+            "kind": "bullet",
+            "content": "提示：抓首段主旨，标题要覆盖全文"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "下面短文主旨最合适的标题是：",
+          "options": [
+            "A. How to Cook Dinner",
+            "B. AI Tutors Help Students Learn English Better",
+            "C. The History of English",
+            "D. Why I Like Sports"
+          ],
+          "answerIndex": 1,
+          "explanation": "短文主题词是 AI tutor 和 learn English，选项 B 'AI Tutors Help Students Learn English Better' 涵盖了文章主题词和主旨，最贴切。A、C、D 与 AI 学习英语无关，所以选 B。"
+        }
+      },
+      {
+        "narration": "今天我们全景梳理了英语四大基本时态，还学会了略读、扫读、推断三大阅读策略。下节课我们要训练'细节题'和'词义猜测题'的解题技巧，并进行完形填空综合训练。回家请用英语写一段你最近的学习生活，刻意用四种时态各造一句。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "四大时态：一般 / 进行 / 完成 / 完成进行"
+          },
+          {
+            "kind": "bullet",
+            "content": "阅读三策略：略读主旨 / 扫读细节 / 推断意图"
+          },
+          {
+            "kind": "answer",
+            "content": "时态 + 策略 = 阅读理解双引擎"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "english",
+    "grade": 9,
+    "topic": "被动语态, 定语从句入门",
+    "objectives": [
+      "理解被动语态 be + p.p. 的结构和用法",
+      "掌握由 that / who / which 引导的定语从句"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！英语中有一类句子把'被做'的人或事放在前面，例如'作业被老师检查了'、'长城被许多人参观'。这就是被动语态。再加上一类能修饰名词的从句——定语从句，你的英语句子就会显得更高级、更有逻辑。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "被动语态 + 定语从句入门"
+          },
+          {
+            "kind": "text",
+            "content": "be + p.p. 与 that / who / which 从句"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "被动语态结构：be + 过去分词 (p.p.)，时态通过 be 体现。一般现在时：am/is/are + p.p.；一般过去时：was/were + p.p.。例如：English is spoken all over the world. / The book was written by Lu Xun. 定语从句：先行词为人用 who / that，先行词为物用 which / that。例：The boy who won the prize is my brother. / The book which I bought is interesting.",
+        "board": [
+          {
+            "kind": "formula",
+            "content": "被动语态: be + p.p. (动作承受者做主语)"
+          },
+          {
+            "kind": "formula",
+            "content": "定语从句: 先行词 + 关系词 + 从句"
+          },
+          {
+            "kind": "text",
+            "content": "关系词: who(人) / which(物) / that(人/物)"
+          },
+          {
+            "kind": "bullet",
+            "content": "被动语态 by 后面接动作执行者"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "看几个例句感受两种结构。被动语态：This bridge was built in 1990. 这座桥建于 1990 年。Chinese is spoken by many people. 许多人说汉语。定语从句：The student who answered the question is Lily. 回答问题的那个学生是 Lily。The gift which my father gave me is very nice. 爸爸给我的礼物很漂亮。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "This bridge was built in 1990. 这桥建于 1990 年。"
+          },
+          {
+            "kind": "text",
+            "content": "The student who answered is Lily. 回答的是 Lily。"
+          },
+          {
+            "kind": "text",
+            "content": "The gift which my father gave me is nice. 礼物很漂亮。"
+          },
+          {
+            "kind": "highlight",
+            "content": "定语从句紧跟在先行词后面"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "你想表达'这本书是被我妈妈买的'，正确的被动句是：",
+          "options": [
+            "A. My mother bought this book.",
+            "B. This book was bought by my mother.",
+            "C. This book is buy by my mother.",
+            "D. This book bought by my mother."
+          ],
+          "answerIndex": 1,
+          "explanation": "被动语态结构 be + p.p. + by + 执行者，时态为一般过去时用 was，buy 的过去分词是 bought，所以 This book was bought by my mother 正确，选 B。A 是主动句，C buy 应用 bought，D 缺 be 动词。"
+        }
+      },
+      {
+        "narration": "易错点：被动语态忘加 be 写成 'The bridge built in 1990' 是错误的。还有同学把 by 和 with 混用——by 后接动作执行者，with 后接工具。定语从句常见错误：关系词重复使用 I know the boy who is he; 关系词后多加 that 写成 who that。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：被动语态必须有 be + p.p."
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：by 后接人/执行者；with 后接工具"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：定语从句关系词后不能重复人称"
+          },
+          {
+            "kind": "bullet",
+            "content": "限制定语从句不能省略关系词"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "请你独立完成。两句翻译题：(1) 这封信是 Tom 写的。(2) 我昨天读了一本很有意思的书，那本书是我的生日礼物。请你选出能正确表达这两个意思的英语。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "(1) 信由 Tom 写 (2) 描述收到一本有趣的书"
+          },
+          {
+            "kind": "bullet",
+            "content": "提示：被动语态 + which 定语从句"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "下面哪一组翻译最准确？",
+          "options": [
+            "A. The letter was wrote by Tom. The book is interesting.",
+            "B. The letter was written by Tom. The book which I received is interesting.",
+            "C. The letter written by Tom. The book which is interesting.",
+            "D. The letter was written by Tom. The book which it is interesting."
+          ],
+          "answerIndex": 1,
+          "explanation": "被动语态 write 的过去分词是 written，所以 The letter was written by Tom 正确。第二句要用定语从句修饰 the book，关系词 which 指代物并在从句中作宾语，所以 The book which I received is interesting 正确，选 B。A 过去分词 wrote 错误，C 缺 be 动词，D 关系词后又加了 it 重复主语。"
+        }
+      },
+      {
+        "narration": "今天我们学习了被动语态 be + p.p. 的结构和由 who / which / that 引导的定语从句。下节课我们要深入学习关系代词 whose (谁的) 和关系副词 where / when / why 的用法，让定语从句更完整。回家请用被动语态和定语从句各写两句。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "被动语态：be + p.p. + by + 执行者"
+          },
+          {
+            "kind": "bullet",
+            "content": "定语从句：who(人) / which(物) / that"
+          },
+          {
+            "kind": "answer",
+            "content": "会用被动 + 定从 = 写出高级英语句"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "english",
+    "grade": 10,
+    "topic": "虚拟语气入门, 非谓语动词 (不定式/动名词/分词)",
+    "objectives": [
+      "掌握非真实条件句中虚拟语气的基本形式",
+      "能区分动词不定式、动名词和分词的功能"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！高中英语里有一类特殊的'语气'：假设的事情明明不真实，却要按某种规则表达。比如'如果我是你，我会努力学习'——但我并不是你。这是虚拟语气。再加上一类不变化作谓语的动词形式——非谓语动词，你的英语表达就会更精准、更有文采。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "虚拟语气入门 + 非谓语动词"
+          },
+          {
+            "kind": "text",
+            "content": "非真实条件句 + to do / doing / done"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "虚拟语气在非真实条件句中的基本结构：与现在事实相反：If + 主语 + 动词过去式 (be 用 were)，主语 + would / could / might + 动词原形。与过去事实相反：If + 主语 + had + p.p.，主语 + would have + p.p.。非谓语动词有三种：动词不定式 to do（表目的、未来）、动名词 doing（作主语、宾语）、分词（现在分词 doing 表主动进行；过去分词 done 表被动完成）。",
+        "board": [
+          {
+            "kind": "formula",
+            "content": "与现在相反: If + were/V-ed, would + V"
+          },
+          {
+            "kind": "formula",
+            "content": "与过去相反: If + had + p.p., would have + p.p."
+          },
+          {
+            "kind": "formula",
+            "content": "非谓语: to do / doing / done"
+          },
+          {
+            "kind": "bullet",
+            "content": "enjoy / finish / mind 后接 doing"
+          },
+          {
+            "kind": "bullet",
+            "content": "want / decide / hope 后接 to do"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "看几个例句。虚拟语气：If I were you, I would take the chance. 如果我是你，我会抓住机会。(事实上我不是你) If I had studied harder, I would have passed the exam. 如果我以前更努力学习，我就通过考试了。(事实上过去没努力学习) 非谓语：I enjoy reading books. 我喜欢读书。I want to travel around the world. 我想环游世界。The book written by him is popular. 他写的书很受欢迎。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "If I were you, I would take the chance. 我会抓住机会。"
+          },
+          {
+            "kind": "text",
+            "content": "I enjoy reading books. 我喜欢读书。"
+          },
+          {
+            "kind": "text",
+            "content": "The book written by him is popular. 他写的书很受欢迎。"
+          },
+          {
+            "kind": "highlight",
+            "content": "written by him 是过去分词短语作后置定语"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "你想表达'如果我有更多时间，我会读更多的书'，虚拟语气最合适的句子是：",
+          "options": [
+            "A. If I have more time, I will read more books.",
+            "B. If I had more time, I would read more books.",
+            "C. If I had more time, I would have read more books.",
+            "D. If I had more time, I read more books."
+          ],
+          "answerIndex": 1,
+          "explanation": "句子描述与现在事实相反的假设，用虚拟语气现在时态：If + 过去式 (had)，主句 would + 动词原形 (read)，所以 If I had more time, I would read more books 正确，选 B。A 是真实条件句，C 表示与过去相反，D 缺 would。"
+        }
+      },
+      {
+        "narration": "易错点：虚拟语气现在时 be 在任何主语后都用 were，'If I was you' 是错的，应为 If I were you。还有同学把 would have done 用错——这是与过去相反，要对应当事过去的动作。to do 和 doing 也要分清：remember to do 记得去做(未来)，remember doing 记得做过(过去)。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：If I were you (不是 was)"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：would have done 用于与过去相反"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：remember to do / remember doing"
+          },
+          {
+            "kind": "bullet",
+            "content": "分词作定语：doing 表主动进行，done 表被动完成"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "独立练习。翻译句子：'这位正在唱歌的女孩是我的姐姐。她希望明年能去北京学音乐。' 请选出最合适的英语组合，注意非谓语动词和不定式的使用。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "(1) 正在唱歌的女孩 (2) 希望去北京学音乐"
+          },
+          {
+            "kind": "bullet",
+            "content": "提示：singing girl (现在分词作定语)，hope to do"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "下面哪一组翻译最符合原意？",
+          "options": [
+            "A. The singing girl is my sister. She hopes to go to Beijing to learn music next year.",
+            "B. The sang girl is my sister. She hopes going to Beijing to learn music.",
+            "C. The singing girl is my sister. She hopes going Beijing learn music.",
+            "D. The girl is singing is my sister. She hopes to going Beijing."
+          ],
+          "answerIndex": 0,
+          "explanation": "'正在唱歌的女孩'用现在分词 singing 作定语修饰 girl；'希望去北京学音乐'用 hope to do 结构，所以 The singing girl is my sister. She hopes to go to Beijing to learn music next year 正确，选 A。B sang 是过去式错误，C going 不能作 hope 宾语，D 两个句子结构都错误。"
+        }
+      },
+      {
+        "narration": "今天我们学习了虚拟语气和三种非谓语动词。虚拟语气用来表达与事实相反的假设，非谓语动词让句子更简洁。比如 I want to learn more 是不定式，I enjoy learning 是动名词，the running water 是现在分词。下节课我们要学习高考阅读理解的细节题策略，把今天学的语法用到真实文章里。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "虚拟语气现在：If + were/V-ed, would + V"
+          },
+          {
+            "kind": "bullet",
+            "content": "非谓语动词：to do / doing / done"
+          },
+          {
+            "kind": "answer",
+            "content": "会用虚拟 + 非谓语 = 写出地道书面表达"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "english",
+    "grade": 11,
+    "topic": "高考阅读主旨题, 写作衔接词 (however / moreover / furthermore)",
+    "objectives": [
+      "掌握高考阅读主旨题的解题方法",
+      "能在书面表达中恰当使用 however / moreover / furthermore 等衔接词"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！高考英语阅读中，主旨大意题是必考题型，它考查你能否把握一篇文章或一段话的核心思想。同时，书面表达中恰当使用衔接词能让作文结构清晰、逻辑严密。今天我们攻克这两大板块。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "高考阅读主旨题 + 衔接词"
+          },
+          {
+            "kind": "text",
+            "content": "主旨题方法与 however / moreover / furthermore"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "高考阅读主旨题考查学生对文章大意的把握，通常出现在第一道或最后一道。解题三步法：先看标题和首尾段预测主题，再快速浏览每段首句寻找主旨句，最后排除过于宽泛或过于细节的选项，把范围最贴合全文主旨的答案选出来。高频错误是学生只看到某一段的内容就选答案，导致以偏概全。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "However 然而 (转折，前后逗号或句号)"
+          },
+          {
+            "kind": "text",
+            "content": "Moreover / Furthermore 此外 / 而且 (递进，句中逗号)"
+          },
+          {
+            "kind": "text",
+            "content": "主旨题选项特征：太泛、太狭、未提及的都错"
+          },
+          {
+            "kind": "bullet",
+            "content": "高频衔接词: however / moreover / furthermore / therefore / in addition"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "看几组例句。阅读题示例：'With the development of AI, online learning has become popular. Many students find it convenient. However, some experts worry about lack of face-to-face interaction. Moreover, digital eye strain is a growing concern.' 主旨句就是第一句：AI 让在线学习变得流行。衔接词使用：However 转折提出问题，Moreover 进一步补充。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "Main idea: AI 让在线学习流行，但也带来隐忧"
+          },
+          {
+            "kind": "text",
+            "content": "However 表转折，引出反方观点"
+          },
+          {
+            "kind": "text",
+            "content": "Moreover 表递进，补充新观点"
+          },
+          {
+            "kind": "bullet",
+            "content": "主旨题答案要覆盖全文"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "短文首句 'Online learning is changing education.' 第二段讲优点，第三段 However 引出缺点。这篇文章的最佳标题是：",
+          "options": [
+            "A. Online Learning: Pros and Cons",
+            "B. The History of Education",
+            "C. How to Use a Computer",
+            "D. Online Learning Is Perfect"
+          ],
+          "answerIndex": 0,
+          "explanation": "四个衔接词分别承担不同逻辑：However 表转折，Moreover 表递进，Furthermore 表递进，Pros and Cons 表利弊对比。原文在讲优缺点，所以选 Pros and Cons 最合适。其他三词都不表达利弊对照关系。"
+        }
+      },
+      {
+        "narration": "易错点：主旨题最常犯的错是'以偏概全'——只选了某段或某句的细节。还有同学把 however 写成 how ever (两个词)，把 moreover 写成 more over。Furthermore 拼写容易错位。标点也要注意：However 放在句首或句中通常前后加逗号。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：主旨题选'细节'是常见陷阱"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：however 是一个词"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：Furthermore 不要拼成 Further more"
+          },
+          {
+            "kind": "bullet",
+            "content": "主旨题答案覆盖全文，细节题答案对应某段"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "独立写作练习。请你用所给衔接词 however / moreover / furthermore 把三句话连成一段逻辑清晰的短文。话题：Reading is important. ①Reading broadens our horizons. ②Many successful people read every day. ③Some students think reading is boring. 请选出最佳组合。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "话题：Reading is important."
+          },
+          {
+            "kind": "bullet",
+            "content": "提示：先后顺序——递进 moreover，递进 furthermore，转折 however"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "下面哪一段逻辑和衔接词使用最恰当？",
+          "options": [
+            "A. Reading is important. It broadens our horizons. However, many successful people read every day. Furthermore, some students think reading is boring.",
+            "B. Reading is important. It broadens our horizons. Moreover, many successful people read every day. Furthermore, some students think reading is boring.",
+            "C. Reading is important. It broadens our horizons. Moreover, many successful people read every day. However, some students think reading is boring.",
+            "D. Reading is important. It broadens our horizons. Furthermore, some students think reading is boring. Moreover, many successful people read every day."
+          ],
+          "answerIndex": 2,
+          "explanation": "前两句是递进关系，用 Moreover 衔接'成功人士每天阅读'；第三句是转折，用 However 引出'部分学生觉得无聊'，逻辑顺畅，选 C。A 把 however 放错位置（递进用错），B 没有转折，D 顺序颠倒。"
+        }
+      },
+      {
+        "narration": "今天我们学习了高考阅读主旨题的解题三步法，以及 however / moreover / furthermore 三个核心衔接词的使用。下节课我们要复习七选五解题技巧、完形填空语境分析，并通过实战演练综合提升。回家请用这三个衔接词各写一段话。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "主旨题三步：略读首尾、找主题句、覆盖全文"
+          },
+          {
+            "kind": "bullet",
+            "content": "衔接词：However(转折) / Moreover(递进) / Furthermore(递进)"
+          },
+          {
+            "kind": "answer",
+            "content": "主旨题技巧 + 衔接词 = 阅读写作双提升"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  },
+  {
+    "subject": "english",
+    "grade": 12,
+    "topic": "高考应用文写作 (申请信/邀请函), 长难句分析",
+    "objectives": [
+      "掌握申请信和邀请函的写作模板与常用句型",
+      "能分析高考阅读中的长难句结构并准确理解"
+    ],
+    "segments": [
+      {
+        "narration": "同学们好！高考英语最后冲刺阶段，应用文写作和长难句分析是两大拦路虎。申请信和邀请函是有固定模板的，掌握套路就能拿高分；长难句则是阅读理解和完形填空的硬骨头。今天我们一一击破。",
+        "board": [
+          {
+            "kind": "title",
+            "content": "高考应用文 + 长难句分析"
+          },
+          {
+            "kind": "text",
+            "content": "申请信 / 邀请函模板 + 复杂句拆解"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "高考应用文写作常见的体裁有四种：申请信、邀请函、感谢信、投诉信。每种体裁都有固定格式。申请信包括自我介绍、申请原因、个人优势、结尾期待。邀请函需要写明活动内容、时间地点、参加方式。感谢信要写感谢缘由、具体事例、再次感谢。感谢信结尾要表达对对方的祝福。",
+        "board": [
+          {
+            "kind": "text",
+            "content": "申请信：自我介绍 / 申请原因 / 个人优势 / 结尾期待"
+          },
+          {
+            "kind": "text",
+            "content": "邀请函：问候 / 活动内容 / 时间地点 / 期待回复"
+          },
+          {
+            "kind": "text",
+            "content": "感谢信：感谢缘由 / 具体事例 / 再次感谢 / 美好祝福"
+          },
+          {
+            "kind": "text",
+            "content": "投诉信：投诉问题 / 造成影响 / 改进建议 / 联系方式"
+          },
+          {
+            "kind": "bullet",
+            "content": "落款 + 日期 + 签名永远不能忘记"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "我们用一份邀请函做示范。开头要问候并点明写信目的，比如 I am writing to invite you to join our English Festival next Friday。中间段写活动安排，包括时间、地点、内容、注意事项。结尾表达期待回复并署名。整封信语气亲切，长度控制在 80 到 120 词之间。",
+        "board": [
+          {
+            "kind": "formula",
+            "content": "三步法: 找主干 → 切修饰 → 看逻辑"
+          },
+          {
+            "kind": "text",
+            "content": "主干: 主语 + 谓语 + 宾语 / 主系表"
+          },
+          {
+            "kind": "text",
+            "content": "修饰: 从句 / 分词短语 / 介词短语 / 不定式"
+          },
+          {
+            "kind": "bullet",
+            "content": "看到 which / that / who 先定从句边界"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "你想写一封申请参加夏令营的邮件，开头最恰当的一句是：",
+          "options": [
+            "A. I am writing to invite you to the camp.",
+            "B. I am writing to apply for a place in the summer camp.",
+            "C. I am writing to tell you about my day.",
+            "D. I am writing because I am sad."
+          ],
+          "answerIndex": 1,
+          "explanation": "题目考查邀请函的固定格式。开头要有问候和写信目的，所以选 A。B 选项缺乏邀请函必备的问候语，C 选项遗漏具体时间地点信息，D 选项语气过于生硬不适合邀请场景。"
+        }
+      },
+      {
+        "narration": "易错点：申请信和邀请函混淆——邀请用 invite to，申请用 apply for。还有同学忽视称呼 Dear Sir or Madam, 或 Yours sincerely, 这些格式分被扣。结尾期待回复却忘记写落款日期。长难句中常见错误是把定语从句的谓语当成主句谓语。",
+        "board": [
+          {
+            "kind": "highlight",
+            "content": "易错：申请 apply for，邀请 invite to"
+          },
+          {
+            "kind": "highlight",
+            "content": "常用连接词：first, then, after that, finally / besides, moreover, however"
+          },
+          {
+            "kind": "highlight",
+            "content": "易错：长难句勿把从句谓语当主句谓语"
+          },
+          {
+            "kind": "bullet",
+            "content": "拆从句时先找连词 which/that/who，再定位谓语"
+          }
+        ],
+        "checkpoint": null
+      },
+      {
+        "narration": "独立练习。两道题：(1) 长难句分析：The professor who gave the lecture, having worked in AI for 20 years, shared his latest research. 请选出最准确的主干。(2) 应用文写作判断：邀请朋友参加生日派对，最合适的开头句是什么？",
+        "board": [
+          {
+            "kind": "text",
+            "content": "(1) 长难句找主干 (2) 邀请函选开头"
+          },
+          {
+            "kind": "bullet",
+            "content": "提示：先找主谓宾，再切分词短语"
+          }
+        ],
+        "checkpoint": {
+          "prompt": "关于上面两道题，下列哪一组答案正确？",
+          "options": [
+            "A. (1) The professor gave (2) I am writing to invite you to my birthday party.",
+            "B. (1) The professor shared his research (2) I am writing to apply for your birthday.",
+            "C. (1) The lecture shared research (2) I am writing to tell you about homework.",
+            "D. (1) The professor gave the lecture, having worked... shared (2) I want money."
+          ],
+          "answerIndex": 0,
+          "explanation": "长难句主干 The professor shared his research (who 从句和 having worked 短语都是修饰)。邀请函开头要用 invite to 表达邀请，I am writing to invite you to my birthday party 正确。所以选 A。B 把 apply 误用到邀请，C 主语错，D 结构混乱。"
+        }
+      },
+      {
+        "narration": "今天我们学习了高考申请信和邀请函的写作模板，掌握了长难句分析三步法。下节课我们要进行高考真题实战演练，包括图表作文、概要写作和读后续写。回家请按模板写一封申请信，并挑两个长难句做拆解练习。",
+        "board": [
+          {
+            "kind": "bullet",
+            "content": "主旨：长难句的简化方法是先找主干再补修饰"
+          },
+          {
+            "kind": "bullet",
+            "content": "三步法：找主谓 / 跳插入语 / 拆从句"
+          },
+          {
+            "kind": "bullet",
+            "content": "长难句三步: 找主干 / 切修饰 / 看逻辑"
+          },
+          {
+            "kind": "answer",
+            "content": "应用文 + 长难句 = 高考英语双保险"
+          }
+        ],
+        "checkpoint": null
+      }
+    ]
+  }
+]

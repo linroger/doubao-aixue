@@ -41,10 +41,15 @@ public nonisolated struct SolveRequest: Sendable, Hashable {
     public var grade: GradeLevel
     public var mode: CaptureMode
     public var learnMode: Bool
+    /// The original capture, when available. A vision-capable cloud model reads it
+    /// directly (handwriting / geometry / diagrams), with `recognizedText` as the hint
+    /// and the text-only path as a fallback.
+    public var imageData: Data?
     public init(recognizedText: String, subject: Subject? = nil, grade: GradeLevel = .g5,
-                mode: CaptureMode = .solve, learnMode: Bool = true) {
+                mode: CaptureMode = .solve, learnMode: Bool = true, imageData: Data? = nil) {
         self.recognizedText = recognizedText; self.subject = subject
         self.grade = grade; self.mode = mode; self.learnMode = learnMode
+        self.imageData = imageData
     }
 }
 
@@ -62,6 +67,27 @@ public nonisolated struct SolvedProblem: Sendable, Hashable {
         self.subject = subject; self.approach = approach; self.steps = steps
         self.finalAnswer = finalAnswer; self.choices = choices
         self.knowledgePoints = knowledgePoints; self.route = route
+    }
+}
+
+// MARK: - Workbook grading (作业批改)
+
+/// Request to grade a photographed workbook page. Carries the raw image (sent to a
+/// vision-capable model) plus a best-effort on-device OCR pre-pass (`recognizedText`)
+/// so providers without image input — or any failure path — can still grade from text.
+public nonisolated struct WorkbookGradeRequest: Sendable, Hashable {
+    public var imageData: Data
+    public var recognizedText: String        // OCR pre-pass: hint for vision, fallback for text-only
+    public var subjectHint: Subject?         // user-selected subject, or nil for auto-detect
+    public var grade: GradeLevel
+    public var learnMode: Bool
+    public init(imageData: Data, recognizedText: String = "", subjectHint: Subject? = nil,
+                grade: GradeLevel = .g5, learnMode: Bool = true) {
+        self.imageData = imageData
+        self.recognizedText = recognizedText
+        self.subjectHint = subjectHint
+        self.grade = grade
+        self.learnMode = learnMode
     }
 }
 

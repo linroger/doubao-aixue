@@ -23,6 +23,7 @@ struct ConversationView: View {
     @State private var draft: String = ""
     @State private var streamingText: String = ""
     @State private var isStreaming = false
+    @State private var streamingTask: Task<Void, Never>?
     @State private var speech = SpeechRecognitionCoordinator()
 
     init(conversationID: UUID) { self.conversationID = conversationID }
@@ -47,6 +48,7 @@ struct ConversationView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .onDisappear { streamingTask?.cancel() }
     }
 
     private func chat(_ conversation: Conversation) -> some View {
@@ -130,27 +132,34 @@ struct ConversationView: View {
         modelContext.insert(userMessage)
         conversation.updatedAt = Date()
         if conversation.title == "新对话" { conversation.title = String(text.prefix(16)) }
-        try? modelContext.save()
+        modelContext.saveLogging()
 
         let turns = conversation.sortedMessages.map { ChatTurn(role: $0.role, text: $0.text) }
         let request = ChatRequest(turns: turns, context: .preview, kind: mode.chatKind)
 
         isStreaming = true
         streamingText = ""
-        Task {
+        streamingTask?.cancel()
+        streamingTask = Task {
             var finalBlocks: [RichBlock] = []
             var route: IntelligenceRoute = .mock
             do {
                 for try await chunk in intelligence.chat(request) {
+                    try Task.checkCancellation()
                     streamingText += chunk.delta
                     if chunk.isFinal {
                         finalBlocks = chunk.blocks
                         route = chunk.route
                     }
                 }
+            } catch is CancellationError {
+                // View went away mid-stream — abandon without mutating the store.
+                return
             } catch {
                 finalBlocks = [RichBlock(kind: .text, content: "抱歉，我刚走神了，再问我一次好吗？")]
             }
+            // Don't persist onto a context whose view has been dismissed.
+            if Task.isCancelled { return }
             let assistant = ChatMessageEntity()
             assistant.role = .assistant
             assistant.text = streamingText.isEmpty ? (finalBlocks.first?.content ?? "") : streamingText
@@ -159,7 +168,7 @@ struct ConversationView: View {
             assistant.conversation = conversation
             modelContext.insert(assistant)
             conversation.updatedAt = Date()
-            try? modelContext.save()
+            modelContext.saveLogging()
             isStreaming = false
             streamingText = ""
         }

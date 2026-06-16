@@ -17,7 +17,7 @@ public enum SampleData {
         let existing = (try? context.fetchCount(FetchDescriptor<LearnerProfile>())) ?? 0
         guard existing == 0 else { return }
         seed(context)
-        try? context.save()
+        context.saveLogging()
     }
 
     /// Force a full reseed (used by "restore sample data" in settings).
@@ -26,7 +26,7 @@ public enum SampleData {
             try? context.delete(model: type)
         }
         seed(context)
-        try? context.save()
+        context.saveLogging()
     }
 
     private static func seed(_ context: ModelContext) {
@@ -67,13 +67,38 @@ public enum SampleData {
             context.insert(m)
         }
 
-        // 豆包课堂 courses.
+        // 豆包课堂 courses — original 8 from ContentCatalog, enhanced with real lesson
+        // script (LessonContentCatalog) where a matching (subject, grade) entry exists.
         for c in ContentCatalog.courses {
             let course = CourseEntity()
             course.title = c.title; course.author = c.author; course.dynasty = c.dynasty
             course.subject = c.subject; course.grade = c.grade; course.summary = c.summary
             course.durationSec = c.durationSec; course.isUGC = c.isUGC
-            course.segments = MockContent.lessonSegments(topic: c.title, subject: c.subject)
+            if let lesson = LessonContentCatalog.lesson(subject: c.subject, grade: c.grade) {
+                course.segments = lesson.segments
+            } else {
+                course.segments = MockContent.lessonSegments(topic: c.title, subject: c.subject)
+            }
+            context.insert(course)
+        }
+
+        // Full curriculum coverage — one CourseEntity per (subject, grade) bucket from
+        // LessonContentCatalog, skipping buckets already covered above. This lands all
+        // scripted lessons (87 total, minus duplicates) into the 豆包课堂 on first run.
+        let covered = Set(ContentCatalog.courses.map { "\($0.subject.rawValue).\($0.grade.rawValue)" })
+        for lesson in LessonContentCatalog.lessons {
+            let key = "\(lesson.subject.rawValue).\(lesson.grade.rawValue)"
+            if covered.contains(key) { continue }
+            let course = CourseEntity()
+            course.title = lesson.topic
+            course.author = "豆包老师"
+            course.dynasty = ""
+            course.subject = lesson.subject
+            course.grade = lesson.grade
+            course.summary = "豆包课堂 · \(lesson.subject.displayName) · \(lesson.grade.displayName)"
+            course.durationSec = 540
+            course.isUGC = false
+            course.segments = lesson.segments
             context.insert(course)
         }
 
@@ -116,6 +141,27 @@ public enum SampleData {
             m.nextReviewAt = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
             m.steps = [SolutionStep(index: 1, title: "回顾", detail: "正确答案是 \(correct)。")]
             context.insert(m)
+        }
+
+        // Sample 题库 (question bank) so the feature — and 智能出题 — are explorable
+        // immediately and never start empty.
+        let bankSeeds: [(Subject, WorkbookQuestionType, String, String, BankSource, [String], [String])] = [
+            (.math, .application, "一个长方形长 8 厘米，宽 5 厘米，面积是多少？", "40 平方厘米", .workbook, ["math.geometry.area"], ["长方形面积"]),
+            (.math, .calculation, "36 + 48 = ?", "84", .workbook, ["math.arith"], ["进位加法"]),
+            (.english, .multipleChoice, "She ___ to school every day.  A. go  B. goes  C. going", "B", .solve, ["en.tense"], ["第三人称单数"]),
+            (.chinese, .fillInBlank, "《静夜思》：举头望明月，低头思______。", "故乡", .manual, ["cn.classical"], ["古诗默写"]),
+        ]
+        for (subject, type, q, ans, source, kpIDs, kpNames) in bankSeeds {
+            let item = BankedQuestion()
+            item.subject = subject; item.type = type
+            item.questionText = q; item.correctAnswer = ans
+            item.explanation = "复习时先自己作答，再核对答案。"
+            item.source = source
+            item.knowledgePointIDs = kpIDs
+            item.knowledgePointNames = kpNames
+            item.mastery = .weak
+            item.nextReviewAt = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+            context.insert(item)
         }
 
         // Welcome conversation.

@@ -74,6 +74,30 @@ nonisolated struct CloudChatClient: Sendable {
         return trimmed
     }
 
+    /// Send a system + user prompt **with an image** (multimodal); return the reply.
+    /// Used by 作业批改 to let a vision-capable model read a photographed page. Builds
+    /// the image part in each dialect's shape (OpenAI `image_url` data-URI, Anthropic
+    /// `image` base64 source, Gemini `inline_data`).
+    func completeVision(system: String, user: String, imageData: Data, maxTokens: Int = 2400) async throws -> String {
+        let request = try buildVisionRequest(system: system, user: user, imageData: imageData, maxTokens: maxTokens)
+        let data: Data
+        let response: URLResponse
+        do {
+            (data, response) = try await URLSession.shared.data(for: request)
+        } catch {
+            throw CloudAIError.transport(error.localizedDescription)
+        }
+        guard let http = response as? HTTPURLResponse else { throw CloudAIError.emptyResponse }
+        guard (200...299).contains(http.statusCode) else {
+            let body = String(data: data, encoding: .utf8)?.prefix(300) ?? ""
+            throw CloudAIError.http(http.statusCode, String(body))
+        }
+        let text = try parse(data)
+        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { throw CloudAIError.emptyResponse }
+        return trimmed
+    }
+
     /// Lightweight connectivity/auth probe for the settings screen.
     func test() async throws -> String {
         try await complete(
@@ -143,6 +167,78 @@ nonisolated struct CloudChatClient: Sendable {
             "generationConfig": ["maxOutputTokens": maxTokens],
         ]
         return try makeRequest(url: url, headers: [:], body: body)
+    }
+
+    // MARK: Vision request building
+
+    private func buildVisionRequest(system: String, user: String, imageData: Data, maxTokens: Int) throws -> URLRequest {
+        let mime = Self.mimeType(for: imageData)
+        let base64 = imageData.base64EncodedString()
+        switch provider.dialect {
+        case .openAI:    return try openAIVisionRequest(system: system, user: user, mime: mime, base64: base64, maxTokens: maxTokens)
+        case .anthropic: return try anthropicVisionRequest(system: system, user: user, mime: mime, base64: base64, maxTokens: maxTokens)
+        case .gemini:    return try geminiVisionRequest(system: system, user: user, mime: mime, base64: base64, maxTokens: maxTokens)
+        }
+    }
+
+    private func openAIVisionRequest(system: String, user: String, mime: String, base64: String, maxTokens: Int) throws -> URLRequest {
+        guard let url = URL(string: provider.baseURL + provider.chatPath) else { throw CloudAIError.badURL }
+        let body: [String: Any] = [
+            "model": modelID,
+            "messages": [
+                ["role": "system", "content": system],
+                ["role": "user", "content": [
+                    ["type": "text", "text": user],
+                    ["type": "image_url", "image_url": ["url": "data:\(mime);base64,\(base64)"]],
+                ]],
+            ],
+            "max_tokens": maxTokens,
+            "stream": false,
+        ]
+        return try makeRequest(url: url, headers: ["Authorization": "Bearer \(apiKey)"], body: body)
+    }
+
+    private func anthropicVisionRequest(system: String, user: String, mime: String, base64: String, maxTokens: Int) throws -> URLRequest {
+        guard let url = URL(string: provider.baseURL + provider.chatPath) else { throw CloudAIError.badURL }
+        let body: [String: Any] = [
+            "model": modelID,
+            "max_tokens": maxTokens,
+            "system": system,
+            "messages": [
+                ["role": "user", "content": [
+                    ["type": "image", "source": ["type": "base64", "media_type": mime, "data": base64]],
+                    ["type": "text", "text": user],
+                ]],
+            ],
+        ]
+        let headers = ["x-api-key": apiKey, "anthropic-version": "2023-06-01"]
+        return try makeRequest(url: url, headers: headers, body: body)
+    }
+
+    private func geminiVisionRequest(system: String, user: String, mime: String, base64: String, maxTokens: Int) throws -> URLRequest {
+        let urlString = "\(provider.baseURL)\(provider.chatPath)/\(modelID):generateContent?key=\(apiKey)"
+        guard let url = URL(string: urlString) else { throw CloudAIError.badURL }
+        let body: [String: Any] = [
+            "system_instruction": ["parts": [["text": system]]],
+            "contents": [["role": "user", "parts": [
+                ["text": user],
+                ["inline_data": ["mime_type": mime, "data": base64]],
+            ]]],
+            "generationConfig": ["maxOutputTokens": maxTokens],
+        ]
+        return try makeRequest(url: url, headers: [:], body: body)
+    }
+
+    /// Sniff the image MIME from magic bytes (default JPEG, which our pickers emit).
+    static func mimeType(for data: Data) -> String {
+        guard let first = data.first else { return "image/jpeg" }
+        switch first {
+        case 0x89: return "image/png"
+        case 0x47: return "image/gif"
+        case 0x52: return "image/webp"     // "RIFF"…WEBP
+        case 0x49, 0x4D: return "image/tiff"
+        default: return "image/jpeg"
+        }
     }
 
     // MARK: Response parsing

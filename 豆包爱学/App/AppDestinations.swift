@@ -66,8 +66,10 @@ enum AppDestinations {
     private static func toolView(_ tool: ToolKind) -> some View {
         switch tool {
         case .solve:             CaptureSolveView(mode: .solve)
+        case .gradeWorkbook:     WorkbookGradingView()
         case .gradeArithmetic:   ArithmeticGradingView()
         case .gradeEssay:        EssayGradingView()
+        case .questionBank:      QuestionBankView()
         case .mistakeNotebook:   MistakeNotebookView()
         case .dictation:         DictationView()
         case .vocabulary:        VocabularyView()

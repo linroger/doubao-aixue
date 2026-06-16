@@ -466,6 +466,41 @@
       "domain": "Practice",
       "description": "作文评分雷达图: EssayFeedbackView rubric shown as a radar chart (≥3 维度) with bar-chart fallback + segmented toggle",
       "passes": true
+    },
+    {
+      "id": "F67_workbook_grading",
+      "p": "P0",
+      "domain": "Workbook",
+      "description": "作业批改: upload a workbook page (拍照/相册/文件) → AI grades every question into a structured GradedWorkbook (subject-agnostic schema: math/语文/English/any), rendered as score summary + per-question ✓/✗/◐ cards with student vs correct answer, explanation, 错因, 知识点 chips, steps, rubric. Multimodal (vision) on capable cloud models, OCR-text on others, deterministic offline engine as universal fallback. ToolKind.gradeWorkbook + Home tile + macOS ⇧⌘G",
+      "passes": true
+    },
+    {
+      "id": "F68_workbook_history",
+      "p": "P1",
+      "domain": "Workbook",
+      "description": "批改历史: every grading persists original photo + structured GradedWorkbook + metadata as WorkbookGradeRecord; history list re-renders any past grading identically and offline; delete via context menu",
+      "passes": true
+    },
+    {
+      "id": "F69_question_bank",
+      "p": "P0",
+      "domain": "QuestionBank",
+      "description": "题库: save wrong questions (from 作业批改/拍题/错题本) or any question for review into BankedQuestion; filter by subject/星标, reveal answers, star, delete, 让豆包老师讲. ToolKind.questionBank + Home tile + macOS ⇧⌘B",
+      "passes": true
+    },
+    {
+      "id": "F70_ai_practice_from_bank",
+      "p": "P0",
+      "domain": "QuestionBank",
+      "description": "智能出题: select banked questions (or use the filtered list) → AI generates 同类练习 (similarProblems, grouped by subject, seeded with question text + 知识点) in a sheet with attempt/reveal + 加入题库 for generated items",
+      "passes": true
+    },
+    {
+      "id": "F71_multimodal_vision",
+      "p": "P0",
+      "domain": "Intelligence",
+      "description": "多模态视觉: CloudChatClient.completeVision (openAI image_url / anthropic base64 / gemini inline_data) + AIProvider.supportsVision; powers 作业批改 and 拍照解题 (image flows into SolveRequest) on vision-capable models; graceful OCR-text + offline fallbacks",
+      "passes": true
     }
   ]
 }

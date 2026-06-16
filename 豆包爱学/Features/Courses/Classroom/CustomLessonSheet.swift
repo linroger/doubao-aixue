@@ -222,7 +222,7 @@ struct CustomLessonSheet: View {
                 course.segments = lesson.segments
                 course.knowledgePointIDs = lesson.knowledgePoints.map(\.id)
                 modelContext.insert(course)
-                try? modelContext.save()
+                modelContext.saveLogging()
                 HapticEngine.play(.success)
                 let newID = course.id
                 dismiss()

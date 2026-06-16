@@ -379,7 +379,7 @@ struct FocusTimerView: View {
         log.minutes = Double(model.lastFocusLengthMinutes)
         log.date = Date()
         modelContext.insert(log)
-        try? modelContext.save()
+        modelContext.saveLogging()
     }
 
     private func chime(_ line: String) {

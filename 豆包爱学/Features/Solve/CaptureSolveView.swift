@@ -97,6 +97,12 @@ struct CaptureSolveView: View {
             guard let newValue else { return }
             Task { await model.loadPickedPhoto(newValue, ocr: ocr) }
         }
+        .sheet(isPresented: $model.showCamera) {
+            WorkbookCameraPicker { data in
+                Task { await model.loadCapturedImage(data, ocr: ocr) }
+            }
+            .ignoresSafeArea()
+        }
         #endif
         .alert("识别失败", isPresented: $model.showRecognitionAlert) {
             Button("好的", role: .cancel) {}
@@ -376,6 +382,7 @@ final class CaptureSolveModel {
     var showResult = false
 
     var showPhotoPicker = false
+    var showCamera = false
     var photoSelection: PhotosPickerItem?
     var showRecognitionAlert = false
 
@@ -456,11 +463,28 @@ final class CaptureSolveModel {
     // MARK: Camera (iOS) — handled by parent via PhotosPicker; camera tile opens picker as a graceful default
 
     func beginCameraCapture() {
-        // The viewfinder camera is an iOS-only integration seam; until a live
-        // camera session is wired, opening the photo library lets the learner
-        // pick a freshly-shot photo, keeping the solve flow fully functional.
+        // On iOS, open the live camera; on platforms without one the view never shows
+        // the 拍照 tile, so this stays correct everywhere.
+        #if os(iOS)
+        showCamera = true
+        #else
         showPhotoPicker = true
+        #endif
     }
+
+    #if os(iOS)
+    /// Handle a freshly captured camera photo (raw JPEG from the camera sheet).
+    func loadCapturedImage(_ data: Data, ocr: OCRService) async {
+        isWorking = true
+        defer { isWorking = false }
+        imageData = data
+        source = .camera
+        #if canImport(UIKit)
+        pickedUIImage = UIImage(data: data)
+        #endif
+        await recognize(data: data, ocr: ocr)
+    }
+    #endif
 
     // MARK: OCR
 

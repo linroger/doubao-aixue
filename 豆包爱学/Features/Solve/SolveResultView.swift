@@ -362,6 +362,15 @@ struct SolveResultView: View {
                     HapticEngine.play(.selection)
                 }
             }
+            SolveActionButton(
+                title: model.savedToBank ? "已加入题库" : "收藏到题库",
+                systemImage: model.savedToBank ? "checkmark.seal.fill" : "tray.full.fill",
+                tint: model.savedToBank ? .dbSuccess : .dbPrimary,
+                isHighlighted: model.savedToBank
+            ) {
+                model.addToBank(context: modelContext)
+            }
+            .disabled(model.savedToBank)
         }
     }
 }
@@ -745,7 +754,8 @@ final class SolveResultModel {
         }
         state = .loading
         let request = SolveRequest(recognizedText: trimmed, subject: subject,
-                                   grade: grade, mode: .solve, learnMode: learnModeEnabled)
+                                   grade: grade, mode: .solve, learnMode: learnModeEnabled,
+                                   imageData: imageData)
         do {
             let solved = try await intelligence.solve(request)
             recognizedText = trimmed
@@ -814,7 +824,7 @@ final class SolveResultModel {
         record.route = solved.route
         record.savedToMistakes = savedToMistakes
         record.createdAt = Date()
-        try? context.save()
+        context.saveLogging()
     }
 
     // MARK: 加入错题本 — MistakeItem
@@ -837,7 +847,6 @@ final class SolveResultModel {
         item.createdAt = Date()
         context.insert(item)
 
-        savedToMistakes = true
         // Keep the linked ProblemRecord flag in sync.
         if let id = savedRecordID,
            let record = try? context.fetch(
@@ -845,8 +854,41 @@ final class SolveResultModel {
            ).first {
             record.savedToMistakes = true
         }
-        try? context.save()
-        HapticEngine.play(.success)
+        // Only reflect success in the UI once the write actually persisted, so the
+        // "已在错题本" state can't diverge from the database on a failed save.
+        if context.saveLogging() {
+            savedToMistakes = true
+            HapticEngine.play(.success)
+        } else {
+            HapticEngine.play(.error)
+        }
+    }
+
+    // MARK: 收藏到题库 — BankedQuestion
+
+    private(set) var savedToBank = false
+
+    func addToBank(context: ModelContext) {
+        guard !savedToBank, case let .loaded(solved) = state else { return }
+        let item = BankedQuestion()
+        item.subject = solved.subject
+        item.type = solved.choices.isEmpty ? .other : .multipleChoice
+        item.questionText = recognizedText
+        item.imageData = imageData
+        item.correctAnswer = solved.finalAnswer
+        item.explanation = solved.approach
+        item.setKnowledgePoints(solved.knowledgePoints)
+        item.steps = solved.steps
+        item.source = .solve
+        item.mastery = .new
+        item.nextReviewAt = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+        context.insert(item)
+        if context.saveLogging() {
+            savedToBank = true
+            HapticEngine.play(.success)
+        } else {
+            HapticEngine.play(.error)
+        }
     }
 
     // MARK: 举一反三

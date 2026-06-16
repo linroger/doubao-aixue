@@ -316,7 +316,7 @@ struct CourseDetailView: View {
         record.completed = model.isFinished
         record.quizCorrect = model.quizCorrect
         record.updatedAt = Date()
-        try? modelContext.save()
+        modelContext.saveLogging()
     }
 
     // MARK: - Toolbar
