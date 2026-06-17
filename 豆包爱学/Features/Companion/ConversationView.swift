@@ -89,6 +89,7 @@ struct ConversationView: View {
                     .font(.dbTitle3).foregroundStyle(speech.isListening ? accent : Color.dbTextSecondary)
             }
             .buttonStyle(.plain)
+            .accessibilityLabel(speech.isListening ? "停止语音输入" : "语音输入")
 
             TextField("问问豆包…", text: $draft, axis: .vertical)
                 .textFieldStyle(.plain)
@@ -108,6 +109,7 @@ struct ConversationView: View {
             }
             .buttonStyle(.plain)
             .disabled(!canSend)
+            .accessibilityLabel("发送")
         }
         .padding(DBSpacing.md)
         .background(.bar)
@@ -131,9 +133,11 @@ struct ConversationView: View {
         userMessage.conversation = conversation
         modelContext.insert(userMessage)
         conversation.updatedAt = Date()
-        // Auto-title a fresh thread from the first question (handles empty or the
-        // "新对话" placeholder so the conversation list never stays generic).
-        if conversation.title.isEmpty || conversation.title == "新对话" {
+        // Auto-title a fresh thread from the first question. Covers every generic
+        // default (empty, "新对话", and the CompanionMode defaults) so a thread
+        // started from any entry point never stays generic in the list.
+        let genericTitles: Set<String> = ["", "新对话", "新的提问", "和豆包聊聊"]
+        if genericTitles.contains(conversation.title) {
             conversation.title = String(text.prefix(16))
         }
         modelContext.saveLogging()

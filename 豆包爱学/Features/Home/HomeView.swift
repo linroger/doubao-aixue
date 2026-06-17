@@ -238,7 +238,13 @@ struct HomeView: View {
                     tint: .dbAccent
                 ) {
                     HapticEngine.play(.light)
-                    router.openTool(.knowledgeQA, regular: isRegular)
+                    // Go to the dedicated AI companion surface (tab on iPhone, sidebar
+                    // section on iPad/Mac) rather than pushing a second copy onto Home.
+                    if isRegular {
+                        router.sidebarSelection = .companion
+                    } else {
+                        router.selectedTab = .aiChat
+                    }
                 }
             }
         }

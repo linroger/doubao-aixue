@@ -30,7 +30,6 @@ struct AchievementsView: View {
     @Query private var words: [WordCard]
     @Query private var problems: [ProblemRecord]
     @Query(sort: \ActivityLog.date, order: .forward) private var logs: [ActivityLog]
-    @Query private var streaks: [StudyStreak]
 
     /// Persisted unlock dates, JSON-encoded [badgeID: epochSeconds]. Survives
     /// relaunch so a badge earned today still shows its 解锁日期 next week.

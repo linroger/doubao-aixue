@@ -85,11 +85,14 @@ final class WorkbookGradingModel {
                 return
             }
             state = .loaded(result)
-            persist(result, context: context)
-            // Count every graded question toward the daily 答题足迹 contribution graph.
-            ActivityRecorder.log(
-                context, kind: .workbook, subject: result.primarySubject,
-                questions: result.total, detail: "作业批改 · \(result.title)")
+            // Only count toward 答题足迹 on the FIRST grade of a capture; re-grading
+            // the same image updates the record without double-counting questions.
+            let isNew = persist(result, context: context)
+            if isNew {
+                ActivityRecorder.log(
+                    context, kind: .workbook, subject: result.primarySubject,
+                    questions: result.total, detail: "作业批改 · \(result.title)")
+            }
             HapticEngine.play(.success)
         } catch {
             state = .error(message: "批改没有完成。请检查网络，或换一张更清晰的照片重试。")
@@ -111,7 +114,10 @@ final class WorkbookGradingModel {
 
     // MARK: Persistence — WorkbookGradeRecord (批改历史)
 
-    private func persist(_ workbook: GradedWorkbook, context: ModelContext) {
+    /// Persist (or update) the grading record. Returns `true` when a NEW record was
+    /// inserted, so the caller logs 答题足迹 activity exactly once per capture.
+    @discardableResult
+    private func persist(_ workbook: GradedWorkbook, context: ModelContext) -> Bool {
         // Idempotent: re-grading the same capture updates the existing record.
         if let id = savedRecordID,
            let existing = try? context.fetch(
@@ -126,11 +132,14 @@ final class WorkbookGradingModel {
             existing.scoreEarned = workbook.scoreEarned
             existing.scorePossible = workbook.scorePossible
             existing.route = workbook.route
+            context.saveLogging()
+            return false
         } else {
             let record = WorkbookGradeRecord.make(from: workbook, imageData: imageData)
             context.insert(record)
             savedRecordID = record.id
+            context.saveLogging()
+            return true
         }
-        context.saveLogging()
     }
 }

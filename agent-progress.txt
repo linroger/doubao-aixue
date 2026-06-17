@@ -237,3 +237,41 @@ absent (SampleData falls back to MockContent for those buckets).
 
 Tests: xcodebuild macOS + iOS Simulator (iPhone 17 Pro) Debug → BUILD SUCCEEDED both, 0 warnings.
 feature_list.json: 71 features, all passing.
+
+================================================================================
+Session 6 (2026-06-17) — pareto-optimization loop: audit → fix → review
+================================================================================
+Branch: main. Commits: b849811, 901d4ed, 1a4dd3c (on top of d2a3ab7).
+Process: ran a 32-agent comprehensive audit (12 areas + adversarial verify) →
+17 confirmed P0/P1 + 30 P2/P3. Implemented in waves, built green after each, then
+a 6-dimension adversarial change-review on the diff. Both platforms BUILD SUCCEEDED,
+0 warnings; macOS app launch-smoke-tested (SwiftData migration for new ActivityLog.count
++ new models boots clean).
+
+HEADLINE: 答题足迹 GitHub-style daily contribution heatmap (the explicit ask) —
+- ActivityLog gains a question `count`. New Services/Persistence/ActivityRecorder.swift:
+  ActivityRecorder.log(kind/subject/questions/minutes) is the ONE funnel; ContributionStats
+  (questionsByDay / dailySeries / currentStreak / bestDay) aggregates it.
+- DesignSystem/Components/DBContributionGraph.swift = reusable GitHub-style heatmap
+  (5-level green scale, calendar-week columns w/ current week last, future days faint,
+  month+weekday labels, horizontal scroll anchored to today, a11y per cell) + legend.
+- Features/Reports/ContributionCard.swift surfaced in 个人中心 / 今日 / 学习报告.
+- Question counting wired through EVERY learning surface: 作业批改, 拍题解题, 靶向练习,
+  模拟测验, 听写, 背单词, 口算批改, 作文批改, 智能出题练习 (all idempotent).
+- Streak DERIVED live from ActivityLog (ContributionStats.currentStreak) across
+  首页/今日/个人中心/成就 — no more frozen seeded "7 天". SampleData seeds ~12 weeks so
+  the heatmap is alive on first run.
+
+OTHER FIXES (all 17 confirmed P0/P1):
+- 题库 subject-mislabel fixed (GeneratedProblem.subject stamped by Mock+Cloud); re-banking
+  carries KP+explanation; full 题库 review loop (forgetting-curve self-rating + 今日复习 filter).
+- 错题本 → 题库 (detail + bulk, BankedQuestion.make(from: MistakeItem)); 靶向练习 → 错题加入错题本.
+- Non-math mock drills now WINNABLE (real A–D choice items, not 见解析).
+- 模拟测验 revived from orphaned ExamModel → new Features/Exam/ExamView.swift + ToolKind.exam.
+- iPhone gains persistent AI 伙伴 tab; detailPath resets on sidebar switch (iPad/Mac stale-detail bug);
+  个人中心 历史记录→new SolveHistoryView, 收藏→题库 (3 distinct destinations); KG 去练习 targeted.
+- ToolsHubView finished (category tints via ToolKind.tileTint, icons/subtitles, tokens, search);
+  deleted dead ComingSoonView + Wave0Welcome; TTSService.isSpeaking resets on narration end;
+  豆包/通义千问/智谱 gain vision models + supportsVision; macOS 学习 menu rounded out.
+
+Gotcha added: Timer.publish(...).autoconnect() needs `import Combine` (bit ExamView).

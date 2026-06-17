@@ -23,7 +23,10 @@ struct DBContributionGraph: View {
     var cellSize: CGFloat = 13
     var spacing: CGFloat = 3
 
-    @Environment(\.calendar) private var calendar
+    // Use the same calendar the series was bucketed with (ContributionStats defaults
+    // to .current) so weekday/month labels and the today marker can't drift out of
+    // alignment with the columns under a non-.current environment calendar.
+    private let calendar = Calendar.current
 
     private var today: Date { calendar.startOfDay(for: Date()) }
 

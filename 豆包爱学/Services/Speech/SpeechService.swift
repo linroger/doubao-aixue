@@ -23,8 +23,13 @@ public final class TTSService {
         synthesizer.delegate = delegate
         // When narration actually finishes (or is cancelled), reset the flag so
         // 'speaking' indicators (tutor chalk waveform, read-aloud toggles) stop.
+        // Guard on the synthesizer's own state so a stale didCancel from a
+        // stop()-then-speak() swap can't switch off the NEW utterance's indicator.
         delegate.onFinish = { [weak self] in
-            Task { @MainActor in self?.isSpeaking = false }
+            Task { @MainActor in
+                guard let self, !self.synthesizer.isSpeaking else { return }
+                self.isSpeaking = false
+            }
         }
     }
 

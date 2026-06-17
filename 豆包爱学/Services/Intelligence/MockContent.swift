@@ -108,13 +108,15 @@ public nonisolated enum MockContent {
             } else {
                 // A deterministic single-choice item with a REAL checkable answer
                 // (A–D), so non-math drills are actually winnable offline and the
-                // recap shows a genuine explanation instead of "见解析".
-                let item = nonMathChoiceBank(for: subject)[i % max(1, nonMathChoiceBank(for: subject).count)]
+                // recap shows a genuine explanation instead of "见解析". The ordinal
+                // prefix keeps every card visually distinct even when the bank cycles.
+                let bank = nonMathChoiceBank(for: subject)
+                let item = bank[i % bank.count]
                 let labels = ["A", "B", "C", "D"]
                 let answerLabel = labels[item.correct]
                 return GeneratedProblem(
                     subject: subject,
-                    question: item.q + "\n" + item.choices.joined(separator: "\n") + "\n（请填写正确选项的字母）",
+                    question: "第 \(i + 1) 题：" + item.q + "\n" + item.choices.joined(separator: "\n") + "\n（请填写正确选项的字母）",
                     answer: answerLabel,
                     steps: [SolutionStep(index: 1, title: "解析",
                                          detail: "正确答案是 \(answerLabel)。\(approach(for: subject))")],
@@ -139,13 +141,23 @@ public nonisolated enum MockContent {
                      ["A. a", "B. an", "C. the", "D. /"], 1)]
         case .physics:
             return [("一个静止在水平桌面上的物体，受到的合力是：",
-                     ["A. 重力", "B. 支持力", "C. 零", "D. 摩擦力"], 2)]
+                     ["A. 重力", "B. 支持力", "C. 零", "D. 摩擦力"], 2),
+                    ("匀速直线运动的物体，下列说法正确的是：",
+                     ["A. 一定不受力", "B. 受到的合力为零", "C. 速度越来越大", "D. 一定受到摩擦力"], 1),
+                    ("下列单位中，属于力的单位的是：",
+                     ["A. 牛顿(N)", "B. 焦耳(J)", "C. 瓦特(W)", "D. 帕斯卡(Pa)"], 0)]
         case .chemistry:
             return [("下列变化属于化学变化的是：",
-                     ["A. 冰融化成水", "B. 铁生锈", "C. 水蒸发", "D. 玻璃破碎"], 1)]
+                     ["A. 冰融化成水", "B. 铁生锈", "C. 水蒸发", "D. 玻璃破碎"], 1),
+                    ("空气中含量最多的气体是：",
+                     ["A. 氧气", "B. 二氧化碳", "C. 氮气", "D. 稀有气体"], 2),
+                    ("下列物质中属于纯净物的是：",
+                     ["A. 空气", "B. 蒸馏水", "C. 盐水", "D. 矿泉水"], 1)]
         default:
-            return [("关于「\(subject.displayName)」核心概念，正确的一项是：",
-                     ["A. 正确选项", "B. 干扰项一", "C. 干扰项二", "D. 干扰项三"], 0)]
+            return [("关于「\(subject.displayName)」的基础概念，下列说法最准确的一项是：",
+                     ["A. 抓住核心定义再判断", "B. 只凭直觉猜测", "C. 忽略关键条件", "D. 与本学科无关"], 0),
+                    ("学习「\(subject.displayName)」时，正确的方法是：",
+                     ["A. 死记硬背不理解", "B. 理解原理并多练习", "C. 只看不练", "D. 遇难就跳过"], 1)]
         }
     }
 

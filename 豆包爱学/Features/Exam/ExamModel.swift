@@ -362,8 +362,10 @@ final class ExamModel {
         gradePaper()
     }
 
-    /// Called from the time-up bridge to roll into the graded report.
+    /// Called from the time-up bridge to roll into the graded report. Guarded so a
+    /// re-fired onAppear can't grade twice.
     func gradeAfterTimeout() {
+        guard phase == .timeUp else { return }
         gradePaper()
     }
 

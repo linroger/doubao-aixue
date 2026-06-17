@@ -115,7 +115,9 @@ public final class AppRouter {
             // Switching sidebar section changes the detail stack's ROOT, so any
             // previously-pushed detail must be cleared or it stays layered on top
             // of the new section (classic SwiftUI stale-path footgun on iPad/Mac).
-            if oldValue != sidebarSelection { detailPath = NavigationPath() }
+            // Only on a real section change to a non-nil selection — a transient nil
+            // from the List binding must not wipe a freshly-pushed detail.
+            if let new = sidebarSelection, new != oldValue { detailPath = NavigationPath() }
         }
     }
     public var presentedSheet: AppSheet?
