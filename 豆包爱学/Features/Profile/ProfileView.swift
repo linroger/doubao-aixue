@@ -27,6 +27,7 @@ struct ProfileView: View {
     @Query private var mistakes: [MistakeItem]
     @Query private var documents: [DocumentEntity]
     @Query private var conversations: [Conversation]
+    @Query private var bankedQuestions: [BankedQuestion]
 
     @Environment(\.modelContext) private var modelContext
     @Environment(AppRouter.self) private var router
@@ -115,12 +116,12 @@ struct ProfileView: View {
                 achievementsEntry
 
                 ProfileNavigationGroup(
-                    historyCount: solvedCount,
-                    favoriteCount: savedCount,
+                    historyCount: problems.count,
+                    favoriteCount: bankedQuestions.count,
                     downloadCount: downloadCount,
                     mistakeCount: mistakes.count,
-                    onHistory: { openMistakes() },
-                    onFavorites: { openMistakes() },
+                    onHistory: { router.navigate(.solveHistory, regular: isRegular) },
+                    onFavorites: { router.openTool(.questionBank, regular: isRegular) },
                     onDownloads: { router.navigate(.tool(.documentQA), regular: isRegular) },
                     onMistakes: { openMistakes() },
                     onReports: { router.navigate(.reports, regular: isRegular) },

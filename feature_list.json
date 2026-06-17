@@ -536,6 +536,27 @@
       "domain": "QuestionBank",
       "description": "错题入题库 + 练习收错题: 错题本 detail + bulk 加入题库 (BankedQuestion.make(from: MistakeItem)) connects the two review systems; 靶向练习 results gain 错题加入错题本; non-math mock drills are now genuinely answerable (real A–D choice items) instead of unwinnable 见解析.",
       "passes": true
+    },
+    {
+      "id": "F79_timed_exam",
+      "p": "P1",
+      "domain": "Exam",
+      "description": "模拟测验: the previously-orphaned ExamModel is now reachable via ToolKind.exam (工具 hub + macOS 学习 menu) through a new ExamView — setup (学科/题量/时长) → live countdown runner → auto-grade report with per-question ✓/✗, revealed steps, 加入错题本, and ActivityRecorder logging (counts toward 答题足迹).",
+      "passes": true
+    },
+    {
+      "id": "F80_navigation_ia_fixes",
+      "p": "P1",
+      "domain": "Navigation",
+      "description": "导航与信息架构: iPhone gains a persistent AI 伙伴 tab (parity with iPad/Mac sidebar); detailPath resets when the sidebar section changes (no stale pushed views on iPad/Mac); 个人中心 历史记录 → new SolveHistoryView and 收藏 → 题库 (three distinct destinations instead of all → 错题本); knowledge-graph 去练习 opens a targeted drill; macOS 学习 menu adds 作文批改/模拟测验/听写/错题本/实时扫题.",
+      "passes": true
+    },
+    {
+      "id": "F81_tools_hub_polish",
+      "p": "P2",
+      "domain": "Tools",
+      "description": "工具中心: ToolsHubView promoted from the Wave-0 placeholder — per-category tints (shared with Home via ToolKind.tileTint), section icons + subtitles, design tokens, and in-page search. Dead code removed (ComingSoonView, Wave0Welcome). TTSService.isSpeaking now resets when narration ends (delegate). Chinese providers (豆包/通义千问/智谱) gain vision models + supportsVision.",
+      "passes": true
     }
   ]
 }

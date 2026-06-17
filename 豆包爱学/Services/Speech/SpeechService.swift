@@ -15,10 +15,18 @@ import Observation
 @Observable
 public final class TTSService {
     private let synthesizer = AVSpeechSynthesizer()
+    private let delegate = TTSDelegate()
     public private(set) var isSpeaking = false
     public var enabled = true
 
-    public init() {}
+    public init() {
+        synthesizer.delegate = delegate
+        // When narration actually finishes (or is cancelled), reset the flag so
+        // 'speaking' indicators (tutor chalk waveform, read-aloud toggles) stop.
+        delegate.onFinish = { [weak self] in
+            Task { @MainActor in self?.isSpeaking = false }
+        }
+    }
 
     /// Speak text in the given BCP-47 language (default Simplified Chinese).
     public func speak(_ text: String, language: String = "zh-CN", rate: Float = 0.5) {
@@ -35,6 +43,15 @@ public final class TTSService {
         synthesizer.stopSpeaking(at: .immediate)
         isSpeaking = false
     }
+}
+
+/// Non-isolated AVSpeechSynthesizer delegate shim. Kept separate from TTSService so
+/// the @MainActor @Observable service doesn't have to expose nonisolated callbacks;
+/// the closure hops back to the main actor.
+private final class TTSDelegate: NSObject, AVSpeechSynthesizerDelegate, @unchecked Sendable {
+    var onFinish: (@Sendable () -> Void)?
+    func speechSynthesizer(_ s: AVSpeechSynthesizer, didFinish u: AVSpeechUtterance) { onFinish?() }
+    func speechSynthesizer(_ s: AVSpeechSynthesizer, didCancel u: AVSpeechUtterance) { onFinish?() }
 }
 
 // MARK: - Speech recognition coordinator (hold-to-talk)

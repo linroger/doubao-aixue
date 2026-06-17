@@ -23,6 +23,7 @@ struct StudyCommands: Commands {
             Button("作业批改") { router.openTool(.gradeWorkbook, regular: true) }
                 .keyboardShortcut("g", modifiers: [.command, .shift])
             Button("口算批改") { router.present(.capture(.grade)) }
+            Button("作文批改") { router.openTool(.gradeEssay, regular: true) }
             Button("题库") { router.openTool(.questionBank, regular: true) }
                 .keyboardShortcut("b", modifiers: [.command, .shift])
 
@@ -30,6 +31,10 @@ struct StudyCommands: Commands {
 
             Button("今日练习") { router.openDrill(knowledgePointID: nil, regular: true) }
                 .keyboardShortcut("t", modifiers: .command)
+            Button("模拟测验") { router.openTool(.exam, regular: true) }
+            Button("听写") { router.openTool(.dictation, regular: true) }
+            Button("错题本") { router.sidebarSelection = .mistakes }
+            Button("实时扫题") { router.openTool(.liveScan, regular: true) }
             Button("问豆包") { router.sidebarSelection = .companion }
                 .keyboardShortcut("l", modifiers: .command)
 

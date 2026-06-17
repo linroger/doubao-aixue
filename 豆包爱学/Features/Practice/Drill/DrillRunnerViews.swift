@@ -203,7 +203,7 @@ struct DrillStepRow: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: DBSpacing.sm) {
-            Text("\(step.index + 1)")
+            Text("\(step.index)")
                 .font(.dbFootnote.weight(.bold))
                 .foregroundStyle(Color.dbOnPrimary)
                 .frame(width: 22, height: 22)

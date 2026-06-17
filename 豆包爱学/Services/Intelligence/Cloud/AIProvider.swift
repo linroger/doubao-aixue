@@ -77,13 +77,15 @@ extension AIProvider {
             baseURL: "https://ark.cn-beijing.volces.com/api/v3",
             chatPath: "/chat/completions",
             models: [
+                AIModel("doubao-vision-pro-32k", "豆包 Vision Pro 32K（多模态）"),
                 AIModel("doubao-pro-32k", "豆包 Pro 32K"),
                 AIModel("doubao-pro-128k", "豆包 Pro 128K"),
                 AIModel("doubao-lite-32k", "豆包 Lite 32K"),
             ],
             symbolName: "leaf.circle.fill",
             keyHelpURL: "https://console.volcengine.com/ark",
-            keyHint: "火山方舟 API Key（也可填入推理接入点 ID 作为模型）"),
+            keyHint: "火山方舟 API Key（也可填入推理接入点 ID 作为模型）",
+            supportsVision: true),
 
         AIProvider(
             id: "qwen", name: "通义千问 (阿里云)", shortName: "通义千问",
@@ -91,13 +93,15 @@ extension AIProvider {
             baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
             chatPath: "/chat/completions",
             models: [
+                AIModel("qwen-vl-max", "通义千问 VL Max（多模态）"),
                 AIModel("qwen-max", "通义千问 Max"),
                 AIModel("qwen-plus", "通义千问 Plus"),
                 AIModel("qwen-turbo", "通义千问 Turbo"),
             ],
             symbolName: "circle.hexagongrid.fill",
             keyHelpURL: "https://dashscope.console.aliyun.com",
-            keyHint: "DashScope API Key（sk- 开头）"),
+            keyHint: "DashScope API Key（sk- 开头）",
+            supportsVision: true),
 
         AIProvider(
             id: "glm", name: "智谱清言 GLM", shortName: "智谱 GLM",
@@ -105,13 +109,15 @@ extension AIProvider {
             baseURL: "https://open.bigmodel.cn/api/paas/v4",
             chatPath: "/chat/completions",
             models: [
+                AIModel("glm-4v-plus", "GLM-4V-Plus（多模态）"),
                 AIModel("glm-4-plus", "GLM-4-Plus"),
                 AIModel("glm-4-air", "GLM-4-Air"),
                 AIModel("glm-4-flash", "GLM-4-Flash（免费）"),
             ],
             symbolName: "sparkle",
             keyHelpURL: "https://open.bigmodel.cn",
-            keyHint: "智谱 API Key"),
+            keyHint: "智谱 API Key",
+            supportsVision: true),
 
         AIProvider(
             id: "kimi", name: "Kimi (月之暗面)", shortName: "Kimi",

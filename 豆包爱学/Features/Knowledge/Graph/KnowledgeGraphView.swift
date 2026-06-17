@@ -622,8 +622,9 @@ private struct NodeDetailSheet: View {
             .buttonStyle(.db(.primary, fullWidth: true))
 
             Button {
+                let id = node.id
                 let regular = isRegular
-                perform { router.openTool(.drill, regular: regular) }
+                perform { router.openDrill(knowledgePointID: id, regular: regular) }
             } label: {
                 Label("去练习", systemImage: "pencil.and.outline")
             }

@@ -254,6 +254,7 @@ public nonisolated enum ToolKind: String, CaseIterable, Codable, Sendable, Ident
     case classroom          // 豆包课堂
     case knowledgeGraph     // 知识图谱
     case drill              // 举一反三/练习
+    case exam               // 模拟测验（限时）
     case reports            // 学习报告
     case today              // 今日计划
     case calculator         // 科学计算器 + 公式库
@@ -282,6 +283,7 @@ public nonisolated enum ToolKind: String, CaseIterable, Codable, Sendable, Ident
         case .classroom: "豆包课堂"
         case .knowledgeGraph: "知识图谱"
         case .drill: "举一反三"
+        case .exam: "模拟测验"
         case .reports: "学习报告"
         case .today: "今日"
         case .calculator: "计算器"
@@ -310,6 +312,7 @@ public nonisolated enum ToolKind: String, CaseIterable, Codable, Sendable, Ident
         case .classroom: "play.tv.fill"
         case .knowledgeGraph: "point.3.connected.trianglepath.dotted"
         case .drill: "square.grid.3x3.fill"
+        case .exam: "checklist"
         case .reports: "chart.bar.xaxis"
         case .today: "sun.max.fill"
         case .calculator: "x.squareroot"
@@ -323,7 +326,7 @@ public nonisolated enum ToolKind: String, CaseIterable, Codable, Sendable, Ident
     public var category: ToolCategory {
         switch self {
         case .solve, .knowledgeQA, .recognizeAnything: .qa
-        case .gradeWorkbook, .gradeArithmetic, .gradeEssay, .drill: .grade
+        case .gradeWorkbook, .gradeArithmetic, .gradeEssay, .drill, .exam: .grade
         case .mistakeNotebook, .questionBank, .vocabulary, .dictation, .knowledgeGraph: .memory
         case .oral, .translation: .expression
         case .classical, .documentQA, .classroom, .reports: .extend

@@ -54,7 +54,7 @@ public final class ChatMessageEntity {
         set { blocksData = DBJSON.encode(newValue) }
     }
     public var route: IntelligenceRoute? {
-        get { roleRaw.isEmpty ? nil : routeRaw.flatMap(IntelligenceRoute.init(rawValue:)) }
+        get { routeRaw.flatMap(IntelligenceRoute.init(rawValue:)) }
         set { routeRaw = newValue?.rawValue }
     }
 }

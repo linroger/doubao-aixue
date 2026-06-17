@@ -17,10 +17,11 @@ enum AppDestinations {
     @ViewBuilder
     static func tabRoot(_ tab: AppTab) -> some View {
         switch tab {
-        case .home:  HomeView()
-        case .study: StudyView()
-        case .tools: ToolsHubView()
-        case .me:    ProfileView()
+        case .home:   HomeView()
+        case .study:  StudyView()
+        case .aiChat: CompanionView()
+        case .tools:  ToolsHubView()
+        case .me:     ProfileView()
         }
     }
 
@@ -57,6 +58,7 @@ enum AppDestinations {
         case .drill(let kpID):          DrillView(targetKnowledgePointID: kpID)
         case .reports:                  ReportsView()
         case .achievements:             AchievementsView()
+        case .solveHistory:             SolveHistoryView()
         }
     }
 
@@ -82,6 +84,7 @@ enum AppDestinations {
         case .classroom:         StudyView()
         case .knowledgeGraph:    KnowledgeGraphView()
         case .drill:             DrillView()
+        case .exam:              ExamView()
         case .reports:           ReportsView()
         case .today:             TodayView()
         case .calculator:        CalculatorView()

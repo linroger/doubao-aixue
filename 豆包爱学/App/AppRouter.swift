@@ -11,12 +11,13 @@ import SwiftUI
 // MARK: - Tabs (iPhone)
 
 public enum AppTab: String, CaseIterable, Identifiable, Sendable {
-    case home, study, tools, me
+    case home, study, aiChat, tools, me
     public var id: String { rawValue }
     public var displayName: String {
         switch self {
         case .home: "首页"
         case .study: "学习"
+        case .aiChat: "AI 伙伴"
         case .tools: "工具"
         case .me: "我的"
         }
@@ -25,6 +26,7 @@ public enum AppTab: String, CaseIterable, Identifiable, Sendable {
         switch self {
         case .home: "house.fill"
         case .study: "play.tv.fill"
+        case .aiChat: "bubble.left.and.bubble.right.fill"
         case .tools: "square.grid.2x2.fill"
         case .me: "person.crop.circle.fill"
         }
@@ -81,6 +83,7 @@ public enum Route: Hashable, Sendable {
     case drill(knowledgePointID: String?)
     case reports
     case achievements
+    case solveHistory       // 拍题与答疑的解题记录 (ProblemRecord list)
 }
 
 // MARK: - Modal sheets
@@ -107,7 +110,14 @@ public enum AppSheet: Identifiable, Sendable {
 @Observable
 public final class AppRouter {
     public var selectedTab: AppTab = .home
-    public var sidebarSelection: AppSection? = .home
+    public var sidebarSelection: AppSection? = .home {
+        didSet {
+            // Switching sidebar section changes the detail stack's ROOT, so any
+            // previously-pushed detail must be cleared or it stays layered on top
+            // of the new section (classic SwiftUI stale-path footgun on iPad/Mac).
+            if oldValue != sidebarSelection { detailPath = NavigationPath() }
+        }
+    }
     public var presentedSheet: AppSheet?
 
     private var paths: [AppTab: NavigationPath] = [:]

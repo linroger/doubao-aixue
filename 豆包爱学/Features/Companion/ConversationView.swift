@@ -131,7 +131,11 @@ struct ConversationView: View {
         userMessage.conversation = conversation
         modelContext.insert(userMessage)
         conversation.updatedAt = Date()
-        if conversation.title == "新对话" { conversation.title = String(text.prefix(16)) }
+        // Auto-title a fresh thread from the first question (handles empty or the
+        // "新对话" placeholder so the conversation list never stays generic).
+        if conversation.title.isEmpty || conversation.title == "新对话" {
+            conversation.title = String(text.prefix(16))
+        }
         modelContext.saveLogging()
 
         let turns = conversation.sortedMessages.map { ChatTurn(role: $0.role, text: $0.text) }

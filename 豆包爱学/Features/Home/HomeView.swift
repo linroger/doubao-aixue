@@ -31,6 +31,7 @@ struct HomeView: View {
     @Query private var knowledgePoints: [KnowledgePointEntity]
     @Query private var courses: [CourseEntity]
     @Query(sort: \ActivityLog.date, order: .forward) private var logs: [ActivityLog]
+    @Query private var problems: [ProblemRecord]
 
     init() {}
 
@@ -42,6 +43,9 @@ struct HomeView: View {
 
     /// Live streak derived from real practice days (not a frozen seeded counter).
     private var currentStreak: Int { ContributionStats.currentStreak(logs) }
+
+    /// Live solved count — matches Profile/Achievements (live history, never a stale seed).
+    private var solvedCount: Int { max(problems.count, profile?.problemsSolved ?? 0) }
 
     /// The single weakest knowledge point (lowest mastery score) — the focus of
     /// 今日靶向练习. Falls back gracefully when no mastery is seeded.
@@ -143,7 +147,7 @@ struct HomeView: View {
     private var statStrip: some View {
         HStack(spacing: DBSpacing.sm) {
             DBValueStat(
-                value: "\(profile?.problemsSolved ?? 0)",
+                value: "\(solvedCount)",
                 caption: "已解题",
                 systemImage: "checkmark.seal.fill"
             )
@@ -386,7 +390,7 @@ struct HomeView: View {
                     DBToolTile(
                         title: tool.displayName,
                         systemImage: tool.symbolName,
-                        tint: toolTint(for: tool),
+                        tint: tool.tileTint,
                         compact: true
                     ) {
                         HapticEngine.play(.selection)
@@ -396,17 +400,6 @@ struct HomeView: View {
             }
             .padding(DBSpacing.sm)
             .dbSurfaceStyle(cornerRadius: DBRadius.lg)
-        }
-    }
-
-    /// Warm, distinct color per tool category so the grid reads playfully.
-    private func toolTint(for tool: ToolKind) -> Color {
-        switch tool.category {
-        case .qa: .dbPrimary
-        case .grade: .dbSecondary
-        case .memory: .dbAccent
-        case .expression: .dbInfo
-        case .extend: .dbSuccess
         }
     }
 
