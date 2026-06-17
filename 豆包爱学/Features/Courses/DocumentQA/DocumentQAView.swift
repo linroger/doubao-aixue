@@ -282,6 +282,7 @@ struct DocumentQAView: View {
             entity.summary = summary.summary
             entity.keyPoints = summary.keyPoints
             entity.outline = summary.outline
+            entity.summaryRoute = summary.route
             modelContext.saveLogging()
         } catch {
             // Summarization is best-effort; the detail screen can re-run it. Keep

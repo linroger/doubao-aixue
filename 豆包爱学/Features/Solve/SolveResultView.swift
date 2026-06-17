@@ -550,6 +550,7 @@ private struct SimilarProblemsSheet: View {
     let intelligence: any IntelligenceService
 
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
 
     var body: some View {
         NavigationStack {
@@ -566,10 +567,12 @@ private struct SimilarProblemsSheet: View {
                             }
                         }
                         ForEach(Array(problems.enumerated()), id: \.element.id) { index, problem in
-                            SimilarProblemCard(index: index + 1, problem: problem,
-                                               isRevealed: model.revealedSimilarIDs.contains(problem.id)) {
-                                model.revealSimilar(problem.id)
-                            }
+                            SimilarProblemCard(
+                                index: index + 1, problem: problem,
+                                isRevealed: model.revealedSimilarIDs.contains(problem.id),
+                                isBanked: model.bankedSimilarIDs.contains(problem.id),
+                                onReveal: { model.revealSimilar(problem.id) },
+                                onBank: { model.addSimilarToBank(problem, context: modelContext) })
                         }
                     }
                     .padding(DBSpacing.screenInset)
@@ -610,7 +613,9 @@ private struct SimilarProblemCard: View {
     let index: Int
     let problem: GeneratedProblem
     let isRevealed: Bool
+    let isBanked: Bool
     let onReveal: () -> Void
+    let onBank: () -> Void
 
     private var difficultyStars: String {
         let n = max(1, min(5, problem.difficulty))
@@ -664,6 +669,17 @@ private struct SimilarProblemCard: View {
                     Button("先做做看，再看答案") { onReveal() }
                         .buttonStyle(.db(.ghost, fullWidth: true))
                 }
+
+                Button(action: onBank) {
+                    Label(isBanked ? "已加入题库" : "加入题库",
+                          systemImage: isBanked ? "checkmark.circle.fill" : "tray.and.arrow.down.fill")
+                        .font(.dbFootnote.weight(.medium))
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(isBanked ? Color.dbTextTertiary : Color.dbPrimary)
+                .disabled(isBanked)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .accessibilityHint(isBanked ? "" : "保存到题库，稍后可在题库复习")
             }
             .animation(.spring(duration: 0.3), value: isRevealed)
         }
@@ -710,6 +726,7 @@ final class SolveResultModel {
     var showSimilarSheet = false
     private(set) var similarState: ViewState<[GeneratedProblem]> = .idle
     private(set) var revealedSimilarIDs: Set<String> = []
+    private(set) var bankedSimilarIDs: Set<String> = []
 
     // 追问.
     private(set) var showFollowUp = false
@@ -927,6 +944,37 @@ final class SolveResultModel {
     func revealSimilar(_ id: String) {
         revealedSimilarIDs.insert(id)
         HapticEngine.play(.light)
+    }
+
+    /// Save one generated 同类题 into the question bank (source .generated) so a
+    /// useful practice problem isn't lost when the 举一反三 sheet is dismissed.
+    /// Mirrors QuestionBankModel.bankGenerated so re-banking behaves identically
+    /// wherever it originates.
+    func addSimilarToBank(_ problem: GeneratedProblem, context: ModelContext) {
+        guard !bankedSimilarIDs.contains(problem.id) else { return }
+        let item = BankedQuestion()
+        item.subject = problem.subject
+        item.type = .other
+        item.questionText = problem.question
+        item.correctAnswer = problem.answer
+        item.steps = problem.steps
+        item.explanation = problem.steps.first?.detail ?? ""
+        if !problem.knowledgePointID.isEmpty {
+            let name = ContentCatalog.knowledgePoints.first { $0.id == problem.knowledgePointID }?.name
+                ?? problem.knowledgePointID
+            item.knowledgePointIDs = [problem.knowledgePointID]
+            item.knowledgePointNames = [name]
+        }
+        item.source = .generated
+        item.mastery = .new
+        item.nextReviewAt = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+        context.insert(item)
+        if context.saveLogging() {
+            bankedSimilarIDs.insert(problem.id)
+            HapticEngine.play(.success)
+        } else {
+            HapticEngine.play(.error)
+        }
     }
 
     // MARK: 追问

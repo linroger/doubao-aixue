@@ -35,5 +35,20 @@ struct DoubaoAiXueApp: App {
         .defaultSize(width: 1180, height: 800)
         .commands { StudyCommands(router: router) }
         #endif
+
+        // Standard macOS preferences window (⌘,), hosting the same settings UI as
+        // the iOS personal center so the two platforms stay in lockstep.
+        #if os(macOS)
+        Settings {
+            MacSettingsView()
+                .environment(router)
+                .environment(tts)
+                .environment(aiStore)
+                .environment(\.intelligence, IntelligenceFactory.make(aiStore.resolved))
+                .environment(\.ocr, OCRService())
+                .tint(Color.dbPrimary)
+        }
+        .modelContainer(container)
+        #endif
     }
 }

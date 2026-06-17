@@ -23,6 +23,10 @@ final class RecognizeAnythingModel {
 
     private let engine = RecognizeAnythingEngine()
 
+    /// The image we recognized, kept so a vision-capable model can ground its 讲解
+    /// in the real picture (not just the recognized name). nil for the sample run.
+    private var sourceImageData: Data?
+
     var hasResult: Bool { state.value != nil }
 
     // MARK: Entry points
@@ -31,6 +35,7 @@ final class RecognizeAnythingModel {
     func recognize(imageData: Data, source: RASource,
                    intelligence: any IntelligenceService, grade: GradeLevel) async {
         self.source = source
+        self.sourceImageData = imageData
         state = .loading
         let result = await engine.recognize(imageData: imageData)
         await enrichAndPublish(result, intelligence: intelligence, grade: grade)
@@ -39,6 +44,7 @@ final class RecognizeAnythingModel {
     /// Run the deterministic 示例 (向日葵) so the flow is demoable everywhere.
     func runSample(intelligence: any IntelligenceService, grade: GradeLevel) async {
         source = .sample
+        sourceImageData = nil
         state = .loading
         let result = RecognizeAnythingEngine.sampleResult()
         await enrichAndPublish(result, intelligence: intelligence, grade: grade)
@@ -47,6 +53,7 @@ final class RecognizeAnythingModel {
     func reset() {
         state = .idle
         source = .sample
+        sourceImageData = nil
     }
 
     // MARK: Enrichment
@@ -70,7 +77,8 @@ final class RecognizeAnythingModel {
         if let enriched = try? await intelligence.explainKnowledgePoint(
             ExplainRequest(knowledgePoint: result.name,
                            subject: result.category.subject,
-                           grade: grade)
+                           grade: grade,
+                           imageData: sourceImageData)
         ) {
             // Prefer the AI's extension questions when present, keep our topical
             // chips first so the result stays focused on the recognized thing.

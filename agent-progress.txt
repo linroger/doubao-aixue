@@ -275,3 +275,50 @@ OTHER FIXES (all 17 confirmed P0/P1):
   豆包/通义千问/智谱 gain vision models + supportsVision; macOS 学习 menu rounded out.
 
 Gotcha added: Timer.publish(...).autoconnect() needs `import Combine` (bit ExamView).
+
+================================================================================
+SESSION 7 — 2026-06-17 (latent-item iteration + bilingual README + v1.1.0 release)
+================================================================================
+Process: scoped the 10 documented latent items with a 10-agent read-only Workflow
+(file:line + concrete fix + value/risk/effort) → implemented the 7 high-value /
+low-risk "do-now" items + folded in one dead-code removal, building green after each
+batch → 6-dimension adversarial change-review Workflow on the diff, each finding
+independently verified → fixed the single confirmed P1 → both platforms green, zero
+warnings. Deferred (documented, low-value / device-only): real SFSpeechRecognizer
+(needs a physical device to validate; 3 callsites already have safe simulated
+fallbacks) and social.json grades 1-6 (social.json ALREADY EXISTS w/ 18 lessons
+g7-12 — the old "absent" note was stale; g1-6 fall back to MockContent, acceptable).
+
+SHIPPED THIS SESSION (F82_latent_polish):
+- 拍题 举一反三 → 加入题库: SolveResultModel.addSimilarToBank + SimilarProblemCard
+  gains isBanked/onBank 加入题库 button (mirrors QuestionBankModel.bankGenerated;
+  source .generated, carries subject/answer/steps/explanation/KP; double-bank guarded).
+- 作业批改 PDF: WorkbookPDFRenderer.firstPageJPEG (PDFKit PDFDocument + page.thumbnail
+  (of:for:), cross-platform UIImage/NSImage→JPEG); Data.workbookImage renders .pdf to
+  an image so the importer's long-standing .pdf acceptance is finally gradable. Non-
+  renderable PDF → nil (treated as no-op, not garbage bytes).
+- macOS Settings (⌘,): new Features/Profile/MacSettingsView (#if os(macOS)) hosts the
+  SAME ProfileSettingsCard as iOS (zero drift) in a NavigationStack; DoubaoAiXueApp
+  gains a Settings { } scene with full env injection + .modelContainer(container).
+  GOTCHA: a Settings scene + WindowGroup trailing modifiers can't share one #if — the
+  #if attaches to the modifier chain; use TWO separate #if os(macOS) blocks.
+- 识万物 vision: ExplainRequest gains optional imageData; RecognizeAnythingModel stores
+  & forwards the photo; CloudIntelligenceService.explainKnowledgePoint adds a vision
+  branch (completeVision) when imageData!=nil && provider.supportsVision. Offline path
+  unchanged. (sourceImageData reset on sample/reset so no stale-image leak.)
+- Cloud 文档问答 citations: DocQAWire JSON → DocAnswer.citedSpans (UI already rendered
+  them; Cloud previously hardcoded []). Graceful offline fallback preserved.
+- Document summary route provenance: DocumentEntity.summaryRouteRaw (+ computed
+  summaryRoute, CloudKit-safe default); persisted + restored in BOTH summary paths
+  (DocumentDetailView.loadSummary AND DocumentQAView.summarize — the 2nd was the lone
+  P1 the change-review caught). Route badge now truthful on reload (was always .mock).
+- Dead code removed: RoutePolicy collapsed to a caseless enum w/ only the live
+  defaultService() (was struct + unused IntelligenceTask + resolve/provider);
+  SolveContinuityCamera deleted (unreferenced NSOpenPanel helper; kept import AppKit
+  for NSImage in fromSolveScanData).
+
+DOCS/RELEASE: README.md (English) + README.zh-CN.md (Mandarin), cross-linked, full
+feature/architecture/build/AI-provider/release coverage. New Release .dmg via
+scripts/package_dmg.sh. Tagged v1.1.0; pushed main + tag; GitHub release v1.1.0 with
+the dmg asset. (Auth: GH_TOKEN/GITHUB_TOKEN env are invalid — git push uses the macOS
+keychain; gh works only with `env -u GH_TOKEN -u GITHUB_TOKEN gh …` via the keyring.)

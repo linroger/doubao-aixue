@@ -557,6 +557,13 @@
       "domain": "Tools",
       "description": "工具中心: ToolsHubView promoted from the Wave-0 placeholder — per-category tints (shared with Home via ToolKind.tileTint), section icons + subtitles, design tokens, and in-page search. Dead code removed (ComingSoonView, Wave0Welcome). TTSService.isSpeaking now resets when narration ends (delegate). Chinese providers (豆包/通义千问/智谱) gain vision models + supportsVision.",
       "passes": true
+    },
+    {
+      "id": "F82_latent_polish",
+      "p": "P2",
+      "domain": "Polish",
+      "description": "尾差打磨 (verified latent-item pass): (1) 拍题 举一反三 generated problems gain 加入题库 (BankedQuestion source .generated, carrying subject/answer/steps/explanation/知识点), closing the re-bank gap with 题库/作业批改; (2) 作业批改 now grades PDF homework — WorkbookPDFRenderer renders the first page to JPEG via PDFKit so the importer's .pdf acceptance is real on iOS+macOS; (3) macOS Settings (⌘,) scene hosts the same ProfileSettingsCard as the iOS personal center (zero drift) — 账号/AI 模型/外观/语音/提醒/智能来源/学习模式; (4) 识万物 passes the photographed image into explainKnowledgePoint so vision-capable cloud models ground the 讲解 in the real picture (ExplainRequest.imageData); (5) Cloud 文档问答 returns 引用原文 citations (DocQAWire JSON); (6) document summary route provenance persisted (DocumentEntity.summaryRoute) across both summarize paths so the route badge stays truthful on reload; (7) dead code removed (RoutePolicy collapsed to its single live factory; SolveContinuityCamera deleted). Both platforms build green, zero warnings; adversarially change-reviewed.",
+      "passes": true
     }
   ]
 }

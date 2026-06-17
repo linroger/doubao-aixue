@@ -140,30 +140,11 @@ enum SolveLiveScanAvailability {
     }
 }
 
-// MARK: - Continuity Camera / file import (macOS)
-
+// AppKit on macOS provides NSImage for the cross-platform image helpers below.
+// (macOS image acquisition for 拍照解题 goes through the standard file importer in
+// CaptureSolveView, which surfaces Continuity Camera entries automatically.)
 #if os(macOS)
 import AppKit
-
-/// Imports an image on macOS, preferring Continuity Camera ("用 iPhone 拍照"/"扫描文稿")
-/// when a paired device is nearby and falling back to a standard open panel. The
-/// `NSOpenPanel` exposes Continuity Camera entries automatically via its accessory
-/// menu on macOS 13+, so a single panel covers both paths. Returns raw image `Data`.
-enum SolveContinuityCamera {
-    @MainActor
-    static func importImage() -> Data? {
-        let panel = NSOpenPanel()
-        panel.message = "选择图片，或用相机连续互通从 iPhone 拍照/扫描"
-        panel.prompt = "使用"
-        panel.allowedContentTypes = [.png, .jpeg, .heic, .tiff, .pdf, .image]
-        panel.allowsMultipleSelection = false
-        panel.canChooseDirectories = false
-        guard panel.runModal() == .OK, let url = panel.url else { return nil }
-        let needsScope = url.startAccessingSecurityScopedResource()
-        defer { if needsScope { url.stopAccessingSecurityScopedResource() } }
-        return try? Data(contentsOf: url)
-    }
-}
 #endif
 
 // MARK: - Cross-platform image helpers

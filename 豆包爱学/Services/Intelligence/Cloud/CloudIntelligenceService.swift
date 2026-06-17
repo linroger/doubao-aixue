@@ -382,13 +382,27 @@ nonisolated struct CloudIntelligenceService: IntelligenceService {
 
     func explainKnowledgePoint(_ request: ExplainRequest) async throws -> KnowledgeExplanation {
         do {
+            let useVision = request.imageData != nil && client.provider.supportsVision
             let sys = persona + " 你在讲解一个知识点，分小节、由浅入深。"
+            // When 识万物 supplies a photo, ground the explanation in the real picture.
+            let subjectLine = useVision
+                ? "学科：\(request.subject.displayName)，年级：\(gradeLabel(request.grade))。图片里是「\(request.knowledgePoint)」，请结合图片讲解它。"
+                : "学科：\(request.subject.displayName)，年级：\(gradeLabel(request.grade))。\n知识点：\(request.knowledgePoint)"
             let user = """
-            学科：\(request.subject.displayName)，年级：\(gradeLabel(request.grade))。
-            知识点：\(request.knowledgePoint)
+            \(subjectLine)
             请按 JSON：{"title":"标题","sections":[{"heading":"小节标题","body":"讲解","math":"可选公式"}],"extensionQuestions":["延伸思考问题"]}
             """
-            let w = try await json(ExplainWire.self, system: sys, user: user)
+            let w: ExplainWire
+            if useVision, let image = request.imageData {
+                let raw = try await client.completeVision(
+                    system: sys + "\n严格只返回一个 JSON 对象，不要任何解释文字，不要 Markdown 代码块。",
+                    user: user, imageData: image, maxTokens: 1600)
+                let cleaned = Self.extractJSON(raw)
+                guard let data = cleaned.data(using: .utf8) else { throw CloudAIError.decode("编码失败") }
+                w = try JSONDecoder().decode(ExplainWire.self, from: data)
+            } else {
+                w = try await json(ExplainWire.self, system: sys, user: user)
+            }
             let sections = w.sections.map { ExplanationSection(heading: $0.heading, body: $0.body, math: $0.math) }
             return KnowledgeExplanation(title: w.title, sections: sections, board: [],
                                         extensionQuestions: w.extensionQuestions ?? [], route: .cloud)
@@ -400,6 +414,7 @@ nonisolated struct CloudIntelligenceService: IntelligenceService {
     // MARK: - Document summarize / Q&A
 
     private struct SummaryWire: Decodable { let summary: String; let keyPoints: [String]; let outline: [String] }
+    private struct DocQAWire: Decodable { let answer: String; let citedSpans: [String]? }
 
     func summarizeDocument(_ request: DocSummarizeRequest) async throws -> DocumentSummary {
         do {
@@ -419,16 +434,20 @@ nonisolated struct CloudIntelligenceService: IntelligenceService {
 
     func answerAboutDocument(_ request: DocQARequest) async throws -> DocAnswer {
         do {
-            let sys = persona + " 你只能依据给定文档内容回答，答案要准确、引用原文。"
+            let sys = persona + " 你只能依据给定文档内容回答，答案要准确，并摘录支持答案的原文句子作为引用。"
             let user = """
             文档内容（节选）：
             \(String(request.documentText.prefix(6000)))
 
             问题：\(request.question)
-            请用简体中文回答；若文档没有相关信息，请直说。
+            请用简体中文回答；若文档没有相关信息，请在 answer 里直说，并让 citedSpans 为空数组。
+            请按 JSON：{"answer":"回答","citedSpans":["从文档中原样摘录、支持答案的句子"]}
             """
-            let answer = try await text(system: sys, user: user, maxTokens: 800)
-            return DocAnswer(answer: answer, citedSpans: [], route: .cloud)
+            let w = try await json(DocQAWire.self, system: sys, user: user, maxTokens: 1000)
+            let spans = (w.citedSpans ?? [])
+                .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                .filter { !$0.isEmpty }
+            return DocAnswer(answer: w.answer, citedSpans: spans, route: .cloud)
         } catch {
             var r = try await fallback.answerAboutDocument(request); r.route = .cloud; return r
         }

@@ -253,8 +253,13 @@ public nonisolated struct ExplainRequest: Sendable, Hashable {
     public var knowledgePoint: String
     public var subject: Subject
     public var grade: GradeLevel
-    public init(knowledgePoint: String, subject: Subject = .math, grade: GradeLevel = .g5) {
+    /// Optional source image (e.g. 识万物 photographed the subject). When present and the
+    /// active provider supports vision, the explanation is grounded in the real picture.
+    public var imageData: Data?
+    public init(knowledgePoint: String, subject: Subject = .math, grade: GradeLevel = .g5,
+                imageData: Data? = nil) {
         self.knowledgePoint = knowledgePoint; self.subject = subject; self.grade = grade
+        self.imageData = imageData
     }
 }
 

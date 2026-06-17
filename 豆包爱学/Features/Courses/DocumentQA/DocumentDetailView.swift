@@ -67,11 +67,13 @@ final class DocumentDetailModel {
         documents: [DocumentEntity]
     ) async {
         if !existingSummary.isEmpty || !existingKeyPoints.isEmpty {
+            // Restore the real provenance recorded when the summary was generated.
+            let route = documents.first(where: { $0.id == documentID })?.summaryRoute ?? .mock
             summaryState = .loaded(DocumentSummary(
                 summary: existingSummary,
                 keyPoints: existingKeyPoints,
                 outline: existingOutline,
-                route: .mock
+                route: route
             ))
             return
         }
@@ -88,6 +90,7 @@ final class DocumentDetailModel {
                 entity.summary = summary.summary
                 entity.keyPoints = summary.keyPoints
                 entity.outline = summary.outline
+                entity.summaryRoute = summary.route
                 context.saveLogging()
             }
             summaryState = .loaded(summary)

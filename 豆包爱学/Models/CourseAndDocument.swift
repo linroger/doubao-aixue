@@ -64,7 +64,15 @@ public final class DocumentEntity {
     public var summary: String = ""
     public var keyPoints: [String] = []
     public var outline: [String] = []
+    /// Provenance of the persisted summary (端侧/增强/离线) so the route badge stays
+    /// truthful when the summary is reloaded, instead of always reading 离线.
+    public var summaryRouteRaw: String = IntelligenceRoute.mock.rawValue
     public var createdAt: Date = Date()
 
     public init() {}
+
+    public var summaryRoute: IntelligenceRoute {
+        get { IntelligenceRoute(rawValue: summaryRouteRaw) ?? .mock }
+        set { summaryRouteRaw = newValue.rawValue }
+    }
 }

@@ -14,6 +14,7 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import PDFKit
 
 #if canImport(UIKit)
 import UIKit
@@ -97,14 +98,51 @@ enum WorkbookImagePrep {
     #endif
 }
 
+// MARK: - PDF rendering
+
+/// Renders a chosen PDF (a very common way teachers hand out homework) into image
+/// bytes the OCR pre-pass, the vision model, and the preview can all consume —
+/// otherwise the file importer accepts a PDF that can never be graded.
+enum WorkbookPDFRenderer {
+    /// Render the first page of a PDF to JPEG bytes, scaled so the long edge fits
+    /// `maxDimension`. Returns nil if the data isn't a readable PDF.
+    static func firstPageJPEG(from pdfData: Data,
+                              maxDimension: CGFloat = WorkbookImagePrep.maxDimension) -> Data? {
+        guard let document = PDFDocument(data: pdfData), let page = document.page(at: 0) else { return nil }
+        let pageSize = page.bounds(for: .mediaBox).size
+        guard pageSize.width > 0, pageSize.height > 0 else { return nil }
+        let longest = max(pageSize.width, pageSize.height)
+        let scale = longest > maxDimension ? maxDimension / longest : 1
+        let target = CGSize(width: pageSize.width * scale, height: pageSize.height * scale)
+        let thumbnail = page.thumbnail(of: target, for: .mediaBox)
+        #if canImport(UIKit)
+        return thumbnail.jpegData(compressionQuality: 0.8)
+        #elseif canImport(AppKit)
+        guard let tiff = thumbnail.tiffRepresentation,
+              let rep = NSBitmapImageRep(data: tiff) else { return nil }
+        return rep.representation(using: .jpeg, properties: [.compressionFactor: 0.8])
+        #else
+        return nil
+        #endif
+    }
+}
+
 // MARK: - File / display helpers
 
 extension Data {
     /// Load image bytes from a security-scoped file URL (file importer / open panel).
+    /// PDFs are rendered to a JPEG of their first page so the grading pipeline (which
+    /// expects a decodable image) works the same way as for a photo.
     static func workbookImage(from url: URL) -> Data? {
         let needsScope = url.startAccessingSecurityScopedResource()
         defer { if needsScope { url.stopAccessingSecurityScopedResource() } }
-        return try? Data(contentsOf: url)
+        guard let data = try? Data(contentsOf: url) else { return nil }
+        if url.pathExtension.lowercased() == "pdf" {
+            // A non-renderable PDF returns nil (handled as "couldn't import") rather
+            // than feeding raw PDF bytes the grader/preview can't decode.
+            return WorkbookPDFRenderer.firstPageJPEG(from: data)
+        }
+        return data
     }
 }
 
