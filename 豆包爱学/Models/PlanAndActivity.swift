@@ -46,6 +46,9 @@ public final class ActivityLog {
     public var subjectRaw: String? = nil
     public var detail: String = ""
     public var minutes: Double = 0
+    /// Number of questions answered / graded / practiced in this event. Drives the
+    /// daily contribution heatmap ("答题足迹"). Time-only activity (e.g. 专注) is 0.
+    public var count: Int = 0
     public var date: Date = Date()
 
     public init() {}

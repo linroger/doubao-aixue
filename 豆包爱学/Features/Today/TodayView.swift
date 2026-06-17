@@ -296,6 +296,7 @@ struct TodayView: View {
                         taskSection(todays)
                     }
                     studyTimeSection
+                    ContributionCard(logs: logs, weeks: 16)
                     footerNudge
                 }
             }

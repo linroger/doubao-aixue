@@ -79,6 +79,7 @@ struct ReportsView: View {
                     insufficientState
                 } else {
                     summaryCard(report)
+                    ContributionCard(logs: logs)
                     timeSection(report)
                     masterySection(report)
                     if !report.weakPoints.isEmpty {

@@ -104,6 +104,8 @@ struct ProfileView: View {
                     averageMastery: averageMastery
                 )
 
+                ContributionCard(logs: activity)
+
                 WeeklyActivityCard(logs: activity)
 
                 achievementsEntry

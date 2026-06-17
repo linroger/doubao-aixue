@@ -501,6 +501,20 @@
       "domain": "Intelligence",
       "description": "多模态视觉: CloudChatClient.completeVision (openAI image_url / anthropic base64 / gemini inline_data) + AIProvider.supportsVision; powers 作业批改 and 拍照解题 (image flows into SolveRequest) on vision-capable models; graceful OCR-text + offline fallbacks",
       "passes": true
+    },
+    {
+      "id": "F74_contribution_heatmap",
+      "p": "P0",
+      "domain": "Reports",
+      "description": "答题足迹: GitHub-style daily contribution heatmap (DBContributionGraph + ContributionCard + ContributionStats) that counts every answered/graded/practiced question per calendar day. Green growth intensity scale (5 levels), calendar-week columns with current week last, future days faint, month + weekday labels, horizontal scroll anchored to today, current-streak/active-days/累计 stat strip + legend, empty state. Surfaced in 个人中心, 今日, and 学习报告. ActivityLog gains a question `count` field.",
+      "passes": true
+    },
+    {
+      "id": "F75_activity_question_counting",
+      "p": "P0",
+      "domain": "Reports",
+      "description": "答题计数: central ActivityRecorder.log(kind/subject/questions/minutes) funnels every learning surface into ActivityLog so the contribution heatmap, streak, and reports stay consistent. Wired through 作业批改 (graded count), 智能出题练习 (per attempt), 拍题解题, 靶向练习, 测验, 听写, 背单词, 作文批改. ActivityKind enum unifies display name + icon across 报告/今日/贡献图.",
+      "passes": false
     }
   ]
 }

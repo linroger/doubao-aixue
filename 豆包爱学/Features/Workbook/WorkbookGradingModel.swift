@@ -86,6 +86,10 @@ final class WorkbookGradingModel {
             }
             state = .loaded(result)
             persist(result, context: context)
+            // Count every graded question toward the daily 答题足迹 contribution graph.
+            ActivityRecorder.log(
+                context, kind: .workbook, subject: result.primarySubject,
+                questions: result.total, detail: "作业批改 · \(result.title)")
             HapticEngine.play(.success)
         } catch {
             state = .error(message: "批改没有完成。请检查网络，或换一张更清晰的照片重试。")

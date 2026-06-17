@@ -311,8 +311,14 @@ struct GeneratedPracticeSheet: View {
                         }
                     }
                 } else {
-                    Button("先做做看，再看答案") { model.reveal(problem.id) }
-                        .buttonStyle(.db(.ghost, fullWidth: true))
+                    Button("先做做看，再看答案") {
+                        model.reveal(problem.id)
+                        // One attempted practice question → counts toward 答题足迹.
+                        ActivityRecorder.log(modelContext, kind: .practice,
+                                             subject: subject, questions: 1,
+                                             detail: "智能出题练习")
+                    }
+                    .buttonStyle(.db(.ghost, fullWidth: true))
                 }
 
                 Button {

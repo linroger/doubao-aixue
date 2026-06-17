@@ -183,14 +183,29 @@ public enum SampleData {
         reminder.title = "每日错题复习"; reminder.hour = 19; reminder.minute = 30
         context.insert(reminder)
 
-        // A few activity logs for the report charts.
-        for dayOffset in 0..<7 {
-            let log = ActivityLog()
-            log.kindRaw = "tutor"
-            log.subjectRaw = Subject.math.rawValue
-            log.minutes = Double(15 + (dayOffset * 3) % 20)
-            log.date = Calendar.current.date(byAdding: .day, value: -dayOffset, to: Date()) ?? Date()
-            context.insert(log)
+        // ~12 weeks of activity so 学习报告 and the 答题足迹 contribution heatmap are
+        // immediately alive. Deterministic (no RNG): two natural rest days a week,
+        // 1–2 sessions per active day, question counts that drive the heatmap.
+        let actKinds: [ActivityKind] = [.workbook, .solve, .practice, .drill, .dictation, .vocabulary]
+        let actSubjects: [Subject] = [.math, .chinese, .english]
+        let cal = Calendar.current
+        let base = cal.startOfDay(for: Date())
+        for dayOffset in 0..<84 {
+            if dayOffset % 7 == 6 { continue }        // weekly rest day
+            if dayOffset % 11 == 3 { continue }       // an occasional skipped day
+            guard let day = cal.date(byAdding: .day, value: -dayOffset, to: base) else { continue }
+            let sessions = (dayOffset % 5 == 0) ? 2 : 1
+            for s in 0..<sessions {
+                let kind = actKinds[(dayOffset + s) % actKinds.count]
+                let log = ActivityLog()
+                log.kindRaw = kind.rawValue
+                log.subject = actSubjects[(dayOffset + s) % actSubjects.count]
+                log.count = 3 + ((dayOffset * 3 + s * 5) % 10)   // 3…12 questions
+                log.minutes = Double(10 + ((dayOffset + s * 7) % 18))
+                log.detail = kind.displayName
+                log.date = cal.date(byAdding: .minute, value: 9 * 60 + s * 90, to: day) ?? day
+                context.insert(log)
+            }
         }
 
         // A sample document.
