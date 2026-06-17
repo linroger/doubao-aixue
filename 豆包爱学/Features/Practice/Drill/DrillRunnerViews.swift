@@ -237,6 +237,7 @@ struct DrillResultsView: View {
     @Bindable var model: DrillModel
     var onPracticeAgain: () -> Void
     var onFinish: () -> Void
+    var onAddToNotebook: () -> Void = {}
 
     private var percent: Int { Int((model.accuracy * 100).rounded()) }
 
@@ -323,15 +324,27 @@ struct DrillResultsView: View {
 
     private var actionButtons: some View {
         VStack(spacing: DBSpacing.sm) {
+            if !model.wrongOutcomes.isEmpty {
+                Button(action: onAddToNotebook) {
+                    Label(model.allWrongSaved
+                          ? "已加入错题本（\(model.savedMistakeProblemIDs.count) 题）"
+                          : "错题加入错题本",
+                          systemImage: model.allWrongSaved ? "checkmark.circle.fill" : "book.closed.fill")
+                }
+                .buttonStyle(.db(.primary, fullWidth: true))
+                .disabled(model.allWrongSaved)
+                .opacity(model.allWrongSaved ? 0.6 : 1)
+            }
+
             Button(action: onPracticeAgain) {
                 Label("再练一组", systemImage: "arrow.clockwise")
             }
-            .buttonStyle(.db(.primary, fullWidth: true))
+            .buttonStyle(.db(model.wrongOutcomes.isEmpty ? .primary : .secondary, fullWidth: true))
 
             Button(action: onFinish) {
                 Label("查看学习报告", systemImage: "chart.bar.doc.horizontal.fill")
             }
-            .buttonStyle(.db(.secondary, fullWidth: true))
+            .buttonStyle(.db(.ghost, fullWidth: true))
         }
     }
 }

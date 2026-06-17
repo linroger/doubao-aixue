@@ -335,6 +335,11 @@ final class DictationSessionModel {
             item.mastery = .new
             modelContext.insert(item)
         }
+        // Count the dictated words toward the 答题足迹 contribution heatmap.
+        ActivityRecorder.log(
+            modelContext, kind: .dictation, subject: language,
+            questions: grading.total,
+            detail: "听写 \(grading.correct)/\(grading.total) · \(listName)")
         modelContext.saveLogging()
     }
 

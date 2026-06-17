@@ -363,7 +363,8 @@ nonisolated struct CloudIntelligenceService: IntelligenceService {
                 let steps = (p.steps ?? []).enumerated().map { i, s in
                     SolutionStep(index: i + 1, title: s.title, detail: s.detail, math: s.math)
                 }
-                return GeneratedProblem(question: p.question, answer: p.answer, steps: steps,
+                return GeneratedProblem(subject: request.subject,
+                                        question: p.question, answer: p.answer, steps: steps,
                                         difficulty: max(1, min(5, p.difficulty ?? 2)),
                                         knowledgePointID: request.knowledgePoints.first?.id ?? "")
             }

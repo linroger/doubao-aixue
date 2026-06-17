@@ -19,6 +19,7 @@ struct MistakeDetailView: View {
     @Query private var mistakes: [MistakeItem]
     @Query private var knowledgePoints: [KnowledgePointEntity]
     @State private var justReviewed = false
+    @State private var savedToBank = false
 
     init(mistakeID: UUID) { self.mistakeID = mistakeID }
 
@@ -116,8 +117,28 @@ struct MistakeDetailView: View {
                         Label("举一反三", systemImage: "square.grid.3x3.fill").frame(maxWidth: .infinity)
                     }.buttonStyle(.db(.ghost))
                 }
+
+                // Collect this mistake into the 题库 so it can seed 智能出题 too.
+                Button { saveToBank(item) } label: {
+                    Label(savedToBank ? "已加入题库" : "加入题库",
+                          systemImage: savedToBank ? "checkmark.circle.fill" : "tray.full.fill")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.db(.ghost))
+                .disabled(savedToBank)
             }
             .padding(DBSpacing.screenInset)
+        }
+    }
+
+    private func saveToBank(_ item: MistakeItem) {
+        guard !savedToBank else { return }
+        let names = item.knowledgePointIDs.map { knowledgePointName($0) }
+        let q = BankedQuestion.make(from: item, knowledgePointNames: names)
+        modelContext.insert(q)
+        if modelContext.saveLogging() {
+            savedToBank = true
+            HapticEngine.play(.success)
         }
     }
 

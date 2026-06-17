@@ -15,12 +15,15 @@ import SwiftData
 struct MistakeNotebookView: View {
     @Environment(AppRouter.self) private var router
     @Environment(\.horizontalSizeClass) private var sizeClass
+    @Environment(\.modelContext) private var modelContext
     @Query(sort: \MistakeItem.createdAt, order: .reverse) private var mistakes: [MistakeItem]
+    @Query private var knowledgePoints: [KnowledgePointEntity]
 
     @State private var reviewFilter: ReviewFilter = .all
     @State private var subjectFilter: Subject?
     @State private var selecting = false
     @State private var selectedIDs: Set<UUID> = []
+    @State private var bankedIDs: Set<UUID> = []
     @State private var paper: MistakePaper?
 
     private var isRegular: Bool { sizeClass != .compact }
@@ -139,9 +142,12 @@ struct MistakeNotebookView: View {
     }
 
     private var paperBar: some View {
-        HStack {
+        HStack(spacing: DBSpacing.sm) {
             Text("已选 \(selectedIDs.count) 题").font(.dbCallout).foregroundStyle(Color.dbTextSecondary)
-            Spacer()
+            Spacer(minLength: 0)
+            Button("加入题库") { addSelectedToBank() }
+                .buttonStyle(.db(.secondary))
+                .disabled(selectedIDs.isEmpty)
             Button("生成练习卷") { buildPaper() }
                 .buttonStyle(.db(.primary))
                 .disabled(selectedIDs.isEmpty)
@@ -152,6 +158,24 @@ struct MistakeNotebookView: View {
 
     private func toggle(_ item: MistakeItem) {
         if selectedIDs.contains(item.id) { selectedIDs.remove(item.id) } else { selectedIDs.insert(item.id) }
+    }
+
+    private func knowledgePointName(_ id: String) -> String {
+        knowledgePoints.first { $0.id == id }?.name ?? id
+    }
+
+    /// Collect the selected mistakes into the 题库 so they can seed 智能出题.
+    private func addSelectedToBank() {
+        let chosen = mistakes.filter { selectedIDs.contains($0.id) && !bankedIDs.contains($0.id) }
+        guard !chosen.isEmpty else { return }
+        for item in chosen {
+            let names = item.knowledgePointIDs.map { knowledgePointName($0) }
+            modelContext.insert(BankedQuestion.make(from: item, knowledgePointNames: names))
+            bankedIDs.insert(item.id)
+        }
+        modelContext.saveLogging()
+        HapticEngine.play(.success)
+        withAnimation { selecting = false; selectedIDs.removeAll() }
     }
 
     private func buildPaper() {

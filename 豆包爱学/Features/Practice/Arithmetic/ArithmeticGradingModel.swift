@@ -115,7 +115,7 @@ final class ArithmeticGradingModel {
 
     // MARK: - Grading
 
-    func grade(using intelligence: any IntelligenceService) async {
+    func grade(using intelligence: any IntelligenceService, context: ModelContext) async {
         let toGrade = gradableItems
         guard !toGrade.isEmpty else {
             state = .empty(message: "先添加或拍摄几道题再批改吧～")
@@ -131,6 +131,11 @@ final class ArithmeticGradingModel {
                 state = .empty(message: "没有可批改的题目")
             } else {
                 state = .loaded(result)
+                // Count the graded items toward the 答题足迹 contribution heatmap.
+                ActivityRecorder.log(
+                    context, kind: .practice, subject: .math,
+                    questions: result.items.count,
+                    detail: "口算批改 · \(result.items.count) 题")
             }
         } catch {
             state = .error(message: "批改失败，请稍后再试。")

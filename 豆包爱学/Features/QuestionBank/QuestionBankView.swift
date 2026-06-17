@@ -24,14 +24,23 @@ struct QuestionBankView: View {
     @State private var model = QuestionBankModel()
     @State private var subjectFilter: Subject?
     @State private var starredOnly = false
+    @State private var dueOnly = false
     @State private var revealedAnswers: Set<UUID> = []
+    @State private var justReviewedIDs: Set<UUID> = []
 
     private var grade: GradeLevel { profiles.first?.grade ?? .g5 }
     private var isRegular: Bool { sizeClass != .compact }
 
     private var filtered: [BankedQuestion] {
-        questions.filter { subjectFilter == nil || $0.subject == subjectFilter }
+        let now = Date()
+        return questions.filter { subjectFilter == nil || $0.subject == subjectFilter }
             .filter { !starredOnly || $0.starred }
+            .filter { !dueOnly || ($0.nextReviewAt <= now && $0.mastery != .mastered) }
+    }
+
+    private var dueCount: Int {
+        let now = Date()
+        return questions.filter { $0.nextReviewAt <= now && $0.mastery != .mastered }.count
     }
 
     private var subjectsPresent: [Subject] {
@@ -126,6 +135,10 @@ struct QuestionBankView: View {
                 Button { starredOnly.toggle() } label: {
                     DBChip("星标", systemImage: "star.fill", tint: .dbAccent, isSelected: starredOnly)
                 }.buttonStyle(.plain)
+                Button { dueOnly.toggle() } label: {
+                    DBChip(dueCount > 0 ? "今日复习 \(dueCount)" : "今日复习",
+                           systemImage: "calendar.badge.clock", tint: .dbPrimary, isSelected: dueOnly)
+                }.buttonStyle(.plain)
                 Rectangle().fill(Color.dbSeparator).frame(width: 1, height: 22)
                 Button { subjectFilter = nil } label: {
                     DBChip("全部学科", tint: .dbSecondary, isSelected: subjectFilter == nil)
@@ -165,6 +178,7 @@ struct QuestionBankView: View {
                             Text(q.explanation).font(.dbCaption).foregroundStyle(Color.dbTextSecondary)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
+                        reviewRow(q)
                     } else if !q.correctAnswer.isEmpty {
                         Button("看答案") { _ = revealedAnswers.insert(q.id); HapticEngine.play(.light) }
                             .font(.dbFootnote.weight(.medium))
@@ -197,6 +211,42 @@ struct QuestionBankView: View {
             }
             Button(role: .destructive) { delete(q) } label: { Label("从题库移除", systemImage: "trash") }
         }
+    }
+
+    /// Forgetting-curve self-rating shown once the answer is revealed, so the
+    /// bank's mastery/nextReviewAt fields actually advance (mirrors 错题本 review).
+    @ViewBuilder
+    private func reviewRow(_ q: BankedQuestion) -> some View {
+        if justReviewedIDs.contains(q.id) {
+            Label("已记录，下次复习时间已更新", systemImage: "checkmark.seal.fill")
+                .font(.dbCaption).foregroundStyle(Color.dbSuccess)
+        } else {
+            HStack(spacing: DBSpacing.xs) {
+                ForEach(ReviewGrade.allCases, id: \.rawValue) { grade in
+                    Button { review(q, grade) } label: {
+                        Text(grade.displayName).font(.dbCaption2).frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.db(grade == .again ? .ghost : .secondary))
+                }
+            }
+            .padding(.top, DBSpacing.xxs)
+        }
+    }
+
+    private func review(_ q: BankedQuestion, _ grade: ReviewGrade) {
+        q.reviewCount += 1
+        q.lastReviewedAt = Date()
+        let days: Int
+        switch grade {
+        case .again: q.mastery = .weak; days = 1
+        case .hard:  q.mastery = .developing; days = 2
+        case .good:  q.mastery = q.reviewCount >= 3 ? .mastered : .developing; days = 4
+        case .easy:  q.mastery = .mastered; days = 7
+        }
+        q.nextReviewAt = Calendar.current.date(byAdding: .day, value: days, to: Date()) ?? Date()
+        modelContext.saveLogging()
+        HapticEngine.play(.success)
+        withAnimation { _ = justReviewedIDs.insert(q.id) }
     }
 
     @ViewBuilder
@@ -279,13 +329,14 @@ struct GeneratedPracticeSheet: View {
     }
 
     private func practiceCard(index: Int, problem: GeneratedProblem) -> some View {
-        let subject = model.lastSeedSubjects.first ?? .general
+        let subject = problem.subject          // per-problem subject (no longer the first seed)
         let revealed = model.revealedIDs.contains(problem.id)
         let banked = model.bankedGeneratedIDs.contains(problem.id)
         return DBCard {
             VStack(alignment: .leading, spacing: DBSpacing.sm) {
-                HStack {
+                HStack(spacing: DBSpacing.sm) {
                     Text("第 \(index) 题").font(.dbFootnote.weight(.semibold)).foregroundStyle(Color.dbPrimary)
+                    DBSubjectChip(subject)
                     Spacer()
                     Text(String(repeating: "★", count: max(1, min(5, problem.difficulty))))
                         .font(.dbCaption).foregroundStyle(Color.dbAccent)

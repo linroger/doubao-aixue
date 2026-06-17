@@ -56,6 +56,9 @@ struct ProfileView: View {
         max(problems.count, profile?.problemsSolved ?? 0)
     }
 
+    /// Live streak derived from real practice days (not a frozen seeded counter).
+    private var currentStreak: Int { ContributionStats.currentStreak(activity) }
+
     private var savedCount: Int {
         problems.filter { $0.savedToMistakes }.count + mistakes.count
     }
@@ -95,12 +98,13 @@ struct ProfileView: View {
             VStack(spacing: DBSpacing.lg) {
                 ProfileHeaderCard(
                     profile: profile,
+                    streakDays: currentStreak,
                     onEdit: { editingProfile = true }
                 )
 
                 ProfileStatsCard(
                     solved: solvedCount,
-                    streakDays: profile.streakDays,
+                    streakDays: currentStreak,
                     averageMastery: averageMastery
                 )
 

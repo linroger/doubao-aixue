@@ -89,6 +89,15 @@ final class QuestionBankModel {
         item.questionText = problem.question
         item.correctAnswer = problem.answer
         item.steps = problem.steps
+        // Carry the explanation + knowledge point so the re-banked question is as
+        // reviewable as its source and seeds future 智能出题 just as well.
+        item.explanation = problem.steps.first?.detail ?? ""
+        if !problem.knowledgePointID.isEmpty {
+            let name = ContentCatalog.knowledgePoints.first { $0.id == problem.knowledgePointID }?.name
+                ?? problem.knowledgePointID
+            item.knowledgePointIDs = [problem.knowledgePointID]
+            item.knowledgePointNames = [name]
+        }
         item.source = .generated
         item.mastery = .new
         item.nextReviewAt = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()

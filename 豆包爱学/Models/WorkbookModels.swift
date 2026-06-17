@@ -191,4 +191,28 @@ public final class BankedQuestion {
         item.createdAt = Date()
         return item
     }
+
+    /// Build a banked question from an 错题本 item so mistakes can feed 智能出题.
+    /// `knowledgePointNames` should align with `item.knowledgePointIDs`; when it
+    /// doesn't, the ids are used as names so the chips still render.
+    public static func make(from item: MistakeItem, knowledgePointNames: [String] = []) -> BankedQuestion {
+        let q = BankedQuestion()
+        q.subject = item.subject
+        q.type = .other                     // MistakeItem carries no question-type
+        q.questionText = item.questionText
+        q.imageData = item.imageData
+        q.studentAnswer = item.studentAnswer
+        q.correctAnswer = item.correctAnswer
+        q.explanation = item.errorReason    // 错因/解释
+        q.errorType = item.errorType
+        q.steps = item.steps
+        q.knowledgePointIDs = item.knowledgePointIDs
+        q.knowledgePointNames = knowledgePointNames.count == item.knowledgePointIDs.count
+            ? knowledgePointNames : item.knowledgePointIDs
+        q.source = .mistake                 // the existing-but-unused case, finally produced
+        q.mastery = item.mastery            // carry over forgetting-curve progress
+        q.nextReviewAt = item.nextReviewAt
+        q.createdAt = Date()
+        return q
+    }
 }

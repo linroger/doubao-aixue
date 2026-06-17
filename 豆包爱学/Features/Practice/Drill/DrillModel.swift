@@ -293,6 +293,7 @@ final class DrillModel {
         typedAnswer = ""
         hasChecked = false
         outcomes = []
+        savedMistakeProblemIDs = []
         questionStartedAt = .now
     }
 
@@ -393,8 +394,51 @@ final class DrillModel {
             context.insert(attempt)
         }
 
+        // Feed the daily 答题足迹 contribution heatmap / streak — every learning
+        // surface funnels its question count through ActivityRecorder.
+        let minutesSpent = outcomes.reduce(0.0) { $0 + $1.timeSpent } / 60.0
+        ActivityRecorder.log(
+            context, kind: .drill, subject: target.subject,
+            questions: outcomes.count, minutes: minutesSpent,
+            detail: "靶向练习 \(correctCount)/\(outcomes.count) · \(target.name)")
+
         context.saveLogging()
         saved = true
+    }
+
+    // MARK: - Save wrong questions to 错题本
+
+    private(set) var savedMistakeProblemIDs: Set<String> = []
+    var wrongOutcomes: [DrillOutcome] { outcomes.filter { !$0.isCorrect } }
+    var allWrongSaved: Bool {
+        !wrongOutcomes.isEmpty && wrongOutcomes.allSatisfy { savedMistakeProblemIDs.contains($0.problemID) }
+    }
+
+    /// Insert one `MistakeItem` per wrong drill question into the 错题本, idempotently,
+    /// so the learner can later review them and feed them into 题库 / 智能出题.
+    @discardableResult
+    func addWrongOutcomesToNotebook(context: ModelContext) -> Int {
+        let subject = selectedTarget?.subject ?? .math
+        var added = 0
+        for outcome in wrongOutcomes where !savedMistakeProblemIDs.contains(outcome.problemID) {
+            let item = MistakeItem()
+            item.subject = subject
+            item.questionText = outcome.question
+            item.studentAnswer = outcome.typedAnswer.isEmpty ? "未作答" : outcome.typedAnswer
+            item.correctAnswer = outcome.correctAnswer
+            item.errorReason = outcome.typedAnswer.isEmpty ? "练习中未作答，需巩固。" : "答案有误，需订正。"
+            item.errorType = .concept
+            item.mastery = .weak
+            item.knowledgePointIDs = outcome.knowledgePointID.isEmpty ? [] : [outcome.knowledgePointID]
+            item.steps = problems.first { $0.id == outcome.problemID }?.steps ?? []
+            item.createdAt = Date()
+            item.nextReviewAt = Date()
+            context.insert(item)
+            savedMistakeProblemIDs.insert(outcome.problemID)
+            added += 1
+        }
+        if added > 0 { context.saveLogging(); HapticEngine.play(.success) }
+        return added
     }
 
     /// Start a fresh session on the same target (再练一组) — back to generation.

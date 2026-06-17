@@ -50,11 +50,11 @@ struct AchievementsView: View {
 
     private var learnerName: String { profile?.nickname ?? "小学员" }
 
-    /// Best available streak: prefer a dedicated StudyStreak, fall back to the
-    /// profile counter so the screen is meaningful even before streaks seed.
+    /// Live streak derived from real practice days, so the streak badges
+    /// (streak_3/7/30/100) actually advance with use rather than reading a
+    /// frozen seeded counter. Same source as ContributionCard for consistency.
     private var streakDays: Int {
-        let fromStreak = streaks.map(\.current).max() ?? 0
-        return max(fromStreak, profile?.streakDays ?? 0)
+        ContributionStats.currentStreak(logs)
     }
 
     private var metrics: AchievementMetrics {

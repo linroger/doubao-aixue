@@ -30,6 +30,7 @@ struct HomeView: View {
     @Query private var masteries: [MasteryRecord]
     @Query private var knowledgePoints: [KnowledgePointEntity]
     @Query private var courses: [CourseEntity]
+    @Query(sort: \ActivityLog.date, order: .forward) private var logs: [ActivityLog]
 
     init() {}
 
@@ -38,6 +39,9 @@ struct HomeView: View {
     private var isRegular: Bool { sizeClass != .compact }
 
     private var profile: LearnerProfile? { profiles.first }
+
+    /// Live streak derived from real practice days (not a frozen seeded counter).
+    private var currentStreak: Int { ContributionStats.currentStreak(logs) }
 
     /// The single weakest knowledge point (lowest mastery score) — the focus of
     /// 今日靶向练习. Falls back gracefully when no mastery is seeded.
@@ -129,7 +133,7 @@ struct HomeView: View {
                         .foregroundStyle(Color.dbTextSecondary)
                 }
                 Spacer(minLength: DBSpacing.sm)
-                DBStreakView(days: profile?.streakDays ?? 0)
+                DBStreakView(days: currentStreak)
             }
 
             statStrip
@@ -582,7 +586,7 @@ struct HomeView: View {
     }
 
     private var encouragement: String {
-        let streak = profile?.streakDays ?? 0
+        let streak = currentStreak
         if streak >= 7 { return "已连续学习 \(streak) 天，真棒！" }
         if streak > 0 { return "今天也要元气满满哦～" }
         return "新的一天，从一道题开始吧～"

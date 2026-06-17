@@ -802,15 +802,18 @@ final class SolveResultModel {
 
     private func persist(_ solved: SolvedProblem, context: ModelContext) {
         let record: ProblemRecord
+        let isNewRecord: Bool
         if let id = savedRecordID,
            let existing = try? context.fetch(
             FetchDescriptor<ProblemRecord>(predicate: #Predicate { $0.id == id })
            ).first {
             record = existing
+            isNewRecord = false
         } else {
             record = ProblemRecord()
             context.insert(record)
             savedRecordID = record.id
+            isNewRecord = true
         }
         record.subject = solved.subject
         record.source = source
@@ -824,6 +827,12 @@ final class SolveResultModel {
         record.route = solved.route
         record.savedToMistakes = savedToMistakes
         record.createdAt = Date()
+        // Count one solved question toward the 答题足迹 contribution heatmap.
+        if isNewRecord {
+            ActivityRecorder.log(
+                context, kind: .solve, subject: solved.subject,
+                questions: 1, detail: "拍题搜题")
+        }
         context.saveLogging()
     }
 

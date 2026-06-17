@@ -513,8 +513,29 @@
       "id": "F75_activity_question_counting",
       "p": "P0",
       "domain": "Reports",
-      "description": "答题计数: central ActivityRecorder.log(kind/subject/questions/minutes) funnels every learning surface into ActivityLog so the contribution heatmap, streak, and reports stay consistent. Wired through 作业批改 (graded count), 智能出题练习 (per attempt), 拍题解题, 靶向练习, 测验, 听写, 背单词, 作文批改. ActivityKind enum unifies display name + icon across 报告/今日/贡献图.",
-      "passes": false
+      "description": "答题计数: central ActivityRecorder.log(kind/subject/questions/minutes) funnels every learning surface into ActivityLog so the contribution heatmap, streak, and reports stay consistent. Wired through 作业批改 (graded count), 智能出题练习 (per attempt), 拍题解题, 靶向练习, 测验, 听写, 背单词, 口算批改, 作文批改. ActivityKind enum unifies display name + icon across 报告/今日/贡献图.",
+      "passes": true
+    },
+    {
+      "id": "F76_streak_from_activity",
+      "p": "P1",
+      "domain": "Reports",
+      "description": "连续天数实时化: streak is now derived from real ActivityLog practice days via ContributionStats.currentStreak across 首页/今日/个人中心/成就 (was a frozen seeded counter), so streak badges actually advance with use.",
+      "passes": true
+    },
+    {
+      "id": "F77_question_bank_review_loop",
+      "p": "P1",
+      "domain": "QuestionBank",
+      "description": "题库复习闭环: per-question forgetting-curve review (again/hard/good/easy advancing mastery + nextReviewAt) revealed after 看答案, plus a 今日复习 due filter. AI-generated practice now carries its true per-problem subject (GeneratedProblem.subject), fixing the mixed-subject mislabel, and re-banking carries knowledge point + explanation.",
+      "passes": true
+    },
+    {
+      "id": "F78_mistakes_and_drills_to_bank",
+      "p": "P1",
+      "domain": "QuestionBank",
+      "description": "错题入题库 + 练习收错题: 错题本 detail + bulk 加入题库 (BankedQuestion.make(from: MistakeItem)) connects the two review systems; 靶向练习 results gain 错题加入错题本; non-math mock drills are now genuinely answerable (real A–D choice items) instead of unwinnable 见解析.",
+      "passes": true
     }
   ]
 }

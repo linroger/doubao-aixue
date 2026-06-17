@@ -70,6 +70,9 @@ struct TodayView: View {
 
     private var goalReached: Bool { minutesToday >= dailyGoalMinutes }
 
+    /// Live streak derived from real practice days (not a frozen seeded counter).
+    private var currentStreak: Int { ContributionStats.currentStreak(logs) }
+
     // MARK: - Task derivations
 
     /// The single weakest, not-yet-mastered knowledge point — the focus of today's
@@ -329,7 +332,7 @@ struct TodayView: View {
                         .fixedSize(horizontal: false, vertical: true)
 
                     HStack(spacing: DBSpacing.sm) {
-                        DBStreakView(days: profile?.streakDays ?? 0)
+                        DBStreakView(days: currentStreak)
                         if goalReached {
                             DBTag("今日已达标", tint: .dbSuccess)
                         }
@@ -368,7 +371,7 @@ struct TodayView: View {
     }
 
     private var headerAccessibilityLabel: String {
-        let streak = profile?.streakDays ?? 0
+        let streak = currentStreak
         let goal = goalReached
             ? "今日学习目标已完成"
             : "今日已学习 \(Int(minutesToday.rounded())) 分钟，目标 \(Int(dailyGoalMinutes)) 分钟"
@@ -603,7 +606,7 @@ struct TodayView: View {
     }
 
     private var footerMessage: String {
-        let streak = profile?.streakDays ?? 0
+        let streak = currentStreak
         if goalReached {
             return "今天的目标已达成，豆包为你骄傲 🎉"
         }

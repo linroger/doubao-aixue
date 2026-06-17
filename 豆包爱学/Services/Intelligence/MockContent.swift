@@ -100,15 +100,52 @@ public nonisolated enum MockContent {
             if subject == .math {
                 let answer = a + b
                 return GeneratedProblem(
+                    subject: subject,
                     question: "计算：\(a) + \(b) = ?",
                     answer: "\(answer)",
                     steps: [SolutionStep(index: 1, title: "相加", detail: "把两个数相加。", math: "\(a)+\(b)=\(answer)")],
                     difficulty: min(5, i + 1), knowledgePointID: knowledgePointID)
             } else {
+                // A deterministic single-choice item with a REAL checkable answer
+                // (A–D), so non-math drills are actually winnable offline and the
+                // recap shows a genuine explanation instead of "见解析".
+                let item = nonMathChoiceBank(for: subject)[i % max(1, nonMathChoiceBank(for: subject).count)]
+                let labels = ["A", "B", "C", "D"]
+                let answerLabel = labels[item.correct]
                 return GeneratedProblem(
-                    question: "请仿照例题，完成第 \(i + 1) 道同类练习。",
-                    answer: "见解析", difficulty: min(5, i + 1), knowledgePointID: knowledgePointID)
+                    subject: subject,
+                    question: item.q + "\n" + item.choices.joined(separator: "\n") + "\n（请填写正确选项的字母）",
+                    answer: answerLabel,
+                    steps: [SolutionStep(index: 1, title: "解析",
+                                         detail: "正确答案是 \(answerLabel)。\(approach(for: subject))")],
+                    difficulty: min(5, i + 1), knowledgePointID: knowledgePointID)
             }
+        }
+    }
+
+    /// Deterministic, subject-aware single-choice items used by the offline /
+    /// on-device drill generator so every subject is genuinely answerable.
+    private static func nonMathChoiceBank(for subject: Subject) -> [(q: String, choices: [String], correct: Int)] {
+        switch subject {
+        case .chinese:
+            return [("下列词语书写完全正确的一项是：",
+                     ["A. 一丝不苟", "B. 再接再励", "C. 不径而走", "D. 走头无路"], 0),
+                    ("「春风又绿江南岸」中「绿」字的妙处在于：",
+                     ["A. 用作动词，写出春风使江南变绿的动态", "B. 单纯写颜色", "C. 只为押韵", "D. 没有特别含义"], 0)]
+        case .english:
+            return [("Choose the correct form: She ___ to school every day.",
+                     ["A. go", "B. goes", "C. going", "D. gone"], 1),
+                    ("Choose the correct word: I have ___ apple.",
+                     ["A. a", "B. an", "C. the", "D. /"], 1)]
+        case .physics:
+            return [("一个静止在水平桌面上的物体，受到的合力是：",
+                     ["A. 重力", "B. 支持力", "C. 零", "D. 摩擦力"], 2)]
+        case .chemistry:
+            return [("下列变化属于化学变化的是：",
+                     ["A. 冰融化成水", "B. 铁生锈", "C. 水蒸发", "D. 玻璃破碎"], 1)]
+        default:
+            return [("关于「\(subject.displayName)」核心概念，正确的一项是：",
+                     ["A. 正确选项", "B. 干扰项一", "C. 干扰项二", "D. 干扰项三"], 0)]
         }
     }
 

@@ -150,15 +150,18 @@ final class EssayGradingModel {
     /// update the same record on re-grade rather than piling up duplicates.
     private func persist(_ feedback: EssayFeedback, originalText: String, context: ModelContext) {
         let record: EssayRecord
+        let isNewRecord: Bool
         if let id = lastSavedRecordID,
            let existing = try? context.fetch(
             FetchDescriptor<EssayRecord>(predicate: #Predicate { $0.id == id })
            ).first {
             record = existing
+            isNewRecord = false
         } else {
             record = EssayRecord()
             context.insert(record)
             lastSavedRecordID = record.id
+            isNewRecord = true
         }
 
         record.subject = subject
@@ -175,6 +178,12 @@ final class EssayGradingModel {
         record.highScoreExpressions = feedback.highScoreExpressions
         record.createdAt = Date()
 
+        // Count one graded essay toward 答题足迹 (only the first grade of a given essay).
+        if isNewRecord {
+            ActivityRecorder.log(
+                context, kind: .essay, subject: subject, questions: 1,
+                detail: "作文批改 · \(record.title)")
+        }
         context.saveLogging()
     }
 

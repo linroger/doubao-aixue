@@ -187,14 +187,16 @@ public nonisolated struct SimilarRequest: Sendable, Hashable {
 
 public nonisolated struct GeneratedProblem: Sendable, Hashable, Identifiable {
     public var id: String
+    public var subject: Subject                  // the subject this problem was generated for
     public var question: String
     public var answer: String
     public var steps: [SolutionStep]
     public var difficulty: Int                  // 1...5
     public var knowledgePointID: String
-    public init(id: String = UUID().uuidString, question: String, answer: String,
+    public init(id: String = UUID().uuidString, subject: Subject = .general,
+                question: String, answer: String,
                 steps: [SolutionStep] = [], difficulty: Int = 2, knowledgePointID: String = "") {
-        self.id = id; self.question = question; self.answer = answer
+        self.id = id; self.subject = subject; self.question = question; self.answer = answer
         self.steps = steps; self.difficulty = difficulty; self.knowledgePointID = knowledgePointID
     }
 }

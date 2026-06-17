@@ -125,6 +125,7 @@ private struct FlashcardReviewSurface: View {
     @State private var index = 0
     @State private var flipped = false
     @State private var reviewedCount = 0
+    @State private var loggedSession = false
     @State private var dragOffset: CGSize = .zero
 
     /// Snapshot of how many cards this session started with — denominator of the ring.
@@ -370,6 +371,16 @@ private struct FlashcardReviewSurface: View {
         .padding(DBSpacing.screenInset)
         .frame(maxWidth: 520)
         .frame(maxWidth: .infinity)
+        .onAppear(perform: logSessionIfNeeded)
+    }
+
+    /// Count this review session's cards toward the 答题足迹 contribution heatmap, once.
+    private func logSessionIfNeeded() {
+        guard !loggedSession, reviewedCount > 0 else { return }
+        loggedSession = true
+        ActivityRecorder.log(
+            modelContext, kind: .vocabulary, subject: deck.subject,
+            questions: reviewedCount, detail: "背单词 · \(deck.name)")
     }
 
     // MARK: Logic
@@ -390,6 +401,7 @@ private struct FlashcardReviewSurface: View {
         index = 0
         flipped = false
         reviewedCount = 0
+        loggedSession = false
         sessionTotal = 0
         queue = []
         dragOffset = .zero

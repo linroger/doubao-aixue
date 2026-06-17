@@ -276,7 +276,8 @@ struct DrillView: View {
             onFinish: {
                 HapticEngine.play(.light)
                 router.navigate(.reports, regular: sizeClass != .compact)
-            }
+            },
+            onAddToNotebook: { model.addWrongOutcomesToNotebook(context: context) }
         )
         .onAppear {
             model.persistResults(context: context, existingMasteries: masteries)

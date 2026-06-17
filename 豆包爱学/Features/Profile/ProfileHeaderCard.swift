@@ -12,6 +12,8 @@ import SwiftUI
 
 struct ProfileHeaderCard: View {
     let profile: LearnerProfile?
+    /// Live streak derived from real practice days (see ContributionStats.currentStreak).
+    var streakDays: Int = 0
     let onEdit: () -> Void
 
     private var nickname: String { profile?.nickname ?? "小学员" }
@@ -37,7 +39,7 @@ struct ProfileHeaderCard: View {
                                 .foregroundStyle(Color.dbTextSecondary)
                             Text("·")
                                 .foregroundStyle(Color.dbTextTertiary)
-                            DBStreakView(days: profile?.streakDays ?? 0)
+                            DBStreakView(days: streakDays)
                         }
                     }
 

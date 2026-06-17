@@ -76,7 +76,7 @@ struct ArithmeticGradingView: View {
                         kind: .error,
                         title: "出错了",
                         message: message,
-                        retry: { Task { await model.grade(using: intelligence) } }
+                        retry: { Task { await model.grade(using: intelligence, context: modelContext) } }
                     )
                     .frame(maxWidth: .infinity, minHeight: 280)
                 case let .offline(message):
@@ -268,7 +268,7 @@ struct ArithmeticGradingView: View {
     private var gradeButton: some View {
         Button {
             HapticEngine.play(.light)
-            Task { await model.grade(using: intelligence) }
+            Task { await model.grade(using: intelligence, context: modelContext) }
         } label: {
             Label("开始批改", systemImage: "checkmark.seal.fill")
         }

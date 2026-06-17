@@ -427,15 +427,13 @@ final class ExamModel {
             context.insert(attempt)
         }
 
-        // 2) Activity log so the 学习报告 picks up the time spent.
+        // 2) Activity log (with question count) so the 学习报告 + 答题足迹 heatmap
+        //    both pick up the exam. Funnels through the one canonical recorder.
         let elapsed = Date.now.timeIntervalSince(startedAt)
-        let log = ActivityLog()
-        log.kindRaw = "practice"
-        log.subject = selectedSubject
-        log.detail = "模拟测验 \(correctCount)/\(outcomes.count)"
-        log.minutes = max(1, (elapsed / 60).rounded())
-        log.date = .now
-        context.insert(log)
+        ActivityRecorder.log(
+            context, kind: .exam, subject: selectedSubject,
+            questions: outcomes.count, minutes: max(1, (elapsed / 60).rounded()),
+            detail: "模拟测验 \(correctCount)/\(outcomes.count)")
 
         // 3) Mastery nudge for knowledge points the generated questions tagged.
         let touchedIDs = Set(outcomes.map(\.knowledgePointID).filter { !$0.isEmpty })
